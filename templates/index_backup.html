@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photonic Computing | Silicon Photonics HPC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+            color: #e0e6ed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e2a4a 0%, #0d1425 100%);
+            padding: 20px 40px;
+            border-bottom: 2px solid #00d4ff;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .header p {
+            color: #8b9dc3;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-label {
+            font-size: 0.9em;
+            color: #8b9dc3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(30, 42, 74, 0.9), rgba(13, 20, 37, 0.9));
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4);
+            border-color: #00d4ff;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: '◆';
+            color: #00ff88;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(139, 157, 195, 0.2);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: #8b9dc3;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .button-secondary {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+
+        .button-secondary:hover {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+        }
+
+        .wdm-channels {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .channel {
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .channel:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .cluster-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .node {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.2));
+            border: 2px solid #00d4ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .node:hover {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #00d4ff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        input[type="number"] {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            color: #e0e6ed;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>⚡ Photonic Computing System</h1>
+        <p>Silicon Photonics • High-Performance Computing • Exascale Architecture</p>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-item">
+            <div class="status-label">Throughput</div>
+            <div class="status-value" id="total-throughput">0</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Bandwidth</div>
+            <div class="status-value" id="total-bandwidth">0</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Efficiency</div>
+            <div class="status-value" id="efficiency">0</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Speedup</div>
+            <div class="status-value" id="speedup">0x</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Photonic Matrix Multiplier -->
+            <div class="card">
+                <div class="card-title">Photonic Matrix Multiplier</div>
+                <div class="metric">
+                    <span class="metric-label">Matrix Size</span>
+                    <span class="metric-value" id="mm-size">128x128</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Throughput</span>
+                    <span class="metric-value" id="mm-throughput">0 TOPS</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Latency</span>
+                    <span class="metric-value" id="mm-latency">0 ns</span>
+                </div>
+                <input type="number" id="mm-size-input" placeholder="Matrix size" value="128" min="64" max="2048">
+                <button class="button" onclick="runMatrixMultiply()">Execute Multiplication</button>
+            </div>
+
+            <!-- WDM System -->
+            <div class="card">
+                <div class="card-title">Wavelength Division Multiplexing</div>
+                <div class="metric">
+                    <span class="metric-label">Channels</span>
+                    <span class="metric-value" id="wdm-channels">64</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Aggregate Bandwidth</span>
+                    <span class="metric-value" id="wdm-bandwidth">0 Tbps</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Channel Spacing</span>
+                    <span class="metric-value" id="wdm-spacing">0 nm</span>
+                </div>
+                <button class="button" onclick="loadWDMChannels()">Load WDM Channels</button>
+                <div class="wdm-channels" id="wdm-grid"></div>
+            </div>
+
+            <!-- Photonic FFT -->
+            <div class="card">
+                <div class="card-title">Photonic FFT Processor</div>
+                <div class="metric">
+                    <span class="metric-label">FFT Size</span>
+                    <span class="metric-value" id="fft-size">1024</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Latency</span>
+                    <span class="metric-value" id="fft-latency">0 ns</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Speedup vs Electronic</span>
+                    <span class="metric-value" id="fft-speedup">0x</span>
+                </div>
+                <input type="number" id="fft-size-input" placeholder="FFT size" value="1024" min="256" max="4096">
+                <button class="button" onclick="runFFT()">Compute FFT</button>
+            </div>
+
+            <!-- PCIe Board -->
+            <div class="card">
+                <div class="card-title">PCIe Gen5 Board</div>
+                <div class="metric">
+                    <span class="metric-label">PCIe Configuration</span>
+                    <span class="metric-value" id="pcie-config">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Bandwidth</span>
+                    <span class="metric-value" id="pcie-bandwidth">0 GB/s</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Optical Ports</span>
+                    <span class="metric-value" id="pcie-ports">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Power</span>
+                    <span class="metric-value" id="pcie-power">0 W</span>
+                </div>
+                <button class="button" onclick="loadPCIeInfo()">Refresh Board Info</button>
+            </div>
+
+            <!-- PCIe Transfer -->
+            <div class="card">
+                <div class="card-title">PCIe Data Transfer</div>
+                <div class="metric">
+                    <span class="metric-label">Transfer Time</span>
+                    <span class="metric-value" id="transfer-time">0 ms</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Data Size</span>
+                    <span class="metric-value" id="transfer-size">0 MB</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Transfer Rate</span>
+                    <span class="metric-value" id="transfer-rate">0 Gbps</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="transfer-progress" style="width: 0%">0%</div>
+                </div>
+                <input type="number" id="transfer-size-input" placeholder="Matrix size" value="1024" min="256"
+                    max="4096">
+                <button class="button" onclick="runPCIeTransfer()">Simulate Transfer</button>
+            </div>
+
+            <!-- Hybrid System -->
+            <div class="card">
+                <div class="card-title">FPGA-Photonic Hybrid</div>
+                <div class="metric">
+                    <span class="metric-label">FPGA Compute</span>
+                    <span class="metric-value" id="fpga-compute">0 GFLOPS</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Photonic Compute</span>
+                    <span class="metric-value" id="photonic-compute">0 TOPS</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Optical I/O</span>
+                    <span class="metric-value" id="optical-io">0 Tbps</span>
+                </div>
+                <button class="button" onclick="loadHybridSystem()">Load System Specs</button>
+                <button class="button button-secondary" onclick="executeWorkload()">Execute Workload</button>
+            </div>
+
+            <!-- Cluster -->
+            <div class="card full-width">
+                <div class="card-title">64-Node Exascale Cluster</div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
+                    <div class="metric">
+                        <span class="metric-label">Total Performance</span>
+                        <span class="metric-value" id="cluster-pflops">0 PFLOPS</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Total Power</span>
+                        <span class="metric-value" id="cluster-power">0 kW</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Efficiency</span>
+                        <span class="metric-value" id="cluster-efficiency">0 GFLOPS/W</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Optical Fabric</span>
+                        <span class="metric-value" id="cluster-fabric">0 Pbps</span>
+                    </div>
+                </div>
+                <button class="button" onclick="loadCluster()">Initialize Cluster</button>
+                <div class="cluster-grid" id="cluster-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load performance metrics on startup
+        async function loadPerformance() {
+            const response = await fetch('/api/performance');
+            const data = await response.json();
+
+            document.getElementById('total-throughput').textContent = data.total_throughput_tops.toFixed(2) + ' TOPS';
+            document.getElementById('total-bandwidth').textContent = data.aggregate_bandwidth_tbps.toFixed(2) + ' Tbps';
+            document.getElementById('efficiency').textContent = data.energy_efficiency_tops_per_watt.toFixed(2) + ' TOPS/W';
+            document.getElementById('speedup').textContent = data.speedup_vs_electronic.toFixed(0) + 'x';
+        }
+
+        async function runMatrixMultiply() {
+            const size = parseInt(document.getElementById('mm-size-input').value);
+            const response = await fetch('/api/matrix_multiply', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ size: size })
+            });
+            const data = await response.json();
+
+            document.getElementById('mm-size').textContent = size + 'x' + size;
+            document.getElementById('mm-throughput').textContent = data.throughput_tops.toFixed(2) + ' TOPS';
+            document.getElementById('mm-latency').textContent = data.latency_ns.toFixed(1) + ' ns';
+        }
+
+        async function loadWDMChannels() {
+            const response = await fetch('/api/wdm_channels');
+            const data = await response.json();
+
+            document.getElementById('wdm-channels').textContent = data.num_channels;
+            document.getElementById('wdm-bandwidth').textContent = data.aggregate_bandwidth_tbps.toFixed(2) + ' Tbps';
+            document.getElementById('wdm-spacing').textContent = data.channel_spacing_nm.toFixed(2) + ' nm';
+
+            const grid = document.getElementById('wdm-grid');
+            grid.innerHTML = '';
+
+            const colors = ['#ff006e', '#fb5607', '#ffbe0b', '#8338ec', '#3a86ff', '#06ffa5', '#00d4ff', '#ff006e'];
+
+            for (let i = 0; i < data.num_channels; i++) {
+                const channel = document.createElement('div');
+                channel.className = 'channel';
+                channel.textContent = i + 1;
+                channel.style.background = `linear-gradient(135deg, ${colors[i % colors.length]}, ${colors[(i + 1) % colors.length]})`;
+                channel.title = `λ = ${data.wavelengths[i].toFixed(2)} nm`;
+                grid.appendChild(channel);
+            }
+        }
+
+        async function runFFT() {
+            const size = parseInt(document.getElementById('fft-size-input').value);
+            const response = await fetch('/api/fft', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ size: size })
+            });
+            const data = await response.json();
+
+            document.getElementById('fft-size').textContent = data.size;
+            document.getElementById('fft-latency').textContent = data.latency_ns.toFixed(3) + ' ns';
+            document.getElementById('fft-speedup').textContent = data.speedup_vs_electronic.toFixed(0) + 'x';
+        }
+
+        async function loadPCIeInfo() {
+            const response = await fetch('/api/pcie_board');
+            const data = await response.json();
+
+            document.getElementById('pcie-config').textContent = data.pcie_generation + ' x' + data.pcie_lanes;
+            document.getElementById('pcie-bandwidth').textContent = (data.pcie_bandwidth_gbps / 8).toFixed(2) + ' GB/s';
+            document.getElementById('pcie-ports').textContent = data.num_optical_ports;
+            document.getElementById('pcie-power').textContent = data.power_consumption_w + ' W';
+        }
+
+        async function runPCIeTransfer() {
+            const size = parseInt(document.getElementById('transfer-size-input').value);
+
+            // Animate progress
+            const progressBar = document.getElementById('transfer-progress');
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
+
+            const response = await fetch('/api/pcie_transfer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ size: size })
+            });
+            const data = await response.json();
+
+            // Animate to 100%
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                progressBar.textContent = progress + '%';
+                if (progress >= 100) clearInterval(interval);
+            }, 20);
+
+            document.getElementById('transfer-time').textContent = data.transfer_time_ms.toFixed(3) + ' ms';
+            document.getElementById('transfer-size').textContent = data.data_size_mb.toFixed(2) + ' MB';
+            document.getElementById('transfer-rate').textContent = data.transfer_rate_gbps.toFixed(2) + ' Gbps';
+        }
+
+        async function loadHybridSystem() {
+            const response = await fetch('/api/hybrid_system');
+            const data = await response.json();
+
+            document.getElementById('fpga-compute').textContent = data.fpga.compute_gflops.toFixed(2) + ' GFLOPS';
+            document.getElementById('photonic-compute').textContent = data.photonic.throughput_tops.toFixed(2) + ' TOPS';
+            document.getElementById('optical-io').textContent = data.optical_io.total_bandwidth_tbps.toFixed(2) + ' Tbps';
+        }
+
+        async function executeWorkload() {
+            const response = await fetch('/api/execute_workload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ size: 2048 })
+            });
+            const data = await response.json();
+
+            alert(`Workload Executed!\n\nSize: ${data.size}x${data.size}\nTotal Time: ${data.total_time_ms.toFixed(3)} ms\nThroughput: ${data.throughput_tflops.toFixed(2)} TFLOPS\nPartition: ${data.partition.recommended_unit}`);
+        }
+
+        async function loadCluster() {
+            const response = await fetch('/api/cluster');
+            const data = await response.json();
+
+            document.getElementById('cluster-pflops').textContent = data.total_pflops.toFixed(2) + ' PFLOPS';
+            document.getElementById('cluster-power').textContent = data.total_power_kw.toFixed(2) + ' kW';
+            document.getElementById('cluster-efficiency').textContent = data.efficiency_gflops_per_watt.toFixed(2) + ' GFLOPS/W';
+            document.getElementById('cluster-fabric').textContent = data.optical_fabric_pbps.toFixed(2) + ' Pbps';
+
+            const grid = document.getElementById('cluster-grid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < data.num_nodes; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.textContent = i + 1;
+                node.title = `Node ${i + 1}`;
+                grid.appendChild(node);
+            }
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            loadPerformance();
+            loadPCIeInfo();
+            loadWDMChannels();
+        };
+    </script>
+</body>
+
+</html>
