@@ -1,16 +1,4 @@
-"""
-Physics-Based Technical Report Generator for TFLN Photonic Circuits
-Generates comprehensive LaTeX report with finite math derivations and compiles to PDF.
-"""
-
-import os
-import subprocess
-import sys
-
-def generate_tfln_physics_report():
-    """Generate comprehensive physics-based technical report on TFLN"""
-    
-    latex_content = r"""\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 \usepackage{geometry}
 \usepackage{graphicx}
@@ -188,51 +176,3 @@ Propagation Loss (dB/cm) & 2.0 & $<$0.3 & \textbf{6.6x} \\
 This report has established the physical and mathematical foundations for Thin-Film Lithium Niobate photonic circuits. By employing finite difference methods for mode solving and rigorous Pockels effect modeling, we demonstrated that TFLN offers a superior platform for high-performance computing interconnects. The derived $V_\pi$ of 2.74 V and energy efficiency of ~1 pJ/bit enable exascale architectures previously unattainable with traditional silicon photonics.
 
 \end{document}
-"""
-    
-    # Define file paths
-    # Using the current directory where the script is located
-    output_dir = os.path.dirname(os.path.abspath(__file__))
-    file_name = "TFLN_Physics_Technical_Report"
-    tex_path = os.path.join(output_dir, f"{file_name}.tex")
-    pdf_path = os.path.join(output_dir, f"{file_name}.pdf")
-    
-    # Write LaTeX to file
-    with open(tex_path, 'w') as f:
-        f.write(latex_content)
-    
-    print(f"LaTeX source generated: {tex_path}")
-    
-    # Compile PDF using pdflatex
-    # We run it twice to ensure references and table of contents are correct
-    print("Compiling PDF...")
-    try:
-        # First pass
-        subprocess.run(["pdflatex", "-interaction=nonstopmode", f"{file_name}.tex"], 
-                       cwd=output_dir, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # Second pass
-        subprocess.run(["pdflatex", "-interaction=nonstopmode", f"{file_name}.tex"], 
-                       cwd=output_dir, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(f"PDF successfully generated: {pdf_path}")
-    except subprocess.CalledProcessError as e:
-        print("Error during PDF compilation:")
-        print(e.stderr.decode() if e.stderr else "No stderr output")
-        print("Ensure 'pdflatex' is installed and in your PATH.")
-        # Attempt to see log if it exists
-        log_path = os.path.join(output_dir, f"{file_name}.log")
-        if os.path.exists(log_path):
-            with open(log_path, 'r') as log:
-                print("--- LOG PREVIEW ---")
-                print(log.read()[-1000:]) 
-                
-    except FileNotFoundError:
-        print("Error: 'pdflatex' command not found. Please install a LaTeX distribution (e.g., TeX Live, MiKTeX).")
-    
-    return pdf_path
-
-if __name__ == "__main__":
-    pdf_path = generate_tfln_physics_report()
-    if os.path.exists(pdf_path):
-        print(f"\nSUCCESS: Report generated at {pdf_path}")
-    else:
-        print(f"\nWARNING: PDF file was not created. Check LaTeX compilation errors.")
