@@ -185,6 +185,61 @@ class EnhancedKiCadGenerator:
             px = -48 + i
             self.add(f'    (pad "{i+1}" smd rect (at {px} 0) (size 0.6 3) (layers "F.Cu" "F.Paste" "F.Mask") (net 0 ""))')
         self.add('  )')
+        
+        # Add routing traces
+        self.generate_routing()
+
+    def add_segment(self, x1, y1, x2, y2, width=0.25, layer="F.Cu", net_id=0):
+        """Add a copper trace segment"""
+        self.add(f'  (segment (start {x1} {y1}) (end {x2} {y2}) (width {width}) (layer "{layer}") (net {net_id}))')
+    
+    def add_via(self, x, y, size=0.6, drill=0.3, net_id=0):
+        """Add a via"""
+        self.add(f'  (via (at {x} {y}) (size {size}) (drill {drill}) (layers "F.Cu" "B.Cu") (net {net_id}))')
+
+    def generate_routing(self):
+        """Generate pre-routed traces for power and signals"""
+        gnd_net = self.nets.get("GND", 1)
+        v33_net = self.nets.get("+3V3", 2)
+        v18_net = self.nets.get("+1V8", 3)
+        
+        # Power rail +3V3 across top of board
+        self.add_segment(10, 65, 90, 65, 1.0, "F.Cu", v33_net)
+        
+        # Power connections to main chip area
+        self.add_segment(25, 65, 25, 50, 0.5, "F.Cu", v33_net)
+        self.add_segment(75, 65, 75, 50, 0.5, "F.Cu", v33_net)
+        
+        # Ground vias along power rail
+        for x in range(15, 90, 10):
+            self.add_via(x, 68, 0.6, 0.3, gnd_net)
+        
+        # Signal routing from U2 (Laser) to U1 (Main Chip)
+        laser_en = self.nets.get("LASER_EN", 0)
+        self.add_segment(29, 30, 35, 35, 0.2, "F.Cu", laser_en)
+        self.add_segment(35, 35, 42, 35, 0.2, "F.Cu", laser_en)
+        
+        # Signal routing from U1 to U3 (Photodetector)
+        pd_out = self.nets.get("PD_OUT", 0)
+        self.add_segment(58, 35, 65, 35, 0.2, "F.Cu", pd_out)
+        self.add_segment(65, 35, 71, 30, 0.2, "F.Cu", pd_out)
+        
+        # PCIe differential pairs from J1 to U9
+        for i in range(8):
+            pcie_tx_p = self.nets.get(f"PCIE{i}_TX_P", 0)
+            pcie_tx_n = self.nets.get(f"PCIE{i}_TX_N", 0)
+            x_base = 30 + i * 2.5
+            # Differential pair routing
+            self.add_segment(x_base, 75, x_base, 65, 0.15, "F.Cu", pcie_tx_p)
+            self.add_segment(x_base + 0.3, 75, x_base + 0.3, 65, 0.15, "F.Cu", pcie_tx_n)
+        
+        # Decoupling cap connections to GND plane (vias)
+        cap_positions = [
+            (40, 30), (60, 30), (40, 50), (60, 50),
+            (35, 35), (65, 35), (35, 45), (65, 45)
+        ]
+        for x, y in cap_positions:
+            self.add_via(x, y + 1, 0.4, 0.2, gnd_net)
 
     def write_files(self):
         # Close the PCB file
