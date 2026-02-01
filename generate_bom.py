@@ -269,17 +269,31 @@ class BOMGenerator:
         with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 'Designator', 'Quantity', 'Description', 'Manufacturer',
-                'Part Number', 'Specifications', 'Unit Cost ($)', 'Total Cost ($)'
+                'Part Number', 'Specifications'
             ])
             
             writer.writeheader()
-            writer.writerows(self.bom_items)
+            # Remove cost fields from items before writing if necessary, 
+            # or DictWriter will just ignore extras if extrasaction='ignore'.
+            # Better to just slice the dicts or let DictWriter handle it if configured, 
+            # but standard DictWriter raises ValueError if field defines are missing.
+            # So we must clean data or use extrasaction='ignore'.
+            
+            # Let's clean the data for writing
+            clean_items = []
+            for item in self.bom_items:
+                clean_item = {k: v for k, v in item.items() if k in [
+                    'Designator', 'Quantity', 'Description', 'Manufacturer',
+                    'Part Number', 'Specifications'
+                ]}
+                clean_items.append(clean_item)
+                
+            writer.writerows(clean_items)
         
         return self.output_file
     
     def generate_summary(self):
         """Generate BOM summary"""
-        total_cost = sum(item['Total Cost ($)'] for item in self.bom_items)
         total_items = len(self.bom_items)
         total_qty = sum(item['Quantity'] for item in self.bom_items)
         
@@ -293,10 +307,9 @@ class BOMGenerator:
             
             f.write("SUMMARY:\n")
             f.write(f"  Total Line Items: {total_items}\n")
-            f.write(f"  Total Components: {total_qty}\n")
-            f.write(f"  Total Cost: ${total_cost:,.2f}\n\n")
+            f.write(f"  Total Components: {total_qty}\n\n")
             
-            f.write("COST BREAKDOWN BY CATEGORY:\n")
+            f.write("COMPONENT BREAKDOWN:\n")
             
             categories = {
                 'Photonic Components': ['U1', 'U2', 'U3', 'OPT'],
@@ -309,20 +322,11 @@ class BOMGenerator:
             }
             
             for category, prefixes in categories.items():
-                cat_cost = sum(
-                    item['Total Cost ($)'] 
-                    for item in self.bom_items 
+                count = sum(
+                    1 for item in self.bom_items 
                     if any(item['Designator'].startswith(p) for p in prefixes)
                 )
-                f.write(f"  {category:25s}: ${cat_cost:10,.2f}\n")
-            
-            f.write("\n" + "=" * 70 + "\n")
-            f.write("TOP 10 MOST EXPENSIVE COMPONENTS:\n")
-            f.write("=" * 70 + "\n\n")
-            
-            sorted_items = sorted(self.bom_items, key=lambda x: x['Total Cost ($)'], reverse=True)
-            for i, item in enumerate(sorted_items[:10], 1):
-                f.write(f"{i:2d}. {item['Designator']:10s} {item['Description']:40s} ${item['Total Cost ($)']:10,.2f}\n")
+                f.write(f"  {category:25s}: {count} items\n")
             
             f.write("\n" + "=" * 70 + "\n")
             f.write("NOTES:\n")
@@ -349,9 +353,6 @@ class BOMGenerator:
         
         summary_file = self.generate_summary()
         print(f"  ✓ Generated summary: {summary_file}")
-        
-        total_cost = sum(item['Total Cost ($)'] for item in self.bom_items)
-        print(f"\n✅ Total BOM Cost: ${total_cost:,.2f}")
         
         return [csv_file, summary_file]
 
