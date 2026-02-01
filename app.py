@@ -104,7 +104,7 @@ def matrix_multiply():
 @app.route('/api/wdm_channels')
 def get_wdm_channels():
     """Get WDM channel information"""
-    wavelengths = wdm_system.resonance_wavelengths(center=1550.0, num=64)
+    wavelengths = wdm_system.wavelengths
     bandwidth = wdm_system.aggregate_bandwidth()
     
     return jsonify({
@@ -395,6 +395,44 @@ def get_gerber_layers():
         return jsonify(gerber_data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/api/cnc/files')
+def get_cnc_files():
+    """List available CNC files"""
+    import os
+    cnc_dir = 'cnc_files'
+    files = []
+    if os.path.exists(cnc_dir):
+        for f in os.listdir(cnc_dir):
+            if f.endswith('.nc'):
+                files.append(f)
+    return jsonify({'files': sorted(files)})
+
+@app.route('/api/cnc/content/<path:filename>')
+def get_cnc_content(filename):
+    """Get content of a CNC file"""
+    import os
+    cnc_dir = 'cnc_files'
+    filepath = os.path.join(cnc_dir, filename)
+    if os.path.exists(filepath):
+        # Parse G-code for visualization
+        moves = []
+        with open(filepath, 'r') as f:
+            for line in f:
+                if line.startswith('G00') or line.startswith('G01'):
+                    parts = line.split()
+                    x = None
+                    y = None
+                    type_ = 'move' if 'G00' in parts[0] else 'cut'
+                    for part in parts:
+                        if part.startswith('X'):
+                            x = float(part[1:])
+                        elif part.startswith('Y'):
+                            y = float(part[1:])
+                    if x is not None and y is not None:
+                         moves.append({'x': x, 'y': y, 'type': type_})
+        return jsonify({'filename': filename, 'moves': moves})
+    return jsonify({'error': 'File not found'}), 404
 
 if __name__ == '__main__':
     print("=" * 70)

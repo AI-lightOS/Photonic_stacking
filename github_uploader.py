@@ -159,31 +159,50 @@ def check_repo_exists(token, full_repo):
     except urllib.error.HTTPError:
         return False
 
+import argparse
+import sys
+
 def main():
     print("="*60)
     print("   Photonic Computing GitHub Uploader (No Git Required)")
     print("="*60)
     
-    # Get user input
-    token = input("Enter your GitHub Personal Access Token: ").strip()
+    parser = argparse.ArgumentParser(description='Upload files to GitHub without git.')
+    parser.add_argument('--token', help='GitHub Personal Access Token')
+    parser.add_argument('--repo', help='Repository name (username/repo)')
+    args = parser.parse_args()
+    
+    # Get user input if not provided via args
+    if args.token:
+        token = args.token
+    else:
+        token = input("Enter your GitHub Personal Access Token: ").strip()
+        
     if not token:
         print("Error: Token is required.")
         return
         
-    username = input("Enter your GitHub Username: ").strip()
-    repo_name = input("Enter the Repository Name (e.g., photonic_computing): ").strip()
-    
-    full_repo = f"{username}/{repo_name}"
+    if args.repo:
+        full_repo = args.repo
+    else:
+        username = input("Enter your GitHub Username: ").strip()
+        repo_name = input("Enter the Repository Name (e.g., photonic_computing): ").strip()
+        full_repo = f"{username}/{repo_name}"
     
     print(f"\nChecking repository {full_repo}...")
     if not check_repo_exists(token, full_repo):
         print(f"Repository {full_repo} does not exist.")
-        create = input(f"Do you want to create it now? (y/n): ").lower()
-        if create == 'y':
-            if not create_repo(token, repo_name):
-                print("Aborting.")
-                return
-        else:
+        # If running non-interactively, we can't ask "Create it now?". 
+        # We assume if arguments are provided we want to proceed or fail.
+        # But let's try to create it automatically if it doesn't exist?
+        # Or just fail since I can't ask interactively easily in this environment if I'm auto-running.
+        
+        # However, the user request is specific: push to AI-lightOS/Photonic_stacking.
+        # If it doesn't exist, we probably want to create it.
+        # Let's try to create it.
+        print(f"Attempting to create repository {full_repo}...")
+        repo_name = full_repo.split('/')[-1]
+        if not create_repo(token, repo_name):
             print("Aborting.")
             return
     
@@ -208,10 +227,12 @@ def main():
                 files_to_upload.append(file_path)
     
     print(f"Found {len(files_to_upload)} files to upload.")
-    confirm = input("Proceed? (y/n): ").lower()
-    if confirm != 'y':
-        print("Aborted.")
-        return
+    # Skip confirmation if args are present (non-interactive mode assumption)
+    if not args.token:
+        confirm = input("Proceed? (y/n): ").lower()
+        if confirm != 'y':
+            print("Aborted.")
+            return
         
     success_count = 0
     for file_path in files_to_upload:
