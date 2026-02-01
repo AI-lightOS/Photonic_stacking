@@ -2,7 +2,7 @@
 TFLN PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY
 ======================================================================
 
-Generated: 2026-01-30 09:28:49
+Generated: 2026-01-31 23:34:20
 Design: LightRail AI TFLN 400G-800G Optical Modulator
 
 SUMMARY:

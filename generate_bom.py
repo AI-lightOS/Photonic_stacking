@@ -266,7 +266,7 @@ class BOMGenerator:
         
     def generate_csv(self):
         """Generate CSV file"""
-        with open(self.output_file, 'w', newline='') as f:
+        with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 'Designator', 'Quantity', 'Description', 'Manufacturer',
                 'Part Number', 'Specifications', 'Unit Cost ($)', 'Total Cost ($)'
@@ -284,7 +284,7 @@ class BOMGenerator:
         total_qty = sum(item['Quantity'] for item in self.bom_items)
         
         summary_file = "TFLN_BOM_Summary.txt"
-        with open(summary_file, 'w') as f:
+        with open(summary_file, 'w', encoding='utf-8') as f:
             f.write("=" * 70 + "\n")
             f.write("TFLN PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY\n")
             f.write("=" * 70 + "\n\n")

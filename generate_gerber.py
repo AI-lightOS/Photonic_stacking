@@ -40,6 +40,12 @@ class GerberGenerator:
         filename = f"{self.output_dir}/tfln_modulator_bottom.gbl"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Photonic Modulator - Bottom Copper Layer (Signal/GND)*\n")
+            f.write("G01*\n")
+            f.write("D10*\n")
+            # Bottom layer ground mesh
+            for i in range(0, 3000000, 200000):
+                f.write(f"X{i}Y0D02*\n")
+                f.write(f"X0Y{3000000-i}D01*\n")
             f.write("M02*\n")
         return filename
     
@@ -82,6 +88,39 @@ class GerberGenerator:
                 f.write(f"G04 Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n")
                 f.write("%FSLAX36Y36*%\n")
                 f.write("%MOIN*%\n")
+                
+                # Add representative geometry based on layer type
+                f.write("G01*\n") # Linear interpolation mode
+                
+                # Center coords (approx)
+                cx = 1500000 
+                cy = 1500000
+                
+                if "Ground" in desc:
+                    # Ground plane hatch pattern
+                    f.write("D10*\n") # Use aperture 10
+                    for i in range(0, 3000000, 500000):
+                         f.write(f"X{i}Y0D02*\n")
+                         f.write(f"X{i}Y3000000D01*\n")
+                elif "Power" in desc:
+                     # Power plane solid-ish fill (cross hatch)
+                    f.write("D10*\n")
+                    for i in range(0, 3000000, 500000):
+                         f.write(f"X0Y{i}D02*\n")
+                         f.write(f"X3000000Y{i}D01*\n")
+                else: 
+                    # Signal layers - interesting patterns
+                    # Simulate "routing"
+                    f.write("D10*\n")
+                    # Main diagonal bus
+                    f.write(f"X0Y0D02*\n")
+                    f.write(f"X3000000Y3000000D01*\n")
+                    
+                    # Some random-looking traces
+                    offset = (layer_num * 100000) % 500000
+                    f.write(f"X{offset}Y1000000D02*\n")
+                    f.write(f"X{3000000-offset}Y1000000D01*\n")
+
                 f.write("M02*\n")
             files.append(filename)
             
