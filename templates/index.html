@@ -583,10 +583,6 @@
                 <div class="card-title" style="font-size: 2em; text-align: center; margin-bottom: 20px;">
                     🔧 TFLN PCB Design Viewer
                 </div>
-                <p style="text-align: center; color: #8b9dc3; margin-bottom: 30px; font-size: 1.1em;">
-                    8-Layer Rogers RO4350B • 106.68 x 111.15 mm • 50Ω Impedance Control
-                </p>
-
                 <!-- Board Specifications -->
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px;">
                     <div class="metric">
@@ -620,19 +616,35 @@
                     <div
                         style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px;">
                         <button class="button layer-btn" data-layer="top"
-                            style="background: linear-gradient(135deg, #CC0000, #990000);">L1 - Top Signal</button>
+                            style="background: linear-gradient(135deg, #CC0000, #990000);">L1 - Top</button>
                         <button class="button layer-btn" data-layer="l2"
-                            style="background: linear-gradient(135deg, #0000CC, #000099);">L2 - Signal</button>
+                            style="background: linear-gradient(135deg, #0000CC, #000099);">L2</button>
                         <button class="button layer-btn" data-layer="l3"
-                            style="background: linear-gradient(135deg, #CC6600, #994400);">L3 - Power</button>
+                            style="background: linear-gradient(135deg, #CC6600, #994400);">L3</button>
+                        <button class="button layer-btn" data-layer="l4"
+                            style="background: linear-gradient(135deg, #006600, #004400);">L4</button>
+                        <button class="button layer-btn" data-layer="l5"
+                            style="background: linear-gradient(135deg, #6600CC, #440099);">L5</button>
+                        <button class="button layer-btn" data-layer="l6"
+                            style="background: linear-gradient(135deg, #FF9900, #CC7700);">L6</button>
+                        <button class="button layer-btn" data-layer="l7"
+                            style="background: linear-gradient(135deg, #9900CC, #770099);">L7</button>
+                        <button class="button layer-btn" data-layer="l8"
+                            style="background: linear-gradient(135deg, #004400, #002200);">L8</button>
+                        <button class="button layer-btn" data-layer="l9"
+                            style="background: linear-gradient(135deg, #CC0099, #990077);">L9</button>
+                        <button class="button layer-btn" data-layer="l10"
+                            style="background: linear-gradient(135deg, #CC9900, #997700);">L10</button>
+                        <button class="button layer-btn" data-layer="l11"
+                            style="background: linear-gradient(135deg, #000099, #000077);">L11</button>
                         <button class="button layer-btn" data-layer="bottom"
-                            style="background: linear-gradient(135deg, #006600, #004400);">L8 - Bottom</button>
+                            style="background: linear-gradient(135deg, #003300, #001100);">L12 - Bot</button>
                         <button class="button layer-btn" data-layer="silk"
-                            style="background: linear-gradient(135deg, #FFFFFF, #CCCCCC); color: #000;">Silkscreen</button>
+                            style="background: linear-gradient(135deg, #FFFFFF, #CCCCCC); color: #000;">Silk</button>
                         <button class="button layer-btn" data-layer="outline"
                             style="background: linear-gradient(135deg, #FFFF00, #CCCC00); color: #000;">Outline</button>
                         <button class="button layer-btn" data-layer="drill"
-                            style="background: linear-gradient(135deg, #888888, #555555);">Drill Holes</button>
+                            style="background: linear-gradient(135deg, #888888, #555555);">Drill</button>
                         <button class="button" onclick="showAllLayers()"
                             style="background: linear-gradient(135deg, #00ff88, #00cc66);">Show All</button>
                     </div>
@@ -647,6 +659,33 @@
                         <div id="layer-legend"
                             style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr);">
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CNC G-Code Viewer Section -->
+            <div class="card full-width"
+                style="background: linear-gradient(135deg, rgba(200, 200, 200, 0.1), rgba(150, 150, 150, 0.05));">
+                <div class="card-title" style="font-size: 2em; text-align: center; margin-bottom: 20px;">
+                    ⚙️ CNC G-Code Viewer
+                </div>
+                <p style="text-align: center; color: #8b9dc3; margin-bottom: 30px; font-size: 1.1em;">
+                    Visualize converted G-code toolpaths
+                </p>
+
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <select id="cnc-file-select"
+                        style="padding: 10px; border-radius: 5px; background: #0a0e27; color: white; border: 1px solid #00d4ff;">
+                        <option value="">Select a CNC file...</option>
+                    </select>
+                    <button class="button" onclick="loadCNCFile()">Load Toolpath</button>
+                </div>
+
+                <div id="cnc-viewer-container" style="display: none; padding: 20px;">
+                    <div class="card" style="padding: 40px; background: #1a1f3a;">
+                        <canvas id="cnc-canvas" width="800" height="800" style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; 
+                            background: #0a0e27; border: 2px solid #00ff88; border-radius: 10px;">
+                        </canvas>
                     </div>
                 </div>
             </div>
@@ -797,6 +836,8 @@
         }
 
         // TFLN Functions
+        // TFLN Functions
+
         async function loadTFLNData() {
             // Load 400G link data
             const response400 = await fetch('/api/tfln/link_400g');
@@ -886,7 +927,7 @@
         }
 
         function showAllLayers() {
-            visibleLayers = new Set(['top', 'l2', 'l3', 'bottom', 'silk', 'outline', 'drill']);
+            visibleLayers = new Set(['top', 'l2', 'l3', 'l4', 'l5', 'l6', 'l7', 'l8', 'l9', 'l10', 'l11', 'bottom', 'silk', 'outline', 'drill']);
             renderGerber();
         }
 
@@ -911,7 +952,7 @@
             const offsetY = (canvas.height - gerberData.board_specs.height * scale) / 2;
 
             // Render each visible layer
-            const layerOrder = ['bottom', 'l3', 'l2', 'top', 'outline', 'drill', 'silk'];
+            const layerOrder = ['bottom', 'l11', 'l10', 'l9', 'l8', 'l7', 'l6', 'l5', 'l4', 'l3', 'l2', 'top', 'outline', 'drill', 'silk'];
 
             layerOrder.forEach(layerName => {
                 if (!visibleLayers.has(layerName)) return;
@@ -1000,11 +1041,138 @@
             });
         }
 
+        // CNC Viewer Functions
+        async function loadCNCFilesList() {
+            const response = await fetch('/api/cnc/files');
+            const data = await response.json();
+            const select = document.getElementById('cnc-file-select');
+
+            data.files.forEach(file => {
+                const option = document.createElement('option');
+                option.value = file;
+                option.textContent = file;
+                select.appendChild(option);
+            });
+        }
+
+        async function loadCNCFile() {
+            const filename = document.getElementById('cnc-file-select').value;
+            if (!filename) return;
+
+            const response = await fetch(`/api/cnc/content/${filename}`);
+            const data = await response.json();
+
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+
+            document.getElementById('cnc-viewer-container').style.display = 'block';
+            renderCNC(data.moves);
+            document.getElementById('cnc-viewer-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function renderCNC(moves) {
+            const canvas = document.getElementById('cnc-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Clear canvas
+            ctx.fillStyle = '#0a0e27';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (!moves || moves.length === 0) return;
+
+            // Determine bounds
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            moves.forEach(m => {
+                minX = Math.min(minX, m.x);
+                maxX = Math.max(maxX, m.x);
+                minY = Math.min(minY, m.y);
+                maxY = Math.max(maxY, m.y);
+            });
+
+            // Add margin
+            const margin = 0.5; // inches
+            minX -= margin; maxX += margin;
+            minY -= margin; maxY += margin;
+
+            const width = maxX - minX;
+            const height = maxY - minY;
+
+            // Calculate scale
+            const scaleX = canvas.width / width;
+            const scaleY = canvas.height / height;
+            const scale = Math.min(scaleX, scaleY);
+
+            // Center
+            const offsetX = (canvas.width - width * scale) / 2;
+            const offsetY = (canvas.height - height * scale) / 2;
+
+            // Draw grid
+            ctx.strokeStyle = '#2a3f5f';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            // ... (grid drawing optional, let's skip for brevity or keep simple)
+            ctx.stroke();
+
+            // Draw moves
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            // Start position (usually 0,0 or first move)
+            let lastX = moves[0].x;
+            let lastY = moves[0].y;
+
+            // Transform
+            const transformX = (x) => offsetX + (x - minX) * scale;
+            const transformY = (y) => canvas.height - (offsetY + (y - minY) * scale); // Flip Y for standard Cartesian
+
+            // Draw rapid moves (G00) as dashed lines
+            // and cuts (G01) as solid lines
+
+            moves.forEach(move => {
+                ctx.beginPath();
+                ctx.moveTo(transformX(lastX), transformY(lastY));
+                ctx.lineTo(transformX(move.x), transformY(move.y));
+
+                if (move.type === 'move') {
+                    ctx.strokeStyle = '#00d4ff'; // Blue for travel
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([5, 5]);
+                    ctx.globalAlpha = 0.5;
+                } else {
+                    ctx.strokeStyle = '#00ff88'; // Green for cut
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([]);
+                    ctx.globalAlpha = 1.0;
+                }
+
+                ctx.stroke();
+
+                lastX = move.x;
+                lastY = move.y;
+            });
+
+            // Draw endpoints to show detail
+            moves.forEach(move => {
+                if (move.type === 'cut') {
+                    const x = transformX(move.x);
+                    const y = transformY(move.y);
+                    ctx.fillStyle = '#ff006e';
+                    ctx.globalAlpha = 0.8;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+            });
+        }
+
         // Initialize on load
         window.onload = () => {
             loadPerformance();
             loadPCIeInfo();
             loadWDMChannels();
+            loadCNCFilesList();
         };
     </script>
 </body>
