@@ -6,13 +6,15 @@
 \usepackage{booktabs}
 \usepackage{fancyhdr}
 \usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
 
 \geometry{margin=1in}
 \pagestyle{fancy}
-\fancyhead[L]{TFLN Physics Report}
-\fancyhead[R]{NeuroMorph Photonic Systems}
+\fancyhead[L]{Photonic App Technical Report}
+\fancyhead[R]{Development \& Physics}
 
-\title{\textbf{Physics-Based Modeling of Thin-Film Lithium Niobate (TFLN) for Photonic Integrated Circuits}}
+\title{\textbf{Development and Physics-Based Modeling of the Photonic Computing Web Application}}
 \author{NeuroMorph Photonic Systems Division}
 \date{\today}
 
@@ -20,159 +22,87 @@
 \newtheorem{definition}{Definition}
 \newtheorem{derivation}{Derivation}
 
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true}
+
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We present a rigorous physics-based analysis of Thin-Film Lithium Niobate (TFLN) technology for next-generation photonic integrated circuits. This report details the derivations of finite difference approximations for waveguide mode solving, models the anisotropic electro-optic interactions via the Pockels effect, and validates system performance with 400G/800G link budget calculations. Our modeling confirms TFLN's superiority, demonstrating a $V_\pi$ of 2.74 V and energy efficiency of 1.01 pJ/bit.
+This report details the development of a high-performance web application for simulating and designing photonic computing systems. We present the software architecture comprising a Flask-based backend and a dynamic frontend, alongside rigorous derivations of the physics engines implemented. Key features include a custom Finite Difference Frequency Domain (FDFD) solver for optical modes, Tin-Film Lithium Niobate (TFLN) modulator modeling, and a novel API-based GitHub integration mechanism developed to operate without local Git clients.
 \end{abstract}
 
 \tableofcontents
 \newpage
 
-\section{Introduction to TFLN Physics}
+\section{Application Architecture}
 
-Lithium Niobate ($\text{LiNbO}_3$) is a uniaxial ferroelectric crystal exhibiting a strong Pockels effect. The transition to Thin-Film Lithium Niobate (TFLN) on Silicon Insulator (LNOI) enables tight optical confinement and enhanced electro-optic overlap.
+The Photonic Computing Web Application is designed as a modular, full-stack system to democratize access to advanced photonic design tools.
 
-\subsection{Material Anisotropy}
-The refractive index is direction-dependent, defined by the indicatrix ellipsoid:
+\subsection{Backend System (Flask/Python)}
+The core logic resides in a Python-based Flask server (`app.py`), which orchestrates several specialized modules:
+\begin{enumerate}
+    \item \textbf{Physics Engines}: Custom implementations for Matrix Multiplication (`photonic\_core.py`), FFT, and Resonator physics.
+    \item \textbf{Integration Interfaces}: Modules for PCIe simulation (`pcie\_interface.py`) and Hybrid FPGA coprocessing.
+    \item \textbf{File Parsers}: Custom parsers for Gerber (PCB) and G-Code (CNC) files for manufacturing visualization.
+\end{enumerate}
+
+\subsection{Frontend Visualization}
+The user interface (`index.html`) utilizes HTML5 Canvas for high-performance rendering of engineering assets:
+\begin{itemize}
+    \item \textbf{Gerber Viewer}: Renders multi-layer PCB designs by parsing coordinate primitives.
+    \item \textbf{Real-Time Plotting}: Visualizes TFLN performance metrics and FEA mode profiles.
+\end{itemize}
+
+\section{Finite Element Analysis (FEA) Engine}
+
+A critical component of the application is the browser-based simulation of optical waveguides. We derived a Finite Difference Frequency Domain (FDFD) solver to solve the scalar Helmholtz equation.
+
+\subsection{Mathematical Formulation}
+For a quasi-TE mode in a waveguide defined by refractive index distribution $n(x,y)$, the wave equation is:
 \begin{equation}
-\frac{x^2}{n_o^2} + \frac{y^2}{n_o^2} + \frac{z^2}{n_e^2} = 1
+\nabla_\perp^2 E_x + [k_0^2 n^2(x,y) - \beta^2] E_x = 0
 \end{equation}
-At 1550 nm, the ordinary index $n_o = 2.211$ and extraordinary index $n_e = 2.138$. For X-cut TFLN, we utilize the large $r_{33} = 30.8$ pm/V coefficient by aligning the electric field with the Z-axis of the crystal.
+where $k_0 = 2\pi/\lambda$ is the free-space wavenumber and $\beta = k_0 n_{eff}$ is the propagation constant.
 
-\section{Finite Mathematics for Waveguide Modeling}
-
-To accurately model the eigenmodes of the TFLN waveguide, we derive the Finite Difference Frequency Domain (FDFD) formulation from Maxwell's equations.
-
-\subsection{Vector Helmholtz Equation}
-Starting from the source-free Maxwell's curl equations:
-\begin{align}
-\nabla \times \mathbf{E} &= -j\omega \mu_0 \mathbf{H} \\
-\nabla \times \mathbf{H} &= j\omega \epsilon_0 n^2(x,y) \mathbf{E}
-\end{align}
-Decoupling these yields the vector Helmholtz equation for the transverse electric field $\mathbf{E}_t$:
+\subsection{Discrete Approximation}
+We employ a central difference scheme on a 2D grid $(i,j)$ with spacing $h_x, h_y$:
+\begin{derivation}[5-Point Stencil]
 \begin{equation}
-\nabla_\perp^2 \mathbf{E}_t + [k_0^2 n^2(x,y) - \beta^2] \mathbf{E}_t = 0
-\end{equation}
-where $\beta$ is the propagation constant and $\nabla_\perp^2 = \partial_x^2 + \partial_y^2$.
-
-\subsection{Finite Difference Discretization}
-We discretize the domain into a grid $(i,j)$ with spacing $\Delta x, \Delta y$. We approximate the second derivatives using central difference finite operators:
-
-\begin{derivation}[Discrete Laplacian]
-For a field component $\psi$, the second derivative at node $(i,j)$ is approximated as:
-\begin{equation}
-\frac{\partial^2 \psi}{\partial x^2} \approx \frac{\psi_{i+1,j} - 2\psi_{i,j} + \psi_{i-1,j}}{(\Delta x)^2}
-\end{equation}
-\begin{equation}
-\frac{\partial^2 \psi}{\partial y^2} \approx \frac{\psi_{i,j+1} - 2\psi_{i,j} + \psi_{i,j-1}}{(\Delta y)^2}
+\frac{E_{i+1,j} - 2E_{i,j} + E_{i-1,j}}{h_x^2} + \frac{E_{i,j+1} - 2E_{i,j} + E_{i,j-1}}{h_y^2} + k_0^2 n_{i,j}^2 E_{i,j} = \beta^2 E_{i,j}
 \end{equation}
 \end{derivation}
+This transforms the partial differential equation into a sparse eigenvalue problem $\mathbf{A}\mathbf{x} = \lambda \mathbf{x}$, which is solved numerically to obtain the effective index $n_{eff}$ and mode profiles displayed in the app.
 
-Substituting these into the Helmholtz equation for a node $(i,j)$ with index $n_{i,j}$:
-\begin{align}
-\frac{\psi_{i+1,j} + \psi_{i-1,j} - 2\psi_{i,j}}{(\Delta x)^2} + \frac{\psi_{i,j+1} + \psi_{i,j-1} - 2\psi_{i,j}}{(\Delta y)^2} + k_0^2 n_{i,j}^2 \psi_{i,j} = \beta^2 \psi_{i,j}
-\end{align}
+\section{TFLN Physics Modeling}
 
-Considering a uniform mesh $\Delta x = \Delta y = h$, this simplifies to a standard eigenvalue problem:
+\subsection{Electro-Optic Pockels Effect}
+The app models Thin-Film Lithium Niobate modulators using the anisotropic Pockels effect. The refractive index change is derived as:
 \begin{equation}
-4\psi_{i,j} - (\psi_{i+1,j} + \psi_{i-1,j} + \psi_{i,j+1} + \psi_{i,j-1}) - h^2 k_0^2 n_{i,j}^2 \psi_{i,j} = -h^2 \beta^2 \psi_{i,j}
+\Delta n = -\frac{1}{2} n_e^3 r_{33} \frac{V}{d} \Gamma
 \end{equation}
-
-This system can be written in matrix form as:
-\begin{equation}
-\mathbf{A}\mathbf{x} = \lambda \mathbf{x}
-\end{equation}
-where $\mathbf{A}$ is a sparse matrix representing the photonic structure and $\lambda = \beta^2$ are the eigenvalues corresponding to the guided modes.
-
-\section{Electro-Optic Modulation Modeling}
-
-\subsection{Pockels Effect Derivation}
-The application of an external electric field $\mathbf{E}_{RF}$ perturbs the optical dielectric tensor. For the dominant $r_{33}$ interaction (Z-axis field), the change in refractive index is:
-\begin{equation}
-\Delta n_e = -\frac{1}{2} n_e^3 r_{33} E_z
-\end{equation}
-
-\subsection{Phase Shift and Half-Wave Voltage ($V_\pi$)}
-The accumulated phase shift $\Delta \phi$ over an interaction length $L$ is:
-\begin{equation}
-\Delta \phi = k_0 \Delta n_e L = \frac{2\pi}{\lambda} \left( -\frac{1}{2} n_e^3 r_{33} \Gamma \frac{V}{d} \right) L
-\end{equation}
-where $\Gamma$ is the electro-optic overlap integral between the RF and optical fields, $V$ is the applied voltage, and $d$ is the electrode gap.
-
-\begin{derivation}[$V_\pi$ Calculation]
-The half-wave voltage $V_\pi$ is defined as the voltage required to induce a phase shift of $\pi$.
-\begin{equation}
-\pi = \frac{\pi n_e^3 r_{33} \Gamma L V_\pi}{\lambda d}
-\end{equation}
-Solving for $V_\pi$:
+This allows for the precise calculation of the half-wave voltage ($V_\pi$):
 \begin{equation}
 V_\pi = \frac{\lambda d}{n_e^3 r_{33} \Gamma L}
 \end{equation}
-\end{derivation}
+Our implementation yields a theoretical $V_\pi \approx 2.74$ V for the designed parameters, validating the high-efficiency claims of the platform.
 
-\subsection{Modulation Transfer Function}
-The optical transmission of a Mach-Zehnder Modulator (MZM) as a function of voltage $V(t)$ is:
-\begin{equation}
-T(V) = \cos^2\left( \frac{\pi V(t)}{2 V_\pi} + \phi_{bias} \right)
-\end{equation}
+\section{Custom GitHub Integration}
 
-\section{TFLN System Characterization}
+To meet deployment constraints (specifically, no local Git installation), we developed a custom Python-based uploader (`github\_uploader.py`).
 
-Based on the derived models and physical parameters, the system performance for the implemented TFLN architecture is characterized below.
-
-\subsection{Component Specifications}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-\toprule
-\textbf{Parameter} & \textbf{Value} & \textbf{Unit} \\
-\midrule
-Operating Wavelength ($\lambda$) & 1550 & nm \\
-Extraordinary Index ($n_e$) & 2.138 & - \\
-EO Coefficient ($r_{33}$) & 30.8 & pm/V \\
-Electrode Gap ($d$) & 5.0 & $\mu$m \\
-Interaction Length ($L$) & 5.0 & mm \\
-Overlap Integral ($\Gamma$) & 0.92 & - \\
-\bottomrule
-\end{tabular}
-\caption{Physical Constants and Design Parameters}
-\end{table}
-
-Substituting these values into the $V_\pi$ equation:
-\begin{equation}
-V_\pi = \frac{1.55 \times 10^{-6} \cdot 5 \times 10^{-6}}{(2.138)^3 \cdot 30.8 \times 10^{-12} \cdot 0.92 \cdot 5 \times 10^{-3}} \approx 2.74 \text{ V}
-\end{equation}
-
-\subsection{Link Budget Analysis}
-For a 400G PAM4 link, the power consumption and energy efficiency are derived as:
-
+\subsection{Rest API Implementation}
+Instead of standard `git push` commands, the system interacts directly with the GitHub REST API:
 \begin{itemize}
-    \item \textbf{Modulator Power}: $P_{mod} = \frac{V_{pp}^2}{R_L} \approx 0.40$ W
-    \item \textbf{Energy Efficiency}: $E_{bit} = \frac{P_{mod}}{\text{Data Rate}} = \frac{0.40 \text{ W}}{400 \text{ Gbps}} = 1.01 \text{ pJ/bit}$
+    \item \textbf{File Discovery}: Recursive directory walking with `.gitignore` parsing.
+    \item \textbf{Content Encoding}: Files are Base64 encoded and sent via `PUT` requests to `https://api.github.com/repos/{owner}/{repo}/contents/{path}`.
+    \item \textbf{Concurrency}: The web app handles uploads in background threads to maintain UI responsiveness.
 \end{itemize}
 
-\subsection{Comparison with Silicon Photonics}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lccc}
-\toprule
-\textbf{Metric} & \textbf{Silicon Photonics} & \textbf{TFLN (This Work)} & \textbf{Improvement} \\
-\midrule
-$V_\pi$ (V) & 6.2 & 2.74 & \textbf{2.3x} \\
-Bandwidth (GHz) & 55 & $>$100 & \textbf{1.8x} \\
-Energy/bit (pJ) & 26 & 1.01 & \textbf{26x} \\
-Propagation Loss (dB/cm) & 2.0 & $<$0.3 & \textbf{6.6x} \\
-\bottomrule
-\end{tabular}
-\caption{TFLN vs. Silicon Photonics Performance Comparison}
-\end{table}
+\subsection{Simulation Mode}
+An "Offline Mode" was implemented to facilitate testing and demonstration without modifying live repositories. This required abstracting the network layer to simulate latency and API responses.
 
 \section{Conclusion}
-This report has established the physical and mathematical foundations for Thin-Film Lithium Niobate photonic circuits. By employing finite difference methods for mode solving and rigorous Pockels effect modeling, we demonstrated that TFLN offers a superior platform for high-performance computing interconnects. The derived $V_\pi$ of 2.74 V and energy efficiency of ~1 pJ/bit enable exascale architectures previously unattainable with traditional silicon photonics.
+The Photonic Computing Web Application represents a conversion of rigorous physics modeling and modern software engineering. By embedding custom FEA solvers and physics-based component models directly into an interactive web platform, we provide a powerful tool for next-generation photonic chip design.
 
 \end{document}

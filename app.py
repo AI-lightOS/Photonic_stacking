@@ -18,8 +18,37 @@ from tfln_components import (
 )
 from tfln_plots import generate_tfln_plots
 from gerber_viewer import generate_all_layers
+from fea_integration import run_fea_simulation
+from fea_integration import run_fea_simulation
+
 
 app = Flask(__name__)
+
+
+
+
+# ... (skipping component initialization lines) ...
+
+@app.route('/api/github/push', methods=['POST'])
+def github_push():
+    """Start GitHub upload process"""
+    data = request.json
+    token = data.get('token')
+    repo = data.get('repo')
+    simulation = data.get('simulation', False)
+    
+    # If simulation is on, we allow dummy tokens
+    if not simulation and (not token or not repo):
+        return jsonify({'status': 'error', 'message': 'Token and Repo name required'}), 400
+        
+    if github_state['status'] == 'uploading':
+        return jsonify({'status': 'error', 'message': 'Upload already in progress'})
+        
+    thread = threading.Thread(target=run_github_upload, args=(token, repo, simulation))
+    thread.start()
+    
+    return jsonify({'status': 'started'})
+
 
 # Initialize photonic components
 matrix_multiplier = PhotonicMatrixMultiplier(size=128)
@@ -417,22 +446,139 @@ def get_cnc_content(filename):
     if os.path.exists(filepath):
         # Parse G-code for visualization
         moves = []
+        current_x = 0.0
+        current_y = 0.0
+        
         with open(filepath, 'r') as f:
             for line in f:
-                if line.startswith('G00') or line.startswith('G01'):
+                line = line.strip().upper()
+                if not line: continue
+                
+                type_ = None
+                if 'G00' in line or 'G0 ' in line:
+                    type_ = 'move'
+                elif 'G01' in line or 'G1 ' in line:
+                    type_ = 'cut'
+                
+                if type_:
                     parts = line.split()
-                    x = None
-                    y = None
-                    type_ = 'move' if 'G00' in parts[0] else 'cut'
+                    found_coord = False
                     for part in parts:
                         if part.startswith('X'):
-                            x = float(part[1:])
+                            try:
+                                current_x = float(part[1:])
+                                found_coord = True
+                            except: pass
                         elif part.startswith('Y'):
-                            y = float(part[1:])
-                    if x is not None and y is not None:
-                         moves.append({'x': x, 'y': y, 'type': type_})
+                            try:
+                                current_y = float(part[1:])
+                                found_coord = True
+                            except: pass
+                    
+                    if found_coord:
+                         moves.append({'x': current_x, 'y': current_y, 'type': type_})
         return jsonify({'filename': filename, 'moves': moves})
     return jsonify({'error': 'File not found'}), 404
+
+@app.route('/api/3d_models')
+def get_3d_models():
+    """List available 3D manufacturing models"""
+    import os
+    models_dir = '3d_models'
+    files = []
+    if os.path.exists(models_dir):
+        for f in os.listdir(models_dir):
+            if f.endswith('.stl'):
+                files.append(f)
+    return jsonify({'files': sorted(files)})
+
+@app.route('/api/3d_models/download/<path:filename>')
+def download_3d_model(filename):
+    """Download a 3D model file"""
+    import os
+    from flask import send_from_directory
+    models_dir = os.path.abspath('3d_models')
+    return send_from_directory(models_dir, filename, as_attachment=True)
+
+@app.route('/api/vlsi/layers')
+def get_vlsi_layers():
+    """Get VLSI layout data"""
+    # Reuse GerberParser but for VLSI specific files
+    # We need to manually construct the layer list
+    from gerber_viewer import GerberParser, parse_drill_file
+    import os
+    
+    base_path = 'gerber_files'
+    layers = {}
+    
+    layer_files = {
+        'fpga_logic': 'vlsi_fpga_logic.gbr',
+        'pcie_phy': 'vlsi_pcie_phy.gbr',
+        'photonics': 'vlsi_photonics.gbr',
+        'interconnect': 'vlsi_metal_interconnect.gbr'
+    }
+    
+    parser = GerberParser()
+    
+    for layer_name, filename in layer_files.items():
+        filepath = os.path.join(base_path, filename)
+        if os.path.exists(filepath):
+            try:
+                # Our generic parser should handle basic gerber commands used in generate_vlsi
+                layers[layer_name] = parser.parse_file(filepath)
+                parser = GerberParser() # Reset
+            except Exception as e:
+                print(f"Error parsing {filename}: {e}")
+                layers[layer_name] = {'lines': [], 'pads': [], 'apertures': {}}
+
+    layer_info = {
+        'fpga_logic': {'name': 'FPGA Logic (CLB)', 'color': '#00CCCC', 'description': 'Configurable Logic Blocks'},
+        'pcie_phy': {'name': 'PCIe PHY (5.0)', 'color': '#00CC00', 'description': 'SerDes Transceivers'},
+        'photonics': {'name': 'Silicon Photonics', 'color': '#CC0000', 'description': 'Optical Waveguides'},
+        'interconnect': {'name': 'M1-M4 Metal', 'color': '#CCCCCC', 'description': 'Global Interconnects'}
+    }
+    
+    return jsonify({
+        'layers': layers,
+        'layer_info': layer_info,
+        'chip_specs': {
+            'die_size': '20mm x 20mm',
+            'technology': '7nm FinFET + 45nm SOI',
+            'fpga_logic_cells': '2.5M',
+            'transceivers': '16x 32Gbps'
+        }
+    })
+
+@app.route('/api/fea/simulate', methods=['POST'])
+def run_fea():
+    """Run custom FEA simulation for optical modes"""
+    data = request.json
+    try:
+        width = float(data.get('width', 4.0))
+        height = float(data.get('height', 3.0))
+        core_w = float(data.get('core_w', 0.5))
+        core_h = float(data.get('core_h', 0.22))
+        wl = float(data.get('wl', 1.55))
+        
+        results = run_fea_simulation(width, height, core_w, core_h, wl)
+        
+        return jsonify({
+            'status': 'success',
+            'results': results,
+            'params': {
+                'width': width, 'height': height,
+                'core_w': core_w, 'core_h': core_h,
+                'wl': wl
+            }
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+
+
 
 if __name__ == '__main__':
     print("=" * 70)

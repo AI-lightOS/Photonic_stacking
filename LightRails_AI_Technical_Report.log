@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 FEB 2026 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 FEB 2026 11:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**TFLN_Physics_Technical_Report.tex
-(./TFLN_Physics_Technical_Report.tex
+**LightRails_AI_Technical_Report.tex
+(./LightRails_AI_Technical_Report.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
@@ -682,8 +682,8 @@ ef
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count333
 \l__pdf_internal_box=\box67
-) (./TFLN_Physics_Technical_Report.aux)
-\openout1 = `TFLN_Physics_Technical_Report.aux'.
+) (./LightRails_AI_Technical_Report.aux)
+\openout1 = `LightRails_AI_Technical_Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
@@ -763,15 +763,14 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package hyperref Info: Link coloring OFF on input line 27.
- (./TFLN_Physics_Technical_Report.out) (./TFLN_Physics_Technical_Report.out)
+ (./LightRails_AI_Technical_Report.out) (./LightRails_AI_Technical_Report.out)
 \@outlinefile=\write4
-\openout4 = `TFLN_Physics_Technical_Report.out'.
+\openout4 = `LightRails_AI_Technical_Report.out'.
 
 \c@lstlisting=\count340
 LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
 
-
-(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
@@ -780,20 +779,25 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(./TFLN_Physics_Technical_Report.toc)
+(./LightRails_AI_Technical_Report.toc)
 \tf@toc=\write5
-\openout5 = `TFLN_Physics_Technical_Report.toc'.
+\openout5 = `LightRails_AI_Technical_Report.toc'.
 
 
 
 [1
 
 {/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (40.66075pt too wide) in paragraph at lines 45--46
+Overfull \hbox (40.66075pt too wide) in paragraph at lines 48--49
 []\OT1/cmr/bx/n/12 Physics En-gines\OT1/cmr/m/n/12 : Cus-tom im-ple-men-ta-tion
 s for Ma-trix Mul-ti-pli-ca-tion (`pho-tonic[]core.py`),
  []
 
+<fea_results/mode_0.png, id=97, 722.7pt x 578.16pt>
+File: fea_results/mode_0.png Graphic file (type png)
+<use fea_results/mode_0.png>
+Package pdftex.def Info: fea_results/mode_0.png  used on input line 72.
+(pdftex.def)             Requested size: 362.37569pt x 289.89973pt.
 
 
 
@@ -804,6 +808,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2]
+<fea_results/mode_1.png, id=109, 722.7pt x 578.16pt>
+File: fea_results/mode_1.png Graphic file (type png)
+<use fea_results/mode_1.png>
+Package pdftex.def Info: fea_results/mode_1.png  used on input line 79.
+(pdftex.def)             Requested size: 362.37569pt x 289.89973pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -812,7 +826,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3]
+[3 <./fea_results/mode_0.png>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -821,23 +835,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4] (./TFLN_Physics_Technical_Report.aux)
+[4 <./fea_results/mode_1.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[5] (./LightRails_AI_Technical_Report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `TFLN_Physics_Technical_Report.out' has not c
-hanged.
-(rerunfilecheck)             Checksum: 96CF851172C5D64EDD3B361D1AA44E83;2081.
+Package rerunfilecheck Info: File `LightRails_AI_Technical_Report.out' has not 
+changed.
+(rerunfilecheck)             Checksum: D22D5295A8DB9CCBD5E93BC0390933D0;2790.
  ) 
 Here is how much of TeX's memory you used:
- 22516 strings out of 474662
- 411279 string characters out of 5751110
- 786357 words of memory out of 5000000
- 45179 multiletter control sequences out of 15000+600000
- 569820 words of font info for 77 fonts, out of 8000000 for 9000
+ 22548 strings out of 474662
+ 411939 string characters out of 5751110
+ 788514 words of memory out of 5000000
+ 45203 multiletter control sequences out of 15000+600000
+ 569989 words of font info for 78 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 84i,11n,91p,595b,448s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,11n,91p,646b,506s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/cartik_sharma/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jk
 nappen/ec/tcrm1200.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/typ
@@ -848,11 +871,12 @@ t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025basic/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025basic/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025basic/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025bas
-ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on TFLN_Physics_Technical_Report.pdf (4 pages, 127672 bytes).
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025
+basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on LightRails_AI_Technical_Report.pdf (5 pages, 201289 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

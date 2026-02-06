@@ -162,88 +162,124 @@ def check_repo_exists(token, full_repo):
 import argparse
 import sys
 
-def main():
-    print("="*60)
-    print("   Photonic Computing GitHub Uploader (No Git Required)")
-    print("="*60)
-    
-    parser = argparse.ArgumentParser(description='Upload files to GitHub without git.')
-    parser.add_argument('--token', help='GitHub Personal Access Token')
-    parser.add_argument('--repo', help='Repository name (username/repo)')
-    args = parser.parse_args()
-    
-    # Get user input if not provided via args
-    if args.token:
-        token = args.token
-    else:
-        token = input("Enter your GitHub Personal Access Token: ").strip()
-        
-    if not token:
-        print("Error: Token is required.")
-        return
-        
-    if args.repo:
-        full_repo = args.repo
-    else:
-        username = input("Enter your GitHub Username: ").strip()
-        repo_name = input("Enter the Repository Name (e.g., photonic_computing): ").strip()
-        full_repo = f"{username}/{repo_name}"
-    
-    print(f"\nChecking repository {full_repo}...")
-    if not check_repo_exists(token, full_repo):
-        print(f"Repository {full_repo} does not exist.")
-        # If running non-interactively, we can't ask "Create it now?". 
-        # We assume if arguments are provided we want to proceed or fail.
-        # But let's try to create it automatically if it doesn't exist?
-        # Or just fail since I can't ask interactively easily in this environment if I'm auto-running.
-        
-        # However, the user request is specific: push to AI-lightOS/Photonic_stacking.
-        # If it doesn't exist, we probably want to create it.
-        # Let's try to create it.
-        print(f"Attempting to create repository {full_repo}...")
-        repo_name = full_repo.split('/')[-1]
-        if not create_repo(token, repo_name):
-            print("Aborting.")
-            return
-    
-    print(f"\nPreparing to upload to {full_repo}...")
-    
-    ignore_patterns = load_gitignore(PROJECT_ROOT)
-    
+import time
+import random
+
+def upload_project(token, repo, root_dir, progress_callback=None, simulation=False):
+    ignore_patterns = load_gitignore(root_dir)
     files_to_upload = []
     
-    # Walk directory
-    for root, dirs, files in os.walk(PROJECT_ROOT):
-        # Filter directories in place
-        dirs[:] = [d for d in dirs if not is_ignored(os.path.join(root, d), PROJECT_ROOT, ignore_patterns)]
-        
+    # Discovery phase
+    for root, dirs, files in os.walk(root_dir):
+        dirs[:] = [d for d in dirs if not is_ignored(os.path.join(root, d), root_dir, ignore_patterns)]
         for file in files:
             file_path = os.path.join(root, file)
-            if not is_ignored(file_path, PROJECT_ROOT, ignore_patterns):
-                # Don't upload this script itself if you want, but usually it's fine
-                # Don't upload .git directory if it exists
-                if '.git' in file_path.split(os.sep):
-                    continue
+            if not is_ignored(file_path, root_dir, ignore_patterns):
+                if '.git' in file_path.split(os.sep): continue
                 files_to_upload.append(file_path)
-    
-    print(f"Found {len(files_to_upload)} files to upload.")
-    # Skip confirmation if args are present (non-interactive mode assumption)
-    if not args.token:
-        confirm = input("Proceed? (y/n): ").lower()
-        if confirm != 'y':
-            print("Aborted.")
-            return
-        
+
+    total_files = len(files_to_upload)
+    if progress_callback:
+        progress_callback({'status': 'discovered', 'total': total_files})
+
+    # Creation phase
+    if not simulation:
+        if not check_repo_exists(token, repo):
+            # Determine strict name
+            repo_name = repo.split('/')[-1]
+            if create_repo(token, repo_name):
+                if progress_callback: progress_callback({'status': 'created_repo', 'repo': repo})
+            else:
+                 return {'success': False, 'message': f"Could not access or create repo {repo}"}
+    else:
+        # Simulate Creation
+        time.sleep(1.0)
+        if progress_callback: progress_callback({'status': 'created_repo', 'repo': repo})
+
+    # Upload phase
     success_count = 0
-    for file_path in files_to_upload:
-        rel_path = os.path.relpath(file_path, PROJECT_ROOT)
-        if upload_file(token, full_repo, file_path, rel_path):
+    errors = []
+    
+    for i, file_path in enumerate(files_to_upload):
+        rel_path = os.path.relpath(file_path, root_dir)
+        
+        if simulation:
+            # Simulate network delay/upload
+            time.sleep(random.uniform(0.05, 0.2))
+            success = True
+        else:
+            success = upload_file(token, repo, file_path, rel_path)
+
+        if success:
             success_count += 1
+        else:
+            errors.append(rel_path)
+        
+        if progress_callback:
+            progress_callback({
+                'status': 'uploading',
+                'current': i + 1,
+                'total': total_files,
+                'file': rel_path,
+                'success_count': success_count
+            })
             
-    print("\n" + "="*60)
-    print(f"Upload Complete. {success_count}/{len(files_to_upload)} files uploaded.")
-    print(f"View your repository at: https://github.com/{full_repo}")
-    print("="*60)
+    return {
+        'success': True,
+        'total': total_files,
+        'uploaded': success_count,
+        'errors': errors
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Upload project to GitHub without Git client")
+    parser.add_argument("--token", help="GitHub Personal Access Token")
+    parser.add_argument("--repo", default="AI-lightOS/Photonic_stacking", help="Target repository (user/repo)")
+    parser.add_argument("--root", default=PROJECT_ROOT, help="Project root directory")
+    parser.add_argument("--simulation", action="store_true", help="Run in simulation mode (offline)")
+    
+    args = parser.parse_args()
+    
+    token = args.token
+    if not args.simulation and not token:
+        token = input("Enter GitHub Personal Access Token: ").strip()
+        if not token:
+            print("Token is required!")
+            sys.exit(1)
+    elif args.simulation:
+        token = "dummy_token"
+
+    print(f"🚀 Starting upload to {args.repo}...")
+    if args.simulation:
+        print("   (Simulation Mode Active)")
+
+    def console_progress(data):
+        if data['status'] == 'discovered':
+            print(f"📁 Found {data['total']} files to upload")
+        elif data['status'] == 'created_repo':
+            print(f"🎉 Checked/Created repository: {data['repo']}")
+        elif data['status'] == 'uploading':
+            percent = (data['current'] / data['total']) * 100
+            bar_len = 30
+            filled_len = int(bar_len * data['current'] // data['total'])
+            bar = '█' * filled_len + '-' * (bar_len - filled_len)
+            sys.stdout.write(f"\r[{bar}] {percent:.1f}% | Uploading {data['file']}")
+            sys.stdout.flush()
+
+    start_time = time.time()
+    result = upload_project(token, args.repo, args.root, progress_callback=console_progress, simulation=args.simulation)
+    end_time = time.time()
+
+    print("\n")
+    if result['success']:
+        print(f"✅ Success! Uploaded {result['uploaded']} files in {end_time - start_time:.1f}s")
+        if result['errors']:
+            print(f"⚠️  Errors ({len(result['errors'])}):")
+            for err in result['errors']:
+                print(f"  - {err}")
+    else:
+        print(f"❌ Failed: {result.get('message')}")
 
 if __name__ == "__main__":
     main()

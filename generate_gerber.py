@@ -27,26 +27,6 @@ class GerberGenerator:
             f.write(f"G04 Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n")
             f.write("%FSLAX36Y36*%\n")
             f.write("%MOIN*%\n")
-            
-            # Aperture Definitions
-            f.write("%ADD10C,0.010*%\n") # D10: 10 mil Trace
-            f.write("%ADD11C,0.060*%\n") # D11: 60 mil Pad (Circle)
-            f.write("%ADD12R,0.050X0.050*%\n") # D12: 50x50 mil Pad (Rect)
-            
-            # Components (Pads)
-            f.write("G04 Component Pads*\n")
-            f.write("D11*\n") # Select circular pad
-            # U1 (MZM) - Big pads
-            f.write("X1000000Y1000000D03*\n") # D03 = Flash
-            f.write("X1000000Y2000000D03*\n")
-            f.write("X3000000Y1000000D03*\n")
-            f.write("X3000000Y2000000D03*\n")
-            
-            # U2/U3 Corners
-            f.write("D12*\n") # Select rect pad
-            f.write("X500000Y500000D03*\n")
-            f.write("X3500000Y3500000D03*\n")
-
             # RF Traces
             f.write("G01*\n")
             f.write("D10*\n")
@@ -60,12 +40,6 @@ class GerberGenerator:
         filename = f"{self.output_dir}/tfln_modulator_bottom.gbl"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Photonic Modulator - Bottom Copper Layer (Signal/GND)*\n")
-            f.write("G01*\n")
-            f.write("D10*\n")
-            # Bottom layer ground mesh
-            for i in range(0, 3000000, 200000):
-                f.write(f"X{i}Y0D02*\n")
-                f.write(f"X0Y{3000000-i}D01*\n")
             f.write("M02*\n")
         return filename
     
@@ -108,39 +82,6 @@ class GerberGenerator:
                 f.write(f"G04 Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n")
                 f.write("%FSLAX36Y36*%\n")
                 f.write("%MOIN*%\n")
-                
-                # Add representative geometry based on layer type
-                f.write("G01*\n") # Linear interpolation mode
-                
-                # Center coords (approx)
-                cx = 1500000 
-                cy = 1500000
-                
-                if "Ground" in desc:
-                    # Ground plane hatch pattern
-                    f.write("D10*\n") # Use aperture 10
-                    for i in range(0, 3000000, 500000):
-                         f.write(f"X{i}Y0D02*\n")
-                         f.write(f"X{i}Y3000000D01*\n")
-                elif "Power" in desc:
-                     # Power plane solid-ish fill (cross hatch)
-                    f.write("D10*\n")
-                    for i in range(0, 3000000, 500000):
-                         f.write(f"X0Y{i}D02*\n")
-                         f.write(f"X3000000Y{i}D01*\n")
-                else: 
-                    # Signal layers - interesting patterns
-                    # Simulate "routing"
-                    f.write("D10*\n")
-                    # Main diagonal bus
-                    f.write(f"X0Y0D02*\n")
-                    f.write(f"X3000000Y3000000D01*\n")
-                    
-                    # Some random-looking traces
-                    offset = (layer_num * 100000) % 500000
-                    f.write(f"X{offset}Y1000000D02*\n")
-                    f.write(f"X{3000000-offset}Y1000000D01*\n")
-
                 f.write("M02*\n")
             files.append(filename)
             
