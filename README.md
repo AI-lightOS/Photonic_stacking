@@ -1,9 +1,47 @@
 # Photonic Computing for High-Performance Computing
 ## PCIe Boards and FPGA Integration with Optics-Based Computing
 
----
+## Project Overview
+This repository contains the complete design files for a **12-layer TFLN (Thin-Film Lithium Niobate) Photonic Modulator** PCB, designed for high-speed# LightRail AI: Photonic-Electronic Stacking
 
-## 📁 Project Overview
+## Project Scope: TFLN 400G-800G Optical Interconnect Validation
+
+### 1. Physics Involved
+- **Core Mechanism**: Linear Electro-Optic (Pockels) Effect in Thin-Film Lithium Niobate (LiNbO₃) waveguides.
+- **Key Distinction**: Simulation models "pure" phase modulation without carrier plasma dispersion (unlike Silicon Photonics), ensuring perfect linearity.
+- **Propagation**: Optical mode confinement in thin-film waveguides with propagation loss targets of <0.3 dB/cm.
+
+### 2. Operating Conditions
+- **Modulation Format**: PAM4 (Native 400G) and PAM8 (Scalable to 800G).
+- **Wavelength**: C-Band DWDM (1530–1565 nm) with 50 GHz spacing.
+- **Drive Voltage**: Direct CMOS drive with Vπ ≈1.85V (target <2V).
+- **Bandwidth**: 100+ GHz modulation bandwidth.
+
+### 3. Results of Interest
+- **Signal Fidelity**: Generation of symmetric PAM4/PAM8 Eye Diagrams to validate linearity.
+- **Error Rates**: Validation of Bit Error Rate (BER) <10⁻¹⁵ without Forward Error Correction (FEC).
+- **Noise Analysis**: Modeling noise characteristics (OSNR) to confirm signal integrity over 100m fiber reach.
+- **Efficiency**: Energy efficiency targets <1 pJ/bit.
+
+### 4. Scenarios to Study
+- **Scenario A (Baseline Validation)**: Simulate 400G PAM4 TFLN MZM to verify Vπ and bandwidth linearity.
+- **Scenario B (Thermal Tolerance)**: Model phase stability under varying thermal loads (Superior to SiPh).
+- **Scenario C (Array Crosstalk)**: 8-channel array simulation for optical/RF crosstalk analysis in NIC design.
+
+### 5. Key Model Features
+- **Device Structure**: Push-pull Mach-Zehnder Modulator (MZI).
+- **Electron Geometry**: 6μm gap (d), 15mm interaction length (L).
+- **System Integration**: Laser Source → TFLN Modulator → Waveguide → Detector (CPO environment).
+
+## Design Specifications (AI Accelerator Class)
+| Parameter | Value |
+|-----------|-------|
+| Layers | 12 (High-Complexity Signal/Power) |
+| Board Size | 300mm x 140mm |
+| Net Count | 1800+ |
+| VRM Phases | 20-Phase Power Delivery |
+| Material | Rogers RO4350B / Megtron 6 |
+| Data Rate | 800G-1.6T |
 
 This project implements a complete **photonic computing system** for large-scale computations, combining:
 
