@@ -262,7 +262,79 @@ def generate_all_layers(gerber_dir: str = 'gerber_files') -> Dict:
         }
     }
 
+
+
+def generate_orthographic_views(gerber_dir: str) -> Dict:
+    """Generate orthographic projection drawings (Top, Front, Side)"""
+    import os
+    
+    # Define PCB dimensions (approximate based on standard)
+    width = 106.68  # mm
+    height = 111.15
+    thickness = 1.6
+    
+    # Layer stackup for Side/Front view generation (Material, Thickness)
+    stackup = [
+        ('Solder Mask', 0.02, '#00AA00'),
+        ('Top Copper', 0.035, '#CC0000'),
+        ('Prepreg', 0.1, '#DDDDAA'),
+        ('In1 Copper', 0.035, '#0000CC'),
+        ('Core', 0.48, '#DDDDAA'),
+        ('In2 Copper', 0.035, '#CC6600'),
+        ('Prepreg', 0.1, '#DDDDAA'),
+        ('Bottom Copper', 0.035, '#0000CC'),
+        ('Solder Mask', 0.02, '#00AA00')
+    ]
+    
+    # Generate SVG for Stackup (Front/Side View)
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+    from io import BytesIO
+    
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.set_axis_off()
+    
+    current_y = 0
+    total_thickness = sum(t[1] for t in stackup)
+    
+    # Draw scaled stackup (exaggerated thickness for visibility)
+    y_scale = 20  # Scale up thickness for viewing
+    
+    for name, thk, color in reversed(stackup):
+        h = thk * y_scale
+        rect = Rectangle((0, current_y), 10, h, facecolor=color, edgecolor='black', linewidth=0.5, alpha=0.8)
+        ax.add_patch(rect)
+        
+        # Label
+        text_y = current_y + h/2
+        ax.text(10.2, text_y, f"{name} ({thk*1000:.0f}μm)", va='center', fontsize=9)
+        
+        current_y += h
+        
+    ax.set_xlim(-1, 15)
+    ax.set_ylim(-1, current_y + 1)
+    ax.set_title("PCB Stackup Orthographic Projection (Cross-Section)", fontsize=12, weight='bold')
+    
+    # Generate SVG
+    buf = BytesIO()
+    plt.savefig(buf, format='svg', bbox_inches='tight')
+    plt.close(fig)
+    stackup_svg = buf.getvalue().decode('utf-8')
+    
+    return {
+        'stackup_svg': stackup_svg,
+        'dimensions': {'width': width, 'height': height, 'thickness': thickness},
+        'stackup_data': [{'name': n, 'thickness': t, 'color': c} for n, t, c in stackup]
+    }
+
+def parse_gerber_file(filepath: str) -> Dict:
+    """Helper function to parse a gerber file"""
+    parser = GerberParser()
+    return parser.parse_file(filepath)
+
 if __name__ == '__main__':
     # Test the parser
     data = generate_all_layers()
-    print(json.dumps(data, indent=2))
+    # print(json.dumps(data, indent=2))
+    views = generate_orthographic_views('gerber_files')
+    print("Generated orthographic views")

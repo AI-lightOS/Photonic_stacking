@@ -281,6 +281,31 @@ class PhotonicPCIeBoard:
         
         return transfer_time_ms
     
+    def simulate_transfer(self, size_gb: float) -> dict:
+        """
+        Simulate data transfer for API
+        
+        Args:
+            size_gb: Transfer size in GB
+        """
+        # Calculate theoretical time based on bandwidth
+        bandwidth_gbps = self.pcie.bandwidth_gbps()
+        transfer_time_ms = (size_gb * 8) / bandwidth_gbps * 1000
+        
+        # Add some overhead latency
+        transfer_time_ms += 0.5
+        
+        # Calculate actual rate
+        actual_rate_gbps = (size_gb * 8) / (transfer_time_ms / 1000)
+        
+        return {
+            'data_size_mb': size_gb * 1024,
+            'transfer_time_ms': transfer_time_ms,
+            'transfer_rate_gbps': actual_rate_gbps,
+            'pcie_generation': self.pcie.generation.value[1],
+            'lanes': self.pcie.num_lanes
+        }
+    
     def execute_matrix_multiply(self, size: int) -> dict:
         """
         Execute matrix multiplication on photonic processor
