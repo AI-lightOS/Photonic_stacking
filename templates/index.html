@@ -945,6 +945,40 @@
                 </div>
             </div>
 
+            <!-- Circuit Schematic Viewer Section -->
+            <div class="card full-width"
+                style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.05));">
+                <div class="card-title" style="font-size: 2em; text-align: center; margin-bottom: 20px;">
+                    ⚡ Circuit Schematics
+                </div>
+                <p style="text-align: center; color: #8b9dc3; margin-bottom: 30px; font-size: 1.1em;">
+                    Interactive Circuit Diagrams • Component Connections • Power Distribution
+                </p>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <button class="button" onclick="loadCircuitSchematic()"
+                        style="padding: 15px 40px; font-size: 1.1em; background: linear-gradient(135deg, #00ff88, #00cc66);">
+                        Load TFLN Circuit
+                    </button>
+                    <button class="button" onclick="loadPowerSchematic()"
+                        style="padding: 15px 40px; font-size: 1.1em; background: linear-gradient(135deg, #ffaa00, #ff8800);">
+                        Load Power Distribution
+                    </button>
+                </div>
+
+                <!-- Circuit Schematic Display -->
+                <div id="circuit-schematic-container" style="display: none; margin-top: 30px;">
+                    <h3 id="schematic-title" style="text-align: center; color: #00ff88; margin-bottom: 20px;">Circuit
+                        Schematic</h3>
+                    <div class="card" style="padding: 20px; background: #0a0e27; text-align: center;">
+                        <div id="schematic-svg" style="display: inline-block;"></div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center; color: #8b9dc3;">
+                        <p>Interactive SVG schematic showing component connections and signal paths</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -1700,6 +1734,42 @@
             } catch (error) {
                 console.error('Error running FEA:', error);
                 alert('Failed to run FEA analysis');
+            }
+        }
+
+        // Load Circuit Schematic
+        async function loadCircuitSchematic() {
+            try {
+                const response = await fetch('/api/circuit/schematic');
+                const svgText = await response.text();
+
+                document.getElementById('circuit-schematic-container').style.display = 'block';
+                document.getElementById('schematic-title').textContent = 'TFLN Modulator Circuit Schematic';
+                document.getElementById('schematic-svg').innerHTML = svgText;
+
+                // Scroll to schematic
+                document.getElementById('circuit-schematic-container').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error loading circuit schematic:', error);
+                alert('Failed to load circuit schematic');
+            }
+        }
+
+        // Load Power Distribution Schematic
+        async function loadPowerSchematic() {
+            try {
+                const response = await fetch('/api/circuit/power');
+                const svgText = await response.text();
+
+                document.getElementById('circuit-schematic-container').style.display = 'block';
+                document.getElementById('schematic-title').textContent = 'Power Distribution Network';
+                document.getElementById('schematic-svg').innerHTML = svgText;
+
+                // Scroll to schematic
+                document.getElementById('circuit-schematic-container').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error loading power schematic:', error);
+                alert('Failed to load power schematic');
             }
         }
 
