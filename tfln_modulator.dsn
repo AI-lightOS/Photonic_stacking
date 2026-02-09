@@ -1,0 +1,6338 @@
+(pcb tfln_modulator.dsn
+  (parser
+    (string_quote ")
+    (space_in_quoted_names on)
+    (host_cad "KiCad")
+    (host_version "6.0")
+  )
+  (resolution mm 10000)
+  (unit mm)
+  (structure
+    (layer F.Cu (type signal) (property (index 0)))
+    (layer In1.Cu (type signal) (property (index 1)))
+    (layer In2.Cu (type signal) (property (index 2)))
+    (layer In3.Cu (type signal) (property (index 3)))
+    (layer In4.Cu (type signal) (property (index 4)))
+    (layer In5.Cu (type signal) (property (index 5)))
+    (layer In6.Cu (type signal) (property (index 6)))
+    (layer In7.Cu (type signal) (property (index 7)))
+    (layer In8.Cu (type signal) (property (index 8)))
+    (layer In9.Cu (type signal) (property (index 9)))
+    (layer In10.Cu (type signal) (property (index 10)))
+    (layer In11.Cu (type signal) (property (index 11)))
+    (layer In12.Cu (type signal) (property (index 12)))
+    (layer In13.Cu (type signal) (property (index 13)))
+    (layer B.Cu (type signal) (property (index 14)))
+    (boundary
+      (rect pcb 0 0 106.68 111.15)
+    )
+    (via "Via[0-14]_800:400_um")
+    (rule
+      (width 0.1)
+      (clearance 0.1)
+    )
+  )
+  (placement
+    (component "TFLN_MZM_400G"
+      (place U1 53.34 55.57 front 0)
+    )
+    (component "C_0603"
+      (place C1 11.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C2 13.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C3 15.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C4 17.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C5 19.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C6 20.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C7 22.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C8 24.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C9 26.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C10 28.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C11 29.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C12 31.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C13 33.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C14 35.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C15 37.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C16 38.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C17 40.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C18 42.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C19 44.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C20 46.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C21 47.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C22 49.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C23 51.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C24 53.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C25 55.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C26 56.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C27 58.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C28 60.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C29 62.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C30 64.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C31 65.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C32 67.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C33 69.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C34 71.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C35 73.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C36 74.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C37 76.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C38 78.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C39 80.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C40 82.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C41 83.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C42 85.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C43 87.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C44 89.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C45 91.00 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C46 92.80 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C47 94.60 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C48 96.40 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C49 98.20 10.00 front 0)
+    )
+    (component "C_0603"
+      (place C50 10.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C51 11.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C52 13.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C53 15.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C54 17.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C55 19.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C56 20.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C57 22.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C58 24.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C59 26.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C60 28.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C61 29.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C62 31.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C63 33.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C64 35.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C65 37.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C66 38.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C67 40.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C68 42.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C69 44.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C70 46.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C71 47.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C72 49.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C73 51.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C74 53.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C75 55.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C76 56.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C77 58.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C78 60.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C79 62.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C80 64.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C81 65.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C82 67.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C83 69.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C84 71.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C85 73.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C86 74.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C87 76.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C88 78.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C89 80.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C90 82.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C91 83.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C92 85.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C93 87.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C94 89.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C95 91.00 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C96 92.80 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C97 94.60 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C98 96.40 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C99 98.20 12.20 front 0)
+    )
+    (component "C_0603"
+      (place C100 10.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C101 11.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C102 13.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C103 15.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C104 17.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C105 19.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C106 20.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C107 22.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C108 24.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C109 26.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C110 28.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C111 29.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C112 31.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C113 33.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C114 35.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C115 37.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C116 38.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C117 40.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C118 42.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C119 44.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C120 46.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C121 47.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C122 49.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C123 51.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C124 53.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C125 55.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C126 56.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C127 58.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C128 60.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C129 62.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C130 64.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C131 65.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C132 67.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C133 69.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C134 71.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C135 73.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C136 74.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C137 76.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C138 78.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C139 80.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C140 82.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C141 83.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C142 85.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C143 87.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C144 89.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C145 91.00 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C146 92.80 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C147 94.60 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C148 96.40 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C149 98.20 14.40 front 0)
+    )
+    (component "C_0603"
+      (place C150 10.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C151 11.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C152 13.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C153 15.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C154 17.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C155 19.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C156 20.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C157 22.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C158 24.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C159 26.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C160 28.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C161 29.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C162 31.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C163 33.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C164 35.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C165 37.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C166 38.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C167 40.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C168 42.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C169 44.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C170 46.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C171 47.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C172 49.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C173 51.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C174 53.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C175 55.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C176 56.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C177 58.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C178 60.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C179 62.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C180 64.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C181 65.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C182 67.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C183 69.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C184 71.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C185 73.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C186 74.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C187 76.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C188 78.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C189 80.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C190 82.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C191 83.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C192 85.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C193 87.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C194 89.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C195 91.00 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C196 92.80 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C197 94.60 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C198 96.40 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C199 98.20 16.60 front 0)
+    )
+    (component "C_0603"
+      (place C200 10.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C201 11.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C202 13.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C203 15.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C204 17.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C205 19.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C206 20.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C207 22.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C208 24.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C209 26.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C210 28.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C211 29.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C212 31.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C213 33.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C214 35.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C215 37.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C216 38.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C217 40.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C218 42.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C219 44.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C220 46.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C221 47.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C222 49.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C223 51.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C224 53.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C225 55.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C226 56.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C227 58.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C228 60.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C229 62.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C230 64.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C231 65.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C232 67.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C233 69.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C234 71.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C235 73.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C236 74.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C237 76.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C238 78.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C239 80.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C240 82.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C241 83.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C242 85.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C243 87.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C244 89.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C245 91.00 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C246 92.80 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C247 94.60 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C248 96.40 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C249 98.20 18.80 front 0)
+    )
+    (component "C_0603"
+      (place C250 10.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C251 11.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C252 13.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C253 15.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C254 17.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C255 19.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C256 20.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C257 22.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C258 24.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C259 26.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C260 28.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C261 29.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C262 31.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C263 33.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C264 35.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C265 37.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C266 38.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C267 40.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C268 42.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C269 44.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C270 46.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C271 47.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C272 49.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C273 51.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C274 53.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C275 55.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C276 56.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C277 58.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C278 60.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C279 62.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C280 64.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C281 65.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C282 67.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C283 69.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C284 71.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C285 73.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C286 74.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C287 76.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C288 78.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C289 80.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C290 82.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C291 83.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C292 85.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C293 87.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C294 89.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C295 91.00 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C296 92.80 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C297 94.60 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C298 96.40 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C299 98.20 21.00 front 0)
+    )
+    (component "C_0603"
+      (place C300 10.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C301 11.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C302 13.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C303 15.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C304 17.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C305 19.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C306 20.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C307 22.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C308 24.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C309 26.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C310 28.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C311 29.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C312 31.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C313 33.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C314 35.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C315 37.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C316 38.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C317 40.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C318 42.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C319 44.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C320 46.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C321 47.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C322 49.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C323 51.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C324 53.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C325 55.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C326 56.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C327 58.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C328 60.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C329 62.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C330 64.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C331 65.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C332 67.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C333 69.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C334 71.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C335 73.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C336 74.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C337 76.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C338 78.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C339 80.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C340 82.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C341 83.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C342 85.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C343 87.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C344 89.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C345 91.00 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C346 92.80 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C347 94.60 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C348 96.40 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C349 98.20 23.20 front 0)
+    )
+    (component "C_0603"
+      (place C350 10.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C351 11.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C352 13.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C353 15.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C354 17.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C355 19.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C356 20.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C357 22.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C358 24.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C359 26.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C360 28.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C361 29.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C362 31.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C363 33.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C364 35.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C365 37.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C366 38.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C367 40.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C368 42.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C369 44.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C370 46.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C371 47.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C372 49.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C373 51.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C374 53.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C375 55.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C376 56.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C377 58.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C378 60.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C379 62.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C380 64.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C381 65.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C382 67.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C383 69.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C384 71.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C385 73.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C386 74.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C387 76.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C388 78.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C389 80.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C390 82.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C391 83.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C392 85.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C393 87.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C394 89.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C395 91.00 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C396 92.80 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C397 94.60 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C398 96.40 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C399 98.20 25.40 front 0)
+    )
+    (component "C_0603"
+      (place C400 10.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C401 11.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C402 13.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C403 15.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C404 17.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C405 19.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C406 20.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C407 22.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C408 24.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C409 26.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C410 28.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C411 29.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C412 31.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C413 33.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C414 35.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C415 37.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C416 38.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C417 40.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C418 42.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C419 44.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C420 46.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C421 47.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C422 49.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C423 51.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C424 53.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C425 55.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C426 56.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C427 58.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C428 60.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C429 62.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C430 64.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C431 65.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C432 67.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C433 69.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C434 71.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C435 73.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C436 74.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C437 76.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C438 78.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C439 80.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C440 82.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C441 83.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C442 85.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C443 87.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C444 89.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C445 91.00 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C446 92.80 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C447 94.60 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C448 96.40 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C449 98.20 27.60 front 0)
+    )
+    (component "C_0603"
+      (place C450 10.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C451 11.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C452 13.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C453 15.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C454 17.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C455 19.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C456 20.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C457 22.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C458 24.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C459 26.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C460 28.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C461 29.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C462 31.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C463 33.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C464 35.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C465 37.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C466 38.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C467 40.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C468 42.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C469 44.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C470 46.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C471 47.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C472 49.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C473 51.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C474 53.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C475 55.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C476 56.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C477 58.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C478 60.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C479 62.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C480 64.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C481 65.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C482 67.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C483 69.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C484 71.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C485 73.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C486 74.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C487 76.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C488 78.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C489 80.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C490 82.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C491 83.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C492 85.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C493 87.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C494 89.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C495 91.00 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C496 92.80 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C497 94.60 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C498 96.40 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C499 98.20 29.80 front 0)
+    )
+    (component "C_0603"
+      (place C500 10.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C501 11.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C502 13.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C503 15.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C504 17.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C505 19.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C506 20.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C507 22.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C508 24.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C509 26.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C510 28.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C511 29.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C512 31.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C513 33.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C514 35.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C515 37.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C516 38.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C517 40.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C518 42.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C519 44.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C520 46.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C521 47.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C522 49.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C523 51.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C524 53.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C525 55.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C526 56.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C527 58.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C528 60.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C529 62.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C530 64.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C531 65.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C532 67.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C533 69.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C534 71.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C535 73.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C536 74.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C537 76.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C538 78.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C539 80.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C540 82.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C541 83.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C542 85.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C543 87.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C544 89.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C545 91.00 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C546 92.80 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C547 94.60 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C548 96.40 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C549 98.20 32.00 front 0)
+    )
+    (component "C_0603"
+      (place C550 10.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C551 11.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C552 13.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C553 15.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C554 17.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C555 19.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C556 20.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C557 22.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C558 24.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C559 26.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C560 28.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C561 29.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C562 31.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C563 33.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C564 35.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C565 37.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C566 38.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C567 40.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C568 42.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C569 44.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C570 46.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C571 47.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C572 49.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C573 51.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C574 53.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C575 55.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C576 56.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C577 58.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C578 60.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C579 62.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C580 64.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C581 65.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C582 67.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C583 69.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C584 71.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C585 73.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C586 74.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C587 76.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C588 78.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C589 80.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C590 82.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C591 83.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C592 85.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C593 87.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C594 89.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C595 91.00 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C596 92.80 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C597 94.60 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C598 96.40 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C599 98.20 34.20 front 0)
+    )
+    (component "C_0603"
+      (place C600 10.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C601 11.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C602 13.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C603 15.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C604 17.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C605 19.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C606 20.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C607 22.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C608 24.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C609 26.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C610 28.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C611 29.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C612 31.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C613 33.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C614 35.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C615 37.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C616 38.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C617 40.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C618 42.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C619 44.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C620 46.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C621 47.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C622 49.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C623 51.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C624 53.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C625 55.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C626 56.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C627 58.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C628 60.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C629 62.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C630 64.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C631 65.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C632 67.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C633 69.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C634 71.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C635 73.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C636 74.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C637 76.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C638 78.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C639 80.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C640 82.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C641 83.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C642 85.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C643 87.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C644 89.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C645 91.00 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C646 92.80 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C647 94.60 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C648 96.40 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C649 98.20 36.40 front 0)
+    )
+    (component "C_0603"
+      (place C650 10.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C651 11.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C652 13.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C653 15.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C654 17.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C655 19.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C656 20.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C657 22.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C658 24.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C659 26.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C660 28.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C661 29.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C662 31.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C663 33.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C664 35.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C665 37.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C666 38.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C667 40.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C668 42.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C669 44.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C670 46.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C671 47.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C672 49.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C673 51.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C674 53.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C675 55.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C676 56.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C677 58.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C678 60.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C679 62.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C680 64.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C681 65.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C682 67.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C683 69.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C684 71.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C685 73.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C686 74.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C687 76.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C688 78.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C689 80.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C690 82.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C691 83.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C692 85.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C693 87.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C694 89.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C695 91.00 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C696 92.80 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C697 94.60 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C698 96.40 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C699 98.20 38.60 front 0)
+    )
+    (component "C_0603"
+      (place C700 10.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C701 11.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C702 13.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C703 15.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C704 17.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C705 19.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C706 20.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C707 22.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C708 24.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C709 26.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C710 28.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C711 29.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C712 31.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C713 33.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C714 35.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C715 37.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C716 38.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C717 40.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C718 42.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C719 44.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C720 46.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C721 47.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C722 49.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C723 51.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C724 53.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C725 55.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C726 56.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C727 58.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C728 60.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C729 62.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C730 64.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C731 65.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C732 67.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C733 69.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C734 71.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C735 73.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C736 74.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C737 76.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C738 78.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C739 80.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C740 82.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C741 83.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C742 85.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C743 87.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C744 89.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C745 91.00 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C746 92.80 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C747 94.60 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C748 96.40 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C749 98.20 40.80 front 0)
+    )
+    (component "C_0603"
+      (place C750 10.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C751 11.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C752 13.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C753 15.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C754 17.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C755 19.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C756 20.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C757 22.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C758 24.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C759 26.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C760 28.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C761 29.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C762 31.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C763 33.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C764 35.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C765 37.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C766 38.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C767 40.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C768 42.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C769 44.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C770 46.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C771 47.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C772 49.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C773 51.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C774 53.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C775 55.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C776 56.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C777 58.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C778 60.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C779 62.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C780 64.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C781 65.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C782 67.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C783 69.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C784 71.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C785 73.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C786 74.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C787 76.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C788 78.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C789 80.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C790 82.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C791 83.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C792 85.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C793 87.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C794 89.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C795 91.00 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C796 92.80 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C797 94.60 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C798 96.40 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C799 98.20 43.00 front 0)
+    )
+    (component "C_0603"
+      (place C800 10.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C801 11.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C802 13.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C803 15.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C804 17.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C805 19.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C806 20.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C807 22.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C808 24.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C809 26.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C810 28.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C811 29.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C812 31.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C813 33.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C814 35.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C815 37.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C816 38.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C817 40.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C818 42.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C819 44.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C820 46.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C821 47.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C822 49.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C823 51.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C824 53.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C825 55.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C826 56.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C827 58.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C828 60.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C829 62.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C830 64.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C831 65.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C832 67.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C833 69.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C834 71.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C835 73.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C836 74.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C837 76.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C838 78.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C839 80.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C840 82.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C841 83.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C842 85.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C843 87.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C844 89.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C845 91.00 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C846 92.80 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C847 94.60 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C848 96.40 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C849 98.20 45.20 front 0)
+    )
+    (component "C_0603"
+      (place C850 10.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C851 11.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C852 13.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C853 15.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C854 17.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C855 19.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C856 20.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C857 22.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C858 24.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C859 26.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C860 28.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C861 29.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C862 31.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C863 33.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C864 35.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C865 37.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C866 38.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C867 40.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C868 42.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C869 44.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C870 46.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C871 47.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C872 49.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C873 51.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C874 53.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C875 55.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C876 56.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C877 58.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C878 60.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C879 62.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C880 64.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C881 65.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C882 67.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C883 69.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C884 71.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C885 73.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C886 74.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C887 76.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C888 78.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C889 80.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C890 82.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C891 83.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C892 85.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C893 87.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C894 89.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C895 91.00 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C896 92.80 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C897 94.60 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C898 96.40 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C899 98.20 47.40 front 0)
+    )
+    (component "C_0603"
+      (place C900 10.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C901 11.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C902 13.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C903 15.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C904 17.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C905 19.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C906 20.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C907 22.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C908 24.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C909 26.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C910 28.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C911 29.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C912 31.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C913 33.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C914 35.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C915 37.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C916 38.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C917 40.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C918 42.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C919 44.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C920 46.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C921 47.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C922 49.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C923 51.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C924 53.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C925 55.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C926 56.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C927 58.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C928 60.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C929 62.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C930 64.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C931 65.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C932 67.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C933 69.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C934 71.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C935 73.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C936 74.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C937 76.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C938 78.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C939 80.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C940 82.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C941 83.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C942 85.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C943 87.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C944 89.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C945 91.00 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C946 92.80 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C947 94.60 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C948 96.40 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C949 98.20 49.60 front 0)
+    )
+    (component "C_0603"
+      (place C950 10.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C951 11.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C952 13.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C953 15.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C954 17.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C955 19.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C956 20.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C957 22.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C958 24.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C959 26.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C960 28.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C961 29.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C962 31.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C963 33.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C964 35.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C965 37.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C966 38.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C967 40.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C968 42.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C969 44.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C970 46.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C971 47.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C972 49.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C973 51.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C974 53.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C975 55.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C976 56.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C977 58.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C978 60.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C979 62.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C980 64.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C981 65.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C982 67.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C983 69.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C984 71.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C985 73.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C986 74.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C987 76.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C988 78.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C989 80.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C990 82.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C991 83.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C992 85.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C993 87.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C994 89.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C995 91.00 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C996 92.80 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C997 94.60 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C998 96.40 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C999 98.20 51.80 front 0)
+    )
+    (component "C_0603"
+      (place C1000 10.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1001 11.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1002 13.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1003 15.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1004 17.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1005 19.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1006 20.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1007 22.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1008 24.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1009 26.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1010 28.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1011 29.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1012 31.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1013 33.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1014 35.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1015 37.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1016 38.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1017 40.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1018 42.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1019 44.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1020 46.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1021 47.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1022 49.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1023 51.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1024 53.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1025 55.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1026 56.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1027 58.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1028 60.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1029 62.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1030 64.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1031 65.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1032 67.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1033 69.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1034 71.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1035 73.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1036 74.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1037 76.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1038 78.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1039 80.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1040 82.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1041 83.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1042 85.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1043 87.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1044 89.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1045 91.00 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1046 92.80 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1047 94.60 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1048 96.40 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1049 98.20 54.00 front 0)
+    )
+    (component "C_0603"
+      (place C1050 10.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1051 11.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1052 13.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1053 15.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1054 17.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1055 19.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1056 20.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1057 22.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1058 24.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1059 26.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1060 28.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1061 29.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1062 31.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1063 33.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1064 35.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1065 37.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1066 38.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1067 40.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1068 42.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1069 44.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1070 46.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1071 47.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1072 49.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1073 51.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1074 53.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1075 55.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1076 56.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1077 58.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1078 60.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1079 62.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1080 64.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1081 65.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1082 67.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1083 69.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1084 71.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1085 73.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1086 74.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1087 76.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1088 78.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1089 80.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1090 82.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1091 83.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1092 85.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1093 87.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1094 89.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1095 91.00 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1096 92.80 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1097 94.60 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1098 96.40 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1099 98.20 56.20 front 0)
+    )
+    (component "C_0603"
+      (place C1100 10.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1101 11.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1102 13.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1103 15.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1104 17.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1105 19.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1106 20.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1107 22.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1108 24.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1109 26.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1110 28.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1111 29.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1112 31.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1113 33.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1114 35.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1115 37.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1116 38.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1117 40.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1118 42.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1119 44.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1120 46.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1121 47.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1122 49.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1123 51.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1124 53.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1125 55.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1126 56.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1127 58.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1128 60.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1129 62.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1130 64.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1131 65.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1132 67.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1133 69.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1134 71.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1135 73.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1136 74.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1137 76.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1138 78.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1139 80.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1140 82.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1141 83.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1142 85.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1143 87.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1144 89.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1145 91.00 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1146 92.80 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1147 94.60 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1148 96.40 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1149 98.20 58.40 front 0)
+    )
+    (component "C_0603"
+      (place C1150 10.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1151 11.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1152 13.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1153 15.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1154 17.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1155 19.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1156 20.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1157 22.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1158 24.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1159 26.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1160 28.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1161 29.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1162 31.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1163 33.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1164 35.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1165 37.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1166 38.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1167 40.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1168 42.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1169 44.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1170 46.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1171 47.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1172 49.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1173 51.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1174 53.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1175 55.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1176 56.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1177 58.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1178 60.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1179 62.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1180 64.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1181 65.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1182 67.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1183 69.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1184 71.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1185 73.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1186 74.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1187 76.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1188 78.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1189 80.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1190 82.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1191 83.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1192 85.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1193 87.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1194 89.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1195 91.00 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1196 92.80 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1197 94.60 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1198 96.40 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1199 98.20 60.60 front 0)
+    )
+    (component "C_0603"
+      (place C1200 10.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1201 11.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1202 13.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1203 15.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1204 17.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1205 19.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1206 20.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1207 22.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1208 24.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1209 26.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1210 28.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1211 29.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1212 31.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1213 33.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1214 35.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1215 37.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1216 38.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1217 40.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1218 42.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1219 44.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1220 46.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1221 47.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1222 49.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1223 51.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1224 53.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1225 55.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1226 56.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1227 58.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1228 60.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1229 62.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1230 64.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1231 65.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1232 67.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1233 69.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1234 71.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1235 73.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1236 74.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1237 76.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1238 78.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1239 80.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1240 82.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1241 83.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1242 85.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1243 87.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1244 89.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1245 91.00 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1246 92.80 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1247 94.60 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1248 96.40 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1249 98.20 62.80 front 0)
+    )
+    (component "C_0603"
+      (place C1250 10.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1251 11.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1252 13.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1253 15.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1254 17.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1255 19.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1256 20.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1257 22.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1258 24.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1259 26.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1260 28.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1261 29.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1262 31.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1263 33.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1264 35.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1265 37.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1266 38.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1267 40.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1268 42.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1269 44.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1270 46.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1271 47.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1272 49.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1273 51.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1274 53.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1275 55.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1276 56.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1277 58.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1278 60.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1279 62.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1280 64.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1281 65.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1282 67.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1283 69.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1284 71.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1285 73.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1286 74.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1287 76.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1288 78.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1289 80.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1290 82.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1291 83.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1292 85.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1293 87.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1294 89.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1295 91.00 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1296 92.80 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1297 94.60 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1298 96.40 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1299 98.20 65.00 front 0)
+    )
+    (component "C_0603"
+      (place C1300 10.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1301 11.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1302 13.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1303 15.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1304 17.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1305 19.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1306 20.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1307 22.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1308 24.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1309 26.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1310 28.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1311 29.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1312 31.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1313 33.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1314 35.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1315 37.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1316 38.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1317 40.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1318 42.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1319 44.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1320 46.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1321 47.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1322 49.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1323 51.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1324 53.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1325 55.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1326 56.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1327 58.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1328 60.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1329 62.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1330 64.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1331 65.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1332 67.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1333 69.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1334 71.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1335 73.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1336 74.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1337 76.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1338 78.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1339 80.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1340 82.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1341 83.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1342 85.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1343 87.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1344 89.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1345 91.00 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1346 92.80 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1347 94.60 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1348 96.40 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1349 98.20 67.20 front 0)
+    )
+    (component "C_0603"
+      (place C1350 10.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1351 11.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1352 13.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1353 15.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1354 17.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1355 19.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1356 20.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1357 22.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1358 24.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1359 26.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1360 28.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1361 29.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1362 31.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1363 33.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1364 35.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1365 37.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1366 38.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1367 40.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1368 42.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1369 44.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1370 46.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1371 47.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1372 49.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1373 51.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1374 53.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1375 55.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1376 56.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1377 58.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1378 60.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1379 62.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1380 64.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1381 65.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1382 67.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1383 69.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1384 71.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1385 73.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1386 74.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1387 76.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1388 78.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1389 80.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1390 82.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1391 83.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1392 85.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1393 87.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1394 89.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1395 91.00 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1396 92.80 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1397 94.60 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1398 96.40 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1399 98.20 69.40 front 0)
+    )
+    (component "C_0603"
+      (place C1400 10.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1401 11.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1402 13.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1403 15.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1404 17.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1405 19.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1406 20.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1407 22.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1408 24.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1409 26.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1410 28.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1411 29.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1412 31.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1413 33.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1414 35.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1415 37.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1416 38.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1417 40.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1418 42.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1419 44.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1420 46.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1421 47.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1422 49.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1423 51.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1424 53.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1425 55.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1426 56.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1427 58.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1428 60.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1429 62.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1430 64.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1431 65.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1432 67.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1433 69.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1434 71.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1435 73.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1436 74.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1437 76.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1438 78.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1439 80.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1440 82.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1441 83.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1442 85.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1443 87.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1444 89.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1445 91.00 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1446 92.80 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1447 94.60 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1448 96.40 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1449 98.20 71.60 front 0)
+    )
+    (component "C_0603"
+      (place C1450 10.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1451 11.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1452 13.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1453 15.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1454 17.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1455 19.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1456 20.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1457 22.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1458 24.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1459 26.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1460 28.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1461 29.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1462 31.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1463 33.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1464 35.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1465 37.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1466 38.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1467 40.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1468 42.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1469 44.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1470 46.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1471 47.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1472 49.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1473 51.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1474 53.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1475 55.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1476 56.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1477 58.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1478 60.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1479 62.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1480 64.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1481 65.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1482 67.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1483 69.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1484 71.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1485 73.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1486 74.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1487 76.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1488 78.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1489 80.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1490 82.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1491 83.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1492 85.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1493 87.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1494 89.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1495 91.00 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1496 92.80 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1497 94.60 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1498 96.40 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1499 98.20 73.80 front 0)
+    )
+    (component "C_0603"
+      (place C1500 10.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1501 11.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1502 13.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1503 15.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1504 17.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1505 19.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1506 20.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1507 22.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1508 24.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1509 26.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1510 28.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1511 29.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1512 31.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1513 33.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1514 35.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1515 37.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1516 38.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1517 40.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1518 42.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1519 44.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1520 46.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1521 47.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1522 49.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1523 51.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1524 53.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1525 55.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1526 56.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1527 58.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1528 60.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1529 62.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1530 64.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1531 65.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1532 67.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1533 69.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1534 71.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1535 73.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1536 74.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1537 76.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1538 78.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1539 80.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1540 82.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1541 83.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1542 85.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1543 87.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1544 89.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1545 91.00 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1546 92.80 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1547 94.60 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1548 96.40 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1549 98.20 76.00 front 0)
+    )
+    (component "C_0603"
+      (place C1550 10.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1551 11.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1552 13.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1553 15.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1554 17.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1555 19.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1556 20.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1557 22.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1558 24.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1559 26.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1560 28.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1561 29.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1562 31.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1563 33.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1564 35.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1565 37.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1566 38.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1567 40.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1568 42.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1569 44.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1570 46.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1571 47.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1572 49.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1573 51.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1574 53.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1575 55.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1576 56.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1577 58.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1578 60.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1579 62.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1580 64.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1581 65.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1582 67.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1583 69.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1584 71.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1585 73.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1586 74.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1587 76.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1588 78.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1589 80.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1590 82.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1591 83.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1592 85.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1593 87.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1594 89.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1595 91.00 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1596 92.80 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1597 94.60 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1598 96.40 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1599 98.20 78.20 front 0)
+    )
+    (component "C_0603"
+      (place C1600 10.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1601 11.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1602 13.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1603 15.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1604 17.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1605 19.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1606 20.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1607 22.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1608 24.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1609 26.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1610 28.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1611 29.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1612 31.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1613 33.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1614 35.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1615 37.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1616 38.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1617 40.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1618 42.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1619 44.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1620 46.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1621 47.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1622 49.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1623 51.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1624 53.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1625 55.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1626 56.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1627 58.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1628 60.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1629 62.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1630 64.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1631 65.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1632 67.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1633 69.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1634 71.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1635 73.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1636 74.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1637 76.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1638 78.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1639 80.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1640 82.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1641 83.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1642 85.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1643 87.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1644 89.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1645 91.00 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1646 92.80 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1647 94.60 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1648 96.40 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1649 98.20 80.40 front 0)
+    )
+    (component "C_0603"
+      (place C1650 10.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1651 11.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1652 13.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1653 15.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1654 17.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1655 19.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1656 20.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1657 22.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1658 24.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1659 26.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1660 28.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1661 29.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1662 31.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1663 33.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1664 35.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1665 37.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1666 38.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1667 40.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1668 42.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1669 44.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1670 46.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1671 47.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1672 49.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1673 51.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1674 53.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1675 55.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1676 56.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1677 58.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1678 60.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1679 62.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1680 64.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1681 65.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1682 67.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1683 69.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1684 71.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1685 73.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1686 74.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1687 76.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1688 78.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1689 80.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1690 82.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1691 83.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1692 85.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1693 87.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1694 89.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1695 91.00 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1696 92.80 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1697 94.60 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1698 96.40 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1699 98.20 82.60 front 0)
+    )
+    (component "C_0603"
+      (place C1700 10.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1701 11.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1702 13.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1703 15.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1704 17.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1705 19.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1706 20.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1707 22.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1708 24.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1709 26.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1710 28.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1711 29.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1712 31.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1713 33.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1714 35.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1715 37.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1716 38.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1717 40.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1718 42.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1719 44.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1720 46.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1721 47.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1722 49.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1723 51.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1724 53.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1725 55.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1726 56.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1727 58.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1728 60.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1729 62.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1730 64.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1731 65.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1732 67.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1733 69.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1734 71.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1735 73.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1736 74.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1737 76.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1738 78.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1739 80.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1740 82.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1741 83.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1742 85.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1743 87.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1744 89.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1745 91.00 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1746 92.80 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1747 94.60 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1748 96.40 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1749 98.20 84.80 front 0)
+    )
+    (component "C_0603"
+      (place C1750 10.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1751 11.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1752 13.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1753 15.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1754 17.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1755 19.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1756 20.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1757 22.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1758 24.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1759 26.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1760 28.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1761 29.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1762 31.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1763 33.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1764 35.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1765 37.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1766 38.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1767 40.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1768 42.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1769 44.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1770 46.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1771 47.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1772 49.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1773 51.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1774 53.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1775 55.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1776 56.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1777 58.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1778 60.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1779 62.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1780 64.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1781 65.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1782 67.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1783 69.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1784 71.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1785 73.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1786 74.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1787 76.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1788 78.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1789 80.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1790 82.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1791 83.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1792 85.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1793 87.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1794 89.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1795 91.00 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1796 92.80 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1797 94.60 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1798 96.40 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1799 98.20 87.00 front 0)
+    )
+    (component "C_0603"
+      (place C1800 10.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1801 11.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1802 13.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1803 15.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1804 17.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1805 19.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1806 20.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1807 22.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1808 24.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1809 26.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1810 28.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1811 29.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1812 31.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1813 33.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1814 35.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1815 37.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1816 38.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1817 40.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1818 42.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1819 44.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1820 46.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1821 47.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1822 49.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1823 51.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1824 53.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1825 55.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1826 56.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1827 58.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1828 60.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1829 62.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1830 64.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1831 65.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1832 67.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1833 69.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1834 71.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1835 73.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1836 74.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1837 76.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1838 78.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1839 80.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1840 82.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1841 83.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1842 85.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1843 87.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1844 89.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1845 91.00 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1846 92.80 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1847 94.60 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1848 96.40 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1849 98.20 89.20 front 0)
+    )
+    (component "C_0603"
+      (place C1850 10.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1851 11.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1852 13.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1853 15.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1854 17.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1855 19.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1856 20.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1857 22.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1858 24.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1859 26.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1860 28.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1861 29.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1862 31.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1863 33.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1864 35.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1865 37.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1866 38.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1867 40.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1868 42.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1869 44.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1870 46.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1871 47.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1872 49.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1873 51.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1874 53.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1875 55.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1876 56.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1877 58.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1878 60.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1879 62.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1880 64.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1881 65.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1882 67.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1883 69.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1884 71.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1885 73.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1886 74.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1887 76.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1888 78.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1889 80.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1890 82.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1891 83.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1892 85.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1893 87.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1894 89.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1895 91.00 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1896 92.80 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1897 94.60 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1898 96.40 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1899 98.20 91.40 front 0)
+    )
+    (component "C_0603"
+      (place C1900 10.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1901 11.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1902 13.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1903 15.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1904 17.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1905 19.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1906 20.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1907 22.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1908 24.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1909 26.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1910 28.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1911 29.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1912 31.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1913 33.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1914 35.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1915 37.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1916 38.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1917 40.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1918 42.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1919 44.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1920 46.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1921 47.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1922 49.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1923 51.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1924 53.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1925 55.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1926 56.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1927 58.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1928 60.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1929 62.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1930 64.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1931 65.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1932 67.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1933 69.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1934 71.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1935 73.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1936 74.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1937 76.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1938 78.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1939 80.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1940 82.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1941 83.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1942 85.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1943 87.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1944 89.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1945 91.00 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1946 92.80 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1947 94.60 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1948 96.40 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1949 98.20 93.60 front 0)
+    )
+    (component "C_0603"
+      (place C1950 10.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1951 11.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1952 13.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1953 15.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1954 17.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1955 19.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1956 20.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1957 22.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1958 24.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1959 26.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1960 28.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1961 29.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1962 31.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1963 33.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1964 35.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1965 37.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1966 38.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1967 40.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1968 42.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1969 44.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1970 46.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1971 47.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1972 49.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1973 51.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1974 53.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1975 55.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1976 56.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1977 58.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1978 60.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1979 62.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1980 64.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1981 65.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1982 67.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1983 69.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1984 71.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1985 73.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1986 74.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1987 76.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1988 78.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1989 80.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1990 82.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1991 83.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1992 85.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1993 87.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1994 89.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1995 91.00 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1996 92.80 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1997 94.60 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1998 96.40 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C1999 98.20 95.80 front 0)
+    )
+    (component "C_0603"
+      (place C2000 10.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2001 11.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2002 13.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2003 15.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2004 17.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2005 19.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2006 20.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2007 22.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2008 24.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2009 26.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2010 28.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2011 29.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2012 31.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2013 33.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2014 35.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2015 37.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2016 38.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2017 40.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2018 42.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2019 44.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2020 46.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2021 47.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2022 49.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2023 51.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2024 53.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2025 55.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2026 56.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2027 58.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2028 60.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2029 62.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2030 64.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2031 65.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2032 67.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2033 69.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2034 71.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2035 73.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2036 74.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2037 76.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2038 78.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2039 80.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2040 82.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2041 83.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2042 85.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2043 87.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2044 89.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2045 91.00 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2046 92.80 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2047 94.60 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2048 96.40 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2049 98.20 98.00 front 0)
+    )
+    (component "C_0603"
+      (place C2050 10.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2051 11.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2052 13.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2053 15.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2054 17.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2055 19.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2056 20.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2057 22.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2058 24.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2059 26.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2060 28.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2061 29.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2062 31.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2063 33.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2064 35.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2065 37.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2066 38.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2067 40.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2068 42.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2069 44.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2070 46.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2071 47.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2072 49.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2073 51.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2074 53.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2075 55.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2076 56.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2077 58.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2078 60.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2079 62.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2080 64.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2081 65.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2082 67.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2083 69.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2084 71.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2085 73.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2086 74.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2087 76.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2088 78.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2089 80.20 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2090 82.00 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2091 83.80 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2092 85.60 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2093 87.40 100.20 front 0)
+    )
+    (component "C_0603"
+      (place C2094 89.20 100.20 front 0)
+    )
+  )
+  (library
+    (image "TFLN_MZM_400G"
+      (outline (rect pcb -10 -5 10 5))
+      (pin smd (at -10 0) (name 1))
+      (pin smd (at 10 0) (name 2))
+    )
+    (image "C_0603"
+      (outline (rect pcb -0.8 -0.4 0.8 0.4))
+      (pin smd (at -0.6 0) (name 1))
+      (pin smd (at 0.6 0) (name 2))
+    )
+  )
+  (network
+    (net GND (pin C1-1) (pin C2-1) (pin U1-1))
+    (net VCC (pin C1-2) (pin C2-2) (pin U1-2))
+  )
+)

@@ -130,6 +130,13 @@ def render_populated_green_pcb(gerber_dir="gerber_files", output_file="pcb_popul
     # Simple rounded rect approximation for the substrate shape
     # We already painted the background, but let's assume the axes limits define the view
 
+    import random
+    random.seed(42)
+    for _ in range(300): # Representing the dense decoupling grid
+        x, y = random.uniform(0.5, 3.5), random.uniform(0.5, 3.5)
+        rect = patches.Rectangle((x, y), 0.05, 0.03, color='#8B4513', ec='black', linewidth=0.2, zorder=10)
+        ax.add_patch(rect)
+
     ax.set_aspect('equal')
     ax.set_xticks([])
     ax.set_yticks([])

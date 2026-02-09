@@ -9,6 +9,7 @@ def create_final_fabrication_package():
     root_files = [
         "tfln_modulator.kicad_pcb",
         "tfln_modulator.kicad_pro",
+        "tfln_modulator.dsn",
         "tfln_modulator.net",
         "TFLN_BOM.csv",
         "TFLN_BOM_Summary.txt",

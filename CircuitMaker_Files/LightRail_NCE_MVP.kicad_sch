@@ -1,0 +1,163 @@
+(kicad_sch (version 20230121)
+
+  (uuid "ed90ff67-ef74-4c80-8b63-8a7f0e8f8c3a")
+
+  (paper "A3")
+
+  (title_block
+    (title "LightRail NCE MVP - Main Board")
+    (date "2025-01-20")
+    (rev "1.0")
+    (company "LightRail Computing")
+    (comment 1 "Photonic Spiking Neural Processor")
+    (comment 2 "Xilinx Kintex-7 FPGA + Optical Interface + Power Management")
+    (comment 3 "8 Spiking Neurons | USB Control | Thermal Management")
+    (comment 4 "")
+  )
+
+  (lib_symbols
+    (symbol "Device:C"
+      (pin_numbers hide)
+      (pin_names (offset 0.254))
+      (property "Reference" "C" (at 0.635 2.54 0))
+      (property "Value" "C" (at 0.635 -2.54 0))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))
+        (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508)))
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "Device:R"
+      (pin_numbers hide)
+      (pin_names (offset 0))
+      (property "Reference" "R" (at 2.032 0 90))
+      (property "Value" "R" (at 0 0 90))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "Device:L"
+      (pin_numbers hide)
+      (pin_names (offset 1.016))
+      (property "Reference" "L" (at -1.27 0 90))
+      (property "Value" "L" (at 1.905 0 90))
+      (symbol "L_0_1"
+        (arc (start 0 -2.54) (mid 0.6604 -2.1336) (end 0.6604 0) (stroke (width 0.254)))
+        (arc (start 0.6604 0) (mid 0.6604 2.1336) (end 0 2.54) (stroke (width 0.254)))
+        (arc (start 0 -2.54) (mid -0.6604 -2.1336) (end -0.6604 0) (stroke (width 0.254)))
+        (arc (start -0.6604 0) (mid -0.6604 2.1336) (end 0 2.54) (stroke (width 0.254)))
+      )
+      (symbol "L_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:GND"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -6.35 0))
+      (property "Value" "GND" (at 0 -3.81 0))
+      (symbol "GND_0_1"
+        (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)) (stroke (width 0)) (fill (type outline)))
+      )
+      (symbol "GND_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "GND" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:+5V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+5V" (at 0 3.556 0))
+      (symbol "+5V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0)))
+      )
+      (symbol "+5V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+5V" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:+3.3V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+3.3V" (at 0 3.556 0))
+      (symbol "+3.3V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0)))
+      )
+      (symbol "+3.3V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+3.3V" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "Connector:USB_C_Receptacle_24pin"
+      (pin_names (offset 1.016))
+      (property "Reference" "J" (at 0 19.05 0))
+      (property "Value" "USB_C_Receptacle_24pin" (at 0 -19.05 0))
+      (symbol "USB_C_Receptacle_24pin_0_1"
+        (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254)) (fill (type background)))
+        (circle (center -7.62 -15.24) (radius 0.254) (stroke (width 0)) (fill (type outline)))
+        (circle (center -5.08 15.24) (radius 0.254) (stroke (width 0)) (fill (type outline)))
+        (polyline (pts (xy -10.16 16.51) (xy -9.144 16.51)) (stroke (width 0.254)))
+      )
+      (symbol "USB_C_Receptacle_24pin_1_1"
+        (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 12.7 0) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A4" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 10.16 0) (length 2.54) (name "D+" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A6" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 7.62 0) (length 2.54) (name "D-" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A7" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 5.08 0) (length 2.54) (name "CC1" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A5" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 -12.7 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "B12" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 12.7 -15.24 180) (length 2.54) (name "SHIELD" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "SH" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+  )
+
+  (junction (at 120.65 83.82) (diameter 0) (color 0 0 0 0))
+  (junction (at 147.32 83.82) (diameter 0) (color 0 0 0 0))
+  (junction (at 173.99 83.82) (diameter 0) (color 0 0 0 0))
+
+  (no_connect (at 60.96 50.8) (uuid "00000000-0000-0000-0000-000000000000"))
+
+  (wire (pts (xy 50.8 40.64) (xy 50.8 33.02)) (stroke (width 0.254)) (uuid "00000000-0000-0000-0000-000000000001"))
+  (wire (pts (xy 50.8 33.02) (xy 73.66 33.02)) (stroke (width 0.254)) (uuid "00000000-0000-0000-0000-000000000002"))
+  (wire (pts (xy 120.65 81.28) (xy 120.65 83.82)) (stroke (width 0.254)) (uuid "00000000-0000-0000-0000-000000000003"))
+  (wire (pts (xy 147.32 81.28) (xy 147.32 83.82)) (stroke (width 0.254)) (uuid "00000000-0000-0000-0000-000000000004"))
+  (wire (pts (xy 173.99 81.28) (xy 173.99 83.82)) (stroke (width 0.254)) (uuid "00000000-0000-0000-0000-000000000005"))
+
+  (global_label "5V_IN" (shape input) (at 25.4 43.18 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "GND" (shape input) (at 25.4 50.8 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "VCC_CORE_1.8V" (shape output) (at 180.34 35.56 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "VCC_IO_3.3V" (shape output) (at 180.34 40.64 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "JTAG_TCO" (shape output) (at 180.34 50.8 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "JTAG_TDI" (shape input) (at 180.34 55.88 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "JTAG_TMS" (shape input) (at 180.34 60.96 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "JTAG_CLK" (shape input) (at 180.34 66.04 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "POWER MANAGEMENT\nInput: USB 5V (100W PD capable)\nOutput: 1.8V (FPGA Core)\n        3.3V (FPGA I/O, TIA, Modulator)\n        12V (Fan PWM)\n\nBuck Converters:\n- XC9241B (5V to 1.8V, 30A)\n- XC9242B (5V to 3.3V, 20A)\n" (at 40.64 100.33 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "FPGA: Xilinx Kintex-7 XC7K420T-2FFG676C\n- 420,000 logic cells\n- 1,430 18Kb BRAM\n- 840 DSP48E1 slices\n- BGA 676-pin (27×27mm)\n- Power: 1.8V Core + 3.3V I/O\n" (at 40.64 127 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "USB INTERFACE\nController: USB 2.0 Device\nConnector: USB-C Receptacle\nData Rate: 480 Mbps (High-Speed)\nPower Delivery: Up to 100W\n" (at 100.33 100.33 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "THERMAL MANAGEMENT\n- Copper-Invar baseplate (2mm)\n- Thermal vias (0.3mm, 120-unit array)\n- Graphite thermal pads (3 W/m·K)\n- 40mm axial fan (Noctua)\n- Temperature sensor (TMP36)\n- Fan PWM control from FPGA\n" (at 40.64 152.4 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "OPTICAL INTERFACE (8 Channels)\nInput:  TIA (Transimpedance Amplifier)\n        - Photodiode receiver\n        - Gain: 100kV/A\n        - Bandwidth: 1 GHz\n        - Component: TIA_AMP (Custom or OPA2356)\n\nOutput: Optical Modulator Driver\n        - Mach-Zehnder modulator\n        - Voltage swing: 0-3.3V\n        - Bandwidth: 1 GHz\n" (at 100.33 127 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "NEURON ARRAY (8 Spiking Neurons)\nImplemented in FPGA fabric:\n- Leaky Integrate-and-Fire (LIF) model\n- Configurable threshold (0-65535)\n- Refractory period: Programmable\n- Spike output: Digital (1-bit per neuron)\n- Clock: 250 MHz internal FPGA clock\n" (at 100.33 152.4 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+)

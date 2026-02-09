@@ -46,21 +46,24 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
     # L1 (Top) is highest Z.
     
     layers = [
-        ('tfln_modulator_top.gtl', 12, 'L1 (Top)'),
-        ('tfln_modulator_l2.g2', 11, 'L2 (GND)'),
-        ('tfln_modulator_l3.g3', 10, 'L3 (Signal)'),
-        ('tfln_modulator_l4.g4', 9, 'L4 (GND)'),
-        ('tfln_modulator_l5.g5', 8, 'L5 (Signal)'),
-        ('tfln_modulator_l6.g6', 7, 'L6 (GND)'),
-        ('tfln_modulator_l7.g7', 6, 'L7 (Pwr)'),
-        ('tfln_modulator_l8.g8', 5, 'L8 (GND)'),
-        ('tfln_modulator_l9.g9', 4, 'L9 (Pwr)'),
-        ('tfln_modulator_l10.g10', 3, 'L10 (Sig)'),
-        ('tfln_modulator_l11.g11', 2, 'L11 (GND)'),
-        ('tfln_modulator_bottom.gbl', 1, 'L12 (Bot)'),
+        ('tfln_modulator_top.gtl', 15, 'L1 (Top)'),
+        ('tfln_modulator_l2.g2', 14, 'L2 (GND)'),
+        ('tfln_modulator_l3.g3', 13, 'L3 (Wave)'),
+        ('tfln_modulator_l4.g4', 12, 'L4 (GND)'),
+        ('tfln_modulator_l5.g5', 11, 'L5 (Memr)'),
+        ('tfln_modulator_l6.g6', 10, 'L6 (GND)'),
+        ('tfln_modulator_l7.g7', 9, 'L7 (Tern)'),
+        ('tfln_modulator_l8.g8', 8, 'L8 (Pwr+)'),
+        ('tfln_modulator_l9.g9', 7, 'L9 (GND)'),
+        ('tfln_modulator_l10.g10', 6, 'L10 (Pwr+)'),
+        ('tfln_modulator_l11.g11', 5, 'L11 (Spik)'),
+        ('tfln_modulator_l12.g12', 4, 'L12 (GND)'),
+        ('tfln_modulator_l13.g13', 3, 'L13 (Ctrl)'),
+        ('tfln_modulator_l14.g14', 2, 'L14 (GND)'),
+        ('tfln_modulator_bottom.gbl', 1, 'L15 (Bot)'),
     ]
     
-    colors = ['red', 'green', 'blue', 'green', 'purple', 'green', 'orange', 'green', 'orange', 'cyan', 'green', 'blue']
+    colors = ['red', 'green', 'blue', 'green', 'purple', 'green', 'orange', 'green', 'gray', 'orange', 'cyan', 'green', 'yellow', 'green', 'blue']
     
     for i, (filename, z_height, label) in enumerate(layers):
         filepath = os.path.join(gerber_dir, filename)
