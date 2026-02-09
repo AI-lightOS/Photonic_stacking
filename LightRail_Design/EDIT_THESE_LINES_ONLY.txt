@@ -1,0 +1,313 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║              EXACT LINES TO EDIT FOR LIGHTRAIL_AI_NCE PROJECT                ║
+║                                                                               ║
+║                    No guessing. Just copy/paste these.                       ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+═════════════════════════════════════════════════════════════════════════════════
+CHOOSE YOUR OPERATING SYSTEM
+═════════════════════════════════════════════════════════════════════════════════
+
+Windows users: Use Path A
+Mac users: Use Path B  
+Linux users: Use Path C
+
+═════════════════════════════════════════════════════════════════════════════════
+PATH A: WINDOWS
+═════════════════════════════════════════════════════════════════════════════════
+
+Create your folder structure first:
+  C:\LightRail_AI_NCE\kicad_project\
+  C:\LightRail_AI_NCE\scripts\
+
+Then in EVERY Python script, find this line:
+
+  PROJECT_DIR = "C:/Users/YourName/my_project/kicad_project"
+
+Replace the ENTIRE line with:
+
+  PROJECT_DIR = "C:/LightRail_AI_NCE/kicad_project"
+
+Also find this line:
+
+  PROJECT_NAME = "PhotonicAI"
+
+Replace with:
+
+  PROJECT_NAME = "LightRail_AI_NCE"
+
+That's it! Those are the ONLY two lines to change in each script.
+
+═════════════════════════════════════════════════════════════════════════════════
+PATH B: MAC
+═════════════════════════════════════════════════════════════════════════════════
+
+Create your folder structure first:
+  ~/LightRail_AI_NCE/kicad_project/
+  ~/LightRail_AI_NCE/scripts/
+
+Then in EVERY Python script, find this line:
+
+  PROJECT_DIR = "C:/Users/YourName/my_project/kicad_project"
+
+Replace the ENTIRE line with:
+
+  PROJECT_DIR = "/Users/$(whoami)/LightRail_AI_NCE/kicad_project"
+
+Or simpler (replace USERNAME with your username):
+
+  PROJECT_DIR = "/Users/USERNAME/LightRail_AI_NCE/kicad_project"
+
+Also find this line:
+
+  PROJECT_NAME = "PhotonicAI"
+
+Replace with:
+
+  PROJECT_NAME = "LightRail_AI_NCE"
+
+That's it! Those are the ONLY two lines to change.
+
+═════════════════════════════════════════════════════════════════════════════════
+PATH C: LINUX
+═════════════════════════════════════════════════════════════════════════════════
+
+Create your folder structure first:
+  ~/LightRail_AI_NCE/kicad_project/
+  ~/LightRail_AI_NCE/scripts/
+
+Then in EVERY Python script, find this line:
+
+  PROJECT_DIR = "C:/Users/YourName/my_project/kicad_project"
+
+Replace the ENTIRE line with:
+
+  PROJECT_DIR = "/home/$USER/LightRail_AI_NCE/kicad_project"
+
+Or simpler (replace USERNAME with your username):
+
+  PROJECT_DIR = "/home/USERNAME/LightRail_AI_NCE/kicad_project"
+
+Also find this line:
+
+  PROJECT_NAME = "PhotonicAI"
+
+Replace with:
+
+  PROJECT_NAME = "LightRail_AI_NCE"
+
+That's it! Those are the ONLY two lines to change.
+
+═════════════════════════════════════════════════════════════════════════════════
+SUMMARY - THE TWO LINES TO EDIT IN EACH SCRIPT
+═════════════════════════════════════════════════════════════════════════════════
+
+Line 1 - Project directory:
+  ❌ BEFORE: PROJECT_DIR = "C:/Users/YourName/my_project/kicad_project"
+  ✅ AFTER:  PROJECT_DIR = "C:/LightRail_AI_NCE/kicad_project"  [Windows]
+            PROJECT_DIR = "/Users/USERNAME/LightRail_AI_NCE/kicad_project"  [Mac]
+            PROJECT_DIR = "/home/USERNAME/LightRail_AI_NCE/kicad_project"  [Linux]
+
+Line 2 - Project name:
+  ❌ BEFORE: PROJECT_NAME = "PhotonicAI"
+  ✅ AFTER:  PROJECT_NAME = "LightRail_AI_NCE"
+
+═════════════════════════════════════════════════════════════════════════════════
+WHERE THESE LINES ARE IN EACH SCRIPT
+═════════════════════════════════════════════════════════════════════════════════
+
+Script 00_inspect_pcb.py
+  Line ~15: PROJECT_DIR = "..."
+  Line ~16: PCB_FILE = os.path.join(PROJECT_DIR, "PhotonicAI.kicad_pcb")
+            ↑ This will auto-update when you change PROJECT_DIR above
+
+Script 01_create_project.py
+  Line ~14: PROJECT_DIR = "..."
+  Line ~15: PROJECT_NAME = "PhotonicAI"
+            ↑ Change both of these
+
+Script 02_place_components.py
+  Line ~11: PROJECT_DIR = "..."
+  (PROJECT_NAME is not in this script)
+
+Script 03_export_files.py
+  Line ~11: PROJECT_DIR = "..."
+  Line ~12: PROJECT_NAME = "PhotonicAI"
+            ↑ Change both of these
+
+Script 04_drc_check.py
+  Line ~11: PROJECT_DIR = "..."
+  (PROJECT_NAME is not in this script)
+
+═════════════════════════════════════════════════════════════════════════════════
+COPY-PASTE READY CODE BLOCKS
+═════════════════════════════════════════════════════════════════════════════════
+
+If you're on WINDOWS, copy this exactly (replace USERNAME if needed):
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════
+
+PROJECT_DIR = "C:/LightRail_AI_NCE/kicad_project"
+PROJECT_NAME = "LightRail_AI_NCE"
+
+---
+
+If you're on MAC, copy this exactly (replace USERNAME with your actual username):
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════
+
+PROJECT_DIR = "/Users/USERNAME/LightRail_AI_NCE/kicad_project"
+PROJECT_NAME = "LightRail_AI_NCE"
+
+---
+
+If you're on LINUX, copy this exactly (replace USERNAME with your actual username):
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════════
+
+PROJECT_DIR = "/home/USERNAME/LightRail_AI_NCE/kicad_project"
+PROJECT_NAME = "LightRail_AI_NCE"
+
+═════════════════════════════════════════════════════════════════════════════════
+EXAMPLE: COMPLETE EDITED SCRIPT (for reference)
+═════════════════════════════════════════════════════════════════════════════════
+
+Here's what 01_create_project.py looks like after editing:
+
+```python
+#!/usr/bin/env python3
+"""
+KiCAD Python: Create new PCB project
+"""
+
+import pcbnew
+import os
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONFIGURATION ← THIS IS WHAT YOU EDIT
+# ═══════════════════════════════════════════════════════════════════════
+
+PROJECT_DIR = "C:/LightRail_AI_NCE/kicad_project"     # ← CHANGE THIS
+PROJECT_NAME = "LightRail_AI_NCE"                     # ← CHANGE THIS
+
+# ═══════════════════════════════════════════════════════════════════════
+# CREATE NEW BOARD
+# ═══════════════════════════════════════════════════════════════════════
+
+print("\n[→] Creating new PCB project...")
+
+# Everything below stays EXACTLY the same - don't touch it!
+board = pcbnew.BOARD()
+
+page = board.GetPageSettings()
+page.SetWidthMM(100)
+page.SetHeightMM(80)
+print("[✓] Board size: 100mm × 80mm")
+
+# ... rest of script unchanged ...
+```
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP-BY-STEP EDITING GUIDE
+═════════════════════════════════════════════════════════════════════════════════
+
+For EACH script file:
+
+1. Open the script in a text editor (Notepad++, VS Code, etc.)
+
+2. Look for the "CONFIGURATION" section near the top
+
+3. Find this line:
+   PROJECT_DIR = "C:/Users/YourName/my_project/kicad_project"
+
+4. Select the entire path between the quotes: C:/Users/YourName/my_project/kicad_project
+
+5. Replace with your path:
+   For Windows: C:/LightRail_AI_NCE/kicad_project
+   For Mac: /Users/USERNAME/LightRail_AI_NCE/kicad_project
+   For Linux: /home/USERNAME/LightRail_AI_NCE/kicad_project
+
+6. If you see this line (in some scripts):
+   PROJECT_NAME = "PhotonicAI"
+   
+   Replace with:
+   PROJECT_NAME = "LightRail_AI_NCE"
+
+7. Save the file
+
+8. Move to next script file, repeat
+
+═════════════════════════════════════════════════════════════════════════════════
+VERIFICATION CHECKLIST
+═════════════════════════════════════════════════════════════════════════════════
+
+Before running the scripts, check:
+
+☐ Folder exists: C:/LightRail_AI_NCE/kicad_project/ (Windows)
+   Or: /Users/USERNAME/LightRail_AI_NCE/kicad_project/ (Mac)
+   Or: /home/USERNAME/LightRail_AI_NCE/kicad_project/ (Linux)
+
+☐ Scripts copied to: C:/LightRail_AI_NCE/scripts/ (etc.)
+
+☐ All 5 scripts edited:
+   ☐ 00_inspect_pcb.py - edited
+   ☐ 01_create_project.py - edited
+   ☐ 02_place_components.py - edited
+   ☐ 03_export_files.py - edited
+   ☐ 04_drc_check.py - edited
+
+☐ Each script has PROJECT_DIR pointing to: LightRail_AI_NCE/kicad_project/
+
+☐ Scripts that need PROJECT_NAME have: LightRail_AI_NCE
+
+═════════════════════════════════════════════════════════════════════════════════
+THEN RUN LIKE THIS
+═════════════════════════════════════════════════════════════════════════════════
+
+Open terminal/command prompt in the scripts folder:
+
+  python3 00_inspect_pcb.py
+  python3 01_create_project.py
+  python3 02_place_components.py
+  python3 03_export_files.py
+  python3 04_drc_check.py
+
+═════════════════════════════════════════════════════════════════════════════════
+EXPECTED FILES CREATED
+═════════════════════════════════════════════════════════════════════════════════
+
+After running all scripts, you should have:
+
+C:\LightRail_AI_NCE\  (Windows)
+├── kicad_project\
+│   ├── LightRail_AI_NCE.kicad_pcb  ← Your PCB file
+│   └── ...
+├── scripts\
+│   ├── *.py files
+│   └── ...
+└── output\
+    ├── gerber\
+    │   ├── *.gbr files (6×)
+    │   └── *.gbl job file
+    ├── drill\
+    │   └── *.drl
+    └── bom\
+        ├── LightRail_AI_NCE_BOM.csv
+        └── LightRail_AI_NCE_PickPlace.csv
+
+═════════════════════════════════════════════════════════════════════════════════
+THAT'S IT!
+═════════════════════════════════════════════════════════════════════════════════
+
+Just edit those 2 lines in each script.
+Everything else stays the same.
+Run the scripts.
+Done! 🚀
+
+═════════════════════════════════════════════════════════════════════════════════

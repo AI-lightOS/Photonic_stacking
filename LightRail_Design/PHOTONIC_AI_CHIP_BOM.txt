@@ -1,0 +1,387 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║           PHOTONIC AI CHIP - COMPLETE BILL OF MATERIALS (BOM)                ║
+║                    Control & Readout Electronics                             ║
+║                            1 Unit Reference                                  ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+DESIGN DECISIONS MADE:
+═════════════════════════════════════════════════════════════════════════════════
+
+1. PHOTODIODE SPECIFICATIONS (Assumed)
+   ├─ Type: Integrated Ge on silicon photonics PIC
+   ├─ Wavelength: 1550 nm (telecom band)
+   ├─ Responsivity: 0.8 A/W
+   ├─ Capacitance: 50 pF (parallel to junction)
+   ├─ Dark current: 1 µA (typical for Ge)
+   └─ Output: Current source (nanoamps to microamps range)
+
+2. TIA DESIGN (per channel)
+   ├─ Op-Amp: OPA2356 (1.4 GHz GBW, ultra-low input current)
+   ├─ Feedback resistor: 10 MΩ (for high impedance)
+   ├─ Feedback capacitor: 50 pF (stability compensation)
+   ├─ Transimpedance gain: Rf = 10 MΩ → 10 MV/A
+   ├─ Output swing: 0 to +3.3V (single supply)
+   ├─ Output bandwidth: ~160 MHz (-3dB with Cf compensation)
+   └─ Estimated noise: ~4 pA/√Hz (very low)
+
+3. PHASE SHIFTER CONTROL
+   ├─ Type: Thermo-optic (heater resistor on PIC)
+   ├─ Tuning voltage: 0 to +3.3V (from DAC)
+   ├─ Heater resistance: ~1 kΩ (on chip)
+   ├─ Power per shifter: ~50 mW typical
+   ├─ Response time: ~10 ms (thermo-optic is slow, but mature)
+   ├─ Control accuracy: 12-bit DAC (0.8 mV resolution)
+   └─ Optional: Temperature feedback via TMP36 sensor
+
+4. COMPARATOR THRESHOLDS
+   ├─ Comparator: LM393 (dual, open-collector output)
+   ├─ Reference voltage: 1.65V (set by resistor divider from 3.3V)
+   ├─ Threshold (for 1.65V ref): TIA output crosses 1.65V → spike
+   ├─ Hysteresis: ~50 mV (optional, via feedback resistor)
+   ├─ Spike output: Open-drain logic, 3.3V compatible
+   └─ Pull-up: 10 kΩ to 3.3V
+
+5. USB INTERFACE
+   ├─ Controller: FT2232H (dual-channel USB bridge)
+   ├─ Interface 1: SPI (control DAC for phase shifters)
+   ├─ Interface 2: UART or Parallel (read spike data from comparators)
+   ├─ USB Type: USB 2.0 High-Speed (480 Mbps capable)
+   ├─ Power: 5V from USB, 500mA max (or negotiate up to 3A with PD)
+   └─ Host: Windows/Mac/Linux via standard USB FTDI drivers
+
+6. POWER DISTRIBUTION
+   ├─ Input: USB 5V
+   ├─ Rail 1: +3.3V (analog supply for TIA/comparators/DAC)
+   ├─ Rail 2: +5V (digital I/O, USB logic)
+   ├─ Optional Rail 3: -5V (comparator negative rail for common-mode swing)
+   ├─ Regulators: MCP1703 (3.3V, 500mA) + TPS54302 (optional -5V)
+   └─ Filtering: LC filter on 3.3V rail (critical for analog noise)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 1: PHOTODIODE READOUT CIRCUIT (TIA Array - 8 Channels)
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+ 1   |  8  | U1-U8     | OPA2356 | SOIC8  | Digikey  | OPA2356AIDR | $3.20     | $25.60| Transimpedance amp
+     |     |           | Dual   |        |          |             |           |       | GBW: 1.4 GHz, IB: 1 pA
+
+ 2   |  8  | R1-R8     | 10MΩ   | 0603   | Digikey  | CRCW060310M | $0.15     | $1.20 | TIA feedback resistor
+     |     |           | 1%     |        |          |JNEDC        |           |       | Precision metal film (1%)
+
+ 3   |  8  | C1-C8     | 50pF   | 0603   | Digikey  | GRM188R71A  | $0.03     | $0.24 | TIA feedback capacitor
+     |     |           | X7R    |        |          |501KA01L     |           |       | Compensation network
+
+ 4   |  8  | C9-C16    | 100nF  | 0402   | Digikey  | GRM155R61A  | $0.02     | $0.16 | Input bypass cap
+     |     |           | X7R    |        |          |104KA01L     |           |       | Placed near op-amp input
+
+ 5   |  8  | C17-C24   | 10µF   | 0603   | Digikey  | GRM31CR61A  | $0.08     | $0.64 | Bulk decoupling
+     |     |           | X7R    |        |          |106KA19L     |           |       | Power supply filtering
+
+ 6   |  8  | R9-R16    | 1kΩ    | 0603   | Digikey  | CRCW06031K0 | $0.01     | $0.08 | Output impedance match
+     |     |           |        |        |          |JNEDC        |           |       | For TIA output driver
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+PHOTODIODE READOUT SUBTOTAL: $28.00 (for 8 channels)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 2: COMPARATOR STAGE (Digital Spike Detection - 8 Channels)
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+ 7   |  4  | U9-U12    | LM393 | SOIC8  | Digikey  | LM393D      | $0.30     | $1.20 | Dual comparator
+     |     |           | Dual  |        |          |             |           |       | Open-collector output
+
+ 8   |  1  | R17       | 10kΩ  | 0603   | Digikey  | CRCW060310K | $0.01     | $0.01 | Reference divider
+     |     |           | 1%    |        |          |JNEDC        |           |       | Sets 1.65V threshold (from 3.3V)
+
+ 9   |  1  | R18       | 10kΩ  | 0603   | Digikey  | CRCW060310K | $0.01     | $0.01 | Reference divider
+     |     |           | 1%    |        |          |JNEDC        |           |       | to create 1.65V reference
+
+10   |  8  | R19-R26   | 10kΩ  | 0603   | Digikey  | CRCW060310K | $0.01     | $0.08 | Pull-up resistors
+     |     |           |       |        |          |JNEDC        |           |       | Open-drain to 3.3V
+
+11   |  8  | C25-C32   | 100nF | 0402   | Digikey  | GRM155R61A  | $0.02     | $0.16 | Bypass caps
+     |     |           | X7R   |        |          |104KA01L     |           |       | Near comparator supply pins
+
+12   |  4  | C33-C36   | 10µF  | 0603   | Digikey  | GRM31CR61A  | $0.08     | $0.32 | Bulk capacitors
+     |     |           | X7R   |        |          |106KA19L     |           |       | Per comparator IC
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+COMPARATOR STAGE SUBTOTAL: $2.00 (for 8 channels)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 3: PHASE SHIFTER CONTROL (Thermo-optic Drivers - 8 Channels)
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+13   |  1  | U13       | AD5684| LQFP48 | Digikey  | AD5684ACPZ  | $8.50     | $8.50 | 12-bit, quad DAC
+     |     |           | Quad  |        |          |             |           |       | 4 channels (×2 for 8 outputs)
+     |     |           | DAC   |        |          |             |           |       | SPI interface
+
+14   |  2  | U14-U15   | OPA2277| SOIC8 | Digikey  | OPA2277UA   | $1.50     | $3.00 | Op-amp buffer/driver
+     |     |           | Dual  |        |          |             |           |       | For DAC outputs
+
+15   |  8  | Q1-Q8     | AMS1117| SOT23 | Digikey  | AMS1117-3.3 | $0.80     | $6.40 | MOSFET heater driver
+     |     |           | N-ch  |        |          |LDO          |           |       | (or substitute with 2N7002)
+     |     |           | MOSFET|        |          |             |           |       | Drives phase shifter heater
+
+16   |  8  | R27-R34   | 1kΩ   | 0603   | Digikey  | CRCW06031K0 | $0.01     | $0.08 | Gate current-limit
+     |     |           |       |        |          |JNEDC        |           |       | Protects MOSFET
+
+17   |  8  | R35-R42   | 100Ω  | 0603   | Digikey  | CRCW0603100 | $0.01     | $0.08 | Heater sense resistor
+     |     |           |       |        |          |RJNEDC       |           |       | For current monitoring
+
+18   |  8  | C37-C44   | 10µF  | 0603   | Digikey  | GRM31CR61A  | $0.08     | $0.64 | Heater supply bypass
+     |     |           | X7R   |        |          |106KA19L     |           |       | Smooth transient response
+
+19   |  8  | C45-C52   | 100nF | 0402   | Digikey  | GRM155R61A  | $0.02     | $0.16 | High-freq filtering
+     |     |           | X7R   |        |          |104KA01L     |           |       | Per MOSFET gate
+
+20   |  2  | U16-U17   | TMP36 | TO-92 | Digikey  | TMP36GT9Z   | $1.50     | $3.00 | Temperature sensor
+     |     |           | (Opt) |        |          |             |           |       | Optional: Phase shifter feedback
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+PHASE SHIFTER CONTROL SUBTOTAL: $22.00 (for 8 channels + monitoring)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 4: USB INTERFACE & DIGITAL CONTROL
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+21   |  1  | U18       | FT2232H| BGA100| Digikey  | FT2232HQFNK | $8.50     | $8.50 | USB-to-SPI/UART bridge
+     |     |           | Dual  |       |          |RoHS         |           |       | 480 Mbps HS USB
+     |     |           | Chan  |       |          |             |           |       | Ch A: SPI (DAC), Ch B: UART (spikes)
+
+22   |  1  | J1        | USB-C | SMD   | Digikey  | 5282710-00  | $0.85     | $0.85 | USB Type-C connector
+     |     |           | Recept|       |          |-00-F        |           |       | Power + data
+
+23   |  2  | R43-R44   | 27Ω   | 0603   | Digikey  | CRCW060327R | $0.01     | $0.02 | USB D+/D- series resistors
+     |     |           |       |        |          |JNEDC        |           |       | Termination
+
+24   |  2  | R45-R46   | 100kΩ | 0603   | Digikey  | CRCW0603100 | $0.01     | $0.02 | Pull-down on D+/D-
+     |     |           |       |        |          |KJNEDC       |           |       | (if no built-in)
+
+25   |  4  | C53-C56   | 100nF | 0402   | Digikey  | GRM155R61A  | $0.02     | $0.08 | USB power decoupling
+     |     |           | X7R   |        |          |104KA01L     |           |       | Near FT2232H pins
+
+26   |  1  | C57       | 4.7µF | 0603   | Digikey  | GRM31CR61A  | $0.08     | $0.08 | USB bulk filter
+     |     |           | X7R   |        |          |475K16X7RF  |           |       | 
+
+27   |  1  | R47       | 10kΩ  | 0603   | Digikey  | CRCW060310K | $0.01     | $0.01 | EEPROM disable
+     |     |           |       |        |          |JNEDC        |           |       | (optional)
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+USB INTERFACE SUBTOTAL: $9.56
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 5: POWER MANAGEMENT & VOLTAGE REGULATION
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+28   |  1  | U19       |MCP1703| SOT23 | Digikey  | MCP1703T-33 | $0.35     | $0.35 | 3.3V LDO regulator
+     |     |           | 3.3V  |       |          |I/CB         |           |       | For analog supply (TIA, DAC, Comp)
+     |     |           | 500mA |       |          |             |           |       | Low noise < 60 µV RMS
+
+29   |  1  | L1        | 10µH  | 1210   | Digikey  | SPME7050S10 | $1.20     | $1.20 | Input filter inductor
+     |     |           | 30A   |        |          |0MRB         |           |       | For USB 5V pre-filter
+
+30   |  1  | C58       | 100µF | 1210   | Digikey  | EEE-1FK221 | $0.45     | $0.45 | Input bulk capacitor
+     |     |           | 50V   |        |          |AP          |           |       | USB 5V input filtering
+
+31   |  2  | C59-C60   | 10µF  | 0603   | Digikey  | GRM31CR61A | $0.08     | $0.16 | Regulator bulk caps
+     |     |           | X7R   |        |          |106KA19L    |           |       | Input & output
+
+32   |  6  | C61-C66   | 100nF | 0402   | Digikey  | GRM155R61A | $0.02     | $0.12 | Bypass capacitors
+     |     |           | X7R   |        |          |104KA01L    |           |       | (distributed on board)
+
+33   |  1  | FB1       | 600Ω  | 1206   | Digikey  | BLM31PG601 | $0.08     | $0.08 | Ferrite bead
+     |     |           | 2A    |        |          |SN1L        |           |       | EMI suppression on 3.3V rail
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+POWER MANAGEMENT SUBTOTAL: $2.36
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 6: CONNECTORS & MECHANICAL
+═════════════════════════════════════════════════════════════════════════════════
+
+Row# | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total | Notes
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+
+34   |  1  | J2        | Header| 1×16   | Digikey  | TSM-116-07  | $0.25     | $0.25 | PIC interface pins
+     |     |           | 0.1"  | 0.1"   |          |T-SH-TR      |           |       | 8× PD inputs + GND + Power
+
+35   |  1  | J3        | Header| 2×5    | Digikey  | TSM-210-07  | $0.20     | $0.20 | SPI header (DAC prog)
+     |     |           | 0.1"  | 0.1"   |          |T-SH-TR      |           |       | SCK, MOSI, MISO, CS, GND, VCC
+
+36   |  1  | J4        | Header| 1×6    | Digikey  | TSM-106-07  | $0.15     | $0.15 | UART header (spike data)
+     |     |           | 0.1"  | 0.1"   |          |T-SH-TR      |           |       | TX, RX, GND, VCC
+
+37   |  4  | H1-H4     | M3    | PCB    | McMaster| 90108A054   | $0.15     | $0.60 | Mounting holes
+     |     |           | Brass |        |          |             |           |       | For enclosure
+
+38   |  1  | PCB       | 4-layer|       | PCBWay  | (quote)     | $150      | $150  | PCB fabrication
+     |     |           | FR4   |        |          |             |           |       | 100mm × 80mm, 1.6mm thick
+     |     |           |       |        |          |             |           |       | ENIG finish, green soldermask
+
+39   |  1  | Assy      | SMD   | N/A    | PCBWay  | (quote)     | $200      | $200  | PCB assembly service
+     |     |           | Labor |        |          |             |           |       | All components except FT2232H
+     |     |           |       |        |          |             |           |       | (placed manually due to BGA)
+
+────┼─────┼───────────┼───────┼─────────┼──────────┼─────────────┼───────────┼───────┼─────────────────────────────
+CONNECTORS & MECHANICAL SUBTOTAL: $351.20
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SUMMARY
+═════════════════════════════════════════════════════════════════════════════════
+
+SECTION 1: Photodiode Readout (8×TIA) ...................... $28.00
+SECTION 2: Comparator Stage (8× spike detection) .......... $2.00
+SECTION 3: Phase Shifter Control (8×driver + DAC) ........ $22.00
+SECTION 4: USB Interface & Digital Control ............... $9.56
+SECTION 5: Power Management & Regulation ................. $2.36
+SECTION 6: Connectors & Mechanical ....................... $351.20
+                                                         ─────────
+TOTAL ELECTRONICS (Parts + Assembly + PCB) .............. $414.92
+
+EXTERNAL COMPONENTS (Not included in design):
+  • Silicon Photonics PIC chip ..................... (Foundry: $5K-50K)
+  • 1550nm Continuous-Wave Laser .................. (Module: $200-2000)
+  • Aluminum enclosure (custom) ................... (CNC: $150-500)
+  • Fiber patch cables & connectors .............. (LC/APC: $100-300)
+                                                  ─────────────────
+TOTAL SYSTEM (with PIC + Laser) .......................... ~$6K-15K
+
+═════════════════════════════════════════════════════════════════════════════════
+
+CRITICAL COMPONENT NOTES
+═════════════════════════════════════════════════════════════════════════════════
+
+1. OPA2356 (TIA Op-Amp)
+   • Why this part?
+     - Ultra-low input current (1 pA typical)
+     - 1.4 GHz gain-bandwidth product (fast response)
+     - Available in dual package (saves PCB space)
+   
+   • Alternative (if unavailable):
+     - LT6268 (Linear Tech) - similar specs, lower noise
+     - AD8065 (Analog Devices) - good performance, easier to find
+   
+   • Critical design rule:
+     - Input traces < 1mm long (parasitic capacitance adds noise)
+     - Feedback network very close to op-amp pins
+     - Ground plane under op-amp for shielding
+
+2. AD5684 (12-bit DAC)
+   • Configuration: Quad (1 DAC controls up to 4 phase shifters)
+   • Interface: SPI (SCLK, MOSI, LDAC, CS)
+   • You'll use 2 of these DACs total to control all 8 phase shifters
+   
+   • Connection:
+     LDAC (Latch DAC) → tied to SPI_CS (synchronized update)
+     MOSI (data) → FT2232H Ch A
+     SCLK (clock) → FT2232H Ch A
+
+3. FT2232H (USB Bridge)
+   • Dual-channel design:
+     Channel A: SPI for DAC control (write phase shifter values)
+     Channel B: UART for spike data readout (read comparator outputs)
+   
+   • USB drivers:
+     Windows: VCP (Virtual COM Port) - standard windows USB
+     Mac/Linux: libftdi (open source, commonly available)
+   
+   • Typical command flow:
+     1. Open USB device via FT2232H
+     2. Configure SPI timing on Channel A
+     3. Write 16-bit DAC command word
+     4. Latch output (toggle LDAC)
+     5. Read UART data on Channel B (spike events)
+
+4. LM393 (Comparator)
+   • Dual design (4 ICs → 8 comparators)
+   • Open-collector output (needs pull-up to 3.3V)
+   • Threshold voltage:
+     - Set at 1.65V (mid-point of 3.3V rail)
+     - Resistor divider: 10kΩ + 10kΩ
+     - TIA output > 1.65V → Spike goes low (active-low output)
+   
+   • Optional hysteresis (prevent chatter):
+     - Add 100kΩ feedback resistor from output to inverting input
+     - Creates ~50 mV hysteresis
+
+5. MCP1703 (3.3V LDO)
+   • Why 3.3V specifically?
+     - Standard for digital I/O (USB, SPI)
+     - Op-amp single-supply operation (0V to 3.3V)
+     - Comparator threshold (mid-rail biasing)
+   
+   • Noise specification:
+     - < 60 µV RMS (critical for analog circuits)
+     - Clean supply for TIA and DAC
+   
+   • Alternative (if MCP1703 unavailable):
+     - TL7733 (Texas Instruments) - similar performance
+     - AMS1117-3.3 (but slightly higher noise)
+
+═════════════════════════════════════════════════════════════════════════════════
+
+SUPPLIER CONTACT INFORMATION
+═════════════════════════════════════════════════════════════════════════════════
+
+Primary Suppliers (in order of preference):
+  1. Digikey (USA-based, fast shipping)
+     Website: www.digikey.com
+     Search: Part number + datasheet link available
+     Shipping: 1-2 day expedited available
+  
+  2. Mouser Electronics (USA-based)
+     Website: www.mouser.com
+     Bulk pricing: Volume discounts available
+  
+  3. Arrow Electronics (Authorized distributor)
+     Website: www.arrow.com
+     Technical support available
+
+PCB Fabrication & Assembly:
+  1. PCBWay (recommended for this project)
+     Website: www.pcbway.com
+     Services: PCB fab + SMD assembly
+     Lead time: 7-10 days
+     Quote: Upload Gerber files for instant quote
+  
+  2. JLCPCB (budget option)
+     Website: www.jlcpcb.com
+     SMD assembly: Limited component library
+     Lead time: 5-7 days
+
+═════════════════════════════════════════════════════════════════════════════════
+
+REVISION HISTORY
+═════════════════════════════════════════════════════════════════════════════════
+
+Version | Date       | Author | Changes
+────────┼────────────┼────────┼─────────────────────────────────────
+1.0     | 2025-01-27| Claude | Initial BOM for photonic AI chip
+        |            |        | Thermo-optic phase shifter control
+        |            |        | 8× TIA + 8× comparator channels
+
+═════════════════════════════════════════════════════════════════════════════════
+
+EOF

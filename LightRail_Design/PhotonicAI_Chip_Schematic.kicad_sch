@@ -1,0 +1,141 @@
+(kicad_sch (version 20230121)
+
+  (uuid "ed90ff67-ef74-4c80-8b63-8a7f0e8f8c3a")
+  (paper "A2")
+
+  (title_block
+    (title "Photonic AI Chip - Control & Readout Board")
+    (date "2025-01-27")
+    (rev "2.0")
+    (company "LightRail Computing")
+    (comment 1 "Silicon Photonics Neural Processor Interface")
+    (comment 2 "8× Photodiode TIA Array + Phase Shifter Control + USB Interface")
+    (comment 3 "Thermo-optic phase shifters, 1550nm operation")
+    (comment 4 "Target: 8 spiking neurons via optical interference")
+  )
+
+  (lib_symbols
+    (symbol "Device:C"
+      (pin_numbers hide)
+      (pin_names (offset 0.254))
+      (property "Reference" "C" (at 0.635 2.54 0))
+      (property "Value" "C" (at 0.635 -2.54 0))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))
+        (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508)))
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "Device:R"
+      (pin_numbers hide)
+      (pin_names (offset 0))
+      (property "Reference" "R" (at 2.032 0 90))
+      (property "Value" "R" (at 0 0 90))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:GND"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -6.35 0))
+      (property "Value" "GND" (at 0 -3.81 0))
+      (symbol "GND_0_1"
+        (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)) (stroke (width 0)) (fill (type outline)))
+      )
+      (symbol "GND_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "GND" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:+3.3V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+3.3V" (at 0 3.556 0))
+      (symbol "+3.3V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0)))
+      )
+      (symbol "+3.3V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+3.3V" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "power:+5V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (at 0 -3.81 0))
+      (property "Value" "+5V" (at 0 3.556 0))
+      (symbol "+5V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0)))
+      )
+      (symbol "+5V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+5V" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+
+    (symbol "Connector:USB_C_Receptacle_24pin"
+      (pin_names (offset 1.016))
+      (property "Reference" "J" (at 0 19.05 0))
+      (property "Value" "USB_C_Receptacle_24pin" (at 0 -19.05 0))
+      (symbol "USB_C_Receptacle_24pin_0_1"
+        (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "USB_C_Receptacle_24pin_1_1"
+        (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A1" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 12.7 0) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A4" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 10.16 0) (length 2.54) (name "D+" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A6" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+        (pin passive line (at -12.7 7.62 0) (length 2.54) (name "D-" (effects (font (size 1.27 1.27) (thickness 0.254)))) (number "A7" (effects (font (size 1.27 1.27) (thickness 0.254)))))
+      )
+    )
+  )
+
+  (junction (at 50.8 50.8) (diameter 0) (color 0 0 0 0))
+  (junction (at 100.33 50.8) (diameter 0) (color 0 0 0 0))
+  (junction (at 150.86 50.8) (diameter 0) (color 0 0 0 0))
+
+  (global_label "VCC_ANALOG_3.3V" (shape output) (at 30.48 25.4 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "GND" (shape input) (at 30.48 50.8 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_1" (shape input) (at 20.32 76.2 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_2" (shape input) (at 20.32 81.28 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_3" (shape input) (at 20.32 86.36 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_4" (shape input) (at 20.32 91.44 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_5" (shape input) (at 20.32 96.52 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_6" (shape input) (at 20.32 101.6 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_7" (shape input) (at 20.32 106.68 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PD_OUT_8" (shape input) (at 20.32 111.76 180) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (global_label "PHASE_CTRL_1" (shape output) (at 200.66 76.2 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_2" (shape output) (at 200.66 81.28 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_3" (shape output) (at 200.66 86.36 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_4" (shape output) (at 200.66 91.44 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_5" (shape output) (at 200.66 96.52 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_6" (shape output) (at 200.66 101.6 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_7" (shape output) (at 200.66 106.68 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "PHASE_CTRL_8" (shape output) (at 200.66 111.76 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (global_label "SPIKE_OUT_1" (shape output) (at 160 76.2 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_2" (shape output) (at 160 81.28 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_3" (shape output) (at 160 86.36 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_4" (shape output) (at 160 91.44 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_5" (shape output) (at 160 96.52 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_6" (shape output) (at 160 101.6 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_7" (shape output) (at 160 106.68 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+  (global_label "SPIKE_OUT_8" (shape output) (at 160 111.76 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+  (text "═════════════════════════════════════════════════════════════════════════════\n           PHOTONIC AI CHIP - CONTROL & READOUT ELECTRONICS\n                 8-Channel Transimpedance Amplifier Array\n═════════════════════════════════════════════════════════════════════════════\n\nARCHITECTURE:\n  PIC Outputs (8× photodiodes) → [TIA Array] → [Comparators] → USB\n\nKEY SPECIFICATIONS:\n  • Photodiode: Integrated Ge on silicon photonics chip\n    - Responsivity: 0.8 A/W @ 1550nm\n    - Capacitance: ~50 pF\n    - Dark current: ~1 µA\n\n  • TIA Configuration (per channel):\n    - Op-Amp: OPA2356 (1.4 GHz GBW)\n    - Feedback resistor: 10 MΩ (for pA-level currents)\n    - Feedback capacitor: 50 pF (compensation)\n    - Gain: Rf = 10 MΩ → 10 MV/A (10V per µA)\n    - Output range: 0 to +3.3V (single supply)\n\n  • Comparator: LM393 (dual supply: ±5V)\n    - Threshold voltage: Set by reference divider\n    - Output: Digital spike (TTL compatible)\n\n  • Phase Shifter Control:\n    - DAC: AD5684 12-bit (sets 0-3.3V for 8 channels)\n    - Driver: Op-amp buffer + MOSFET heater driver\n    - Thermo-optic phase shifter on PIC\n    - Power per shifter: ~50 mW\n\n  • USB Interface:\n    - FT2232H dual-channel USB-to-SPI/UART\n    - Control: Set DAC values, read spike data\n    - Data rate: Up to 480 Mbps (HS USB)\n\nLAYOUT NOTES:\n  ✓ Ground plane on layer 2 (critical for analog)\n  ✓ Separate AGND and DGND (star-point at USB)\n  ✓ TIA inputs shielded from digital noise\n  ✓ Phase shifter power supply clean (separate LDO if needed)\n  ✓ Thermal monitoring on each phase shifter (optional)\n\n═════════════════════════════════════════════════════════════════════════════\n" (at 50.8 150 0) (effects (font (size 1.27 1.27) (thickness 0.254))))
+
+)

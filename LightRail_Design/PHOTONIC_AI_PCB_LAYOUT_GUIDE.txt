@@ -1,0 +1,518 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║          PHOTONIC AI CHIP - PCB DESIGN & LAYOUT GUIDE                        ║
+║                                                                               ║
+║                     Silicon Photonics Control Board                          ║
+║                    100mm × 80mm, 4-layer, High-Density                       ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 1: BOARD OVERVIEW & REQUIREMENTS
+═════════════════════════════════════════════════════════════════════════════════
+
+BOARD SPECIFICATIONS:
+  ├─ Form Factor: 100mm × 80mm (compact, fits in standard enclosure)
+  ├─ Layers: 4-layer FR-4 (power, ground, signal, signal)
+  ├─ Copper: 1oz/1oz (35µm) - standard, cost-effective
+  ├─ Thickness: 1.6mm (standard PCB)
+  ├─ Finish: ENIG (Gold) or HASL (more cost-effective)
+  ├─ Solder Mask: Green (standard)
+  ├─ Min trace width: 0.2mm (8mil)
+  ├─ Min clearance: 0.15mm (6mil)
+  ├─ Via size: 0.3mm hole, 0.6mm pad
+  └─ Component density: High (250+ components, BGA)
+
+DESIGN PHASES:
+  Phase 1: Board outline & mounting holes
+  Phase 2: Component placement (grouped by function)
+  Phase 3: Power distribution (VCC 3.3V and GND)
+  Phase 4: Photodiode readout traces (TIA section)
+  Phase 5: Phase shifter control traces (DAC + drivers)
+  Phase 6: USB interface traces (SPI + UART)
+  Phase 7: Verification (DRC, thermal, EMI)
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 2: LAYER STACKUP (4-LAYER DESIGN)
+═════════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────┐
+│ LAYER 1 (F.Cu - Front Copper)                    35µm (1oz)     │
+│ ├─ Component pads (soldered side)                              │
+│ ├─ Signal traces (all routing)                                │
+│ ├─ Via connections to lower layers                            │
+│ └─ PIC connector pads (top-side interface)                    │
+├─────────────────────────────────────────────────────────────────┤
+│ LAYER 2 (GND - Ground Plane)                     35µm (1oz)     │
+│ ├─ Continuous copper sheet (no breaks!)                        │
+│ ├─ 2-3 vias per square cm for thermal via-stitching           │
+│ ├─ Via-stitch around high-speed signals (USB, comparator)     │
+│ ├─ Keep-out areas around BGA (FT2232H)                        │
+│ └─ Good thermal conductivity for heat dissipation             │
+├─────────────────────────────────────────────────────────────────┤
+│ LAYER 3 (PWR - Power Plane)                      35µm (1oz)     │
+│ ├─ Split into sections:                                       │
+│ │  ├─ 3.3V_ANALOG (TIA op-amps, comparators, DAC)            │
+│ │  ├─ 3.3V_DIGITAL (FT2232H, logic)                          │
+│ │  └─ 5V (USB input, regulated down to 3.3V)                 │
+│ ├─ Separate plane regions with 0.1mm minimum gap             │
+│ ├─ Multiple vias (2-4 per region) to supply pins              │
+│ └─ Critical for low-noise analog circuits                     │
+├─────────────────────────────────────────────────────────────────┤
+│ LAYER 4 (B.Cu - Back Copper)                     35µm (1oz)     │
+│ ├─ Return paths and ground vias                               │
+│ ├─ Secondary routing (if needed)                              │
+│ ├─ Silkscreen labels (component names, test points)           │
+│ └─ Component pads (soldered side)                             │
+└─────────────────────────────────────────────────────────────────┘
+
+WHY THIS STACKUP?
+  ✓ Layer 2 (solid GND) → Low impedance return paths
+  ✓ Layer 3 (split PWR) → Low supply impedance, noise isolation
+  ✓ Thin dielectric between layers → Tighter coupling, better EMI
+  ✓ Cost-effective (4-layer cheaper than 6-layer)
+  ✓ Sufficient for this design (no extreme high-speed signals)
+
+LAYER 3 SPLITS (Critical for analog performance):
+```
+        LAYER 3 (Power Plane - Split Design)
+  ┌─────────────────────────────────────────────┐
+  │                                             │
+  │   AGND      3.3V_ANALOG          DGND      │
+  │   ┌──────┐  ┌──────────┐  ┌──────┐        │
+  │   │ GND  │  │ +3.3V    │  │ GND  │        │
+  │   │Analog│  │Analog    │  │Digital        │
+  │   │Circuit   │Supplies │  │Return         │
+  │   │Return    │         │  │                │
+  │   │          │         │  │                │
+  │   │  TIA │   │  DAC    │  │  Comparators  │
+  │   │       │  │ Op-amps │  │  FT2232H      │
+  │   │  Comp    │         │  │               │
+  │   └──────┘   └──────────┘  └──────┘       │
+  │     ↑            ↑             ↑           │
+  │   Ground      3.3V Supply    Ground       │
+  │   Vias        Vias           Vias         │
+  │                                           │
+  │  0.1mm gap between sections               │
+  │  (to minimize noise coupling)             │
+  │                                           │
+  └─────────────────────────────────────────────┘
+```
+
+VIAS (Key routing elements):
+  • Through-hole vias: Copper-filled for reliability
+  • Via size: 0.3mm hole, 0.6mm pad diameter (standard)
+  • Via density: 2-3 per square cm (especially around IC pins)
+  • Thermal vias: Not needed (this is control board, not high-power)
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 3: COMPONENT PLACEMENT STRATEGY
+═════════════════════════════════════════════════════════════════════════════════
+
+BOARD LAYOUT (top-down view):
+
+```
+                    100mm (width)
+    ┌──────────────────────────────────────────┐ 80mm
+    │   USB-C Connector                        │(height)
+    │   (top edge - user-facing)               │
+    │                                          │
+    │  J1: USB-C (power + data)                │
+    │                                          │ 10mm
+    ├──────────────────────────────────────────┤
+    │                                          │
+    │  REGION A: USB Interface (Left)          │
+    │  ┌────────────────────┐                  │
+    │  │ FT2232H (U18)      │                  │
+    │  │ BGA100             │                  │
+    │  │ Decap (C53-C56)    │                  │
+    │  │ Pull-ups (R43-R46) │                  │
+    │  │                    │  20mm            │
+    │  └────────────────────┘                  │
+    │                                          │ 30mm
+    ├──────────────────────────────────────────┤
+    │  REGION B: Phase Shifter Control (Top)   │
+    │  ┌──────────────────────────────────────┐│
+    │  │ DAC (U13): AD5684 Quad DAC          ││
+    │  │ LQFP48                               ││
+    │  │ Bypass caps (C37-C44 × 2)           ││
+    │  │ Buffer op-amps (U14-U15)            ││
+    │  │ MOSFET drivers (Q1-Q8)              ││
+    │  │ Gate resistors (R27-R34)            ││
+    │  │ Gate caps (C45-C52)                 ││
+    │  └──────────────────────────────────────┘│
+    │    40mm                                  │
+    ├──────────────────────────────────────────┤
+    │                                          │
+    │  REGION C: Photodiode TIA (Center/Right) │
+    │  ┌──────────────────────────────────────┐│
+    │  │ 8× TIA Op-Amps (U1-U8)              ││
+    │  │ OPA2356 Dual (4 ICs)                 ││
+    │  │ Feedback Networks (R1-R8, C1-C8)    ││
+    │  │ Bypass caps (C9-C24)                ││
+    │  │ Output impedance R (R9-R16)         ││
+    │  │                                      ││
+    │  │ 8× Comparators (U9-U12)             ││
+    │  │ LM393 Dual (4 ICs)                  ││
+    │  │ Reference divider (R17-R18)         ││
+    │  │ Pull-up resistors (R19-R26)         ││
+    │  │ Bypass caps (C25-C36)               ││
+    │  └──────────────────────────────────────┘│
+    │  40mm × 50mm                             │
+    │                                          │
+    │  PIC CONNECTOR AREA (Right Edge)         │
+    │  ┌──────────┐                            │
+    │  │ J2: PIC  │  (8 PD inputs + GND +VCC) │
+    │  │          │  (Header or edge connector)
+    │  └──────────┘                            │
+    │   10mm                                   │
+    │                                          │
+    │  Power Supply (Bottom)                   │
+    │  ┌──────────────────────────────────────┐│
+    │  │ LDO (U19): MCP1703                  ││
+    │  │ Input filter L1, C58                 ││
+    │  │ Ferrite bead FB1                    ││
+    │  │ Bulk caps (C59-C66)                 ││
+    │  │                                      ││
+    │  │ Temperature Sensors (U16-U17, optional)
+    │  │                                      ││
+    │  │ Mounting holes (4×) at corners       ││
+    │  └──────────────────────────────────────┘│
+    │                                          │
+    │  BOTTOM EDGE (non-component side)        │
+    │  └──────────────────────────────────────┘ 10mm
+    │
+    └──────────────────────────────────────────┘
+```
+
+PLACEMENT RULES:
+
+1. POWER DISTRIBUTION (Critical)
+   ├─ Place decoupling caps as close as possible to IC power pins
+   ├─ No trace longer than 5mm between cap and pin (ideal: < 2mm)
+   ├─ For BGA FT2232H: place caps directly under/above pads
+   ├─ Use multiple small caps (100nF) rather than one large cap
+   └─ Star-point grounding: Single point where all grounds meet
+
+2. PHOTODIODE READOUT (TIA - Analog sensitive)
+   ├─ Cluster TIA op-amps (U1-U8) close to each other
+   ├─ Each TIA with its own feedback network immediately adjacent
+   ├─ Photodiode input pads at edge (towards PIC connector)
+   ├─ TIA output to comparator with short trace (< 2cm)
+   ├─ Ground plane underneath for shielding
+   ├─ Keep away from digital switching (USB clock, SPI lines)
+   └─ Separate AGND plane if possible (star-point to DGND)
+
+3. COMPARATOR STAGE (Digital threshold detection)
+   ├─ Place comparators (U9-U12) adjacent to TIA outputs
+   ├─ Reference voltage divider (R17-R18) near comparators
+   ├─ Pull-up resistors (R19-R26) distributed near comparator outputs
+   ├─ Output (spike) lines routed to FT2232H via SPI channel B
+   └─ Keep comparator outputs away from analog inputs (< 10cm separation)
+
+4. PHASE SHIFTER CONTROL (DAC + drivers)
+   ├─ DAC (U13) centrally located for easy routing
+   ├─ 4× buffer op-amps (U14-U15) immediately after DAC outputs
+   ├─ 8× MOSFET drivers (Q1-Q8) in groups of 2
+   ├─ Heater current-sense resistors (R35-R42) in series with drivers
+   ├─ Phase shifter power supply completely isolated from analog supply
+   ├─ Heater leads shielded (routed as twisted pair if possible)
+   └─ Temperature sensors (U16-U17) placed for good thermal contact
+
+5. USB INTERFACE (FT2232H)
+   ├─ Center of board or dedicated corner
+   ├─ USB connector (J1) on board edge for user access
+   ├─ Differential pairs (D+/D-) matched length ± 5mm
+   ├─ Keep USB traces away from analog TIA section
+   ├─ Via-stitching around differential pair for shielding
+   ├─ Termination resistors (R43-R46) very close to FT2232H pins
+   └─ SPI routing (SCLK, MOSI, CS) with controlled impedance
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 4: CRITICAL TRACE ROUTING
+═════════════════════════════════════════════════════════════════════════════════
+
+TIA INPUT TRACES (Most sensitive):
+──────────────────────────────────
+Path: PIC connector J2 → TIA op-amp inputs (U1-U8)
+
+Design rules:
+  ├─ Trace width: 0.3mm (12mil) - wider for better impedance control
+  ├─ Length: Keep as short as possible (< 5mm)
+  ├─ Routing: Straight lines, no sharp corners (45° bends only)
+  ├─ Layer: Front layer (F.Cu) only if possible
+  ├─ Shielding: Ground plane underneath (Layer 2)
+  ├─ Avoid crossing: Other signal traces, power traces, clock lines
+  ├─ Via placement: Minimize vias (reduces parasitic inductance)
+  └─ Impedance: Not critical for DC photodiode current, but good practice
+
+Physical implementation:
+```
+PIC Photodiode Output
+        ↓ (short lead, maybe 1cm fiber-to-pad)
+    [C input bypass: 100nF, 0603]
+        ↓ (0.3mm trace, < 2mm long)
+    [TIA Op-Amp - input pad]
+    OPA2356 pin 2 or 3 (inv/non-inv)
+```
+
+TIA FEEDBACK NETWORK (Very sensitive):
+────────────────────────────────────
+Path: TIA inverting input → Feedback resistor Rf → TIA output
+
+Design rules:
+  ├─ Rf and Cf must be on SAME side of PCB as op-amp (no vias!)
+  ├─ Distance Rf to op-amp: < 2mm (absolutely critical!)
+  ├─ PCB trace length on feedback resistor leads: < 5mm
+  ├─ Ground plane must be solid underneath (no breaks)
+  ├─ No digital signals or power planes near feedback network
+  ├─ The very short 10 MΩ resistor trace path prevents oscillation
+  └─ Example: 0603 resistor can be placed right at IC pin
+
+Worst-case scenario (AVOID):
+```
+TIA pin 2 (inv in) ──[1cm trace]──┬──[Rf 10MΩ]──[0.2cm trace]──┬── Vout
+                                   └─────[Cf 50pF]─────────────┘
+Result: Severe oscillation, unstable gain
+```
+
+Best-case scenario (GOOD):
+```
+          ╭────[Rf 10MΩ]─╮
+TIA pin ──┤              ├── Vout
+          ╰──[Cf 50pF]───╯
+(Resistor mounted directly at IC, < 1mm leads)
+Result: Stable, 160 MHz bandwidth, clean output
+```
+
+COMPARATOR OUTPUT ROUTING:
+──────────────────────────
+Path: Comparator output (open-drain) → FT2232H UART input
+
+Design rules:
+  ├─ Output is open-collector, needs 10kΩ pull-up to 3.3V
+  ├─ Trace width: 0.2mm (standard)
+  ├─ Pull-up resistor placement: Near comparator output pad (< 1cm)
+  ├─ Pull-up capacitor (optional): 10nF for filtering
+  ├─ Route to FT2232H: Twisted pair with GND for shielding
+  ├─ Length: Keep under 3cm if possible (reduce capacitive load)
+  └─ Termination: FT2232H has internal pull-ups, additional pull-ups optional
+
+USB DIFFERENTIAL PAIR (D+/D-):
+──────────────────────────────
+Path: USB connector J1 → FT2232H data pins
+
+Design rules:
+  ├─ CRITICAL: Differential impedance 90Ω ±10%
+  ├─ Trace width: 0.25mm (10mil)
+  ├─ Spacing between D+ and D-: 0.25mm (maintain constant)
+  ├─ Length matching: ±5mm (less critical at FS 12Mbps, more at HS 480Mbps)
+  ├─ Layer: F.Cu for entire route (no layer changes if possible)
+  ├─ Via stitching around pair: 2-3 vias every 2cm for shielding
+  ├─ Series resistors: 27Ω on each line (part of USB spec)
+  └─ Ground return: Closest ground plane (Layer 2) immediately below
+
+DAC SPI TRACES:
+───────────────
+Path: FT2232H SPI → AD5684 DAC (SCLK, MOSI, LDAC, CS)
+
+Design rules:
+  ├─ These are digital logic, not critical for timing (10MHz SPI)
+  ├─ Trace width: 0.2mm (standard)
+  ├─ Line routing: Keep SCLK, MOSI, LDAC, CS together (< 5cm bundle)
+  ├─ Via stitching: Optional but good practice
+  ├─ Keep away from: TIA analog inputs, photodiode signals
+  └─ GND return trace: Parallel to SCLK (lowest impedance return)
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 5: THERMAL & POWER DISTRIBUTION
+═════════════════════════════════════════════════════════════════════════════════
+
+POWER BUDGET:
+  USB 5V input (from laptop/charger)
+     ↓
+  LDO MCP1703 (efficiency: 80-90%)
+     ↓
+  3.3V output (500mA max)
+     ├─ TIA circuits (8× op-amps): ~150 mA (@ 5mA/IC)
+     ├─ Comparators (8× total): ~40 mA (@ 5mA/IC)
+     ├─ DAC (AD5684): ~20 mA
+     ├─ FT2232H: ~50 mA
+     ├─ Op-amp buffers: ~20 mA
+     ├─ MOSFET drivers (heater load): ~100 mA (variable, 50% average)
+     └─ Reserve: ~20 mA
+     ────────────
+     Total: ~400 mA (comfortably under 500mA limit)
+
+PHASE SHIFTER POWER (Most power-hungry):
+  8× Thermo-optic phase shifters @ 50mW each = 400 mW total
+  This is sourced separately from the 3.3V rail (critical!)
+  Solution: Dedicated regulator or direct USB 5V (with current limiting)
+
+THERMAL DISSIPATION:
+  Total power dissipation:
+    3.3V rail loss: (0.4A × 3.3V) × 0.10 = 130 mW (LDO inefficiency)
+    Phase shifters: 400 mW (separate rail, may use direct 5V)
+    ────────────────
+    Total: ~530 mW
+
+  Heat dissipation strategy:
+    ├─ Large copper areas for spreading
+    ├─ MCP1703 LDO: Mount on large GND plane for sinking
+    ├─ Phase shifter heater supply: Design for 500mW pulsed operation
+    └─ No active cooling needed (passive sufficient for MVP)
+
+POWER PLANE VIA PLACEMENT:
+  For each IC power pin:
+    ├─ Minimum 2 vias to power plane (redundancy)
+    ├─ Spacing: 2-3 vias per power pin group
+    ├─ Via diameter: 0.3mm hole (0.6mm pad)
+    ├─ Minimize trace resistance: Multiple vias = lower impedance
+    └─ Example: For OPA2356 with VCC, GND pins
+       └─ 2 vias to 3.3V plane, 2 vias to GND plane
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 6: DESIGN RULE CHECK (DRC) VERIFICATION
+═════════════════════════════════════════════════════════════════════════════════
+
+After completing your layout, run DRC with these rules:
+
+KiCAD DRC Settings (File → Board Setup → Design Rules):
+
+Copper Rules:
+  ✓ Trace width minimum: 0.2mm (critical for manufacturing)
+  ✓ Clearance (trace-to-trace): 0.15mm
+  ✓ Clearance (trace-to-pad): 0.1mm
+  ✓ Hole size minimum: 0.3mm (via hole)
+  ✓ Ring width minimum: 0.15mm (annular ring)
+
+Via Rules:
+  ✓ Via diameter: 0.6mm pad / 0.3mm hole
+  ✓ Via spacing: 0.3mm minimum
+  ✓ Via to trace clearance: 0.15mm
+
+Layer Rules:
+  ✓ Silk clearance from pads: 0.2mm
+  ✓ Copper-to-edge: 0.3mm (keep away from PCB edge)
+  ✓ Via via spacing: 0.2mm
+
+Mask Rules:
+  ✓ Solder mask bridge: 0.1mm minimum (between adjacent pads)
+
+Common DRC Errors & Fixes:
+
+[✗] "Copper-to-copper short"
+    → Two nets touching unexpectedly
+    → Fix: Check layer stack, reroute trace, add clearance
+
+[✗] "Via under pad"
+    → Via placed where component pad is
+    → Fix: Move via away from pad center
+
+[✗] "Trace too narrow"
+    → Trace < 0.2mm width
+    → Fix: Use wider trace or reroute elsewhere
+
+[✗] "Pad clearance violation"
+    → Trace too close to pad edge
+    → Fix: Maintain 0.15mm minimum clearance
+
+[✗] "Unconnected net"
+    → A net label exists but is never routed
+    → Fix: Check all net labels are connected with traces
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 7: MANUFACTURING FILE GENERATION
+═════════════════════════════════════════════════════════════════════════════════
+
+Once layout is complete and DRC passed:
+
+1. GENERATE GERBER FILES (PCB fab)
+   KiCAD: PCB Editor → File → Plot
+   
+   Settings:
+     ✓ Plot format: Gerber
+     ✓ Included layers:
+       ☑ F.Cu (front copper)
+       ☑ B.Cu (back copper)
+       ☑ F.Mask (front solder mask)
+       ☑ B.Mask (back solder mask)
+       ☑ F.SilkS (front silkscreen)
+       ☑ B.SilkS (back silkscreen - optional)
+       ☑ Edge.Cuts (board outline)
+   
+   Output files:
+     • PhotonicAI_Chip-F_Cu.gbr (front copper)
+     • PhotonicAI_Chip-B_Cu.gbr (back copper)
+     • PhotonicAI_Chip-F_Mask.gbr (front mask)
+     • PhotonicAI_Chip-B_Mask.gbr (back mask)
+     • PhotonicAI_Chip-F_SilkS.gbr (front silkscreen)
+     • PhotonicAI_Chip-Edge_Cuts.gbr (outline)
+     • PhotonicAI_Chip.gbl (gerber job file)
+
+2. GENERATE DRILL FILE (Via drilling)
+   KiCAD: PCB Editor → File → Fabrication Outputs → Drill Files
+   
+   Output: PhotonicAI_Chip.drl (Excellon format)
+   Contains: Coordinates and sizes of all holes/vias
+
+3. GENERATE BOM (Component list)
+   KiCAD: Schematic → Tools → Generate BOM
+   
+   Columns to include:
+     ✓ Reference (U1, C1, R1, etc.)
+     ✓ Value (100µF, 0603, etc.)
+     ✓ Footprint (SOT23, LQFP48, etc.)
+     ✓ Datasheet (PDF link)
+     ✓ Quantity (for ordering)
+   
+   Output: PhotonicAI_Chip_BOM.csv
+
+4. GENERATE PICK & PLACE FILE (Assembly)
+   KiCAD: PCB Editor → File → Fabrication Outputs → Footprint Position
+   
+   Output: PhotonicAI_Chip-positions.csv
+   Format: Reference, Value, X, Y, Rotation, Side
+
+5. PACKAGE FILES FOR MANUFACTURER
+   Create ZIP file:
+     PhotonicAI_Chip_Manufacturing.zip
+     ├── Gerber/
+     │   ├── *.gbr files
+     │   └── *.gbl job file
+     ├── Drill/
+     │   └── *.drl
+     ├── BOM/
+     │   └── PhotonicAI_Chip_BOM.csv
+     ├── PickPlace/
+     │   └── PhotonicAI_Chip-positions.csv
+     └── README.txt
+
+═════════════════════════════════════════════════════════════════════════════════
+SECTION 8: MANUFACTURING & ASSEMBLY NOTES
+═════════════════════════════════════════════════════════════════════════════════
+
+FOR PCB FABRICATOR:
+  • Copper weight: 1oz/1oz (35µm) - standard
+  • Solder mask: Green, standard
+  • Silkscreen: White, standard
+  • Surface finish: ENIG (preferred) or HASL
+  • Lead-free: Yes (RoHS compliant)
+  • Panelization: Single board (or panelized as needed)
+  • Test: Electrical continuity test (net checking)
+
+FOR ASSEMBLY PARTNER:
+  • Method: SMD reflow (most components are 0603, SOIC, LQFP, BGA)
+  • Solder paste: Lead-free SAC305
+  • Reflow profile: IPC-A-610 compliant
+  • Manual placement: FT2232H BGA (100-pin) - requires skilled technician
+  • Cleaning: No-clean flux residue acceptable
+  • Testing: Power-on test required (verify 3.3V rail)
+
+COST ESTIMATE (Single unit, assembled):
+  • PCB fabrication: $50-150 (depends on volume)
+  • SMD assembly: $100-200 (labor + equipment)
+  • Component cost: $50-80 (COTS parts from Digikey)
+  • FT2232H BGA placement: $50-100 (manual labor)
+  ─────────────────────────
+  Total: $250-530 per unit
+
+═════════════════════════════════════════════════════════════════════════════════

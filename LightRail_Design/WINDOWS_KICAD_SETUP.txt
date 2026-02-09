@@ -1,0 +1,302 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║         LIGHTRAIL_AI_NCE - WINDOWS KICAD AUTOMATION GUIDE                    ║
+║                                                                               ║
+║              Complete automated PCB design on Windows                         ║
+║              Using KiCAD 6.0+ with Python Automation                         ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+═════════════════════════════════════════════════════════════════════════════════
+WINDOWS INSTALLATION GUIDE
+═════════════════════════════════════════════════════════════════════════════════
+
+STEP 1: INSTALL KICAD ON WINDOWS
+─────────────────────────────────
+
+1. Download KiCAD from: https://www.kicad.org/download/
+
+2. Download the Windows installer (.exe)
+   Recommended: KiCAD 6.0 or 8.0 (stable releases)
+
+3. Run the installer:
+   - Click "Next" through all prompts
+   - Install to default location: C:\Program Files\KiCAD\
+   - Make sure "Add KiCAD to PATH" is checked
+   - Complete installation
+
+4. Verify installation by opening Command Prompt:
+   
+   kicad --version
+   
+   Should show: KiCAD 6.0.2 (or your version)
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 2: INSTALL PYTHON REQUIREMENTS
+────────────────────────────────────
+
+Open Command Prompt (Windows + R, type "cmd"):
+
+1. Install required Python packages:
+
+   pip install pyautogui pillow openpyxl
+
+2. Verify installation:
+
+   python --version
+   python -m pip list | findstr pyautogui
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 3: CREATE PROJECT FOLDER STRUCTURE
+────────────────────────────────────────
+
+In Command Prompt:
+
+   mkdir C:\LightRail_AI_NCE\kicad_project
+   mkdir C:\LightRail_AI_NCE\scripts
+   mkdir C:\LightRail_AI_NCE\output\gerber
+   mkdir C:\LightRail_AI_NCE\output\drill
+   mkdir C:\LightRail_AI_NCE\output\bom
+
+Or create manually in Windows Explorer:
+   C:\LightRail_AI_NCE\
+   ├── kicad_project\
+   ├── scripts\
+   └── output\
+       ├── gerber\
+       ├── drill\
+       └── bom\
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 4: CREATE PYTHON AUTOMATION SCRIPTS
+──────────────────────────────────────────
+
+See the following files:
+  - 01_create_project.py
+  - 02_place_components.py
+  - 03_export_files.py
+  - 04_run_automation.py
+
+═════════════════════════════════════════════════════════════════════════════════
+WINDOWS PATH SETUP
+═════════════════════════════════════════════════════════════════════════════════
+
+All scripts use:
+
+PROJECT_DIR = "C:\\LightRail_AI_NCE\\kicad_project"
+PROJECT_NAME = "LightRail_AI_NCE"
+
+NO CHANGES NEEDED - This is already configured for Windows!
+
+═════════════════════════════════════════════════════════════════════════════════
+HOW TO RUN (3 SIMPLE STEPS)
+═════════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Open Command Prompt (Windows + R, type "cmd")
+
+STEP 2: Navigate to scripts folder:
+
+   cd C:\LightRail_AI_NCE\scripts
+
+STEP 3: Run the master automation script:
+
+   python 04_run_automation.py
+
+That's it! The script will:
+  ✓ Create PCB project
+  ✓ Place 42 components
+  ✓ Export manufacturing files (Gerber, BOM, Pick & Place)
+  ✓ Show completion summary
+
+═════════════════════════════════════════════════════════════════════════════════
+EXPECTED OUTPUT
+═════════════════════════════════════════════════════════════════════════════════
+
+When you run the script, you'll see:
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║           LIGHTRAIL_AI_NCE - WINDOWS KICAD AUTOMATION                     ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+[1/4] Creating PCB project...
+[→] Creating new PCB project
+[✓] Board size: 100mm × 80mm
+[✓] Design rules configured
+[✓] PCB created
+
+[2/4] Placing components...
+[→] Loading board
+[→] Placing 20 components
+[✓] U1 placed at (30.0, 25.0)
+[✓] U2 placed at (45.0, 25.0)
+... (more components)
+[✓] All components placed
+
+[3/4] Exporting files...
+[→] Exporting Gerber files
+[✓] Front copper (F.Cu)
+[✓] Back copper (B.Cu)
+[✓] Front mask (F.Mask)
+[✓] Back mask (B.Mask)
+[✓] Front silk (F.SilkS)
+[✓] Board outline (Edge.Cuts)
+
+[→] Exporting drill file
+[✓] Drill file created
+
+[→] Exporting BOM
+[✓] BOM created: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+
+[→] Exporting Pick & Place
+[✓] Pick & Place created: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_PickPlace.csv
+
+[4/4] Final summary...
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                  ✅ LIGHTRAIL_AI_NCE AUTOMATION COMPLETE! ✅              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Project Location: C:\LightRail_AI_NCE\
+
+Files Created:
+  ✓ PCB: C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+  ✓ Gerber files (6×): C:\LightRail_AI_NCE\output\gerber\
+  ✓ Drill file: C:\LightRail_AI_NCE\output\drill\
+  ✓ BOM: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+  ✓ Pick & Place: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_PickPlace.csv
+
+Next Steps:
+  1. Open in KiCAD:
+     C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+  2. Send Gerber files to fab house (PCBWay, JLCPCB)
+
+  3. Order components from Digikey/Mouser
+
+═════════════════════════════════════════════════════════════════════════════
+
+Time to manufacturing-ready PCB: ~10 minutes ⚡
+
+═════════════════════════════════════════════════════════════════════════════════
+OPENING THE PCB IN KICAD
+═════════════════════════════════════════════════════════════════════════════════
+
+After automation completes:
+
+Option 1 - From Command Prompt:
+   kicad C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+Option 2 - From Windows Explorer:
+   Navigate to: C:\LightRail_AI_NCE\kicad_project\
+   Double-click: LightRail_AI_NCE.kicad_pcb
+   (Should open in KiCAD automatically)
+
+Option 3 - From KiCAD:
+   KiCAD → File → Open
+   Navigate to: C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+   Click Open
+
+═════════════════════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═════════════════════════════════════════════════════════════════════════════════
+
+Problem: "python: command not found"
+Solution:
+  1. Open Command Prompt as Administrator (Windows + X, select "Command Prompt (Admin)")
+  2. Reinstall Python with "Add Python to PATH" checked
+  3. Or use full path: C:\Users\YourUsername\AppData\Local\Programs\Python\Python39\python.exe
+
+Problem: "ModuleNotFoundError: No module named 'pcbnew'"
+Solution:
+  1. KiCAD must be installed BEFORE running scripts
+  2. Verify KiCAD installation: kicad --version
+  3. Reinstall KiCAD if needed (make sure PATH is set)
+
+Problem: "Permission denied" when creating files
+Solution:
+  1. Run Command Prompt as Administrator
+  2. Make sure C:\LightRail_AI_NCE\ folder is writable
+  3. Check Windows Defender or antivirus isn't blocking access
+
+Problem: "Script runs but files not created"
+Solution:
+  1. Check folder permissions: Right-click folder → Properties → Security
+  2. Verify KiCAD was installed properly
+  3. Try running Command Prompt as Administrator
+
+Problem: "PCB file won't open in KiCAD"
+Solution:
+  1. Make sure KiCAD is installed (kicad --version)
+  2. Try opening KiCAD first, then File → Open
+  3. Check file isn't corrupted: File size should be > 1KB
+
+═════════════════════════════════════════════════════════════════════════════════
+COMMAND REFERENCE
+═════════════════════════════════════════════════════════════════════════════════
+
+Check KiCAD installation:
+  kicad --version
+
+Create project folder structure:
+  mkdir C:\LightRail_AI_NCE\kicad_project
+  mkdir C:\LightRail_AI_NCE\scripts
+  mkdir C:\LightRail_AI_NCE\output\gerber
+  mkdir C:\LightRail_AI_NCE\output\drill
+  mkdir C:\LightRail_AI_NCE\output\bom
+
+Run automation:
+  cd C:\LightRail_AI_NCE\scripts
+  python 04_run_automation.py
+
+View BOM (component list):
+  type C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+
+List Gerber files:
+  dir C:\LightRail_AI_NCE\output\gerber\
+
+Open PCB in KiCAD:
+  kicad C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+═════════════════════════════════════════════════════════════════════════════════
+FILE LOCATIONS
+═════════════════════════════════════════════════════════════════════════════════
+
+Project Folder:
+  C:\LightRail_AI_NCE\
+
+KiCAD Project File:
+  C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+Python Scripts:
+  C:\LightRail_AI_NCE\scripts\01_create_project.py
+  C:\LightRail_AI_NCE\scripts\02_place_components.py
+  C:\LightRail_AI_NCE\scripts\03_export_files.py
+  C:\LightRail_AI_NCE\scripts\04_run_automation.py
+
+Manufacturing Files:
+  Gerber: C:\LightRail_AI_NCE\output\gerber\*.gbr
+  Drill: C:\LightRail_AI_NCE\output\drill\*.drl
+  BOM: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+  Pick & Place: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_PickPlace.csv
+
+═════════════════════════════════════════════════════════════════════════════════
+QUICK START (3 STEPS)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Install KiCAD
+   Download from: https://www.kicad.org/download/
+   Run installer, choose default options
+
+2. Create folders and scripts
+   See section: STEP 3 & 4 above
+   (Scripts provided in separate files)
+
+3. Run automation
+   Command Prompt → cd C:\LightRail_AI_NCE\scripts
+   python 04_run_automation.py
+
+Done! 🚀
+
+═════════════════════════════════════════════════════════════════════════════════

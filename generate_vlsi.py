@@ -100,34 +100,90 @@ class VLSILayoutGenerator:
         return filename
 
     def generate_photonic_layer(self):
-        """Generates Silicon Photonic Waveguides and Ring Resonators"""
+        """Generates Silicon Photonic Waveguides and Ring Resonators (Layer 1 & 2)"""
         filename = os.path.join(self.output_dir, "vlsi_photonics.gbr")
         with open(filename, 'w') as f:
-            self._header(f, "VLSI Layer: Photonic Waveguides & Rings")
-            f.write("%ADD12C,0.002*%\n") # Thin circle for waveguides
+            self._header(f, "VLSI Layer: Physical Fabric & WDM Plane (TFLN/SiPh)")
+            f.write("%ADD12C,0.002*%\n")
             f.write("D12*\n")
             
-            # Bus waveguides
+            # TFLN Modulators and bus waveguides
             for i in range(4):
                 y = 0.6 + i * 0.05
                 f.write(f"X{int(0.1*self.scale_factor)}Y{int(y*self.scale_factor)}D02*\n")
                 f.write(f"X{int(0.9*self.scale_factor)}Y{int(y*self.scale_factor)}D01*\n")
                 
-                # Ring Resonators coupled to bus
+                # Ring Resonators for WDM
                 for j in range(8):
                     x_center = 0.2 + j * 0.08
                     radius = 0.015
-                    # Draw approximate circle (octagon)
                     pts = []
                     for k in range(9):
                          angle = k * (2*math.pi/8)
                          px = x_center + radius * math.cos(angle)
-                         py = y + radius + 0.005 + radius * math.sin(angle) # Offset from bus
+                         py = y + radius + 0.005 + radius * math.sin(angle)
                          pts.append((px, py))
                     
                     f.write(f"X{int(pts[0][0]*self.scale_factor)}Y{int(pts[0][1]*self.scale_factor)}D02*\n")
                     for pt in pts[1:]:
                         f.write(f"X{int(pt[0]*self.scale_factor)}Y{int(pt[1]*self.scale_factor)}D01*\n")
+
+            self._footer(f)
+        return filename
+
+    def generate_analog_wave_compute(self):
+        """Generates Analog Wave Compute Layer (Layer 3)"""
+        filename = os.path.join(self.output_dir, "vlsi_analog_wave.gbr")
+        with open(filename, 'w') as f:
+            self._header(f, "VLSI Layer: Analog Wave Compute (Maxwell Interferometry)")
+            f.write("%ADD14C,0.001*%\n")
+            f.write("D14*\n")
+            
+            # Interference pattern representation
+            for i in range(20):
+                x = 0.1 + i * 0.04
+                for j in range(50):
+                    y = 0.4 + 0.05 * math.sin(i*0.5 + j*0.2)
+                    f.write(f"X{int(x*self.scale_factor)}Y{int((0.5+y)*self.scale_factor)}D02*\n")
+                    f.write(f"X{int((x+0.01)*self.scale_factor)}Y{int((0.5+y+0.01)*self.scale_factor)}D01*\n")
+            
+            self._footer(f)
+        return filename
+
+    def generate_memristive_grid(self):
+        """Generates Memristive Synaptic Grid (Layer 4)"""
+        filename = os.path.join(self.output_dir, "vlsi_memristive_grid.gbr")
+        with open(filename, 'w') as f:
+            self._header(f, "VLSI Layer: Memristive Synaptic Grid (Compute-in-Memory)")
+            f.write("%ADD15R,0.005X0.005*%\n")
+            f.write("D15*\n")
+            
+            # High-density crossbar array
+            for i in range(32):
+                for j in range(32):
+                    x = 0.3 + i * 0.015
+                    y = 0.3 + j * 0.015
+                    f.write(f"X{int(x*self.scale_factor)}Y{int(y*self.scale_factor)}D03*\n") # Flash
+                    
+            self._footer(f)
+        return filename
+
+    def generate_ternary_logic(self):
+        """Generates Ternary Logic Encoder (Layer 6)"""
+        filename = os.path.join(self.output_dir, "vlsi_ternary_logic.gbr")
+        with open(filename, 'w') as f:
+            self._header(f, "VLSI Layer: Ternary Logic Encoder (Trits)")
+            f.write("%ADD16C,0.003*%\n")
+            f.write("D16*\n")
+            
+            # Ternary gates
+            for i in range(10):
+                x = 0.1 + i * 0.08
+                self._rect(f, x, 0.7, 0.04, 0.04)
+                # Three states indicator
+                f.write(f"X{int((x+0.01)*self.scale_factor)}Y{int(0.72*self.scale_factor)}D16*\n")
+                f.write(f"X{int((x+0.02)*self.scale_factor)}Y{int(0.72*self.scale_factor)}D16*\n")
+                f.write(f"X{int((x+0.03)*self.scale_factor)}Y{int(0.72*self.scale_factor)}D16*\n")
 
             self._footer(f)
         return filename
@@ -156,13 +212,16 @@ class VLSILayoutGenerator:
         return filename
 
     def run(self):
-        print("Generating Optimized VLSI Layouts...")
+        print("Generating Optimized 15-Layer VLSI Layouts...")
         files = []
         files.append(self.generate_fpga_logic())
         files.append(self.generate_pcie_phy())
-        files.append(self.generate_photonic_layer())
+        files.append(self.generate_photonic_layer())           # Layers 1-2
+        files.append(self.generate_analog_wave_compute())     # Layer 3
+        files.append(self.generate_memristive_grid())         # Layer 4
+        files.append(self.generate_ternary_logic())           # Layer 6
         files.append(self.generate_interconnects())
-        print(f"Generated {len(files)} VLSI layout files.")
+        print(f"Generated {len(files)} VLSI layout files for 15-Layer Stack.")
         return files
 
 if __name__ == "__main__":

@@ -1,0 +1,243 @@
+* ═══════════════════════════════════════════════════════════════════════════════
+* PHOTONIC AI CHIP - TRANSIMPEDANCE AMPLIFIER SPICE SIMULATION
+* ═══════════════════════════════════════════════════════════════════════════════
+*
+* Circuit: Single-channel TIA (Transimpedance Amplifier)
+* Purpose: Validate circuit performance before PCB layout
+* Simulation: NGSPICE or LTspice compatible
+*
+* Instructions for EDA Playground (www.edaplayground.com):
+* 1. Go to: https://www.edaplayground.com
+* 2. New project → NGSPICE
+* 3. Copy this entire file into the editor
+* 4. Click "Run" to simulate
+* 5. Check waveforms in the "Simulation" tab
+*
+* ═══════════════════════════════════════════════════════════════════════════════
+
+.title Photonic AI Chip - Transimpedance Amplifier Circuit
+
+* ═════════════════════════════════════════════════════════════════════════════
+* CIRCUIT DESCRIPTION
+* ═════════════════════════════════════════════════════════════════════════════
+*
+* INPUT: Photodiode current source (Ge photodiode on PIC)
+*   - Current range: 100 nA to 100 µA (depending on optical power)
+*   - Capacitance: 50 pF (parallel)
+*   - Dark current: 1 µA
+*
+* TIA CONFIGURATION:
+*   - Op-Amp: OPA2356 (modeled as ideal voltage-controlled voltage source)
+*   - Feedback resistor: 10 MΩ (transimpedance gain = 10 MV/A)
+*   - Feedback capacitor: 50 pF (stability compensation)
+*   - Open-loop gain: 100 dB
+*   - GBW: 1.4 GHz
+*
+* OUTPUT: 0 to 3.3V single supply
+*   - Swing: 0V (darkness) to 3.3V (bright light)
+*   - Bandwidth: ~160 MHz (-3dB)
+*   - Noise: ~4 pA/√Hz (dominated by op-amp input current noise)
+*
+* ═════════════════════════════════════════════════════════════════════════════
+
+* ═════════════════════════════════════════════════════════════════════════════
+* POWER SUPPLIES
+* ═════════════════════════════════════════════════════════════════════════════
+
+VCC 1 0 DC 3.3V         * Single supply: +3.3V
+VEE 2 0 DC 0V           * Ground reference
+
+* ═════════════════════════════════════════════════════════════════════════════
+* INPUT SOURCE: Photodiode current
+* ═════════════════════════════════════════════════════════════════════════════
+
+* Pulse of optical power (1 ns rise time, simulating optical pulse)
+* Current source: 1 µA per 100 mW of optical power (example: 1% efficiency)
+* Pulse: 0 to 10 µA in 1 ns, hold for 10 ns
+
+IPD 3 0 PULSE(1u 10u 0ns 1ns 1ns 10ns 100ns)
+*   Start, Stop, Delay, Rise, Fall, Width, Period
+
+* Photodiode parasitic capacitance (parallel to current source)
+CPD 3 0 50p
+
+* ═════════════════════════════════════════════════════════════════════════════
+* TIA CIRCUIT: OPA2356 Transimpedance Amplifier
+* ═════════════════════════════════════════════════════════════════════════════
+
+* Node assignment:
+*   3 = Non-inverting input (from photodiode)
+*   4 = Inverting input (feedback node)
+*   5 = Op-amp output (internal)
+*   6 = Final output (after compensation network)
+*   1 = VCC (+3.3V)
+*   2 = GND (0V)
+
+* Feedback network (determines transimpedance):
+*   Rf = 10 MΩ → Gain = 10 V/µA = 10 MV/A
+*   Cf = 50 pF → Compensation for stability
+
+RF 4 6 10MEG          * Feedback resistor: 10 MΩ
+CF 4 6 50p            * Feedback capacitor: 50 pF
+
+* Op-Amp Model (Ideal model - approximates OPA2356)
+* Voltage-controlled voltage source with frequency response
+* Open-loop gain: 100 dB (100,000 V/V)
+* GBW: 1.4 GHz → cutoff at 1.4G / 100k = 14 kHz (closed-loop bandwidth ≈ GBW/Gain)
+
+* Simple model using VCVS + frequency-dependent impedance
+EAMP 5 2 3 4 100000    * VCVS: Gain = 100,000 (100 dB)
+                       * Input diff: (3) - (4)
+                       * Output: (5) to (2)
+
+* Frequency compensation (1.4 GHz GBW)
+* Dominant pole at ~14 kHz (closed-loop)
+ROUT 5 6 1k            * Output impedance (high-freq damping)
+COUT 6 2 100p          * Output capacitance
+
+* Input bias current (OPA2356: Ib ≈ 1 pA)
+IB 3 2 DC 1p           * 1 pA bias current
+
+* ═════════════════════════════════════════════════════════════════════════════
+* COMPARATOR INPUT STAGE (Next stage - optional verification)
+* ═════════════════════════════════════════════════════════════════════════════
+
+* Reference voltage: 1.65V (mid-rail, created by resistor divider)
+VREF 10 0 DC 1.65V
+
+* Comparator input impedance (high impedance, negligible load)
+RIN 6 0 100k
+
+* ═════════════════════════════════════════════════════════════════════════════
+* SIMULATION COMMANDS
+* ═════════════════════════════════════════════════════════════════════════════
+
+* Transient simulation: 0 to 1 µs with 1 ns time steps
+.tran 0 1u 0 1n
+
+* .control section (for ngspice)
+.control
+run
+
+* Print key measurements
+echo "TIA Performance Summary"
+echo "======================"
+echo "Input current pulse: 1 µA to 10 µA step"
+echo "Expected output:"
+echo "  - DC gain: 10 MΩ → 10 mV per µA"
+echo "  - Step 1 µA → 10 mV output"
+echo "  - Step 10 µA → 100 mV output"
+echo ""
+echo "Transient analysis plots:"
+echo "  1. Input current (IPD voltage across 50Ω dummy resistor)"
+echo "  2. TIA output voltage (V6)"
+echo "  3. Phase margin / stability check"
+echo ""
+
+* Calculate phase margin (advanced - requires Bode plot)
+* Recommended: Plot V(6) and observe overshoot
+*   - Good TIA: <10% overshoot
+*   - Unstable TIA: oscillation or ringing > 20%
+
+.endc
+
+* ═════════════════════════════════════════════════════════════════════════════
+* PLOTTING INSTRUCTIONS (EDA Playground)
+* ═════════════════════════════════════════════════════════════════════════════
+*
+* After simulation completes:
+*
+* 1. Plot Input Current:
+*    - Type: V(3) (node at photodiode input)
+*    - Shows: Photodiode current pulse
+*
+* 2. Plot TIA Output:
+*    - Type: V(6) (TIA output node)
+*    - Expected: 0 to 100 mV step with possible ringing
+*    - Good design: Rise time < 5 ns, overshoot < 10%
+*
+* 3. Phase & Magnitude (Bode Plot - if EDA supports):
+*    - Sweep frequency from 1 MHz to 1 GHz
+*    - Look for: -3dB point (bandwidth)
+*    - Expected: ~160 MHz for this configuration
+*
+* ═════════════════════════════════════════════════════════════════════════════
+* EXPECTED SIMULATION RESULTS
+* ═════════════════════════════════════════════════════════════════════════════
+*
+* Transient Response (0-100 ns):
+*   Time = 0 ns: IPD = 1 µA → V(6) = 10 mV
+*   Time = 1 ns: IPD jumps to 10 µA (1 ns rise time)
+*   Time = 1-2 ns: V(6) rises from 10 mV toward 100 mV
+*   Time = 2 ns: V(6) should reach ~95 mV (5% overshoot acceptable)
+*   Time = 11 ns: IPD returns to 1 µA
+*   Time = 11-12 ns: V(6) falls back to 10 mV
+*
+* Stability Indicators:
+*   ✓ Good: Smooth rise, minimal ringing, settling < 5 ns
+*   ✗ Bad: Oscillation, ringing > ±20% of final value
+*   ✗ Unstable: Divergent oscillation (unbounded)
+*
+* If oscillation observed:
+*   → Increase Cf (feedback capacitor)
+*   → Example: Try Cf = 100 pF, re-simulate
+*   → Trade-off: Higher Cf → slower response, more stable
+*   → For 10 MΩ Rf and 50 pF Cf: Dominant pole ≈ 318 Hz (very safe)
+*
+* ═════════════════════════════════════════════════════════════════════════════
+* NOISE ANALYSIS (Advanced - Optional)
+* ═════════════════════════════════════════════════════════════════════════════
+*
+* To analyze input-referred noise:
+* 1. Replace transient pulse with:
+*    IPD 3 0 DC 5u AC 1u    (5 µA DC + 1 µA AC for frequency sweep)
+*
+* 2. Add noise analysis commands:
+*    .ac dec 100 1M 100G     (Decade sweep, 100 points/decade, 1M to 100G Hz)
+*    .noise v(6) IPD        (Output-referred noise)
+*
+* 3. Expected noise floor: ~1 nV/√Hz (very low due to OPA2356)
+*    - Photodiode shot noise: sqrt(2*q*Ipd) ≈ 18 pA/√Hz @ 5µA
+*    - TIA input-referred noise: < 5 pA/√Hz
+*    - Total RTI (referred-to-input): ~20 pA/√Hz
+*
+* ═════════════════════════════════════════════════════════════════════════════
+* COMPONENT VARIATIONS (Sensitivity Analysis)
+* ═════════════════════════════════════════════════════════════════════════════
+*
+* To test design robustness, modify component values and re-run:
+*
+* Test 1: Rf variations (temperature drift, tolerance)
+*   RF 4 6 9MEG            (±10% variation: 9-11 MΩ)
+*   Expected: Output scales proportionally (9-11 mV per µA input)
+*
+* Test 2: Cf variations (PCB parasitic capacitance)
+*   CF 4 6 75p             (Worst-case: 50p + 25p parasitics)
+*   Expected: Slightly slower response, better stability
+*
+* Test 3: Cpd variations (larger photodiode)
+*   CPD 3 0 100p           (Larger Ge photodiode: 100 pF)
+*   Expected: May need larger Cf for stability, slower bandwidth
+*
+* ═════════════════════════════════════════════════════════════════════════════
+
+.end
+
+* ═══════════════════════════════════════════════════════════════════════════════
+* END OF SIMULATION FILE
+* ═══════════════════════════════════════════════════════════════════════════════
+*
+* How to use:
+* 1. Copy entire file (from .title to .end)
+* 2. Paste into EDA Playground (https://www.edaplayground.com)
+* 3. Select "NGSPICE" as the simulator
+* 4. Click "Run"
+* 5. Check "Simulation" tab for waveforms
+* 6. Modify component values to experiment with design
+*
+* Questions?
+* - Check OPA2356 datasheet for actual parameters
+* - Compare simulation results with recommended application circuit
+* - Adjust Rf/Cf if stability not satisfactory
+*
+* ═══════════════════════════════════════════════════════════════════════════════

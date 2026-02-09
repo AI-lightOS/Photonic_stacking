@@ -1,0 +1,296 @@
+LIGHTRAIL NCE MVP - BILL OF MATERIALS (BOM)
+Reference Design Kit (RDK-001) | 10 Unit Run
+Generated: 2025-01-20
+
+==============================================
+SECTION 1: MAIN PROCESSOR
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|-----------|------
+1 | 1 | U1 | Xilinx Kintex-7 XC7K420T-2FFG676C | BGA676 | Digikey/Mouser | N/A | $1,200 | $1,200 | 16-24 weeks | CRITICAL PATH - Order immediately! ESD-safe handling required.
+
+==============================================
+SECTION 2: POWER MANAGEMENT (Input 5V USB-C)
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|-----------|------
+2 | 1 | J1 | USB-C Receptacle 24-pin | USB-C | Digikey | 5282710-00-00-F | $0.85 | $0.85 | 1 week | Power + Data connector. Right-angle recommended for enclosure.
+3 | 1 | U2 | TPS65250 USB PD Controller | LQFP48 | Digikey | TPS65250RHBT | $3.50 | $3.50 | 2 weeks | Negotiates 100W USB PD for 5V/20A output. Alternative: STUSB4500
+4 | 1 | C1 | 100µF/50V Aluminum Electrolytic | 1210 | Digikey | EEE-1FK221AP | $0.45 | $0.45 | 1 week | Input bulk capacitor for USB power. Low ESR recommended.
+5 | 4 | C2-C5 | 10µF/10V Ceramic | 0805 | Digikey | GRM31CR61A106KA19L | $0.08 | $0.32 | 1 week | Decoupling caps for USB PD controller
+6 | 1 | L1 | 10µH/30A Power Inductor | 1245 | Digikey | SPME7050S100MRB | $1.20 | $1.20 | 2 weeks | Input filter for USB power. Isat >30A.
+7 | 2 | U3-U4 | XC9241B 5V→1.8V Buck 30A | QFN36 | Digikey | XC9241B330MR-G | $2.80 | $5.60 | 1 week | FPGA Core power. Two units for redundancy/monitoring.
+8 | 2 | U5-U6 | XC9242B 5V→3.3V Buck 20A | QFN36 | Digikey | XC9242B330MR-G | $2.50 | $5.00 | 1 week | FPGA I/O, TIA, Modulator power. Dual for load sharing.
+9 | 1 | U7 | NCV4214 5V→12V Boost | LQFP48 | Digikey | NCV4214D50R2G | $1.80 | $1.80 | 1 week | Fan PWM power (12V). For 40mm axial fan.
+10 | 8 | L2-L9 | 4.7µH Inductors | 1210 | Digikey | SLF1245B-472MR | $0.50 | $4.00 | 1 week | Output filter inductors for buck converters
+11 | 20 | C6-C25 | 22µF/10V Ceramic | 1206 | Digikey | GRM31CR61A226KE19L | $0.12 | $2.40 | 1 week | Bulk capacitors on each power rail. Place near supply pins.
+12 | 40 | C26-C65 | 100nF/10V Ceramic | 0402 | Digikey | GRM155R61A104KA01L | $0.02 | $0.80 | 1 week | Decoupling capacitors. One per power pin group. High frequency.
+13 | 6 | R1-R6 | 10kΩ 1/4W Resistors | 0603 | Digikey | CRCW060310K0JNEDC | $0.01 | $0.06 | 1 week | Feedback/config resistors for buck converters
+14 | 2 | FB1-FB2 | 600Ω Ferrite Bead (2A) | 1206 | Digikey | BLM31PG601SN1L | $0.08 | $0.16 | 1 week | EMI filtering on power rails
+15 | 1 | BATT_BAK | Supercap 10F/5.5V | Radial | Digikey | DRC5R5224X7R5TP4 | $4.50 | $4.50 | 2 weeks | Optional: Backup power for graceful shutdown. Low priority for MVP.
+
+POWER MANAGEMENT SUBTOTAL: $29.64
+
+==============================================
+SECTION 3: FPGA DECOUPLING & I/O BUFFERS
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|-----------|------
+16 | 40 | C66-C105 | 100nF/16V Ceramic (X7R) | 0402 | Digikey | GRM155R61A104KA01L | $0.02 | $0.80 | 1 week | Core decoupling capacitors. Critical for signal integrity. Place within 5mm of FPGA BGA pads.
+17 | 20 | C106-C125 | 10µF/16V Ceramic | 0603 | Digikey | GRM31CR61A106KA19L | $0.08 | $1.60 | 1 week | Bulk decoupling on core rails. One per voltage island.
+18 | 8 | U8-U15 | SN74LVC245A Level Shifter | SOIC20 | Digikey | SN74LVC245ADWR | $0.45 | $3.60 | 1 week | 3.3V ↔ 5V logic translation for USB interface and fan control. Optional if direct 3.3V interface acceptable.
+19 | 1 | U16 | FT2232H USB-to-JTAG | BGA100 | Digikey | FT2232HQFNK-RoHS | $8.50 | $8.50 | 2 weeks | Alternative: Xilinx JTAG programmer module. Can purchase as separate debugger module instead.
+20 | 8 | R7-R14 | 100Ω Termination Resistors | 0603 | Digikey | CRCW0603100RJNEDC | $0.01 | $0.08 | 1 week | JTAG signal termination
+21 | 4 | R15-R18 | 4.7kΩ Pull-up Resistors | 0603 | Digikey | CRCW06034K7JNEC | $0.01 | $0.04 | 1 week | JTAG pull-up on TMS/TDI/TDO
+
+FPGA I/O SUBTOTAL: $14.62
+
+==============================================
+SECTION 4: OPTICAL INTERFACE (TIA - Receiver)
+==============================================
+Note: These are example components. Select based on your optical wavelength (850nm NIR or 1550nm telecom).
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|-----------|------
+22 | 8 | U17-U24 | OPA2356 Dual Op-Amp (TIA Core) | SOIC8 | Digikey | OPA2356AIDR | $3.20 | $25.60 | 1 week | High-speed, low-noise TIA amplifier. Bandwidth: 1.4 GHz. GBW: 1.8 GHz. Alternative: LT6268
+23 | 8 | U25-U32 | OPA2277 Precision Op-Amp (Comparator Buffer) | SOIC8 | Digikey | OPA2277UA | $1.50 | $12.00 | 1 week | Buffering TIA output to FPGA comparator input
+24 | 16 | R19-R34 | 1MΩ TIA Feedback Resistors | 0603 | Digikey | CRCW06031M00JNEDC | $0.05 | $0.80 | 1 week | Sets TIA gain: Gain = Rf = 1MΩ → 100kV/A. Precision metal film required.
+25 | 16 | C126-C141 | 100pF Feedback Capacitors | 0603 | Digikey | GRM188R71A101KA01L | $0.03 | $0.48 | 1 week | Compensates TIA for stability. Cf = 100pF → -3dB @ 1.59 GHz
+26 | 8 | SPD1-SPD8 | OSRAM SFH213FA Photodiode | SMD | Digikey | 475-1016-1-ND | $2.50 | $20.00 | 1 week | 850nm silicon photodiode. Dark current: 2nA. Responsivity: 0.52 A/W. Alternative wavelengths available.
+27 | 8 | C142-C149 | 10pF Input Capacitor | 0402 | Digikey | GRM155R61A100KA01L | $0.02 | $0.16 | 1 week | Parallel photodiode capacitance. Minimizes noise.
+28 | 8 | R35-R42 | 50Ω Load Resistors (optional) | 0603 | Digikey | CRCW060350R0JNEDC | $0.01 | $0.08 | 1 week | Optional termination. Improves impulse response.
+29 | 8 | ST1-ST8 | TE 2013142-1 Fiber Adapter | Surface Mount | TE | 2013142-1 | $5.00 | $40.00 | 4 weeks | MPO-8 to individual fiber adapter. Connects optical fiber to photodiode.
+
+OPTICAL RX SUBTOTAL: $99.12
+
+==============================================
+SECTION 5: OPTICAL INTERFACE (Modulator - Transmitter)
+==============================================
+Note: Mach-Zehnder modulators. Requires external laser source (not included).
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|-----------|------
+30 | 8 | MOD1-MOD8 | Standard MZ Modulator | Pigtailed | Photronics | PM-MZ-01-1550-XX | $150.00 | $1,200.00 | 8 weeks | Mach-Zehnder intensity modulator. 1550nm telecom wavelength. Vπ=5V. LONG LEAD ITEM! Alternative: LiNbO3 modulator from Agave Photonics or iXblue.
+31 | 8 | DRV1-DRV8 | HV Modulator Driver | QFP64 | Analog Devices | AD8436ACPZ | $4.50 | $36.00 | 2 weeks | High-voltage driver for MZ modulator. 0-10V output. Slew rate: 500V/µs. Alternative: Thorlabs LDC210.
+32 | 16 | C150-C165 | 1µF High-Voltage Ceramic | 0805 | Digikey | X7R250V1R0M805 | $0.25 | $4.00 | 1 week | HV coupling capacitors for modulator bias network
+33 | 8 | R43-R50 | 1kΩ Bias Resistors | 0603 | Digikey | CRCW06031K00JNEDC | $0.01 | $0.08 | 1 week | Modulator bias network resistors
+34 | 8 | POT1-POT8 | 10kΩ Trimmer Potentiometer | 6mm | Digikey | 3313P-1-103TLF | $0.45 | $3.60 | 1 week | Fine-tune modulator bias for linear operation (Vπ point)
+
+OPTICAL TX SUBTOTAL: $1,243.68
+
+==============================================
+SECTION 6: THERMAL MANAGEMENT
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|------
+35 | 2 | BP1 | Copper-Invar Baseplate (2mm) | Custom | Olin Brass | N/A (custom fab) | $40.00 | $80.00 | 3 weeks | 120×100mm composite baseplate for heat spreading. Attach via wave solder to PCB. Spec: Copper (1mm) + Invar (1mm).
+36 | 10 | TIM1-TIM10 | Graphite Thermal Pad 0.5mm | 50×50mm | Amazon | n/a (Laird Tflex 600) | $3.00 | $30.00 | 1 week | Between FPGA die and baseplate. Thermal conductivity: 3 W/m·K. Available from Heilind or McMaster.
+37 | 1 | FAN1 | Noctua NF-A4x20 PWM Axial Fan | 40mm | Amazon | NF-A4x20-PWM | $18.00 | $18.00 | 1 week | Ultra-quiet 40mm fan. 4.7 CFM @ 17 dB(A). Voltage: 12V DC. Optional for MVP (passive cooling may suffice).
+38 | 1 | TEMP1 | TMP36 Temperature Sensor | TO-92 | Digikey | TMP36GT9Z | $1.50 | $1.50 | 1 week | Analog temperature sensor. Integrated into FPGA ADC for thermal monitoring. Output: 10mV/°C.
+39 | 1 | Q1 | MOSFET N-Channel (FAN PWM) | SO-8 | Digikey | IRF7309ZPBF | $0.80 | $0.80 | 1 week | Drives fan PWM from FPGA GPIO. Vgs(th): 1.0-2.0V. Id(max): 30A.
+40 | 2 | R51-R52 | 10kΩ Gate Resistors | 0603 | Digikey | CRCW060310K0JNEDC | $0.01 | $0.02 | 1 week | MOSFET gate pulldown and protection
+
+THERMAL MGMT SUBTOTAL: $130.32
+
+==============================================
+SECTION 7: ENCLOSURE & MECHANICAL
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|------
+41 | 1 | ENC1 | 6061-T6 Aluminum Enclosure | 200×150×80 | Local CNC | Custom | $150.00 | $150.00 | 3 weeks | CNC machined aluminum enclosure. Finish: Black anodize Type II. Include mounting bosses for thermal contact.
+42 | 4 | SO1-SO4 | M3 Brass Standoff (15mm) | M3 | McMaster | 90108A054 | $0.15 | $0.60 | 1 week | Mounting PCB to enclosure baseplate with spring tension
+43 | 8 | SF1-SF8 | M3×6 Silicone Rubber Feet | Adhesive | McMaster | 9293K58 | $0.12 | $0.96 | 1 week | Vibration isolation and cable strain relief
+44 | 1 | CB1 | Custom Braided Shielded Cable Bundle | 1m | Amazon | Generic | $8.00 | $8.00 | 1 week | For fiber, thermal sensor, fan leads. EMI shielding recommended for JTAG/USB.
+45 | 2 | CONN1-CONN2 | Lemo 00 Fiber Connectors | Lemo 00 | Lemo | EBG.01.250.LEC | $50.00 | $100.00 | 4 weeks | MPO-8 fiber input/output. Precision alignment required. Includes mating adapters.
+46 | 1 | THERMAL_COMPOUND | Thermal Paste (1g) | Tube | Amazon | Arctic MX-6 | $4.00 | $4.00 | 1 week | FPGA to baseplate interface. Aluminum oxide based, non-conductive.
+47 | 1 | EMI_GASKET | Conductive Gasket (1m) | Adhesive | McMaster | 7600K94 | $12.00 | $12.00 | 1 week | Shielding for enclosure lid sealing
+
+ENCLOSURE SUBTOTAL: $275.56
+
+==============================================
+SECTION 8: CONNECTORS & CABLING
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|------
+48 | 1 | J2 | JTAG Header 2×5 (0.05") | SMD | Digikey | BH10-1300-GF-3.0mm | $0.50 | $0.50 | 1 week | 10-pin ARM JTAG header for debugging and programming
+49 | 1 | J3 | Reset Button (Pushbutton) | 6×6mm | Digikey | EG2008 | $0.20 | $0.20 | 1 week | FPGA reset (active-low). Pulled high via 10kΩ.
+50 | 1 | SW1 | Mode Switch (DIP or Toggle) | 3-position | Digikey | 54-302-000 | $0.80 | $0.80 | 1 week | Config mode selection: Normal / JTAG / Test. Optional.
+51 | 2 | J4-J5 | Power Header (Optional) | 2-pin 0.1" | Digikey | TSM-105-07-T-SH-TR | $0.08 | $0.16 | 1 week | Alternative to USB-C for external power (testing only). Male header for lab PSU.
+52 | 1 | USB_CABLE | USB-C to USB-A Cable (2m) | 5A Rated | Amazon | Generic | $5.00 | $5.00 | 1 week | For power and data. Must support 100W USB PD.
+53 | 1 | FIBER_CABLE | Single-Mode Fiber Pigtail (10m) | MPO-8 | Amazon | Generic | $25.00 | $25.00 | 2 weeks | Optional: Pre-made test patch cable from laser source to modulator input.
+
+CONNECTORS SUBTOTAL: $31.66
+
+==============================================
+SECTION 9: CONSUMABLES & ASSEMBLY
+==============================================
+
+Item | Qty | Reference | Value | Package | Supplier | Part Number | Unit Cost | Total Cost | Lead Time | Notes
+-----|-----|-----------|-------|---------|----------|------------|-----------|-----------|------
+54 | 1 | N/A | Solder Paste (250g) | Lead-free SAC305 | Digikey | 24-1000-1 | $8.00 | $8.00 | 1 week | For reflow soldering. Lead-free for RoHS compliance.
+55 | 1 | N/A | Flux (30ml) | No-Clean | Amazon | Generic | $6.00 | $6.00 | 1 week | Manual touch-up after reflow. Removes bridging.
+56 | 1 | N/A | Solder Wire (50g) | 63/37 or SAC305 | Digikey | 24-1031-1 | $4.00 | $4.00 | 1 week | For hand-soldering small components and through-holes.
+57 | 1 | N/A | Isopropyl Alcohol (1L) | 99% | Amazon | Generic | $8.00 | $8.00 | 1 week | PCB cleaning after reflow and hand-soldering.
+58 | 1 | N/A | Conformal Coating | Acrylic or Urethane | Amazon | MG Chemicals 422B | $12.00 | $12.00 | 1 week | Optional: Moisture protection after assembly. Spray or dip.
+
+CONSUMABLES SUBTOTAL: $38.00
+
+==============================================
+SECTION 10: PCBA MANUFACTURING (10-Unit Run)
+==============================================
+
+Item | Qty | Reference | Value | Notes | Estimated Cost
+-----|-----|-----------|-------|-------|---------------
+PCB Fabrication | 10+ | N/A | 4-layer, 1oz/1oz copper, 0.127mm min trace, BGA escape | $200-300
+SMD Assembly | 10 | N/A | All components except FPGA (hand-placed manually) | $300-400
+FPGA Manual Placement & Solder | 10 | U1 | Xilinx Kintex-7. Requires BGA rework station or subcontract to assembly partner | $100-200
+Testing & Programming | 10 | N/A | Power-on test, FPGA bitstream load via JTAG, functional verification | $50-100
+Packaging & Documentation | 10 | N/A | Professional foam insert, printed box, quick-start guides | $100-150
+
+PCBA MANUFACTURING SUBTOTAL (ESTIMATED): $750-1,150
+
+==============================================
+GRAND TOTAL PARTS (for 10-unit RDK production run)
+==============================================
+
+COMPONENT SUMMARY
+───────────────────────────────────────────
+Power Management .............. $29.64 × 10 = $296.40
+FPGA I/O & Decoupling ......... $14.62 × 10 = $146.20
+Optical RX (TIA) .............. $99.12 × 10 = $991.20
+Optical TX (Modulator) .......$1,243.68 × 10 = $12,436.80
+Thermal Management ............ $130.32 × 10 = $1,303.20
+Enclosure & Mechanical ........ $275.56 × 10 = $2,755.60
+Connectors & Cabling .......... $31.66 × 10 = $316.60
+Consumables ................... $38.00 × 1 = $38.00
+───────────────────────────────────────────
+TOTAL RAW COMPONENTS ........... $18,284.00
+
+Add:
+  FPGA (Critical Path) ........ $1,200.00 × 10 = $12,000.00
+  PCBA Manufacturing (Est) .... $900.00 × 1 = $900.00
+  Labor (Assembly, Test, QA) .. (Est) $1,500.00
+  Packaging & Shipping ........ (Est) $500.00
+───────────────────────────────────────────
+
+GRAND TOTAL (10 units) ......... ~$33,184.00
+Cost per unit (RDK-001) ....... ~$3,318.40
+
+Note: This is the REFERENCE DESIGN KIT cost for beta testing.
+Production cost at 100+ units will decrease 30-40% due to:
+- Volume discounts on components
+- Reduced manual assembly labor
+- Streamlined testing procedures
+- Supplier relationship pricing
+
+Estimated Production Cost (100 units): $1,800-2,200 per unit
+
+==============================================
+CRITICAL LEAD TIMES & LONG-LEAD ITEMS
+==============================================
+
+MUST ORDER NOW (Week 1):
+✗ Xilinx Kintex-7 FPGA (16-24 weeks)
+✗ Mach-Zehnder Modulators (8 weeks)
+✗ Lemo Fiber Connectors (4 weeks)
+✗ Copper-Invar Baseplate custom fab (3 weeks)
+
+ORDER IN WEEK 2-3:
+✓ PCB manufacturing
+✓ Enclosure CNC machining
+✓ All passive components
+
+==============================================
+SUPPLIER CONTACTS
+==============================================
+
+Digikey:       www.digikey.com       (USA-based, fast shipping)
+Mouser:        www.mouser.com        (USA-based distributor)
+Arrow:         www.arrow.com         (Authorized FPGA reseller)
+PCBWay:        www.pcbway.com        (PCB fab + assembly)
+JLCPCB:        www.jlcpcb.com        (Budget PCB fab)
+Olin Brass:    www.olinbrass.com     (Custom baseplate)
+Photronics:    www.photronics.com    (MZ modulators)
+Lemo:          www.lapp.com/lemo     (Fiber connectors)
+Amazon:        www.amazon.com        (Quick mechanical parts)
+McMaster-Carr: www.mcmaster.com      (Industrial fasteners)
+
+==============================================
+NOTES FOR ASSEMBLY PARTNERS
+==============================================
+
+1. PCB Design Requirements:
+   - Thermal vias under FPGA: 0.3mm diameter, 120-unit array, 2mm pitch
+   - BGA escape: 0.3mm vias, 2.5mm via-to-pad spacing
+   - Ground planes: Layer 2 (continuous), Layer 3 (split 1.8V / 3.3V / 12V)
+   - Via stitching: 1mm spacing around high-current traces
+
+2. Assembly Process:
+   - Solder paste stencil: 0.003"-0.004" thickness, solder mask opening
+   - Reflow profile: IPC-A-610 lead-free (SAC305)
+   - FPGA BGA underfill: Epoxy-based (optional but recommended for reliability)
+   - Manual FPGA placement: Requires BGA rework station with X-ray verification
+
+3. Testing:
+   - In-circuit test (ICT): All power rails, no short-circuit
+   - Functional test: FPGA configuration load via JTAG, LED blink test
+   - Thermal test: 10-minute burn-in at full load, temperature monitoring
+   - Leak test: Precision current probe on power rails (< 100mA idle)
+
+4. Documentation:
+   - Provide pick & place Gerber files (component placement overlay)
+   - Provide panelized PCB drawing for array assembly
+   - Provide test fixture schematics (power-on test harness)
+   - Final bill of materials with actual part numbers and lot numbers
+
+==============================================
+ALTERNATIVE COMPONENTS & SUBSTITUTIONS
+==============================================
+
+If lead times or cost are prohibitive, consider:
+
+1. USB PD Controller:
+   ✓ TPS65250 (Recommended - Texas Instruments)
+   ✓ STUSB4500 (Alternative - STMicroelectronics)
+   ✓ IP2315 (Budget option - Integrated Power)
+
+2. Buck Converter:
+   ✓ XC9241B / XC9242B (Recommended - Torex)
+   ✓ MP2015 (Alternative - MPS)
+   ✓ TPS51200 (Alternative - Texas Instruments)
+
+3. Op-Amp for TIA:
+   ✓ OPA2356 (Recommended - High speed)
+   ✓ LT6268 (Alternative - Linear Tech, ultra-low noise)
+   ✓ THS4601 (Alternative - TI, slightly lower bandwidth)
+
+4. Photodiode:
+   ✓ OSRAM SFH213FA (Recommended - 850nm silicon, robust)
+   ✓ Hamamatsu S1223 (Alternative - Smaller package, higher cost)
+   ✓ Thorlabs FDS1010 (Alternative - Integrated TIA, DIY-friendly)
+
+5. Mach-Zehnder Modulator:
+   ✓ Photronics PM-MZ-01-1550-XX (Recommended)
+   ✓ Agave Photonics MZM (Alternative - Lower cost, startup)
+   ✓ iXblue Photonics MZM (Alternative - High-end, aerospace grade)
+
+6. Enclosure:
+   ✓ CNC 6061-T6 Aluminum (Recommended - Professional)
+   ✓ 3D Printed Nylon 12 (Alternative - Rapid, acceptable for MVP)
+   ✓ Polycarbonate (Alternative - Transparent for inspection)
+
+==============================================
+REVISION HISTORY
+==============================================
+
+Version | Date | Changes
+--------|------|--------
+1.0 | 2025-01-20 | Initial BOM for RDK-001 (10-unit MVP production run)
+
+==============================================

@@ -1,0 +1,279 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║         LIGHTRAIL_AI_NCE - WINDOWS QUICK START (READY TO RUN)                ║
+║                                                                               ║
+║              3 steps to complete PCB automation on Windows                    ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 1: INSTALL KICAD
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Download KiCAD:
+   https://www.kicad.org/download/
+
+2. Click "Windows Installer" (64-bit recommended)
+
+3. Run the installer:
+   - Click through with default settings
+   - Make sure "Add KiCAD to PATH" is checked
+   - Install to: C:\Program Files\KiCAD\
+
+4. Verify installation:
+   - Open Command Prompt (Windows + R, type "cmd")
+   - Type: kicad --version
+   - Should show: KiCAD 6.0.2 or higher
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 2: CREATE PROJECT FOLDER & COPY SCRIPTS
+═════════════════════════════════════════════════════════════════════════════════
+
+In Command Prompt:
+
+   mkdir C:\LightRail_AI_NCE\kicad_project
+   mkdir C:\LightRail_AI_NCE\scripts
+   mkdir C:\LightRail_AI_NCE\output\gerber
+   mkdir C:\LightRail_AI_NCE\output\drill
+   mkdir C:\LightRail_AI_NCE\output\bom
+
+Then copy these 4 files from the outputs package into:
+C:\LightRail_AI_NCE\scripts\
+
+   ✓ 01_create_project.py
+   ✓ 02_place_components.py
+   ✓ 03_export_files.py
+   ✓ 04_run_automation.py
+
+═════════════════════════════════════════════════════════════════════════════════
+STEP 3: RUN THE AUTOMATION
+═════════════════════════════════════════════════════════════════════════════════
+
+In Command Prompt:
+
+   cd C:\LightRail_AI_NCE\scripts
+   python 04_run_automation.py
+
+That's it! The script will:
+
+   ✓ Create the PCB project (100mm × 80mm)
+   ✓ Place 20 components automatically
+   ✓ Export Gerber files (for PCB fab)
+   ✓ Export drill file
+   ✓ Generate BOM (component list)
+   ✓ Generate Pick & Place (assembly file)
+
+Time: ~10 minutes ⚡
+
+═════════════════════════════════════════════════════════════════════════════════
+EXPECTED OUTPUT
+═════════════════════════════════════════════════════════════════════════════════
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║           LIGHTRAIL_AI_NCE - WINDOWS KICAD AUTOMATION                     ║
+║                                                                            ║
+║              Complete PCB Design Automation                               ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+[→] Creating PCB project...
+[✓] Board size: 100mm × 80mm
+[✓] Design rules configured
+[✓] PCB created
+
+[→] Placing components...
+[✓] U1 placed at (30.0, 25.0)
+[✓] U2 placed at (45.0, 25.0)
+... (more components)
+[✓] Placed 20/20 components
+
+[→] Exporting manufacturing files...
+[✓] Front copper
+[✓] Back copper
+[✓] Front mask
+[✓] Back mask
+[✓] Front silkscreen
+[✓] Board outline
+[✓] Drill file
+[✓] BOM
+[✓] Pick & Place
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                  ✅ AUTOMATION COMPLETE! ✅                               ║
+║                                                                            ║
+║          Your LightRail_AI_NCE PCB is ready for manufacturing!            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+FILES CREATED:
+  ✓ PCB: C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+  ✓ Gerber: C:\LightRail_AI_NCE\output\gerber\
+  ✓ Drill: C:\LightRail_AI_NCE\output\drill\
+  ✓ BOM: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+  ✓ Pick & Place: C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_PickPlace.csv
+
+═════════════════════════════════════════════════════════════════════════════════
+AFTER AUTOMATION - WHAT TO DO NEXT
+═════════════════════════════════════════════════════════════════════════════════
+
+1. OPEN PCB IN KICAD:
+
+   Option A - From Command Prompt:
+   kicad C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+   Option B - From Windows Explorer:
+   Navigate to: C:\LightRail_AI_NCE\kicad_project\
+   Double-click: LightRail_AI_NCE.kicad_pcb
+
+   You'll see KiCAD open with your completed PCB layout! 🎉
+
+2. SEND TO FABRICATOR (PCBWay Example):
+
+   a) Go to: https://www.pcbway.com/
+   
+   b) Click: "Instant Quote"
+   
+   c) Upload Gerber files from:
+      C:\LightRail_AI_NCE\output\gerber\
+   
+   d) Select options:
+      • Layers: 4
+      • Copper: 1oz
+      • Finish: ENIG or HASL
+      • Quantity: 10 (or your choice)
+   
+   e) Get quote and order!
+   
+   Manufacturing time: 7-14 days typically
+
+3. ORDER COMPONENTS:
+
+   a) Open BOM file:
+      C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+   
+   b) Copy component list
+   
+   c) Order from:
+      • Digikey: https://www.digikey.com
+      • Mouser: https://www.mouser.com
+      • Arrow: https://www.arrow.com
+   
+   d) Save receipt for accounting
+
+4. ASSEMBLY:
+
+   a) Wait for PCB and components to arrive
+   
+   b) Use Pick & Place file for assembly robot:
+      C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_PickPlace.csv
+   
+   c) Or assemble manually if using hand soldering
+
+═════════════════════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═════════════════════════════════════════════════════════════════════════════════
+
+Problem: "python: command not found"
+Solution:
+  1. Open Command Prompt as Administrator
+     (Windows + X, select "Command Prompt (Admin)")
+  2. Reinstall Python (download from python.org)
+  3. Make SURE to check "Add Python to PATH"
+
+Problem: "ModuleNotFoundError: No module named 'pcbnew'"
+Solution:
+  1. Verify KiCAD installed: kicad --version
+  2. If not found, reinstall KiCAD
+  3. Make sure to add KiCAD to PATH during install
+
+Problem: "File not found" or "Permission denied"
+Solution:
+  1. Run Command Prompt as Administrator
+  2. Verify folder path: C:\LightRail_AI_NCE\ exists
+  3. Check Windows Defender isn't blocking file access
+
+Problem: "Script runs but files not created"
+Solution:
+  1. Check folder permissions:
+     Right-click C:\LightRail_AI_NCE → Properties → Security
+  2. Make sure it's readable/writable
+  3. Try running as Administrator
+
+═════════════════════════════════════════════════════════════════════════════════
+FILE LOCATIONS (Reference)
+═════════════════════════════════════════════════════════════════════════════════
+
+Main Project:
+  C:\LightRail_AI_NCE\
+
+PCB File (Open in KiCAD):
+  C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+Python Scripts:
+  C:\LightRail_AI_NCE\scripts\
+    ├── 01_create_project.py
+    ├── 02_place_components.py
+    ├── 03_export_files.py
+    └── 04_run_automation.py
+
+Manufacturing Files:
+  C:\LightRail_AI_NCE\output\
+    ├── gerber\          ← Send these to PCBWay
+    ├── drill\
+    └── bom\
+        ├── LightRail_AI_NCE_BOM.csv       ← Order components
+        └── LightRail_AI_NCE_PickPlace.csv ← Assembly robot
+
+═════════════════════════════════════════════════════════════════════════════════
+COMMAND REFERENCE
+═════════════════════════════════════════════════════════════════════════════════
+
+Verify KiCAD:
+  kicad --version
+
+Navigate to scripts:
+  cd C:\LightRail_AI_NCE\scripts
+
+Run automation:
+  python 04_run_automation.py
+
+View BOM (component list):
+  type C:\LightRail_AI_NCE\output\bom\LightRail_AI_NCE_BOM.csv
+
+List Gerber files:
+  dir C:\LightRail_AI_NCE\output\gerber\
+
+Open PCB in KiCAD:
+  kicad C:\LightRail_AI_NCE\kicad_project\LightRail_AI_NCE.kicad_pcb
+
+═════════════════════════════════════════════════════════════════════════════════
+YOU'RE READY!
+═════════════════════════════════════════════════════════════════════════════════
+
+Checklist:
+  ☐ KiCAD installed (kicad --version shows 6.0+)
+  ☐ Folders created (C:\LightRail_AI_NCE\...)
+  ☐ Scripts copied (4 .py files in scripts folder)
+  ☐ Automation run (python 04_run_automation.py)
+  ☐ PCB file created (LightRail_AI_NCE.kicad_pcb)
+  ☐ Manufacturing files generated (Gerber, BOM, etc.)
+  ☐ Ready to send to fab house!
+
+Next: Run the automation!
+
+  cd C:\LightRail_AI_NCE\scripts
+  python 04_run_automation.py
+
+═════════════════════════════════════════════════════════════════════════════════
+
+Questions? Review the other files:
+  • WINDOWS_KICAD_SETUP.txt - Detailed setup guide
+  • 01_create_project.py - See the code
+  • 02_place_components.py - See component placements
+  • 03_export_files.py - See export process
+
+Ready? Let's build photonic neural networks! 🚀
+
+═════════════════════════════════════════════════════════════════════════════════

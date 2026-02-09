@@ -223,82 +223,59 @@ def create_enhanced_document():
     doc = Document()
     
     # Title
-    title = doc.add_heading('LightRail AI: Advanced Photonic Interconnect', 0)
+    title = doc.add_heading('LightRail AI: 15-Layer Intelligence Stack', 0)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     
-    subtitle = doc.add_heading('TFLN-Based 400G-800G Optical Network Infrastructure', level=2)
+    subtitle = doc.add_heading('Beyond Binary: Memristors, Ternary Logic, and Analog Infinite Logic', level=2)
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
     
-    doc.add_paragraph('Complete Specifications, Photonic Equations, and Performance Characterization')
-    doc.add_paragraph('High-Performance Imaging and AI Compute Applications')
+    doc.add_paragraph('Advanced Photonic-Electronic Stacking for Exascale AI')
+    doc.add_paragraph('Integrated TFLN physical fabric with Beyond-Binary Logic Core')
     doc.add_paragraph()
     
     # Executive Summary
-    doc.add_heading('Executive Summary', 1)
+    doc.add_heading('Executive Summary: The 15-Layer Intelligence Stack', 1)
     doc.add_paragraph(
-        'This document presents a comprehensive analysis of Thin-Film Lithium Niobate (TFLN) '
-        'photonic interconnects for high-performance computing infrastructure. We provide complete '
-        'network specifications, photonic communication equations, and performance characterization '
-        'with experimental plots. The system achieves 400G-800G per lane with sub-microsecond latency, '
-        'enabling breakthrough performance for high-resolution imaging tasks and distributed AI workloads.'
+        'This document outlines the upgraded 15-Layer Intelligence Stack for LightRail AI. '
+        'Leveraging Thin-Film Lithium Niobate (TFLN) and advanced materials science, the architecture '
+        'resolves the I/O and Power Walls by moving beyond traditional binary computing. '
+        'The stack incorporates Memristive Synaptic Grids for Compute-in-Memory, Ternary Logic for '
+        'maximum information density, and Analog Wave Compute governed by Maxwell’s equations '
+        'to achieve instantaneous, flight-time propagation speeds.'
     )
     
-    # Part 1: Photonic Communication Theory
-    doc.add_heading('Part 1: Photonic Communication Theory and Equations', 1)
+    # Part 1: The 15-Layer Architecture
+    doc.add_heading('Part 1: The 15-Layer Intelligence Stack Architecture', 1)
     
-    doc.add_heading('1.1 Electro-Optic Modulation Physics', 2)
-    doc.add_paragraph(
-        'The Pockels effect in lithium niobate enables linear electro-optic modulation:'
-    )
+    # Phase 5
+    doc.add_heading('Phase 5: Super-Intelligence & Memory (The Brain)', 2)
+    doc.add_paragraph('Layer 15: Holographic Unified Memory - Zero-latency, coherency-free memory pool.')
+    doc.add_paragraph('Layer 14: Quantum Optimization & Security - Quantum-resistant cryptography and routing.')
+    doc.add_paragraph('Layer 13: AI Workloads & Reasoning Models - Native PyTorch/TensorFlow acceleration for MoEs.')
     
-    doc.add_paragraph(
-        'Refractive Index Modulation:\n'
-        'Δn = -½ n³ r₃₃ E\n\n'
-        'Where:\n'
-        '• n = extraordinary refractive index = 2.14 @ 1550nm\n'
-        '• r₃₃ = electro-optic coefficient = 30.8 pm/V\n'
-        '• E = applied electric field = V/d (V/m)\n'
-        '• d = electrode gap (typically 5-10 μm)\n\n'
-        'Phase Shift in Mach-Zehnder Modulator:\n'
-        'Δφ = (2π/λ) Δn L Γ\n'
-        '    = (2π/λ) (-½ n³ r₃₃ E) L Γ\n'
-        '    = -(π n³ r₃₃ Γ L / λd) V\n\n'
-        'Half-Wave Voltage:\n'
-        'Vπ = λd / (n³ r₃₃ Γ L)\n\n'
-        'For TFLN with L=15mm, d=6μm, Γ=0.8:\n'
-        'Vπ = (1550×10⁻⁹ × 6×10⁻⁶) / (2.14³ × 30.8×10⁻¹² × 0.8 × 0.015)\n'
-        '   ≈ 1.85 V'
-    )
+    # Phase 4
+    doc.add_heading('Phase 4: The Control Plane (Software-Hardware Bridge)', 2)
+    doc.add_paragraph('Layer 12: Framework Adapters (The Shim) - Non-invasive software sidecar for intercepting calls.')
+    doc.add_paragraph('Layer 11: Fabric OS (Global Scheduler) - AI-driven cluster-wide resource optimization.')
     
-    doc.add_heading('1.2 Optical Transfer Function', 2)
-    doc.add_paragraph(
-        'Mach-Zehnder Interferometer Output:\n\n'
-        'E_out = E_in × [exp(iφ₁) + exp(iφ₂)] / 2\n\n'
-        'For push-pull operation (φ₁ = +Δφ/2, φ₂ = -Δφ/2):\n\n'
-        'I_out = I_in × cos²(Δφ/2)\n'
-        '      = I_in × cos²(πV/2Vπ)\n'
-        '      = I_in × ½[1 + cos(πV/Vπ)]\n\n'
-        'Extinction Ratio:\n'
-        'ER = 10 log₁₀(P_max / P_min)\n\n'
-        'For ideal MZI: ER → ∞\n'
-        'Practical TFLN: ER > 40 dB (phase balance to λ/100)'
-    )
+    # Phase 3
+    doc.add_heading('Phase 3: Network & Routing Intelligence', 2)
+    doc.add_paragraph('Layer 10: Collective Optimization Engine - Native support for All-Reduce and All-to-All.')
+    doc.add_paragraph('Layer 9: Topology-Aware Routing - Dynamic mapping of the photonic mesh.')
+    doc.add_paragraph('Layer 8: Deterministic Kernel Integration - Reproducible communication primitives.')
     
-    doc.add_heading('1.3 PAM4 and PAM8 Encoding', 2)
-    doc.add_paragraph(
-        'Pulse Amplitude Modulation for High-Speed Links:\n\n'
-        'PAM4 (4 levels, 2 bits/symbol):\n'
-        'V₀ = 0V        → I₀ = I_max × ½[1 + cos(0)]      = I_max\n'
-        'V₁ = Vπ/3      → I₁ = I_max × ½[1 + cos(π/3)]    = 0.75 I_max\n'
-        'V₂ = 2Vπ/3     → I₂ = I_max × ½[1 + cos(2π/3)]   = 0.25 I_max\n'
-        'V₃ = Vπ        → I₃ = I_max × ½[1 + cos(π)]      = 0\n\n'
-        'Symbol Rate for 400G PAM4:\n'
-        'R_symbol = 400 Gbps / 2 bits/symbol = 200 Gbaud\n\n'
-        'PAM8 (8 levels, 3 bits/symbol):\n'
-        'V_k = k×Vπ/7, k = 0,1,2,...,7\n\n'
-        'Symbol Rate for 800G PAM8:\n'
-        'R_symbol = 800 Gbps / 3 bits/symbol = 267 Gbaud'
-    )
+    # Phase 2
+    doc.add_heading('Phase 2: The "Beyond Binary" Logic Core', 2)
+    doc.add_paragraph('Layer 7: Spiking Logic Dispatcher - Asynchronous control reducing idle power by 97%.')
+    doc.add_paragraph('Layer 6: Ternary Logic Encoder - Converting (0,1) to (-1,0,+1) for 40% reduction in interconnects.')
+    doc.add_paragraph('Layer 5: Analog Signal Restoration - Adaptive Block Floating Point (ABFP) for 32-bit analog precision.')
+    
+    # Phase 1
+    doc.add_heading('Phase 1: The Physics Foundation', 2)
+    doc.add_paragraph('Layer 4: Memristive Synaptic Grid - Compute-in-Memory using analog Memristors.')
+    doc.add_paragraph('Layer 3: Analog Wave Compute - Matrix multiplication via light wave interference (Maxwell Equations).')
+    doc.add_paragraph('Layer 2: Multi-Spectral WDM Plane - Virtual cores via wavelength division multiplexing (16+ colors).')
+    doc.add_paragraph('Layer 1: Physical Fabric (TFLN Interconnect) - Ultra-low loss Thin-Film Lithium Niobate substrate.')
     
     doc.add_heading('1.4 Signal-to-Noise Ratio and Bit Error Rate', 2)
     doc.add_paragraph(
@@ -778,7 +755,7 @@ def create_enhanced_document():
     )
     
     # Save document
-    output_path = '/Users/cartik_sharma/Downloads/neuromorph-main-n/photonic_computing/LightRail_AI_Enhanced_Report.docx'
+    output_path = os.path.join(os.path.dirname(__file__), 'LightRail_15Layer_Intelligence_Stack.docx')
     doc.save(output_path)
     
     print(f"\nEnhanced document saved: {output_path}")

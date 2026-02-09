@@ -1,0 +1,1055 @@
+LIGHTRAIL NCE MVP - KICAD DESIGN GUIDE
+Complete Setup, Schematic, and PCB Layout Instructions
+========================================================
+
+Version: 1.0
+Date: 2025-01-20
+Audience: Design engineers, FPGA engineers, electronics hobbyists
+
+TABLE OF CONTENTS
+=================
+1. KiCAD Installation & Setup
+2. Project Structure Overview
+3. Schematic Design Guide
+4. Component Symbol & Footprint Management
+5. PCB Layout Best Practices
+6. Design Rule Check (DRC) & Verification
+7. Manufacturing File Generation (Gerber, Drill, BOM)
+8. Design Troubleshooting
+
+===========================================
+1. KICAD INSTALLATION & SETUP
+===========================================
+
+STEP 1.1: Install KiCAD 6.0+ (Latest Stable)
+─────────────────────────────────────────
+
+Why KiCAD?
+- Open-source and free (no license cost)
+- Professional-grade PCB design tools
+- Excellent community support
+- Works on Windows, Mac, Linux
+- Integrated schematic + PCB design (no separate tools needed)
+
+Installation:
+1. Download from: https://www.kicad.org/download/
+2. Choose your operating system (Windows/Mac/Linux)
+3. Install to default location (easier configuration)
+4. Launch KiCAD 6.0+ (not older versions - different file format)
+5. Verify installation: Open KiCAD → Help → About
+
+Recommended: KiCAD 8.0+ (2024 versions have better FPGA support)
+
+STEP 1.2: Download the Project Files
+──────────────────────────────────────
+
+Create a working directory:
+```
+Windows:  C:\Users\[YourName]\Documents\KiCAD\LightRail_NCE_MVP\
+Mac:      /Users/[YourName]/Documents/KiCAD/LightRail_NCE_MVP/
+Linux:    ~/Documents/KiCAD/LightRail_NCE_MVP/
+```
+
+Copy these files into your project folder:
+```
+LightRail_NCE_MVP/
+├── LightRail_NCE_MVP.kicad_pro      (Main project file)
+├── LightRail_NCE_MVP.kicad_sch      (Schematic)
+├── LightRail_NCE_MVP.kicad_pcb      (PCB Layout - empty to start)
+├── symbols/
+│   ├── LightRail_Custom.kicad_sym   (Custom FPGA & optical parts)
+│   └── Standard_Components.kicad_sym
+├── footprints/
+│   ├── LightRail_Optical.kicad_mod  (Fiber connectors, etc)
+│   └── Standard_Packages.kicad_mod
+├── 3d_models/
+│   └── Enclosure_200x150x80.step    (3D reference for fit check)
+└── docs/
+    ├── LIGHTRAIL_NCE_MVP_BOM.csv
+    ├── SCHEMATIC_NOTES.txt
+    └── PCB_LAYOUT_GUIDELINES.txt
+```
+
+STEP 1.3: Open Project in KiCAD
+────────────────────────────────
+
+1. Launch KiCAD application
+2. File → Open Project
+3. Navigate to your project folder
+4. Select "LightRail_NCE_MVP.kicad_pro"
+5. Project opens in KiCAD main window
+
+Main Window Layout:
+```
+Top: Menu bar (File, Edit, View, Tools, etc.)
+Left: Symbol library navigator
+Center: Schematic editor canvas
+Right: Properties panel
+Bottom: Status bar + message log
+```
+
+STEP 1.4: Configure Symbol & Footprint Libraries
+──────────────────────────────────────────────────
+
+KiCAD needs to know where to find components:
+
+1. Go to: Preferences → Manage Symbol Libraries (or Manage Footprint Libraries)
+2. System Libraries (come with KiCAD):
+   - Check that "power" and "Device" libraries are listed
+   - These provide: GND, +3.3V, +5V, C, R, L, D symbols
+
+3. Project Libraries (custom components):
+   - Click "Add" → Browse to: ./symbols/LightRail_Custom.kicad_sym
+   - Click "Add" → Browse to: ./footprints/LightRail_Optical.kicad_mod
+   - Move project libraries to TOP of list (for priority)
+
+4. Verify installations:
+   - Tools → Update PCB from Schematic (should show zero errors)
+   - Schematic → Tools → Annotate (should find no undefined refs)
+
+===========================================
+2. PROJECT STRUCTURE OVERVIEW
+===========================================
+
+UNDERSTANDING THE KICAD PROJECT
+
+The project consists of multiple files that work together:
+
+1. .kicad_pro (Project File)
+   ├─ Stores project settings
+   ├─ Defines design rules (trace width, clearance, etc)
+   ├─ Tracks library paths
+   ├─ Records board dimensions and constraints
+   └─ Format: JSON (human-readable text)
+
+2. .kicad_sch (Schematic File)
+   ├─ Contains circuit diagram
+   ├─ Lists all components and connections
+   ├─ Stores hierarchical structure (if multi-sheet)
+   ├─ Defines nets (electrical connections)
+   └─ Format: S-expression (KiCAD native)
+
+3. .kicad_pcb (PCB Layout File)
+   ├─ Physical board layout
+   ├─ Trace routing (copper on layers)
+   ├─ Via placement and types
+   ├─ Pad definitions (solder pads)
+   ├─ Board outline and mechanical layers
+   └─ Format: S-expression
+
+4. Symbol Libraries (.kicad_sym)
+   ├─ Component symbols for schematics
+   ├─ Stores: pins, labels, outline, reference/value fields
+   ├─ Example: Xilinx_Kintex7.kicad_sym → XC7K420T symbol
+   └─ Reusable across projects
+
+5. Footprint Libraries (.kicad_mod)
+   ├─ Physical component packages
+   ├─ Stores: pad locations, pad size, silkscreen
+   ├─ Example: BGA676_Kintex7.kicad_mod → 27×27mm BGA footprint
+   └─ Linked to symbols via "footprint" field
+
+PROJECT WORKFLOW
+────────────────
+
+Stage 1: SCHEMATIC DESIGN
+  ├─ Add components to schematic
+  ├─ Draw connections (nets)
+  ├─ Assign footprints to each component
+  ├─ Check electrical rules (ERC)
+  └─ Annotate (assign reference numbers: U1, R1, C1, etc)
+
+Stage 2: PCB LAYOUT
+  ├─ Create board outline (dimensions, keepout areas)
+  ├─ Place components on board
+  ├─ Route copper traces to connect nets
+  ├─ Add vias for multi-layer connections
+  ├─ Check design rules (DRC)
+  └─ Add silkscreen text and graphics
+
+Stage 3: MANUFACTURING
+  ├─ Generate Gerber files (copper layers, masks, silkscreen)
+  ├─ Generate drill file (for via/hole drilling)
+  ├─ Generate BOM (Bill of Materials)
+  ├─ Export pick & place file (for assembly partner)
+  └─ Review files for manufacturability (DFM)
+
+===========================================
+3. SCHEMATIC DESIGN GUIDE
+===========================================
+
+STEP 3.1: Open the Schematic Editor
+────────────────────────────────────
+
+In the KiCAD main window:
+→ Double-click "LightRail_NCE_MVP.kicad_sch" (or Schematic → Edit Schematic)
+
+The schematic canvas opens. You'll see:
+- Grid background (helps alignment, typically 2.54mm = 0.1 inch)
+- Current sheet name (upper left)
+- Zoom controls (right side or scroll wheel)
+
+STEP 3.2: Add Components to Schematic
+──────────────────────────────────────
+
+The schematic has 5 main sections:
+
+┌─────────────────────────────────────────────────────────┐
+│                     LIGHTRAIL NCE MVP                   │
+│                      SCHEMATIC DESIGN                   │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│          SECTION 1: POWER MANAGEMENT (Top-Left)         │
+│                                                         │
+│  INPUT: USB-C 5V (J1)                                   │
+│    ↓                                                    │
+│  USB PD Controller (U2)  → 5V regulated output          │
+│    ↓                                                    │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐                 │
+│  │ Buck    │  │ Buck    │  │ Boost   │                 │
+│  │ 5→1.8V  │  │ 5→3.3V  │  │ 5→12V   │                 │
+│  │ (U3-U4) │  │ (U5-U6) │  │ (U7)    │                 │
+│  └─────────┘  └─────────┘  └─────────┘                 │
+│      ↓             ↓             ↓                      │
+│  VCC_CORE_1.8V VCC_IO_3.3V VCC_FAN_12V                │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│      SECTION 2: FPGA (Top-Center / Top-Right)           │
+│                                                         │
+│  Xilinx Kintex-7 (U1)                                   │
+│  ├─ Core: 1.8V (60A) ← Buck converter (U3-U4)          │
+│  ├─ I/O:  3.3V (40A) ← Buck converter (U5-U6)          │
+│  ├─ Decoupling: 40× C0G capacitors (100nF near pins)   │
+│  ├─ JTAG: TCO, TDI, TMS, CLK (for programming)         │
+│  └─ GPIO: Connected to TIA, Modulator, Fan PWM         │
+│                                                         │
+│  Thermal:                                              │
+│  ├─ Copper-Invar baseplate (BP1) under FPGA die        │
+│  ├─ Graphite pad (TIM1-TIM10) between die & baseplate  │
+│  ├─ Temperature sensor (TEMP1) routed to FPGA ADC      │
+│  └─ Fan PWM (Q1) controlled by FPGA GPIO               │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│    SECTION 3: OPTICAL RX (Transimpedance Amp)           │
+│                                                         │
+│  Fiber Input → Photodiode (SPD1-SPD8)                   │
+│                    ↓                                    │
+│  Input amplifier (U17-U24): OPA2356                     │
+│  Gain: 1MΩ feedback → 100kV/A                           │
+│  Output: 0-3.3V analog (to FPGA analog input)          │
+│                                                         │
+│  Threshold buffer (U25-U32): OPA2277                    │
+│  Converts analog to digital for FPGA comparator         │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│   SECTION 4: OPTICAL TX (Modulator Driver)              │
+│                                                         │
+│  FPGA GPIO Output                                       │
+│     ↓                                                   │
+│  Modulator Driver (DRV1-DRV8): AD8436                   │
+│  Output: 0-10V for Mach-Zehnder modulator               │
+│     ↓                                                   │
+│  Mach-Zehnder Modulator (MOD1-MOD8)                     │
+│  Modulates optical carrier (external laser)             │
+│     ↓                                                   │
+│  Fiber output (to receiver)                             │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│         SECTION 5: JUNK AREA / TESTING                  │
+│                                                         │
+│  ├─ Reset button (SW1)                                 │
+│  ├─ Mode selector (SW2)                                │
+│  ├─ Testpoints (for oscilloscope probing)              │
+│  └─ Optional: External power connector (for lab PSU)    │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+HOW TO ADD COMPONENTS
+──────────────────────
+
+Method 1: Use the "Add Component" Tool
+1. In schematic editor: Shift+A (or Place → Add Symbol)
+2. Symbol selector dialog opens
+3. Type component name in search box:
+   - "C" for capacitor
+   - "R" for resistor
+   - "L" for inductor
+   - "USB_C" for USB connector
+   - "XC7K420T" for FPGA
+4. Select from list
+5. Click cursor on schematic to place
+
+Method 2: Keyboard Shortcuts
+- A → Add symbol (search by name)
+- W → Add wire (connect components)
+- U → Add unconnected power pins
+- V → Add via (on PCB layer)
+- D → Delete component/wire
+
+EXAMPLE: Adding the FPGA (U1)
+────────────────────────────
+
+1. Press Shift+A
+2. Search: "XC7K420T" (or "Xilinx_Kintex7_BGA676")
+3. Click result to select
+4. Place on left-center of schematic
+5. Press Escape to finish placement
+6. Right-click on FPGA → Edit Symbol Properties
+7. Set reference: U1
+8. Set footprint: "BGA676_Kintex7" (links to physical package)
+9. Press Enter to confirm
+
+Component Properties Dialog
+────────────────────────────
+Every component has properties that you'll configure:
+
+Example for capacitor C1:
+  ├─ Reference: C1 (auto-assigned by annotate)
+  ├─ Value: 100µF (displayed on schematic)
+  ├─ Footprint: 1210 (physical size on PCB)
+  ├─ Datasheet: Link to PDF (for reference)
+  ├─ Description: "Input bulk capacitor for USB power"
+  └─ Notes: "Low ESR required, ceramic preferred"
+
+Example for FPGA U1:
+  ├─ Reference: U1
+  ├─ Value: XC7K420T-2FFG676C (part number)
+  ├─ Footprint: BGA676_27x27mm
+  ├─ Datasheet: https://docs.xilinx.com/...
+  ├─ Power pins: VCC_CORE, VCC_IO, GND
+  └─ Description: "Kintex-7 FPGA with 420k LCs"
+
+STEP 3.3: Connect Components with Wires
+─────────────────────────────────────────
+
+After placing components, you draw electrical connections:
+
+1. Press W (or click Wire tool)
+2. Click on a pin (red dot appears)
+3. Move cursor to second pin and click
+4. KiCAD draws a wire between pins
+5. Press Escape to stop drawing
+
+Wire Color Meaning:
+  • White wire:   Normal (unconnected or warning)
+  • Green wire:   Connected (valid net)
+  • Red wire:     Conflict/short-circuit
+  • Blue wire:    New (but valid) net
+
+CRITICAL CONNECTIONS FOR LIGHTRAIL MVP
+───────────────────────────────────────
+
+Power Rails (Must connect to all decoupling capacitors):
+  USB 5V → TPS65250 VOUT → Buck converter inputs
+  Buck outputs → FPGA power pins + Decoupling caps (critical!)
+  
+  VCC_CORE_1.8V → FPGA core pins (many)
+  VCC_IO_3.3V → FPGA I/O pins + TIA + Modulator
+  GND → FPGA pins + all return paths (via ground planes)
+
+JTAG Programming (for downloading bitstream):
+  TMS (Test Mode Select) → FPGA pin AA11
+  TDI (Test Data In) → FPGA pin Y17
+  TDO (Test Data Out) → FPGA pin V15
+  TCK (Test Clock) → FPGA pin W15
+  GND → FPGA pins (any GND)
+  
+  Pull-ups: TMS 4.7k to VCC_IO, TDI 4.7k to VCC_IO
+
+Optical Interface:
+  TIA Output (analog) → FPGA ADC input (specific pin, check datasheet)
+  FPGA GPIO (digital out) → Modulator driver input
+  FPGA GPIO (PWM) → Fan control via MOSFET
+
+Thermal Sensor:
+  TMP36 output (analog) → FPGA ADC input
+  TMP36 GND → Global GND
+  TMP36 +3.3V → VCC_IO
+
+STEP 3.4: Add Net Labels (Optional but Recommended)
+────────────────────────────────────────────────────
+
+Instead of drawing long wires across the schematic, use labels:
+
+1. Place label: Ctrl+J or Place → Add Label
+2. Click on schematic
+3. Type label name: "VCC_CORE_1.8V"
+4. Connect to net with short wire
+5. Repeat elsewhere with same label → automatically connected!
+
+Benefits:
+  • Cleaner, easier-to-read schematic
+  • No long wires cluttering the diagram
+  • Global labels automatically link across sheets
+
+STEP 3.5: Assign Footprints (Critical!)
+─────────────────────────────────────
+
+Every schematic component must have a footprint (physical package):
+
+1. Schematic editor: Tools → Assign Footprints (or press E)
+2. Panel opens on right showing all components without footprints
+3. For each component:
+   a. Click in "Footprint" column
+   b. Footprint selector dialog opens
+   c. Type package size: "0603" (resistor), "1210" (capacitor), "BGA676" (FPGA)
+   d. Select from list
+   e. Confirm with Enter
+
+Common Package Sizes:
+  Resistor/Capacitor:
+    • 0402: Tiny (1mm × 0.5mm) - hard to hand-solder
+    • 0603: Standard small (1.6mm × 0.8mm)
+    • 0805: Larger (2mm × 1.25mm) - easier to solder
+    • 1206: Large (3.2mm × 1.6mm) - for high-power
+    • 1210: Extra-large (3.2mm × 2.5mm) - for high-value capacitors
+
+  IC Packages:
+    • SOIC8: Small outline (8 pins, 4mm wide)
+    • SOIC20: Medium (20 pins)
+    • LQFP48: Quad flat-pack (48 pins)
+    • BGA: Ball grid array (many pins in 2D array)
+      - BGA676: 27×27mm array (Xilinx Kintex-7)
+
+  Connectors:
+    • 0.1" Header: Standard pitch (2.54mm)
+    • USB-C: 24-pin surface-mount
+    • Lemo 00: Precision fiber connector
+
+STEP 3.6: Run Electrical Rules Check (ERC)
+──────────────────────────────────────────
+
+Before moving to PCB layout, verify your schematic:
+
+1. Schematic editor: Tools → Electrical Rules Checker (or press Ctrl+Shift+V)
+2. Check dialog runs and shows errors/warnings:
+   • Red icon: ERROR - must fix (floating pin, open net)
+   • Yellow icon: WARNING - usually OK (power on output pin, etc)
+
+Fix Common Errors:
+  ✗ "Pin not connected": Wire not properly connected to pin
+  ✗ "Floating pin": Pin with no net label or wire
+  ✗ "Duplicate component reference": Two U1's or R1's
+  ✓ "Power on output pin": Often OK for power supplies
+
+STEP 3.7: Annotate Schematic (Assign Reference Numbers)
+────────────────────────────────────────────────────────
+
+1. Schematic editor: Tools → Annotate Schematic
+2. Dialog opens with options:
+   - Method: Sequential (1, 2, 3...) or sheet-based
+   - Scope: Entire schematic or selected components
+3. Click "Annotate" → All components get reference numbers:
+   • U1, U2, U3... (IC chips)
+   • C1, C2, C3... (Capacitors)
+   • R1, R2, R3... (Resistors)
+   • L1, L2... (Inductors)
+   • J1, J2... (Connectors)
+   • SW1, SW2... (Switches)
+
+Output in message window:
+```
+Annotation complete:
+  Added U1 to U32
+  Added C1 to C165
+  Added R1 to R52
+  Added J1 to J5
+Total: 250 components
+```
+
+STEP 3.8: Generate Netlist
+──────────────────────────
+
+The netlist defines electrical connections for PCB layout:
+
+1. Tools → Netlist → Generate Netlist (or Ctrl+Shift+N)
+2. File saved as: LightRail_NCE_MVP.net
+3. This file is used when creating PCB layout
+
+STEP 3.9: Save Schematic
+────────────────────────
+
+File → Save (or Ctrl+S)
+Always save before moving to PCB layout!
+
+CHECKLIST FOR COMPLETE SCHEMATIC
+──────────────────────────────────
+✓ All components placed and labeled
+✓ All power/ground connections made
+✓ All signal connections routed
+✓ Footprints assigned to all components
+✓ Electrical Rules Check (ERC) passed (no errors)
+✓ Annotation complete (U1, C1, R1, etc.)
+✓ Netlist generated
+✓ Schematic saved
+
+===========================================
+4. COMPONENT SYMBOL & FOOTPRINT MANAGEMENT
+===========================================
+
+KiCAD comes with standard libraries, but you need custom symbols for:
+  • Xilinx Kintex-7 FPGA (BGA676)
+  • Optical components (TIA, modulators, photodiodes)
+  • Specialized connectors (Lemo fiber)
+
+OPTION A: Download Symbols from Internet
+──────────────────────────────────────────
+
+1. Xilinx FPGA symbols:
+   Go to: https://github.com/Xilinx/FPGA_Symbol_Libraries
+   Download: Kintex-7.kicad_sym
+   Save to: project_dir/symbols/
+
+2. Optical components (custom):
+   Create symbols in KiCAD symbol editor (see below)
+
+3. TI/Analog Devices chips:
+   Download from: https://www.ti.com/tool/KICAD-MODELS
+   Include: OPA2356.kicad_sym, AD8436.kicad_sym, etc.
+
+OPTION B: Create Custom Symbols in KiCAD
+─────────────────────────────────────────
+
+For the FPGA (as example):
+
+1. KiCAD main window: Tools → Symbol Librarian
+2. Symbol Editor opens
+3. File → New Symbol
+4. Create symbol:
+   - Name: XC7K420T
+   - Pins: Add 676 pins (or major groups)
+     Click "Add Pin": Type name (VCC_CORE, I_A12, etc), number
+   - Appearance: Draw rectangle outline
+5. Save to: LightRail_Custom.kicad_sym
+
+Simplified approach: Use "partial symbol"
+  Create single mega-symbol with grouped pins:
+  - VCC_CORE (all 1.8V pins lumped together)
+  - VCC_IO (all 3.3V pins lumped)
+  - GND (all grounds)
+  - JTAG (TCO, TDI, TMS, TCK)
+  - And so on...
+
+This is more practical than 676 individual pins!
+
+===========================================
+5. PCB LAYOUT BEST PRACTICES
+===========================================
+
+STEP 5.1: Create PCB Board Outline
+───────────────────────────────────
+
+1. PCB editor: Open LightRail_NCE_MVP.kicad_pcb (or New → PCB from Schematic)
+2. Layer selection (right side panel) → Select "Edge.Cuts" layer
+3. Draw board outline:
+   - Use: Rectangle tool or Line tool
+   - Dimensions: 200mm × 150mm (based on enclosure spec)
+   - Thickness: 1.6mm FR-4 standard
+   - Add mounting holes (4×M3 in corners)
+
+STEP 5.2: Component Placement Strategy
+──────────────────────────────────────
+
+Organize components into regions:
+
+```
+        TOP VIEW - LIGHTRAIL PCB LAYOUT (200mm × 150mm)
+
+  ┌─────────────────────────────────────────────────────┐
+  │  M3 Hole   M3 Hole                    M3 Hole       │
+  │             (0,0)                                    │
+  │                                      M3 Hole        │
+  ├─────────────────────────────────────────────────────┤
+  │                                                     │
+  │  POWER MGMT           FPGA (U1)      OPTICAL I/O   │
+  │  Region              Region          Region         │
+  │  ┌──────┐           ┌────────┐      ┌────────┐     │
+  │  │ USB  │           │ Kintex │      │ TIA    │     │
+  │  │ PD   │           │   -7   │      │ DRV    │     │
+  │  │      │           │ BGA676 │      │        │     │
+  │  │ Buck │           │        │      │ MOD    │     │
+  │  │ Conv │           │        │      │ DRV    │     │
+  │  └──────┘           └────────┘      └────────┘     │
+  │                           ↓                         │
+  │                      (Baseplate)                    │
+  │                      (Thermal Vias)                 │
+  │                                                     │
+  │      THERMAL SENSOR   │   FAN PWM MOSFET           │
+  │      (Bottom area)    │   (Corner)                 │
+  │                                                     │
+  │  TEST POINTS & SMA CONNECTORS                      │
+  │  (Bottom right - for scope probing)                │
+  │                                                     │
+  │  ┌─────────────────────────────────────────┐       │
+  │  │  Copper-Invar Baseplate (120×100mm)    │       │
+  │  │  Under FPGA - soldered to PCB power    │       │
+  │  │  planes. Heat conducted to enclosure.  │       │
+  │  └─────────────────────────────────────────┘       │
+  │                                                     │
+  └─────────────────────────────────────────────────────┘
+```
+
+STEP 5.3: Critical Trace Routing Rules
+───────────────────────────────────────
+
+Power Distribution (Ground & Supply):
+
+1. Ground Plane (Layer 2: Bottom Copper):
+   • Unbroken copper sheet connecting all GND pins
+   • Multiple vias (every 2-3mm) tie top components to ground plane
+   • Minimize loop area (ground return path close to signal trace)
+
+2. Power Planes (or power distribution traces):
+   • VCC_CORE_1.8V: Thicker traces (20-25 mil = 0.5mm)
+   • VCC_IO_3.3V: Medium traces (15 mil = 0.4mm)
+   • USB 5V input: Extra thick (30 mil = 0.75mm)
+   • Separate planes for each voltage (avoid ground bounce)
+
+3. Via Strategy:
+   • One via every 2-3mm on power distribution
+   • Multiple vias (2-4) on net transitions
+   • Thermal vias under FPGA (0.3mm, 120× array at 2mm pitch)
+   • Via stitching around high-speed signals (every 1mm)
+
+Signal Routing (JTAG, USB):
+
+1. JTAG traces (slow, ~1MHz):
+   • Trace width: 8 mil (0.2mm) minimum
+   • Length matching: Not critical (< 10cm total)
+   • Impedance: Not critical for JTAG
+
+2. USB traces (high-speed, 480 Mbps):
+   • D+/D- traces: Differential pair, 90Ω impedance
+   • Trace width: 8-10 mil (0.2-0.25mm)
+   • Separation: Keep constant (~8 mil)
+   • Length matching: ±3mm (not critical at 480 Mbps but good practice)
+   • Shielding: Ground pours around differential pair
+
+3. Optical Interface (analog, sensitive):
+   • TIA input (from photodiode): Shielded
+   • TIA output: Twisted pair if possible
+   • Modulator driver output: Shielded from noise
+   • Keep away from FPGA switching noise (digital lines)
+   • Ground pour underneath analog traces (shield)
+
+4. Temperature Sensor (analog):
+   • Separate from digital/switching signals
+   • Shielded trace if > 10cm long
+   • Bypass capacitor close to sensor GND
+
+STEP 5.4: Thermal Management Layout
+────────────────────────────────────
+
+Critical for keeping FPGA <75°C:
+
+1. Thermal Vias Under FPGA:
+   • Array of 0.3mm vias under die
+   • Pitch: 2mm hexagonal pattern
+   • Connect to internal copper baseplate (above ground plane)
+   • Ground plane (Layer 2) provides heat sink
+
+2. Copper-Invar Baseplate:
+   • Mounted directly above FPGA BGA pads (soldered)
+   • 120×100mm footprint (covers die)
+   • 2mm thickness: 1mm copper (top) + 1mm Invar (bottom)
+   • Copper thermal conductivity: 385 W/m·K
+   • Soldered via wave-solder process (high temp, 260°C)
+
+3. Air Flow Considerations:
+   • Place fan exhaust vents on enclosure sides
+   • Keep ventilation area free of tall components
+   • Don't block thermal vias with adjacent components
+   • Temperature sensor close to FPGA (within 5cm)
+
+STEP 5.5: Layer Stackup Design
+─────────────────────────────
+
+Standard 4-layer PCB (cheapest for high-density):
+
+```
+Layer 1 (F.Cu - Front Copper):
+  ├─ FPGA BGA pads
+  ├─ Thermal vias array (under FPGA)
+  ├─ Signal traces for external components
+  └─ Copper baseplate landing pads
+
+Layer 2 (GND - Ground Plane):
+  ├─ Continuous ground copper sheet
+  ├─ Lowest impedance return path
+  └─ Heat sink for thermal vias
+
+Layer 3 (Internal Power):
+  ├─ VCC_CORE_1.8V plane (split from Layer 4)
+  ├─ VCC_IO_3.3V plane
+  └─ VCC_FAN_12V (narrow distribution)
+
+Layer 4 (B.Cu - Back Copper):
+  ├─ Component pads (soldered side)
+  ├─ Power distribution traces
+  ├─ Ground return traces
+  └─ stitching vias
+```
+
+Design Rules (in KiCAD):
+1. File → Board Setup → Design Rules
+2. Copper tab:
+   - Trace width: 0.2mm minimum
+   - Trace spacing: 0.15mm minimum
+   - Via diameter: 0.4mm (pad) + 0.2mm (hole)
+   - Via spacing: 0.3mm minimum
+
+3. Layers tab:
+   - Verify 4 layers selected
+   - Copper weight: 1oz/1oz (35µm standard)
+
+STEP 5.6: Place Components in PCB Editor
+─────────────────────────────────────────
+
+1. PCB editor: Ctrl+Shift+U (or Tools → Update PCB from Schematic)
+2. Ratsnest dialog: Click "Update PCB" → Components appear (scattered)
+3. Move components:
+   - Click component to select
+   - Drag to position on board
+   - Rotate with R key
+   - Fine-tune with arrow keys
+
+Placement Order:
+1. FPGA (U1) - largest, most pins, center of board
+2. Power management (buck converters, capacitors) - near USB
+3. Optical components (TIA, modulator drivers) - one side each
+4. Connector area (USB-C, JTAG headers) - edges
+
+STEP 5.7: Route Traces (Copper Layer)
+──────────────────────────────────────
+
+After component placement, draw copper traces to connect nets:
+
+1. PCB editor: X key (or Route → Route Traces)
+2. Click on start pad → Move cursor → Click on end pad
+3. KiCAD auto-routes optimally (usually)
+4. Manual routing for tight areas:
+   - Press V to add via (switch to different layer)
+   - Use arrow keys to step trace
+   - Press Escape to finish trace
+
+Auto-routing (less manual work):
+1. PCB editor: Tools → Auto-router
+2. Click "Start" → KiCAD routes all remaining traces
+3. Usually 80-95% success rate
+
+Manual touch-ups:
+  • Fix any design rule violations (shown in red)
+  • Separate power/ground traces to avoid interference
+  • Add guard traces around analog signals
+
+STEP 5.8: Add Via Stitching & Thermal Relief
+──────────────────────────────────────────────
+
+1. Via stitching (for signal integrity):
+   - Around high-speed traces (USB D+/D-)
+   - Around analog signals (TIA, modulator feedback)
+   - Every 1-2mm spacing
+
+2. Thermal relief pads:
+   - On power/ground pads connected to planes
+   - Reduces heat loss during soldering (pads don't wick heat)
+   - Add spoke pattern (4× spokes, 0.3mm width)
+   - KiCAD: Select pad → Properties → Thermal relief type
+
+STEP 5.9: Add Silkscreen (Top Layer Text)
+──────────────────────────────────────────
+
+1. PCB editor: Select "F.SilkS" layer (Front Silkscreen)
+2. Add text:
+   - Ctrl+Shift+T (or Place → Add Text)
+   - Enter text (component reference: "U1", "C1")
+   - Size: 3mm text (readable on small components)
+
+3. Add graphics:
+   - "+" marks for alignment (placement guide)
+   - Arrows indicating orientation
+   - Board outline on silkscreen (for clarity)
+
+STEP 5.10: Design Rule Check (DRC)
+────────────────────────────────────
+
+Before manufacturing, verify all design rules:
+
+1. PCB editor: Tools → Design Rules Check (or Ctrl+Shift+B)
+2. DRC runs and reports:
+   ✓ No copper-to-copper shorts
+   ✓ Minimum trace width
+   ✓ Minimum clearance (0.15mm)
+   ✓ Via holes not in pads
+   ✓ All nets routed (no floating references)
+
+3. Common DRC errors & fixes:
+   ✗ "Copper-to-copper short": Two nets touching → reroute trace
+   ✗ "Via under pad": Via placed where component pad is → move via
+   ✗ "Unconnected net": Segment not routed → add trace
+   ✗ "Trace too narrow": Reduce trace length or add copper → widen trace
+
+STEP 5.11: 3D Visualization (Sanity Check)
+───────────────────────────────────────────
+
+1. PCB editor: View → 3D Viewer (or Alt+3)
+2. 3D board opens showing:
+   - Component footprints (copper pads)
+   - Mounted components (if 3D models available)
+   - Enclosure outline (if imported)
+   - Helps verify no components interfere
+
+STEP 5.12: Save PCB Layout
+────────────────────────────
+
+File → Save (Ctrl+S)
+The PCB file is now complete: LightRail_NCE_MVP.kicad_pcb
+
+===========================================
+6. MANUFACTURING FILE GENERATION
+===========================================
+
+STEP 6.1: Generate Gerber Files (for PCB Fabrication)
+────────────────────────────────────────────────────
+
+Gerber files define copper, mask, and silkscreen for manufacturer:
+
+1. PCB editor: File → Plot (or Ctrl+Shift+P)
+2. Plot dialog opens
+3. Settings:
+   - Plot format: Gerber (not PostScript or PDF)
+   - Included layers:
+     ☑ F.Cu (Front copper)
+     ☑ B.Cu (Back copper)
+     ☑ F.SilkS (Front silkscreen)
+     ☑ B.SilkS (Back silkscreen - optional)
+     ☑ F.Mask (Front solder mask)
+     ☑ B.Mask (Back solder mask)
+     ☑ Edge.Cuts (Board outline)
+   - Output: Select project folder
+4. Click "Plot All" → Gerber files generated:
+   ```
+   LightRail_NCE_MVP-F_Cu.gbr     (Front copper)
+   LightRail_NCE_MVP-B_Cu.gbr     (Back copper)
+   LightRail_NCE_MVP-F_SilkS.gbr  (Front silkscreen)
+   LightRail_NCE_MVP-F_Mask.gbr   (Front mask)
+   LightRail_NCE_MVP-B_Mask.gbr   (Back mask)
+   LightRail_NCE_MVP-Edge_Cuts.gbr (Board outline)
+   LightRail_NCE_MVP.gbl          (Gerber job file - metadata)
+   ```
+
+STEP 6.2: Generate Drill File (for Via/Hole Drilling)
+──────────────────────────────────────────────────────
+
+1. PCB editor: File → Fabrication Outputs → Drill Files (Excellon format)
+2. Output:
+   ```
+   LightRail_NCE_MVP.drl  (Excellon drill file with coordinates)
+   LightRail_NCE_MVP.rpt  (Drill report - statistics)
+   ```
+
+Contents of drill file:
+  - Via hole locations (X, Y coordinates)
+  - Via hole diameter (in inches or mm)
+  - Plating info (through-hole, blind, buried)
+
+STEP 6.3: Generate Bill of Materials (BOM)
+───────────────────────────────────────────
+
+1. Schematic editor: Tools → Generate BOM (or Ctrl+Alt+B)
+2. BOM generator opens
+3. Select output format:
+   - CSV (for spreadsheet: Excel, Google Sheets)
+   - XML (for ERP systems)
+   - TXT (plain text)
+4. Columns to include:
+   ☑ Reference (U1, C1, R1, etc)
+   ☑ Value (100µF, 4.7kΩ, etc)
+   ☑ Footprint (1210, 0603, BGA676, etc)
+   ☑ Datasheet (PDF link)
+   ☑ Qty (quantity)
+5. Click "Generate" → File saved:
+   ```
+   LightRail_NCE_MVP.csv
+   ```
+
+Open in Excel to organize:
+  | Reference | Qty | Value | Footprint | Supplier | Part# | Unit Cost | Total |
+  |-----------|-----|-------|-----------|----------|-------|-----------|-------|
+  | C1 | 1 | 100µF | 1210 | Digikey | ... | $0.45 | $0.45 |
+  | U1 | 1 | XC7K420T | BGA676 | Digikey | ... | $1200 | $1200 |
+
+STEP 6.4: Generate Pick & Place File (for Assembly Partner)
+────────────────────────────────────────────────────────────
+
+Tells assembly robot where to place each component:
+
+1. PCB editor: File → Fabrication Outputs → Footprint Position File
+2. Output:
+   ```
+   LightRail_NCE_MVP-positions.csv
+   ```
+
+Format (example):
+```
+Ref,Val,Package,PosX,PosY,Rot,Side
+C1,100µF,1210,45.72,83.82,0,Front
+C2,10µF,0805,50.8,76.2,90,Front
+U1,XC7K420T,BGA676,100,75,0,Front
+J1,USB-C,USB-C,25.4,50.8,90,Front
+...
+```
+
+STEP 6.5: Package All Files for Manufacturing
+───────────────────────────────────────────────
+
+Create folder:
+```
+LightRail_NCE_MVP_Manufacturing/
+├── Gerber/
+│   ├── LightRail_NCE_MVP-F_Cu.gbr
+│   ├── LightRail_NCE_MVP-B_Cu.gbr
+│   ├── LightRail_NCE_MVP-F_SilkS.gbr
+│   ├── LightRail_NCE_MVP-F_Mask.gbr
+│   ├── LightRail_NCE_MVP-B_Mask.gbr
+│   ├── LightRail_NCE_MVP-Edge_Cuts.gbr
+│   └── LightRail_NCE_MVP.gbl
+├── Drill/
+│   ├── LightRail_NCE_MVP.drl
+│   └── LightRail_NCE_MVP.rpt
+├── BOM/
+│   └── LightRail_NCE_MVP_BOM.csv
+├── Pick_Place/
+│   └── LightRail_NCE_MVP-positions.csv
+├── Schematic/
+│   └── LightRail_NCE_MVP.pdf (exported schematic)
+└── README.txt (instructions for manufacturer)
+```
+
+README.txt template:
+```
+LIGHTRAIL NCE MVP - PCB MANUFACTURING PACKAGE
+==============================================
+
+SPECIFICATIONS:
+- PCB dimensions: 200mm × 150mm
+- Layer count: 4-layer
+- Copper weight: 1oz/1oz (35µm)
+- Thickness: 1.6mm FR-4
+- Min trace width: 0.2mm (8 mil)
+- Min clearance: 0.15mm (6 mil)
+- Via diameter: 0.4mm (pad) / 0.2mm (hole)
+- Finish: ENIG (Gold) or HASL preferred
+- Mask: Green solder mask (standard)
+
+SPECIAL NOTES:
+- Thermal vias under FPGA (0.3mm, 120-unit array)
+- BGA escape routing critical - review DFM
+- Copper baseplate soldering on Layer 1 (see schematic)
+- Ensure via fill (copper-filled) for thermal paths
+
+DFM REVIEW:
+Please confirm:
+[ ] All BGA pads accessible for soldering
+[ ] No net violations in file
+[ ] Solder paste stencil gerber attached
+[ ] No isolated copper islands
+
+Timeline: 14-day lead time
+Quantity: 10 units (+ 5 spares)
+```
+
+STEP 6.6: Submit to PCB Manufacturer
+─────────────────────────────────────
+
+1. PCBWay.com or JLCPCB.com:
+   - Upload Gerber zip file
+   - Select specifications (4-layer, ENIG, green mask)
+   - Quote will appear (~$200-300 for 10 boards)
+   - Add to cart and checkout
+
+2. Assembly request (optional):
+   - Upload BOM + Pick & Place file
+   - Quote for SMD assembly (~$300-400 for 10 boards)
+   - Note: FPGA placement done manually (high cost)
+
+3. Track order:
+   - Email updates on fabrication progress
+   - Expect 7-14 day turnaround
+
+===========================================
+7. TROUBLESHOOTING & COMMON ISSUES
+===========================================
+
+"Symbol not found" error:
+→ Check symbol library path (Preferences → Manage Libraries)
+→ Verify library .kicad_sym file exists
+→ Re-add library if missing
+
+Cannot find footprint:
+→ Search footprint library for similar package
+→ Manually create footprint if missing
+→ Use standard library footprints when possible
+
+DRC errors after layout:
+→ Common: Trace spacing too tight
+→ Solution: Reroute net or widen trace
+→ Tool: Tools → Design Rules Check → Details button
+
+"Floating net" warning:
+→ Some part of your circuit is not connected
+→ Tool: PCB editor → Tools → Unconnected Items (highlights in color)
+
+Gerber file verification:
+→ Download free Gerber viewer: ViewPlot, GerberLogix
+→ Open .gbr files to visualize layers before manufacturing
+→ Check for bridges, shorts, missing features
+
+===========================================
+NEXT STEPS AFTER COMPLETING LAYOUT
+===========================================
+
+1. Manufacturing:
+   ☐ Submit Gerber files to PCBWay or JLCPCB
+   ☐ Request DFM review
+   ☐ Confirm quote and timeline
+
+2. Assembly:
+   ☐ Prepare BOM with supplier part numbers
+   ☐ Submit BOM + Pick & Place to assembly partner
+   ☐ Prepare firmware for FPGA programming
+
+3. Validation:
+   ☐ Test PCB power-on (voltage rails)
+   ☐ Program FPGA via JTAG
+   ☐ Verify thermal performance
+
+===========================================
+USEFUL RESOURCES
+===========================================
+
+KiCAD Documentation:
+  https://docs.kicad.org/
+
+Xilinx FPGA Symbols:
+  https://github.com/Xilinx/FPGA_Symbol_Libraries
+
+PCB Design Best Practices:
+  https://www.altium.com/documentation/altium-designer/pcb-design-using-pcb-design-rules
+
+Thermal Management:
+  https://www.ti.com/lit/an/slva054b/slva054b.pdf
+
+Manufacturing DFM Checklist:
+  https://www.pcbway.com/blog/Activities/PCB_Gerber_file_Format_and_Specifications.html
+
+===========================================

@@ -160,7 +160,7 @@ class GerberGenerator:
             f.write("  L12: Bottom Signal\n")
         files.append(readme_file)
         
-        print(f"✅ Generated {len(files)} files in {self.output_dir}/")
+        print(f"DONE: Generated {len(files)} files in {self.output_dir}/")
         return files
 
 if __name__ == "__main__":

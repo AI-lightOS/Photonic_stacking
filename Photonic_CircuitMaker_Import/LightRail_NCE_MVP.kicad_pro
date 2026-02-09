@@ -1,0 +1,132 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.05,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15
+      },
+      "pad_to_mask_clearance": 0.0,
+      "solder_mask_min_width": 0.0,
+      "text_vars": {}
+    },
+    "layers": [
+      {
+        "canonical_name": "F.Cu",
+        "copper_thickness": 35.0,
+        "name": "Front",
+        "type": "copper"
+      },
+      {
+        "name": "B.Cu",
+        "type": "copper"
+      }
+    ]
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "pin_map": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    ],
+    "pin_map_hash": "CAFEEFFF00000000DEADBEEFCAFEBEEFDEAD0000"
+  },
+  "meta": {
+    "filename": "LightRail_NCE_MVP.kicad_pro",
+    "version": 1
+  },
+  "net": {
+    "codes": [],
+    "meta": {
+      "version": 0
+    }
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "specctra dsn": "",
+      "step": "",
+      "vrml": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 100,
+    "drawing": {
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
+      "default_line_thickness": 0.15,
+      "default_text_size": 1.27,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size_choice": 3,
+      "label_size_ratio": 0.375,
+      "pin_symbol_size": 1.27,
+      "text_offset_ratio": 0.15,
+      "title_block_values": {
+        "company": "LightRail Computing",
+        "comment1": "Photonic Spiking Neural Processor MVP",
+        "comment2": "Xilinx Kintex-7 FPGA + Optical Interface",
+        "comment3": "",
+        "comment4": "",
+        "date": "2025-01-20",
+        "rev": "1.0",
+        "title": "LightRail NCE - Main Board"
+      }
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 0
+    },
+    "net_formats": {
+      "net_s_expr": 0
+    },
+    "ngspice": {
+      "fix_include_paths": true,
+      "fix_passive_vals": false,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 0,
+      "workbook_filename": ""
+    },
+    "origins": [],
+    "page_layout_descr_file": ""
+  },
+  "sheets": [
+    [
+      "ed90ff67-ef74-4c80-8b63-8a7f0e8f8c3a",
+      ""
+    ]
+  ],
+  "text_variables": {}
+}
