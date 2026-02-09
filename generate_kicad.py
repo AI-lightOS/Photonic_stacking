@@ -103,15 +103,21 @@ class LightRailKiCadGenerator:
             ly = 15 if i < 10 else 30 + (i-10)*10
             self.add_inductor(f"L{i}", lx, ly, "+12V", "VCC_PHASE")
 
-        # 4. Decoupling (Full Density)
-        for i in range(1200):
-            r = random.uniform(20, 110)
+        # 4. Decoupling (Extreme Density for 2000+ Components)
+        for i in range(2400):
+            r = random.uniform(5, 140)
             ang = random.uniform(0, 360)
-            x = 140 + r * math.cos(math.radians(ang))
+            x = 150 + r * math.cos(math.radians(ang))
             y = 70 + r * math.sin(math.radians(ang))
-            if 5 < x < 295 and 5 < y < 135:
-                net = "VCC_GPU" if i % 3 == 0 else ("VCC_MEM" if i % 3 == 1 else "GND")
-                self.add_smd_2pin(f"C{i}", x, y, net, "GND")
+            if 1 < x < 299 and 1 < y < 139:
+                net = "VCC_GPU" if i % 4 == 0 else ("VCC_MEM" if i % 4 == 1 else ("VCC_PLL" if i % 4 == 2 else "GND"))
+                pkg = random.choice(["0201", "0402"])
+                self.add_smd_2pin(f"D_CAP_{i}", x, y, net, "GND", rot=random.choice([0, 90, 180, 270]), pkg=pkg)
+
+        # 4a. Logic Buffer Array (Additional Complexity)
+        for i in range(250):
+            x, y = random.uniform(5, 295), random.uniform(5, 135)
+            self.add_qfn(f"U_BUF{i}", x, y, 6, 1.5, ["GND", "VCC_IO", "BUF_IN", "BUF_OUT"])
 
         # 5. Crystals
         self.add_crystal("Y1", 100, 25, "Y1_IN", "Y1_OUT")
