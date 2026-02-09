@@ -1,16 +1,19 @@
-TFLN PHOTONIC MODULATOR - 12-LAYER PCB DESIGN
+LIGHTRAIL AI - 15-LAYER INTELLIGENCE STACK PCB
 =============================================
-Generated: 2026-02-07 00:05:10
+Generated: 2026-02-08 18:53:15
 Stackup Configuration:
-  L1: Top Signal (RF)
+  L1: Top Signal (RF/Physical Fabric)
   L2: Ground
-  L3: Signal (Stripline)
+  L3: Analog Wave Compute
   L4: Ground
-  L5: Signal (Stripline)
+  L5: Memristive Synaptic Grid
   L6: Ground
-  L7: Power (+3.3V)
-  L8: Ground
-  L9: Power (+1.8V)
-  L10: Signal (Control)
-  L11: Ground
-  L12: Bottom Signal
+  L7: Ternary Logic Bus
+  L8: Power (+3.3V)
+  L9: Ground
+  L10: Power (+1.8V)
+  L11: Spiking Logic Dispatcher
+  L12: Ground
+  L13: Control Plane
+  L14: Ground
+  L15: Bottom Signal (Unified Memory Interconnect)

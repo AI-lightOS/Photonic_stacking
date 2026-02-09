@@ -121,6 +121,19 @@ class LightRailKiCadGenerator:
         self.add_qfn("U_FMU", 50, 70, 32, 5, ["GND", "VCC_IO", "FMU_DATA", "FMU_CLK"])
         self.add_qfn("U_IMU", 230, 70, 32, 5, ["GND", "VCC_IO", "IMU_DATA", "IMU_CLK"])
 
+        # 7. Beyond Binary Components (15-Layer Upgrade)
+        # Memristive Synaptic Grid (Layer 4)
+        for i in range(4):
+            self.add_bga(f"U_MEMRISTOR_{i}", 110 + i*20, 90, 10, 10, 10, ["MEMR_A", "MEMR_B", "GND", "V_ANA"])
+        
+        # Ternary Logic Encoders (Layer 6)
+        for i in range(8):
+            self.add_qfn(f"U_TERNARY_{i}", 30 + i*30, 120, 48, 7, ["TRIT_P", "TRIT_N", "TRIT_0", "GND"])
+
+        # Analog Wave Compute Modules (Layer 3)
+        for i in range(2):
+            self.add_bga(f"U_ANALOG_WAVE_{i}", 70 + i*140, 45, 15, 12, 12, ["WAVE_P", "WAVE_N", "GND"])
+
         # Board Outline (Graphics)
         w, h = 300, 140
         self.graphics.append(f'  (gr_line (start 0 0) (end {w} 0) (layer "Edge.Cuts") (width 0.15))')
@@ -145,6 +158,9 @@ class LightRailKiCadGenerator:
             '    (8 "In8.Cu" signal)',
             '    (9 "In9.Cu" signal)',
             '    (10 "In10.Cu" signal)',
+            '    (11 "In11.Cu" signal)',
+            '    (12 "In12.Cu" signal)',
+            '    (13 "In13.Cu" signal)',
             '    (31 "B.Cu" signal)',
             '    (44 "Edge.Cuts" user "Edge.Cuts")',
             '  )',
@@ -172,6 +188,12 @@ class LightRailKiCadGenerator:
             '      (layer "dielectric 10" (type "core") (thickness 0.2) (material "FR4"))',
             '      (layer "In10.Cu" (type "copper") (thickness 0.035))',
             '      (layer "dielectric 11" (type "core") (thickness 0.2) (material "FR4"))',
+            '      (layer "In11.Cu" (type "copper") (thickness 0.035))',
+            '      (layer "dielectric 12" (type "core") (thickness 0.2) (material "FR4"))',
+            '      (layer "In12.Cu" (type "copper") (thickness 0.035))',
+            '      (layer "dielectric 13" (type "core") (thickness 0.2) (material "FR4"))',
+            '      (layer "In13.Cu" (type "copper") (thickness 0.035))',
+            '      (layer "dielectric 14" (type "core") (thickness 0.2) (material "FR4"))',
             '      (layer "B.Cu" (type "copper") (thickness 0.035))',
             '    )',
             '    (pad_to_mask_clearance 0.05)',

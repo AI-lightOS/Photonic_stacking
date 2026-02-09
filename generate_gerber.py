@@ -16,7 +16,7 @@ class GerberGenerator:
         # Board specifications
         self.board_width = 106.68  # mm (standard PCIe card)
         self.board_height = 111.15  # mm
-        self.layers = 12  # 12-layer PCB for TFLN Signal Integrity
+        self.layers = 15  # 15-layer Intelligence Stack
         
     def generate_top_copper(self):
         """Generate top copper layer (GTL)"""
@@ -47,31 +47,21 @@ class GerberGenerator:
         """Generate inner signal and power layers for 12-layer stackup"""
         files = []
         
-        # 12-Layer Stackup Definition
-        # L1: Top Signal (RF)
-        # L2: Ground
-        # L3: Signal (Stripline)
-        # L4: Ground
-        # L5: Signal (Stripline)
-        # L6: Ground
-        # L7: Power (+3.3V)
-        # L8: Ground
-        # L9: Power (+1.8V)
-        # L10: Signal
-        # L11: Ground
-        # L12: Bottom Signal
-        
+        # 15-Layer Stackup Definition
         layer_specs = [
-            (2, "Ground Plane 1", "g2", "Solid Ground for RF Reference"),
-            (3, "Signal 1 (Stripline)", "g3", "High Speed Differential Pairs"),
-            (4, "Ground Plane 2", "g4", "Isolation"),
-            (5, "Signal 2 (Stripline)", "g5", "High Speed Data Bus"),
-            (6, "Ground Plane 3", "g6", "Isolation"),
-            (7, "Power Plane 1 (+3.3V)", "g7", "Analog Power Supply"),
-            (8, "Ground Plane 4", "g8", "Power Return Path"),
-            (9, "Power Plane 2 (+1.8V)", "g9", "Digital Power Supply"),
-            (10, "Signal 3 (Low Speed)", "g10", "Control and Status Signals"),
-            (11, "Ground Plane 5", "g11", "Shielding")
+            (2, "Ground Plane 1", "g2", "RF Ground Reference"),
+            (3, "Analog Wave Compute", "g3", "Layer 3: Wave Interference Path"),
+            (4, "Ground Plane 2", "g4", "Layer 3/5 Isolation"),
+            (5, "Memristive Synaptic Grid", "g5", "Layer 4: Compute-in-Memory Matrix"),
+            (6, "Ground Plane 3", "g6", "Memristive Shielding"),
+            (7, "Ternary Logic Bus", "g7", "Layer 6: Trit-based communication"),
+            (8, "Power Plane 1 (+3.3V)", "g8", "Analog Domain Supply"),
+            (9, "Ground Plane 4", "g9", "Digital/Analog Isolation"),
+            (10, "Power Plane 2 (+1.8V)", "g10", "Digital Core Supply"),
+            (11, "Spiking Logic Dispatcher", "g11", "Layer 7: Temporal Spike Mesh"),
+            (12, "Ground Plane 5", "g12", "Signal Return Path"),
+            (13, "Control Plane", "g13", "Layer 11/12: Fabric OS & Shim"),
+            (14, "Ground Plane 6", "g14", "Lower Shielding")
         ]
         
         for layer_num, desc, ext, details in layer_specs:
@@ -142,22 +132,25 @@ class GerberGenerator:
         # README
         readme_file = f"{self.output_dir}/README.txt"
         with open(readme_file, 'w') as f:
-            f.write("TFLN PHOTONIC MODULATOR - 12-LAYER PCB DESIGN\n")
+            f.write("LIGHTRAIL AI - 15-LAYER INTELLIGENCE STACK PCB\n")
             f.write("=============================================\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("Stackup Configuration:\n")
-            f.write("  L1: Top Signal (RF)\n")
+            f.write("  L1: Top Signal (RF/Physical Fabric)\n")
             f.write("  L2: Ground\n")
-            f.write("  L3: Signal (Stripline)\n")
+            f.write("  L3: Analog Wave Compute\n")
             f.write("  L4: Ground\n")
-            f.write("  L5: Signal (Stripline)\n")
+            f.write("  L5: Memristive Synaptic Grid\n")
             f.write("  L6: Ground\n")
-            f.write("  L7: Power (+3.3V)\n")
-            f.write("  L8: Ground\n")
-            f.write("  L9: Power (+1.8V)\n")
-            f.write("  L10: Signal (Control)\n")
-            f.write("  L11: Ground\n")
-            f.write("  L12: Bottom Signal\n")
+            f.write("  L7: Ternary Logic Bus\n")
+            f.write("  L8: Power (+3.3V)\n")
+            f.write("  L9: Ground\n")
+            f.write("  L10: Power (+1.8V)\n")
+            f.write("  L11: Spiking Logic Dispatcher\n")
+            f.write("  L12: Ground\n")
+            f.write("  L13: Control Plane\n")
+            f.write("  L14: Ground\n")
+            f.write("  L15: Bottom Signal (Unified Memory Interconnect)\n")
         files.append(readme_file)
         
         print(f"DONE: Generated {len(files)} files in {self.output_dir}/")
