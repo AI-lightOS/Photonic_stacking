@@ -56,6 +56,18 @@
         "type": "copper"
       },
       {
+        "name": "In11.Cu",
+        "type": "copper"
+      },
+      {
+        "name": "In12.Cu",
+        "type": "copper"
+      },
+      {
+        "name": "In13.Cu",
+        "type": "copper"
+      },
+      {
         "name": "B.Cu",
         "type": "copper"
       }

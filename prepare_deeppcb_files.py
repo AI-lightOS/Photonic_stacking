@@ -23,7 +23,7 @@ def generate_deeppcb_files():
     # Enrich stackup info for DeepPCB
     pro_content["board"]["layer_stack"] = [
       {"name": "F.Cu", "type": "copper"},
-      *[{"name": f"In{i}.Cu", "type": "copper"} for i in range(1, 11)],
+      *[{"name": f"In{i}.Cu", "type": "copper"} for i in range(1, 14)],
       {"name": "B.Cu", "type": "copper"}
     ]
     

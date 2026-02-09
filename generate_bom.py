@@ -245,28 +245,29 @@ class BOMGenerator:
             18.00
         )
         
+        # PCB
         self.add_component(
-            'FAN1', 1,
-            'Cooling Fan',
-            'Sunon',
-            'MF40101V1-1000U-A99',
-            '40mm, 12V, 10,000 RPM, 18 CFM',
-            8.00
+            'PCB1', 1,
+            'PCB Assembly',
+            'Advanced Circuits',
+            'CUSTOM-15L-RF',
+            '15-layer Intelligence Stack, Rogers RO4350B, high-density IPC Class 3',
+            1250.00
         )
         
-        # Firmware & Software
+        # Additional Decoupling for 2000+ Components
         self.add_component(
-            'SW1', 1,
-            'FPGA Firmware',
-            'LightRail AI',
-            'TFLN-FW-v1.0',
-            'Control logic, calibration, monitoring',
-            0.00  # Development cost amortized
+            'C41-C2095', 2055,
+            'MLCC Capacitor',
+            'Murata',
+            'GRM188R71E104KA01',
+            '0.1μF, 25V, X7R, 0603',
+            0.08
         )
         
     def generate_csv(self):
         """Generate CSV file"""
-        with open(self.output_file, 'w', newline='') as f:
+        with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 'Designator', 'Quantity', 'Description', 'Manufacturer',
                 'Part Number', 'Specifications', 'Unit Cost ($)', 'Total Cost ($)'
@@ -284,7 +285,7 @@ class BOMGenerator:
         total_qty = sum(item['Quantity'] for item in self.bom_items)
         
         summary_file = "TFLN_BOM_Summary.txt"
-        with open(summary_file, 'w') as f:
+        with open(summary_file, 'w', encoding='utf-8') as f:
             f.write("=" * 70 + "\n")
             f.write("TFLN PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY\n")
             f.write("=" * 70 + "\n\n")

@@ -316,17 +316,19 @@ def generate_technical_report():
     
     pcb_specs = doc.add_paragraph()
     pcb_specs.add_run('• Substrate: ').bold = True
-    pcb_specs.add_run('Rogers RO4350B (low-loss RF material)\n')
+    pcb_specs.add_run('Rogers RO4350B (high-frequency RF material)\n')
     pcb_specs.add_run('• Layer count: ').bold = True
-    pcb_specs.add_run('8 layers\n')
+    pcb_specs.add_run('15-layer Intelligence Stack\n')
     pcb_specs.add_run('• Copper weight: ').bold = True
-    pcb_specs.add_run('1 oz (35 μm)\n')
+    pcb_specs.add_run('1 oz (35 μm) / 0.5 oz inner\n')
     pcb_specs.add_run('• Min trace/space: ').bold = True
-    pcb_specs.add_run('6/6 mil\n')
+    pcb_specs.add_run('3/3 mil (Ultra-Dense Configuration)\n')
+    pcb_specs.add_run('• Components: ').bold = True
+    pcb_specs.add_run('2095 discrete components\n')
     pcb_specs.add_run('• Impedance control: ').bold = True
-    pcb_specs.add_run('50Ω ±10%\n')
+    pcb_specs.add_run('50Ω / 100Ω Differential ±7%\n')
     pcb_specs.add_run('• Surface finish: ').bold = True
-    pcb_specs.add_run('ENIG (gold plating)')
+    pcb_specs.add_run('ENIG (Electroless Nickel Immersion Gold)')
     
     doc.add_heading('4.2 Assembly Process', 2)
     doc.add_paragraph(

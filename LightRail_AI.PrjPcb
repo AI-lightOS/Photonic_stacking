@@ -1,0 +1,30 @@
+[Design]
+Version=1.0
+Type=PCB
+Title=LightRail AI Photonic Intelligence Stack
+Description=15-Layer Photonic-Electronic Integrated System
+Namespace=
+
+[Document1]
+DocumentPath=tfln_modulator.kicad_pcb
+
+[Document2]
+DocumentPath=LightRail_Design\LightRail_NCE_MVP.kicad_sch
+
+[Configuration1]
+Name=Default
+Parameter1=Name|Value
+
+[ProjectParameters]
+Parameter1=ProjectName|LightRail AI
+Parameter2=Version|V3.0 (15-Layer)
+Parameter3=Manufacturer|LightRail AI
+Parameter4=Engineer|Antigravity
+
+[OutputGroups]
+Group1=Fabrication
+Group2=Assembly
+Group3=Reports
+
+[ModificationHistory]
+Change1=2026-02-09|Initial project creation for CircuitMaker import.

@@ -32,7 +32,7 @@ class LightRailKiCadGenerator:
     def add_pad(self, num, x, y, w, h, net, shape="rect"):
         nid = self.get_net_id(net)
         net_str = f'(net {nid} "{net}")' if net else ""
-        return f'    (pad "{num}" smd {shape} (at {x:.3f} {y:.3f}) (size {w} {h}) (layers "F.Cu" "F.Paste" "F.Mask") {net_str})'
+        return f'    (pad "{num}" smd {shape} (at {x:.3f} {y:.3f} 0) (size {w} {h}) (layers "F.Cu" "F.Paste" "F.Mask") {net_str})'
 
     def add_bga(self, ref, cx, cy, size, rows, cols, nets):
         fp = [f'  (footprint "BGA:{ref}" (layer "F.Cu") (at {cx} {cy} 0) (attr smd)']
@@ -203,6 +203,7 @@ class LightRailKiCadGenerator:
             '      (layer "B.Cu" (type "copper") (thickness 0.035))',
             '    )',
             '    (pad_to_mask_clearance 0.05)',
+            '    (grid_origin 0 0)',
             '    (design_settings (defaults (track_width 0.15) (via_size 0.3) (via_drill 0.2)))',
             '  )'
         ]
