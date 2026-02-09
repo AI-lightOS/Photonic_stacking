@@ -1,6 +1,6 @@
 LIGHTRAIL AI - 15-LAYER INTELLIGENCE STACK PCB
 =============================================
-Generated: 2026-02-08 18:53:15
+Generated: 2026-02-08 23:44:31
 Stackup Configuration:
   L1: Top Signal (RF/Physical Fabric)
   L2: Ground
