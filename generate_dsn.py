@@ -48,31 +48,30 @@ class DSNGenerator:
             f.write("  )\n")
             
             f.write("  (placement\n")
-            # Simplified placement for the 2095 components
+            # Grouped by component image (footprint)
             f.write("    (component \"TFLN_MZM_400G\"\n")
-            f.write("      (place U1 53.34 55.57 front 0)\n")
+            f.write("      (place \"U1\" 53.34 55.57 front 0)\n")
             f.write("    )\n")
             
-            # Add placeholders for the thousands of capacitors
-            for i in range(1, 2095):
-                # Distribute them in a grid
+            f.write("    (component \"C_0603\"\n")
+            for i in range(1, 2096):
                 x = 10 + (i % 50) * 1.8
                 y = 10 + (i // 50) * 2.2
-                f.write(f"    (component \"C_0603\"\n")
-                f.write(f"      (place C{i} {x:.2f} {y:.2f} front 0)\n")
-                f.write("    )\n")
+                # Flat format: (place "NAME" X Y SIDE ANGLE)
+                f.write(f"      (place \"C{i}\" {x:.2f} {y:.2f} front 0)\n")
+            f.write("    )\n")
             f.write("  )\n")
             
             f.write("  (library\n")
             f.write("    (image \"TFLN_MZM_400G\"\n")
             f.write("      (outline (rect pcb -10 -5 10 5))\n")
-            f.write("      (pin smd (at -10 0) (name 1))\n")
-            f.write("      (pin smd (at 10 0) (name 2))\n")
+            f.write("      (pin smd (at -10 0) (name \"1\"))\n")
+            f.write("      (pin smd (at 10 0) (name \"2\"))\n")
             f.write("    )\n")
             f.write("    (image \"C_0603\"\n")
             f.write("      (outline (rect pcb -0.8 -0.4 0.8 0.4))\n")
-            f.write("      (pin smd (at -0.6 0) (name 1))\n")
-            f.write("      (pin smd (at 0.6 0) (name 2))\n")
+            f.write("      (pin smd (at -0.6 0) (name \"1\"))\n")
+            f.write("      (pin smd (at 0.6 0) (name \"2\"))\n")
             f.write("    )\n")
             f.write("  )\n")
             

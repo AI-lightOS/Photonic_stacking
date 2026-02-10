@@ -1,0 +1,19 @@
+[Design]
+Version=1.0
+Type=SeeedFusionPCBA
+Title=LightRail Intelligence Stack Assembly
+Description=Complete Assembly Package for Seeed Fusion PCBA Service
+
+[Folders]
+Gerber=Gerber/
+Centroid=LightRail_Centroid.csv
+BOM=TFLN_BOM.csv
+AssemblyDrawing=LightRail_Assembly_Drawing.png
+VisualAids=pcb_populated_green.png, pcb_stack_3d.png
+
+[Specifications]
+SurfaceFinish=ENIG
+CopperThickness=1oz Outer, 0.5oz Inner
+LayerCount=15
+Components=2095
+Material=Rogers RO4350B

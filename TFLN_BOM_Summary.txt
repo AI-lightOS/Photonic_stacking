@@ -2,44 +2,25 @@
 TFLN PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY
 ======================================================================
 
-Generated: 2026-02-09 12:59:56
+Generated: 2026-02-09 20:20:57
 Design: LightRail AI TFLN 400G-800G Optical Modulator
 
 SUMMARY:
-  Total Line Items: 25
-  Total Components: 2134
-  Total Cost: $19,447.40
+  Total Line Items: 22
+  Total Components: 2131
 
-COST BREAKDOWN BY CATEGORY:
-  Photonic Components      : $ 15,605.00
-  Electronics              : $  1,870.50
-  Passives                 : $    180.90
-  Connectors               : $     83.00
-  PCB                      : $  1,700.00
-  Thermal                  : $    103.00
-  Software                 : $      0.00
-
-======================================================================
-TOP 10 MOST EXPENSIVE COMPONENTS:
-======================================================================
-
- 1. U1         TFLN Mach-Zehnder Modulator              $ 12,500.00
- 2. PCB1       PCB Assembly                             $  1,250.00
- 3. U3         High-Speed Photodetector                 $  1,200.00
- 4. U2         DFB Laser Diode                          $    850.00
- 5. U9         SerDes IC                                $    850.00
- 6. U4         RF Driver IC                             $    450.00
- 7. PCB1       PCB Assembly                             $    450.00
- 8. U8         TEC Controller                           $    420.00
- 9. OPT1       Fiber-to-Chip Coupler                    $    360.00
-10. OPT2       Optical Isolator                         $    320.00
+QUANTITY BREAKDOWN BY CATEGORY:
+  Photonic Components      : 8
+  Electronics              : 7
+  Passives                 : 2109
+  Connectors               : 7
+  PCB                      : 1
+  Thermal                  : 0
 
 ======================================================================
 NOTES:
 ======================================================================
-• Costs are estimated based on 100-unit production quantities
-• TFLN modulator is the primary cost driver (~65% of total)
-• Volume pricing available for >1000 units
+• TFLN modulator is the primary high-precision component
 • Lead times: 8-12 weeks for photonic components
 • PCB fabrication: 3-4 weeks
 • Assembly and test: 2 weeks

@@ -40,6 +40,15 @@ class GerberGenerator:
         filename = f"{self.output_dir}/tfln_modulator_bottom.gbl"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Photonic Modulator - Bottom Copper Layer (Signal/GND)*\n")
+            f.write("%FSLAX36Y36*%\n")
+            f.write("%MOIN*%\n")
+            f.write("G01*\n")
+            f.write("D10*\n")
+            # Draw a simple cross for visualization
+            f.write(f"X0Y0D02*\n")
+            f.write(f"X{int(self.board_width*1000000)}Y{int(self.board_height*1000000)}D01*\n")
+            f.write(f"X0Y{int(self.board_height*1000000)}D02*\n")
+            f.write(f"X{int(self.board_width*1000000)}Y0D01*\n")
             f.write("M02*\n")
         return filename
     
@@ -72,6 +81,13 @@ class GerberGenerator:
                 f.write(f"G04 Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n")
                 f.write("%FSLAX36Y36*%\n")
                 f.write("%MOIN*%\n")
+                f.write("G01*\n")
+                f.write("D10*\n")
+                # Draw a simple cross for visualization
+                f.write(f"X0Y0D02*\n")
+                f.write(f"X{int(self.board_width*1000000)}Y{int(self.board_height*1000000)}D01*\n")
+                f.write(f"X0Y{int(self.board_height*1000000)}D02*\n")
+                f.write(f"X{int(self.board_width*1000000)}Y0D01*\n")
                 f.write("M02*\n")
             files.append(filename)
             
@@ -82,7 +98,7 @@ class GerberGenerator:
         filename = f"{self.output_dir}/tfln_modulator.drl"
         with open(filename, 'w') as f:
             f.write("M48\n")
-            f.write("; 12-Layer TFLN Modulator Drill File\n")
+            f.write("; 15-Layer TFLN Modulator Drill File\n")
             f.write("M30\n")
         return filename
 
@@ -119,7 +135,7 @@ class GerberGenerator:
     def generate_all(self):
         """Generate all Gerber files and README"""
         files = []
-        print("Generating 12-Layer Gerber files...")
+        print("Generating 15-Layer Gerber files...")
         
         files.append(self.generate_top_copper())
         files.append(self.generate_bottom_copper())

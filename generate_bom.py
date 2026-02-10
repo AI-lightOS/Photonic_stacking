@@ -14,7 +14,7 @@ class BOMGenerator:
         self.output_file = output_file
         self.bom_items = []
         
-    def add_component(self, designator, qty, description, manufacturer, part_number, specs, unit_cost):
+    def add_component(self, designator, qty, description, manufacturer, part_number, specs):
         """Add a component to the BOM"""
         self.bom_items.append({
             'Designator': designator,
@@ -22,9 +22,7 @@ class BOMGenerator:
             'Description': description,
             'Manufacturer': manufacturer,
             'Part Number': part_number,
-            'Specifications': specs,
-            'Unit Cost ($)': unit_cost,
-            'Total Cost ($)': qty * unit_cost
+            'Specifications': specs
         })
     
     def generate_tfln_bom(self):
@@ -36,8 +34,7 @@ class BOMGenerator:
             'TFLN Mach-Zehnder Modulator',
             'NTT Electronics / iXblue',
             'TFLN-MZM-400G-C',
-            'X-cut, 15mm length, Vπ<2V, 100GHz BW, C-band',
-            12500.00
+            'X-cut, 15mm length, Vπ<2V, 100GHz BW, C-band'
         )
         
         self.add_component(
@@ -45,8 +42,7 @@ class BOMGenerator:
             'DFB Laser Diode',
             'NeoPhotonics',
             'TLN-1550-100',
-            '1550nm, 100mW, <100kHz linewidth, C-band tunable',
-            850.00
+            '1550nm, 100mW, <100kHz linewidth, C-band tunable'
         )
         
         self.add_component(
@@ -54,8 +50,7 @@ class BOMGenerator:
             'High-Speed Photodetector',
             'Finisar / II-VI',
             'XPDV4120R',
-            '100GHz, -15dBm sensitivity, InGaAs PIN',
-            1200.00
+            '100GHz, -15dBm sensitivity, InGaAs PIN'
         )
         
         self.add_component(
@@ -63,8 +58,7 @@ class BOMGenerator:
             'RF Driver IC',
             'Analog Devices',
             'HMC8410',
-            '100GHz, differential, 50Ω, 3.3V',
-            450.00
+            '100GHz, differential, 50Ω, 3.3V'
         )
         
         # Optical Components
@@ -73,8 +67,7 @@ class BOMGenerator:
             'Fiber-to-Chip Coupler',
             'Corning / PLC Connections',
             'FC-TFLN-SMF28',
-            'Single-mode, <0.5dB loss, polarization maintaining',
-            180.00
+            'Single-mode, <0.5dB loss, polarization maintaining'
         )
         
         self.add_component(
@@ -82,8 +75,7 @@ class BOMGenerator:
             'Optical Isolator',
             'Thorlabs',
             'IO-H-1550',
-            '>30dB isolation, <0.8dB insertion loss, C-band',
-            320.00
+            '>30dB isolation, <0.8dB insertion loss, C-band'
         )
         
         self.add_component(
@@ -91,8 +83,7 @@ class BOMGenerator:
             'VOA (Variable Optical Attenuator)',
             'General Photonics',
             'VOA-100-C',
-            '0-30dB range, <0.3dB PDL, motorized',
-            280.00
+            '0-30dB range, <0.3dB PDL, motorized'
         )
         
         # Power Management
@@ -101,8 +92,7 @@ class BOMGenerator:
             'Laser Driver IC',
             'Maxim Integrated',
             'MAX3669',
-            '2.5Gbps, auto power control, <100mA',
-            35.00
+            '2.5Gbps, auto power control, <100mA'
         )
         
         self.add_component(
@@ -110,8 +100,7 @@ class BOMGenerator:
             'Low-Noise LDO',
             'Texas Instruments',
             'TPS7A4700',
-            '1.8V, 1A, 4.17μVrms noise, PSRR 72dB',
-            8.50
+            '1.8V, 1A, 4.17μVrms noise, PSRR 72dB'
         )
         
         self.add_component(
@@ -119,8 +108,7 @@ class BOMGenerator:
             'Buck Converter',
             'Analog Devices',
             'LT8614',
-            '3.3V, 4A, 2MHz switching, 95% efficiency',
-            12.00
+            '3.3V, 4A, 2MHz switching, 95% efficiency'
         )
         
         self.add_component(
@@ -128,8 +116,7 @@ class BOMGenerator:
             'TEC Controller',
             'Wavelength Electronics',
             'MPT5000',
-            'Thermoelectric cooler, ±5A, 0.001°C stability',
-            420.00
+            'Thermoelectric cooler, ±5A, 0.001°C stability'
         )
         
         # High-Speed Components
@@ -138,8 +125,7 @@ class BOMGenerator:
             'SerDes IC',
             'Broadcom',
             'BCM84881',
-            '400G PAM4, 100Gbaud, retimer, FEC',
-            850.00
+            '400G PAM4, 100Gbaud, retimer, FEC'
         )
         
         self.add_component(
@@ -147,8 +133,7 @@ class BOMGenerator:
             'Clock Generator',
             'Silicon Labs',
             'Si5395A',
-            '100GHz, <50fs jitter, 12 outputs, programmable',
-            95.00
+            '100GHz, <50fs jitter, 12 outputs, programmable'
         )
         
         # Passive Components
@@ -157,8 +142,7 @@ class BOMGenerator:
             'MLCC Capacitor',
             'Murata',
             'GRM32ER71H106KA12',
-            '10μF, 50V, X7R, 1210',
-            0.45
+            '10μF, 50V, X7R, 1210'
         )
         
         self.add_component(
@@ -166,8 +150,7 @@ class BOMGenerator:
             'MLCC Capacitor',
             'Murata',
             'GRM188R71E104KA01',
-            '0.1μF, 25V, X7R, 0603',
-            0.08
+            '0.1μF, 25V, X7R, 0603'
         )
         
         self.add_component(
@@ -175,8 +158,7 @@ class BOMGenerator:
             'Thin Film Resistor',
             'Vishay',
             'TNPW060350R0BEEN',
-            '50Ω, 0.1%, 0.1W, 0603',
-            0.25
+            '50Ω, 0.1%, 0.1W, 0603'
         )
         
         self.add_component(
@@ -184,8 +166,7 @@ class BOMGenerator:
             'RF Inductor',
             'Coilcraft',
             '0603CS-10NXJLW',
-            '10nH, Q>40 @ 2GHz, 0603',
-            0.85
+            '10nH, Q>40 @ 2GHz, 0603'
         )
         
         # Connectors
@@ -194,8 +175,7 @@ class BOMGenerator:
             'PCIe x16 Edge Connector',
             'TE Connectivity',
             '2-2013289-6',
-            'Gen5, 32GT/s, gold plated',
-            25.00
+            'Gen5, 32GT/s, gold plated'
         )
         
         self.add_component(
@@ -203,8 +183,7 @@ class BOMGenerator:
             'LC/APC Fiber Connector',
             'Senko',
             'SN-LC-APC-SM',
-            'Single-mode, APC polish, <0.3dB loss',
-            12.00
+            'Single-mode, APC polish, <0.3dB loss'
         )
         
         self.add_component(
@@ -212,37 +191,7 @@ class BOMGenerator:
             'SMA RF Connector',
             'Amphenol',
             '132289',
-            '50GHz, 50Ω, edge launch',
-            8.50
-        )
-        
-        # PCB
-        self.add_component(
-            'PCB1', 1,
-            'PCB Assembly',
-            'Advanced Circuits',
-            'CUSTOM-8L-RF',
-            '8-layer, Rogers RO4350B, impedance control',
-            450.00
-        )
-        
-        # Thermal Management
-        self.add_component(
-            'TEC1', 1,
-            'Thermoelectric Cooler',
-            'Laird Thermal',
-            'CP1.4-127-06L',
-            '15W cooling, 40x40mm, ΔT=70°C',
-            85.00
-        )
-        
-        self.add_component(
-            'HS1', 1,
-            'Heat Sink',
-            'Aavid Thermalloy',
-            '577102B00000G',
-            'Aluminum, 0.5°C/W, forced air',
-            18.00
+            '50GHz, 50Ω, edge launch'
         )
         
         # PCB
@@ -251,8 +200,7 @@ class BOMGenerator:
             'PCB Assembly',
             'Advanced Circuits',
             'CUSTOM-15L-RF',
-            '15-layer Intelligence Stack, Rogers RO4350B, high-density IPC Class 3',
-            1250.00
+            '15-layer Intelligence Stack, Rogers RO4350B, high-density IPC Class 3'
         )
         
         # Additional Decoupling for 2000+ Components
@@ -261,8 +209,7 @@ class BOMGenerator:
             'MLCC Capacitor',
             'Murata',
             'GRM188R71E104KA01',
-            '0.1μF, 25V, X7R, 0603',
-            0.08
+            '0.1μF, 25V, X7R, 0603'
         )
         
     def generate_csv(self):
@@ -270,7 +217,7 @@ class BOMGenerator:
         with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=[
                 'Designator', 'Quantity', 'Description', 'Manufacturer',
-                'Part Number', 'Specifications', 'Unit Cost ($)', 'Total Cost ($)'
+                'Part Number', 'Specifications'
             ])
             
             writer.writeheader()
@@ -280,7 +227,6 @@ class BOMGenerator:
     
     def generate_summary(self):
         """Generate BOM summary"""
-        total_cost = sum(item['Total Cost ($)'] for item in self.bom_items)
         total_items = len(self.bom_items)
         total_qty = sum(item['Quantity'] for item in self.bom_items)
         
@@ -294,10 +240,9 @@ class BOMGenerator:
             
             f.write("SUMMARY:\n")
             f.write(f"  Total Line Items: {total_items}\n")
-            f.write(f"  Total Components: {total_qty}\n")
-            f.write(f"  Total Cost: ${total_cost:,.2f}\n\n")
+            f.write(f"  Total Components: {total_qty}\n\n")
             
-            f.write("COST BREAKDOWN BY CATEGORY:\n")
+            f.write("QUANTITY BREAKDOWN BY CATEGORY:\n")
             
             categories = {
                 'Photonic Components': ['U1', 'U2', 'U3', 'OPT'],
@@ -305,32 +250,21 @@ class BOMGenerator:
                 'Passives': ['C', 'R', 'L'],
                 'Connectors': ['J'],
                 'PCB': ['PCB'],
-                'Thermal': ['TEC', 'HS', 'FAN'],
-                'Software': ['SW']
+                'Thermal': ['TEC', 'HS', 'FAN']
             }
             
             for category, prefixes in categories.items():
-                cat_cost = sum(
-                    item['Total Cost ($)'] 
+                cat_qty = sum(
+                    item['Quantity'] 
                     for item in self.bom_items 
                     if any(item['Designator'].startswith(p) for p in prefixes)
                 )
-                f.write(f"  {category:25s}: ${cat_cost:10,.2f}\n")
-            
-            f.write("\n" + "=" * 70 + "\n")
-            f.write("TOP 10 MOST EXPENSIVE COMPONENTS:\n")
-            f.write("=" * 70 + "\n\n")
-            
-            sorted_items = sorted(self.bom_items, key=lambda x: x['Total Cost ($)'], reverse=True)
-            for i, item in enumerate(sorted_items[:10], 1):
-                f.write(f"{i:2d}. {item['Designator']:10s} {item['Description']:40s} ${item['Total Cost ($)']:10,.2f}\n")
+                f.write(f"  {category:25s}: {cat_qty}\n")
             
             f.write("\n" + "=" * 70 + "\n")
             f.write("NOTES:\n")
             f.write("=" * 70 + "\n")
-            f.write("• Costs are estimated based on 100-unit production quantities\n")
-            f.write("• TFLN modulator is the primary cost driver (~65% of total)\n")
-            f.write("• Volume pricing available for >1000 units\n")
+            f.write("• TFLN modulator is the primary high-precision component\n")
             f.write("• Lead times: 8-12 weeks for photonic components\n")
             f.write("• PCB fabrication: 3-4 weeks\n")
             f.write("• Assembly and test: 2 weeks\n")
@@ -350,9 +284,6 @@ class BOMGenerator:
         
         summary_file = self.generate_summary()
         print(f"  ✓ Generated summary: {summary_file}")
-        
-        total_cost = sum(item['Total Cost ($)'] for item in self.bom_items)
-        print(f"\n✅ Total BOM Cost: ${total_cost:,.2f}")
         
         return [csv_file, summary_file]
 

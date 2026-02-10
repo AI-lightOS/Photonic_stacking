@@ -1,5 +1,6 @@
 import os
 import matplotlib.pyplot as plt
+plt.switch_backend('Agg')
 from mpl_toolkits.mplot3d import Axes3D
 import glob
 import re
@@ -68,8 +69,9 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
     for i, (filename, z_height, label) in enumerate(layers):
         filepath = os.path.join(gerber_dir, filename)
         if os.path.exists(filepath):
+            print(f"Processing Layer {label} ({filename})...")
             lines = parser.parse(filepath)
-            print(f"Layer {label}: {len(lines)} segments")
+            print(f"  -> {len(lines)} segments found.")
             
             # Subsample lines if too many to keep rendering fast
             if len(lines) > 500:
@@ -85,12 +87,12 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
     ax.set_xlabel('X (mm)')
     ax.set_ylabel('Y (mm)')
     ax.set_zlabel('Layer Stack')
-    ax.set_title('12-Layer TFLN PCB Stack Visualization')
+    ax.set_title('15-Layer TFLN PCB Stack Visualization')
     
     # Set reasonable bounds
     ax.set_xlim(0, 80) # Approx based on generate_gerber coords
     ax.set_ylim(0, 80)
-    ax.set_zlim(0, 13)
+    ax.set_zlim(0, 16)
     
     plt.savefig(output_file, dpi=150)
     print(f"Saved visualization to {output_file}")
