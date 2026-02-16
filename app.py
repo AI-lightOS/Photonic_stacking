@@ -31,7 +31,7 @@ pcie_board = PhotonicPCIeBoard(pcie_config=pcie_config)
 hybrid_system = HybridFPGAPhotonic()
 
 # Initialize photonic cluster
-cluster = MultiboardCluster(num_boards=8)
+cluster = MultiboardCluster(num_boards=64)
 
 # Initialize TFLN components
 from tfln_components import TFLNWaferType
@@ -101,7 +101,13 @@ def add_api_methods():
                 'power_dbm': -3.0,
                 'data_rate_gbps': 100.0
             })
-        return {'channels': channels}
+        return {
+            'channels': channels,
+            'num_channels': wdm.num_channels,
+            'aggregate_bandwidth_tbps': wdm.aggregate_bandwidth(),
+            'channel_spacing_nm': wdm.channel_spacing,
+            'wavelengths': [float(w) for w in wdm.wavelengths]
+        }
     
     wdm.get_performance = wdm_get_performance
     wdm.get_channels = wdm_get_channels
@@ -153,12 +159,22 @@ def add_api_methods():
     
     # Cluster methods
     def cluster_get_performance():
-        return {
+        perf = {
             'num_boards': cluster.num_boards,
             'total_bandwidth_tbps': 12.8,
             'aggregate_throughput_tops': 500.0,
             'total_power_watts': 200.0
         }
+        
+        # Add frontend-specific keys
+        perf.update({
+             'total_pflops': perf['aggregate_throughput_tops'] / 1000.0, 
+             'total_power_kw': perf['total_power_watts'] / 1000.0,
+             'efficiency_gflops_per_watt': (perf['aggregate_throughput_tops'] * 1000.0) / perf['total_power_watts'] if perf['total_power_watts'] > 0 else 0,
+             'optical_fabric_pbps': perf['total_bandwidth_tbps'] / 1000.0,
+             'num_nodes': cluster.num_boards
+        })
+        return perf
     
     cluster.get_performance = cluster_get_performance
 
