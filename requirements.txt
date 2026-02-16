@@ -2,3 +2,4 @@ flask
 numpy
 matplotlib
 scipy
+numba==0.60.0
