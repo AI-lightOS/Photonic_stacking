@@ -22,8 +22,19 @@ def generate_pick_and_place(output_file="LightRail_Centroid.csv"):
         'Mid Y': 55.57,
         'Layer': 'Top',
         'Rotation': 0,
-        'Comment': 'TFLN_MZM_400G'
+        'Comment': 'TFLN_MZM_400G (DNP - Manual Align)'
     })
+    
+    # 2. Fiber Couplers OPT1 (DNP)
+    for i in range(1, 3):
+        components.append({
+            'Designator': f'OPT1_{i}',
+            'Mid X': 10 + i*5,
+            'Mid Y': 5,
+            'Layer': 'Top',
+            'Rotation': 0,
+            'Comment': 'FC-TFLN-SMF28 (DNP - Manual Align)'
+        })
     
     # 2. Add 2094 Decoupling Capacitors (Matching generate_dsn.py distribution)
     random.seed(42)
@@ -39,12 +50,12 @@ def generate_pick_and_place(output_file="LightRail_Centroid.csv"):
             'Comment': '0603_0.1uF'
         })
 
-    with open(output_file, 'w', newline='') as f:
+    with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=headers)
         writer.writeheader()
         writer.writerows(components)
         
-    print(f"✅ Successfully generated centroid file with {len(components)} components.")
+    print(f"Successfully generated centroid file with {len(components)} components.")
 
 if __name__ == "__main__":
     generate_pick_and_place()

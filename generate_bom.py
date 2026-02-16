@@ -28,13 +28,13 @@ class BOMGenerator:
     def generate_tfln_bom(self):
         """Generate complete BOM for TFLN system"""
         
-        # TFLN Modulator Components
+        # TFLN Modulator Components (LightRailAI Spec)
         self.add_component(
             'U1', 1,
-            'TFLN Mach-Zehnder Modulator',
-            'NTT Electronics / iXblue',
+            'TFLN Mach-Zehnder Modulator (400G)',
+            'NTT Electronics',
             'TFLN-MZM-400G-C',
-            'X-cut, 15mm length, Vπ<2V, 100GHz BW, C-band'
+            'Thin-Film Lithium Niobate, 100 GHz BW, Vπ≈1.8V'
         )
         
         self.add_component(
@@ -213,16 +213,36 @@ class BOMGenerator:
         )
         
     def generate_csv(self):
-        """Generate CSV file"""
-        with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=[
-                'Designator', 'Quantity', 'Description', 'Manufacturer',
-                'Part Number', 'Specifications'
-            ])
-            
-            writer.writeheader()
-            writer.writerows(self.bom_items)
+        """Generate CSV file in Seeed Fusion format"""
+        # Define Seeed Fusion standard headers: Designator, Description, Manufacturer, Manufacturer Part Number, Quantity
+        fieldnames = ['Designator', 'Description', 'Manufacturer', 'Manufacturer Part Number', 'Quantity']
         
+        with open(self.output_file, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
+            writer.writeheader()
+            
+            for item in self.bom_items:
+                # Map old keys to new keys
+                row = {
+                    'Designator': item['Designator'],
+                    'Description': item['Description'] + " - " + item.get('Specifications', ''),
+                    'Manufacturer': item['Manufacturer'],
+                    'Manufacturer Part Number': item['Part Number'],
+                    'Quantity': item['Quantity']
+                }
+                writer.writerow(row)
+        
+        # Copy to Downloads directory
+        import os
+        import shutil
+        downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
+        final_bom_path = os.path.join(downloads_path, "TFLN_BOM_Final.csv")
+        try:
+            shutil.copy2(self.output_file, final_bom_path)
+            print(f"  * Copied to Downloads: {final_bom_path}")
+        except Exception as e:
+            print(f"  ! Could not copy to Downloads: {e}")
+            
         return self.output_file
     
     def generate_summary(self):
@@ -233,7 +253,7 @@ class BOMGenerator:
         summary_file = "TFLN_BOM_Summary.txt"
         with open(summary_file, 'w', encoding='utf-8') as f:
             f.write("=" * 70 + "\n")
-            f.write("TFLN PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY\n")
+            f.write("LIGHTRAILAI PHOTONIC INTERCONNECT - BILL OF MATERIALS SUMMARY\n")
             f.write("=" * 70 + "\n\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write(f"Design: LightRail AI TFLN 400G-800G Optical Modulator\n\n")
@@ -277,13 +297,13 @@ class BOMGenerator:
         print("Generating Bill of Materials for TFLN Photonic Modulator...")
         
         self.generate_tfln_bom()
-        print(f"  ✓ Added {len(self.bom_items)} line items")
+        print(f"  * Added {len(self.bom_items)} line items")
         
         csv_file = self.generate_csv()
-        print(f"  ✓ Generated CSV: {csv_file}")
+        print(f"  * Generated CSV: {csv_file}")
         
         summary_file = self.generate_summary()
-        print(f"  ✓ Generated summary: {summary_file}")
+        print(f"  * Generated summary: {summary_file}")
         
         return [csv_file, summary_file]
 

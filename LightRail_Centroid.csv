@@ -1,5 +1,7 @@
 Designator,Mid X,Mid Y,Layer,Rotation,Comment
-U1,53.34,55.57,Top,0,TFLN_MZM_400G
+U1,53.34,55.57,Top,0,TFLN_MZM_400G (DNP - Manual Align)
+OPT1_1,15,5,Top,0,FC-TFLN-SMF28 (DNP - Manual Align)
+OPT1_2,20,5,Top,0,FC-TFLN-SMF28 (DNP - Manual Align)
 C1,11.8,10.0,Top,0,0603_0.1uF
 C2,13.6,10.0,Top,0,0603_0.1uF
 C3,15.4,10.0,Top,180,0603_0.1uF

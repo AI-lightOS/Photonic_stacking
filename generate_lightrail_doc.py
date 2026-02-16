@@ -612,7 +612,29 @@ def create_enhanced_document():
         '• Cooling: Air-cooled, front-to-back'
     )
     
-    doc.add_heading('5.3 Cable and Fiber Infrastructure', 2)
+    doc_heading = doc.add_heading('5.3 Assembly, Wiring, and Routing', 2)
+    doc.add_paragraph(
+        'The LightRailAI CPO Interconnect requires high-precision assembly and specialized '
+        'wire bonding for the TFLN modulator (U1) and photodetector (U3) dies.'
+    )
+    
+    # Add Assembly Drawing
+    doc.add_paragraph('Figure 7: Manufacturing Assembly Diagram')
+    doc.add_picture('LightRail_Assembly_Drawing.png', width=Inches(6))
+    doc.add_paragraph(
+        'The drawing above specifies component locations, tech characteristics, '
+        'and critical notes for gold-wire wedge bonding.'
+    )
+    
+    # Add Routing Visualization
+    doc.add_paragraph('Figure 8: Critical Routing Topology (L1 & L3)')
+    doc.add_picture('LightRailAI_Routing_View.png', width=Inches(6))
+    doc.add_paragraph(
+        'Critical routing is performed on Layer 1 (50 ohm RF) and Layer 3 (85 ohm Diff) '
+        'using Rogers 4350B dielectric for matched impedance and low-loss propagation.'
+    )
+
+    doc.add_heading('5.4 Cable and Fiber Infrastructure', 2)
     doc.add_paragraph(
         'Fiber Specifications:\n\n'
         'Short-Reach (<100m):\n'
@@ -764,4 +786,4 @@ def create_enhanced_document():
 
 if __name__ == "__main__":
     create_enhanced_document()
-    print("\n✅ Enhanced report generation complete!")
+    print("\nEnhanced report generation complete!")

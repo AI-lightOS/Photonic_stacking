@@ -13,14 +13,16 @@ class GerberGenerator:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         
-        # Board specifications
-        self.board_width = 106.68  # mm (standard PCIe card)
-        self.board_height = 111.15  # mm
-        self.layers = 15  # 15-layer Intelligence Stack
+        # Antigravity Specifications
+        self.board_width = 106.68  # mm (Standard Half Length)
+        self.board_height = 111.15  # mm (Standard Height)
+        self.layers = 15
+        self.material_rf = "Rogers 4350B"
+        self.material_digital = "High-Tg FR4"
         
     def generate_top_copper(self):
         """Generate top copper layer (GTL)"""
-        filename = f"{self.output_dir}/tfln_modulator_top.gtl"
+        filename = f"{self.output_dir}/Antigravity_L1_Top_Cu.gtl"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Photonic Modulator - Top Copper Layer (Signal)*\n")
             f.write("G04 TFLN RF Electrodes and High-Priority Signals*\n")
@@ -37,7 +39,7 @@ class GerberGenerator:
     
     def generate_bottom_copper(self):
         """Generate bottom copper layer (GBL)"""
-        filename = f"{self.output_dir}/tfln_modulator_bottom.gbl"
+        filename = f"{self.output_dir}/Antigravity_L15_Bottom_Cu.gbl"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Photonic Modulator - Bottom Copper Layer (Signal/GND)*\n")
             f.write("%FSLAX36Y36*%\n")
@@ -53,28 +55,28 @@ class GerberGenerator:
         return filename
     
     def generate_inner_layers(self):
-        """Generate inner signal and power layers for 12-layer stackup"""
+        """Generate inner signal and power layers for Antigravity 15-layer stackup"""
         files = []
         
-        # 15-Layer Stackup Definition
+        # Antigravity 15-Layer Stackup Definition
         layer_specs = [
-            (2, "Ground Plane 1", "g2", "RF Ground Reference"),
-            (3, "Analog Wave Compute", "g3", "Layer 3: Wave Interference Path"),
-            (4, "Ground Plane 2", "g4", "Layer 3/5 Isolation"),
-            (5, "Memristive Synaptic Grid", "g5", "Layer 4: Compute-in-Memory Matrix"),
-            (6, "Ground Plane 3", "g6", "Memristive Shielding"),
-            (7, "Ternary Logic Bus", "g7", "Layer 6: Trit-based communication"),
-            (8, "Power Plane 1 (+3.3V)", "g8", "Analog Domain Supply"),
-            (9, "Ground Plane 4", "g9", "Digital/Analog Isolation"),
-            (10, "Power Plane 2 (+1.8V)", "g10", "Digital Core Supply"),
-            (11, "Spiking Logic Dispatcher", "g11", "Layer 7: Temporal Spike Mesh"),
-            (12, "Ground Plane 5", "g12", "Signal Return Path"),
-            (13, "Control Plane", "g13", "Layer 11/12: Fabric OS & Shim"),
-            (14, "Ground Plane 6", "g14", "Lower Shielding")
+            (2, "Ground", "g2", "RF Reference Plane (Rogers 4350B)"),
+            (3, "Signal", "g3", "High-Speed SerDes (Rx/Tx) (Rogers 4350B)"),
+            (4, "Ground", "g4", "SerDes Reference (Copper)"),
+            (5, "Signal", "g5", "Low-Speed Control (I2C, SPI, GPIO) (FR4)"),
+            (6, "Power", "g6", "1.8V Rail (LDO Output) (FR4)"),
+            (7, "Ground", "g7", "Digital Ground (Copper)"),
+            (8, "Signal", "g8", "NCE Neuron Interconnects (FR4)"),
+            (9, "Ground", "g9", "Digital Ground (Copper)"),
+            (10, "Power", "g10", "3.3V Rail (Main Power) (FR4)"),
+            (11, "Signal", "g11", "FPGA/Controller Fanout (FR4)"),
+            (12, "Ground", "g12", "Analog Ground (Copper)"),
+            (13, "Power", "g13", "-5V / 12V (Bias/TEC) (FR4)"),
+            (14, "Ground", "g14", "Bottom Reference (Copper)")
         ]
         
         for layer_num, desc, ext, details in layer_specs:
-            filename = f"{self.output_dir}/tfln_modulator_l{layer_num}.{ext}"
+            filename = f"{self.output_dir}/LightRailAI_L{layer_num}_{desc.replace(' ', '_')}.{ext}"
             with open(filename, 'w') as f:
                 f.write(f"G04 TFLN Modulator - Layer {layer_num} ({desc})*\n")
                 f.write(f"G04 {details}*\n")
@@ -126,7 +128,7 @@ class GerberGenerator:
 
     def generate_board_outline(self):
         """Generate board outline"""
-        filename = f"{self.output_dir}/tfln_modulator_outline.gm1"
+        filename = f"{self.output_dir}/Antigravity_Outline.gm1"
         with open(filename, 'w') as f:
             f.write("G04 TFLN Modulator - Board Outline*\n")
             f.write("M02*\n")
@@ -147,26 +149,26 @@ class GerberGenerator:
         
         # README
         readme_file = f"{self.output_dir}/README.txt"
-        with open(readme_file, 'w') as f:
-            f.write("LIGHTRAIL AI - 15-LAYER INTELLIGENCE STACK PCB\n")
-            f.write("=============================================\n")
+        with open(readme_file, 'w', encoding='utf-8') as f:
+            f.write("LIGHTRAILAI CPO INTERCONNECT - 15-LAYER HYBRID STACK PCB\n")
+            f.write("====================================================\n")
             f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("Stackup Configuration:\n")
-            f.write("  L1: Top Signal (RF/Physical Fabric)\n")
-            f.write("  L2: Ground\n")
-            f.write("  L3: Analog Wave Compute\n")
-            f.write("  L4: Ground\n")
-            f.write("  L5: Memristive Synaptic Grid\n")
-            f.write("  L6: Ground\n")
-            f.write("  L7: Ternary Logic Bus\n")
-            f.write("  L8: Power (+3.3V)\n")
-            f.write("  L9: Ground\n")
-            f.write("  L10: Power (+1.8V)\n")
-            f.write("  L11: Spiking Logic Dispatcher\n")
-            f.write("  L12: Ground\n")
-            f.write("  L13: Control Plane\n")
-            f.write("  L14: Ground\n")
-            f.write("  L15: Bottom Signal (Unified Memory Interconnect)\n")
+            f.write("  L1: Top Signal (Rogers 4350B, 50 ohm SE)\n")
+            f.write("  L2: Ground (Copper)\n")
+            f.write("  L3: Signal (Rogers 4350B, 85 ohm Diff)\n")
+            f.write("  L4: Ground (Copper)\n")
+            f.write("  L5: Low-Speed Control (FR4)\n")
+            f.write("  L6: 1.8V Rail (FR4)\n")
+            f.write("  L7: Digital Ground (Copper)\n")
+            f.write("  L8: NCE Neuron Interconnects (FR4)\n")
+            f.write("  L9: Digital Ground (Copper)\n")
+            f.write("  L10: 3.3V Rail (FR4)\n")
+            f.write("  L11: FPGA/Controller Fanout (FR4)\n")
+            f.write("  L12: Analog Ground (Copper)\n")
+            f.write("  L13: -5V / 12V (Bias/TEC) (FR4)\n")
+            f.write("  L14: Ground (Copper)\n")
+            f.write("  L15: Bottom Signal (FR4)\n")
         files.append(readme_file)
         
         print(f"DONE: Generated {len(files)} files in {self.output_dir}/")
