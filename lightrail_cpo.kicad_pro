@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "version": 1
+  },
+  "project": {
+    "name": "LightRail_CPO",
+    "description": "15-Layer Co-Packaged Optics Board"
+  },
+  "pcbnew": {
+    "design_settings": {
+      "rules": {
+        "min_copper_edge_clearance": 0.1
+      }
+    }
+  }
+}
