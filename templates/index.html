@@ -831,6 +831,67 @@
                 </div>
             </div>
 
+            <!-- Gerber FEA Section -->
+            <div class="card full-width"
+                style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.1), rgba(255, 193, 7, 0.05));">
+                <div class="card-title" style="font-size: 2em; text-align: center; margin-bottom: 20px;">
+                    📐 Gerber-based Modal Analysis
+                </div>
+                <p style="text-align: center; color: #8b9dc3; margin-bottom: 30px; font-size: 1.1em;">
+                    Extract geometry from Gerber files and solve for Optical Modes
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Layer File</label>
+                        <select id="gerber-fea-layer"
+                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid #ff5722; border-radius: 5px;">
+                            <option value="tfln_modulator_top.gtl">Top Layer (Signal)</option>
+                            <option value="tfln_modulator_l2.g2">Layer 2 (Signal)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Center X (mm)</label>
+                        <input type="number" id="gerber-fea-x" value="50.0" step="0.1">
+                    </div>
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Center Y (mm)</label>
+                        <input type="number" id="gerber-fea-y" value="50.0" step="0.1">
+                    </div>
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">ROI Width (µm)</label>
+                        <input type="number" id="gerber-fea-w" value="10.0" step="1.0">
+                    </div>
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">ROI Height (µm)</label>
+                        <input type="number" id="gerber-fea-h" value="5.0" step="1.0">
+                    </div>
+                    <div>
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Trace Index (n)</label>
+                        <input type="number" id="gerber-fea-n" value="3.47" step="0.01">
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <button class="button" onclick="runGerberFEA()"
+                        style="padding: 15px 40px; font-size: 1.1em; background: linear-gradient(135deg, #ff5722, #ffc107);">
+                        Run Gerber FEA
+                    </button>
+                    <div id="gerber-fea-loading" style="display: none; margin-top: 10px; color: #ff5722;">
+                        <span class="loading"></span> Rasterizing & Solving...
+                    </div>
+                </div>
+
+                <div id="gerber-fea-results" style="display: none;">
+                    <h3 style="text-align: center; color: #ff5722; margin-bottom: 20px;">Gerber Mode Results</h3>
+                    <div id="gerber-fea-modes-container"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Modes will be injected here -->
+                    </div>
+                </div>
+            </div>
+
 
             <!-- TFLN KiCad PCB Visualization \u0026 FEA Section -->
             <div class="card full-width"
@@ -1812,6 +1873,64 @@
             } catch (error) {
                 console.error('Error loading power schematic:', error);
                 alert('Failed to load power schematic');
+            }
+        }
+
+        async function runGerberFEA() {
+            const layer = document.getElementById('gerber-fea-layer').value;
+            const x = parseFloat(document.getElementById('gerber-fea-x').value);
+            const y = parseFloat(document.getElementById('gerber-fea-y').value);
+            const w = parseFloat(document.getElementById('gerber-fea-w').value);
+            const h = parseFloat(document.getElementById('gerber-fea-h').value);
+            const n = parseFloat(document.getElementById('gerber-fea-n').value);
+
+            const loading = document.getElementById('gerber-fea-loading');
+            const resultsDiv = document.getElementById('gerber-fea-results');
+            const container = document.getElementById('gerber-fea-modes-container');
+
+            loading.style.display = 'block';
+            resultsDiv.style.display = 'none';
+            container.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/gerber/fea', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        layer: layer,
+                        center_x: x,
+                        center_y: y,
+                        width_um: w,
+                        height_um: h,
+                        n_trace: n
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    data.data.forEach(mode => {
+                        const modeCard = document.createElement('div');
+                        modeCard.className = 'card';
+                        modeCard.innerHTML = `
+                            <div class="card-title" style="font-size: 1.1em; color: #ff5722;">Mode ${mode.mode_index}</div>
+                            <div class="metric">
+                                <span class="metric-label">Effective Index (n_eff)</span>
+                                <span class="metric-value" style="color: #ffc107;">${mode.n_eff.toFixed(4)}</span>
+                            </div>
+                            <img src="${mode.image_url}" style="width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid rgba(255, 87, 34, 0.3);">
+                        `;
+                        container.appendChild(modeCard);
+                    });
+                    resultsDiv.style.display = 'block';
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to run Gerber FEA');
+            } finally {
+                loading.style.display = 'none';
             }
         }
 
