@@ -686,6 +686,50 @@ def get_power_schematic():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/gerber/fea', methods=['POST'])
+def run_gerber_fea_endpoint():
+    """Run FEA on a specific region of a Gerber file"""
+    import os
+    from gerber_fea_v2 import run_gerber_fea_v2
+    
+    data = request.json
+    try:
+        # Default to top layer if not specified
+        layer_file = data.get('layer', 'tfln_modulator_top.gtl')
+        gerber_path = os.path.join('gerber_files', layer_file)
+        
+        # Center coordinates in mm
+        center_x = float(data.get('center_x', 50.0))
+        center_y = float(data.get('center_y', 50.0))
+        
+        # ROI size in microns
+        width_um = float(data.get('width_um', 10.0))
+        height_um = float(data.get('height_um', 5.0))
+        
+        # Refractive index of trace
+        n_trace = float(data.get('n_trace', 3.47))
+        
+        if not os.path.exists(gerber_path):
+            return jsonify({'error': f'Layer file not found: {layer_file}'}), 404
+            
+        results = run_gerber_fea_v2(
+            gerber_path, 
+            center_x, center_y, 
+            width_um, height_um, 
+            core_n=n_trace
+        )
+        
+        if results.get('status') == 'error':
+             return jsonify({'error': results.get('error')}), 500
+             
+        return jsonify(results)
+
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     print("=" * 70)

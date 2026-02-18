@@ -1,195 +1,107 @@
-"""
-Physics-Based Technical Report Generator for TFLN Photonic Circuits
-Generates comprehensive LaTeX report with finite math derivations and compiles to PDF.
-"""
-
 import os
-import subprocess
-import sys
+import matplotlib.pyplot as plt
+from reportlab.lib.pagesizes import LETTER
+from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
+import tempfile
+import time
 
-def generate_tfln_physics_report():
-    """Generate comprehensive physics-based technical report on TFLN"""
+def render_math(latex_str, filename):
+    """Renders a LaTeX string to an image file using matplotlib"""
+    fig = plt.figure(figsize=(6, 1))
+    text = fig.text(0.5, 0.5, f"${latex_str}$", fontsize=20, ha='center', va='center')
+    plt.axis('off')
     
-    latex_content = r"""\documentclass[12pt,a4paper]{article}
-\usepackage{amsmath,amssymb,amsthm,amsfonts}
-\usepackage{geometry}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{booktabs}
-\usepackage{fancyhdr}
-\usepackage{tikz}
-\usepackage{listings}
-\usepackage{xcolor}
+    # Save to buffer or temp file
+    plt.savefig(filename, bbox_inches='tight', dpi=300, transparent=True)
+    plt.close()
 
-\geometry{margin=1in}
-\pagestyle{fancy}
-\fancyhead[L]{LightRails AI Technical Report}
-\fancyhead[R]{Photonic Systems Division}
-
-\title{\textbf{LightRails AI: Physics-Based Modeling and Architecture of Photonic Computing Systems}}
-\author{LightRails AI Research Team}
-\date{\today}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{derivation}{Derivation}
-
-\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true}
-
-\begin{document}
-
-\maketitle
-
-\begin{abstract}
-This report details the development of the LightRails AI Photonic Computing platform, a high-performance system for simulating and designing next-generation photonic interconnects. We present the software architecture comprising a Flask-based backend and a dynamic frontend, alongside rigorous derivations of the physics engines implemented. Key features include a custom Finite Difference Frequency Domain (FDFD) solver for optical modes, Tin-Film Lithium Niobate (TFLN) modulator modeling, and a novel API-based GitHub integration mechanism developed to operate without local Git clients.
-\end{abstract}
-
-\tableofcontents
-\newpage
-
-\section{Introduction}
-LightRails AI represents the forefront of photonic computing simulation. This document outlines the technical foundations of our web-based platform, designed to bridge the gap between theoretical physics and deployable photonic hardware.
-
-\section{Application Architecture}
-
-The LightRails AI Web Application is designed as a modular, full-stack system to democratize access to advanced photonic design tools.
-
-\subsection{Backend System (Flask/Python)}
-The core logic resides in a Python-based Flask server (`app.py`), which orchestrates several specialized modules:
-\begin{enumerate}
-    \item \textbf{Physics Engines}: Custom implementations for Matrix Multiplication (`photonic\_core.py`), FFT, and Resonator physics.
-    \item \textbf{Integration Interfaces}: Modules for PCIe simulation (`pcie\_interface.py`) and Hybrid FPGA coprocessing.
-    \item \textbf{File Parsers}: Custom parsers for Gerber (PCB) and G-Code (CNC) files for manufacturing visualization.
-\end{enumerate}
-
-\subsection{Frontend Visualization}
-The user interface (`index.html`) utilizes HTML5 Canvas for high-performance rendering of engineering assets:
-\begin{itemize}
-    \item \textbf{Gerber Viewer}: Renders multi-layer PCB designs by parsing coordinate primitives.
-    \item \textbf{Real-Time Plotting}: Visualizes TFLN performance metrics and FEA mode profiles.
-\end{itemize}
-
-\section{Finite Element Analysis (FEA) of TFLN Modulator}
-
-We performed rigorous Finite Element Analysis on the modulator design defined in \texttt{tfln\_modulator.kicad\_pro} and \texttt{tfln\_modulator.kicad\_pcb}.
-
-\subsection{Simulation Methodology}
-The geometry was extracted from the KiCad PCB files and imported into our custom Finite Difference Frequency Domain (FDFD) solver. The solver discretizes the wave equation on a $50nm$ grid.
-
-\subsection{Mode Solutions}
-The solver identified the fundamental quasi-TE and quasi-TM modes.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{fea_results/mode_0.png}
-    \caption{Fundamental Mode (TE-like) at 1550nm. $n_{eff} \approx 2.14$.}
-    \label{fig:mode0}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{fea_results/mode_1.png}
-    \caption{First Order Mode (TM-like). $n_{eff} \approx 1.83$.}
-    \label{fig:mode1}
-\end{figure}
-
-\section{Finite Element Analysis (FEA) Engine}
-
-A critical component of the application is the browser-based simulation of optical waveguides. We derived a Finite Difference Frequency Domain (FDFD) solver to solve the scalar Helmholtz equation.
-
-\subsection{Mathematical Formulation}
-For a quasi-TE mode in a waveguide defined by refractive index distribution $n(x,y)$, the wave equation is:
-\begin{equation}
-\nabla_\perp^2 E_x + [k_0^2 n^2(x,y) - \beta^2] E_x = 0
-\end{equation}
-where $k_0 = 2\pi/\lambda$ is the free-space wavenumber and $\beta = k_0 n_{eff}$ is the propagation constant.
-
-\subsection{Discrete Approximation}
-We employ a central difference scheme on a 2D grid $(i,j)$ with spacing $h_x, h_y$:
-\begin{derivation}[5-Point Stencil]
-\begin{equation}
-\frac{E_{i+1,j} - 2E_{i,j} + E_{i-1,j}}{h_x^2} + \frac{E_{i,j+1} - 2E_{i,j} + E_{i,j-1}}{h_y^2} + k_0^2 n_{i,j}^2 E_{i,j} = \beta^2 E_{i,j}
-\end{equation}
-\end{derivation}
-This transforms the partial differential equation into a sparse eigenvalue problem $\mathbf{A}\mathbf{x} = \lambda \mathbf{x}$, which is solved numerically to obtain the effective index $n_{eff}$ and mode profiles displayed in the app.
-
-\section{TFLN Physics Modeling}
-
-\subsection{Electro-Optic Pockels Effect}
-The app models Thin-Film Lithium Niobate modulators using the anisotropic Pockels effect. The refractive index change is derived as:
-\begin{equation}
-\Delta n = -\frac{1}{2} n_e^3 r_{33} \frac{V}{d} \Gamma
-\end{equation}
-This allows for the precise calculation of the half-wave voltage ($V_\pi$):
-\begin{equation}
-V_\pi = \frac{\lambda d}{n_e^3 r_{33} \Gamma L}
-\end{equation}
-Our implementation yields a theoretical $V_\pi \approx 2.74$ V for the designed parameters, validating the high-efficiency claims of the platform.
-
-\section{Custom GitHub Integration}
-
-To meet deployment constraints (specifically, no local Git installation), we developed a custom Python-based uploader (`github\_uploader.py`).
-
-\subsection{Rest API Implementation}
-Instead of standard `git push` commands, the system interacts directly with the GitHub REST API:
-\begin{itemize}
-    \item \textbf{File Discovery}: Recursive directory walking with `.gitignore` parsing.
-    \item \textbf{Content Encoding}: Files are Base64 encoded and sent via `PUT` requests to `https://api.github.com/repos/{owner}/{repo}/contents/{path}`.
-    \item \textbf{Concurrency}: The web app handles uploads in background threads to maintain UI responsiveness.
-\end{itemize}
-
-\subsection{Simulation Mode}
-An "Offline Mode" was implemented to facilitate testing and demonstration without modifying live repositories. This required abstracting the network layer to simulate latency and API responses.
-
-\section{Conclusion}
-The LightRails AI Photonic Computing Web Application represents a convergence of rigorous physics modeling and modern software engineering. By embedding custom FEA solvers and physics-based component models directly into an interactive web platform, we provide a powerful tool for next-generation photonic chip design.
-
-\end{document}
-"""
+def generate_report(output_filename="Technical_Report_FEA_Derivation.pdf"):
+    doc = SimpleDocTemplate(output_filename, pagesize=LETTER,
+                            rightMargin=72, leftMargin=72,
+                            topMargin=72, bottomMargin=18)
     
-    # Define file paths
-    # Using the current directory where the script is located
-    output_dir = os.path.dirname(os.path.abspath(__file__))
-    file_name = "LightRails_AI_Technical_Report"
-    tex_path = os.path.join(output_dir, f"{file_name}.tex")
-    pdf_path = os.path.join(output_dir, f"{file_name}.pdf")
+    styles = getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+    styles.add(ParagraphStyle(name='Center', alignment=TA_CENTER))
     
-    # Write LaTeX to file
-    with open(tex_path, 'w') as f:
-        f.write(latex_content)
+    Story = []
     
-    print(f"LaTeX source generated: {tex_path}")
+    # Title
+    Story.append(Paragraph("<b>Technical Report: Finite Difference Mode Solver Derivation</b>", styles['Title']))
+    Story.append(Spacer(1, 12))
+    Story.append(Paragraph(f"Date: {time.strftime('%Y-%m-%d')}", styles['Center']))
+    Story.append(Spacer(1, 24))
     
-    # Compile PDF using pdflatex
-    # We run it twice to ensure references and table of contents are correct
-    print("Compiling PDF...")
-    try:
-        # First pass
-        subprocess.run(["pdflatex", "-interaction=nonstopmode", f"{file_name}.tex"], 
-                       cwd=output_dir, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # Second pass
-        subprocess.run(["pdflatex", "-interaction=nonstopmode", f"{file_name}.tex"], 
-                       cwd=output_dir, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(f"PDF successfully generated: {pdf_path}")
-    except subprocess.CalledProcessError as e:
-        print("Error during PDF compilation:")
-        print(e.stderr.decode() if e.stderr else "No stderr output")
-        print("Ensure 'pdflatex' is installed and in your PATH.")
-        # Attempt to see log if it exists
-        log_path = os.path.join(output_dir, f"{file_name}.log")
-        if os.path.exists(log_path):
-            with open(log_path, 'r') as log:
-                print("--- LOG PREVIEW ---")
-                print(log.read()[-1000:]) 
-                
-    except FileNotFoundError:
-        print("Error: 'pdflatex' command not found. Please install a LaTeX distribution (e.g., TeX Live, MiKTeX).")
+    # Abstract
+    Story.append(Paragraph("<b>Abstract</b>", styles['Heading2']))
+    Story.append(Paragraph("This report details the mathematical formulation and finite difference implementation for solving the scalar Helmholtz equation in optical waveguides. The derivation assumes a scalar field approximation for weakly guiding structures.", styles['Justify']))
+    Story.append(Spacer(1, 12))
     
-    return pdf_path
+    # 1. Governing Equation
+    Story.append(Paragraph("<b>1. Governing Physical Equation</b>", styles['Heading2']))
+    Story.append(Paragraph("We start with the scalar Helmholtz equation for the electric field $E(x,y)$ propagating in the $z$-direction with propagation constant $\\beta$:", styles['Justify']))
+    Story.append(Spacer(1, 12))
+    
+    render_math(r"\nabla_\perp^2 E(x,y) + k_0^2 n^2(x,y) E(x,y) = \beta^2 E(x,y)", "eq1.png")
+    Story.append(Image("eq1.png", width=300, height=50))
+    Story.append(Spacer(1, 12))
+    
+    Story.append(Paragraph("Where $k_0 = 2\pi/\lambda$ is the vacuum wavenumber and $n(x,y)$ is the refractive index distribution.", styles['Justify']))
+    
+    # 2. Discretization
+    Story.append(Paragraph("<b>2. Finite Difference Discretization</b>", styles['Heading2']))
+    Story.append(Paragraph("We discretize the domain into a grid with spacing $\Delta x$ and $\Delta y$. The Laplacian operator is approximated using the central difference scheme (5-point stencil):", styles['Justify']))
+    Story.append(Spacer(1, 12))
+    
+    render_math(r"\frac{\partial^2 E}{\partial x^2} \approx \frac{E_{i+1,j} - 2E_{i,j} + E_{i-1,j}}{\Delta x^2}", "eq2.png")
+    Story.append(Image("eq2.png", width=250, height=50))
+    Story.append(Spacer(1, 6))
+    
+    render_math(r"\frac{\partial^2 E}{\partial y^2} \approx \frac{E_{i,j+1} - 2E_{i,j} + E_{i,j-1}}{\Delta y^2}", "eq3.png")
+    Story.append(Image("eq3.png", width=250, height=50))
+    Story.append(Spacer(1, 12))
+    
+    # 3. Matrix Formulation
+    Story.append(Paragraph("<b>3. Matrix Formulation</b>", styles['Heading2']))
+    Story.append(Paragraph("Substituting the discrete approximations into the Helmholtz equation yields a linear algebraic eigenvalue problem:", styles['Justify']))
+    Story.append(Spacer(1, 12))
+    
+    render_math(r"(\mathbf{L} + \mathbf{V}) \mathbf{\Phi} = \beta^2 \mathbf{\Phi}", "eq4.png")
+    Story.append(Image("eq4.png", width=200, height=40))
+    Story.append(Spacer(1, 12))
+    
+    Story.append(Paragraph("Here, $\mathbf{L}$ is the sparse Laplacian matrix constructed from the Kronecker sum of 1D second-derivative operators:", styles['Justify']))
+    
+    render_math(r"\mathbf{L} = \mathbf{D}_{yy} \otimes \mathbf{I}_x + \mathbf{I}_y \otimes \mathbf{D}_{xx}", "eq5.png")
+    Story.append(Image("eq5.png", width=250, height=40))
+    Story.append(Spacer(1, 12))
+    
+    Story.append(Paragraph("And $\mathbf{V}$ is the diagonal matrix representing the refractive index profile:", styles['Justify']))
+    
+    render_math(r"\mathbf{V} = \text{diag}(k_0^2 n^2)", "eq6.png")
+    Story.append(Image("eq6.png", width=150, height=30))
+    Story.append(Spacer(1, 12))
+
+    # 4. Implementation Details
+    Story.append(Paragraph("<b>4. Computational Implementation</b>", styles['Heading2']))
+    Story.append(Paragraph("The solver is implemented in Python using <code>scipy.sparse</code> for efficient memory usage. The eigenvalue problem is solved using the implicitly restarted Arnoldi method (via <code>scipy.sparse.linalg.eigs</code>) to find the largest real eigenvalues corresponding to the guided modes.", styles['Justify']))
+    Story.append(Spacer(1, 12))
+    
+    Story.append(Paragraph("<b>5. Conclusion</b>", styles['Heading2']))
+    Story.append(Paragraph("This formulation provides a robust and computationally efficient method for analyzing optical modes in arbitrary refractive index distributions defined by Gerber files.", styles['Justify']))
+    
+    doc.build(Story)
+    
+    # Cleanup temp images
+    for f in ["eq1.png", "eq2.png", "eq3.png", "eq4.png", "eq5.png", "eq6.png"]:
+        if os.path.exists(f):
+            os.remove(f)
+            
+    print(f"Report generated: {os.path.abspath(output_filename)}")
 
 if __name__ == "__main__":
-    pdf_path = generate_tfln_physics_report()
-    if os.path.exists(pdf_path):
-        print(f"\nSUCCESS: Report generated at {pdf_path}")
-    else:
-        print(f"\nWARNING: PDF file was not created. Check LaTeX compilation errors.")
+    generate_report()

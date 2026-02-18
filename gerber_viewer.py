@@ -122,8 +122,16 @@ class GerberParser:
         
         for element in self.elements:
             aperture = self.apertures.get(element.aperture)
+            
+            # Fallback if aperture is not defined
             if not aperture:
-                continue
+                # Create a default dummy aperture object if missing
+                # We reuse the class structure or just a simple object
+                class DefaultAperture:
+                    def __init__(self):
+                        self.shape = 'circle'
+                        self.size = [0.2] # 0.2mm default
+                aperture = DefaultAperture()
             
             if element.element_type == 'line':
                 lines.append({
