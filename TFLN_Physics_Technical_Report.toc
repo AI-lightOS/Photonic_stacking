@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Application Architecture}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Backend System (Flask/Python)}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Frontend Visualization}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Finite Element Analysis (FEA) Engine}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Mathematical Formulation}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Discrete Approximation}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}TFLN Physics Modeling}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Electro-Optic Pockels Effect}{3}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Custom GitHub Integration}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Rest API Implementation}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Simulation Mode}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusion}{4}{section.5}%
