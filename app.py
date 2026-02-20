@@ -347,6 +347,161 @@ def get_tfln_plots():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/matrix_multiplier/resonator')
+def get_resonator_stats():
+    """Get ring-resonator weight statistics for the matrix multiplier."""
+    stats = matrix_multiplier.resonator_stats()
+    stats['throughput_tops'] = matrix_multiplier.compute_throughput()
+    return jsonify(stats)
+
+
+@app.route('/api/matrix_multiplier/scl_stream')
+def scl_stream():
+    """
+    Real-time SCL training via Server-Sent Events.
+
+    Query params:
+        epochs   – number of training epochs  (default 50)
+        lr       – learning rate × 1000       (default 20 → 0.020)
+        q_factor – ring resonator Q-factor    (default 15000)
+        n_train  – training sample count      (default 24)
+
+    Streams one SSE event per epoch:
+        data: {"epoch":1,"loss":0.312,"tops":104.5,"improvement_pct":2.1,"done":false}
+    Final event has "done":true and includes full resonator_stats.
+    """
+    import json, time
+    from flask import stream_with_context, Response
+
+    epochs   = int(request.args.get('epochs', 50))
+    lr       = int(request.args.get('lr', 20)) / 1000.0
+    q_factor = float(request.args.get('q_factor', matrix_multiplier.q_factor))
+    n_train  = int(request.args.get('n_train', 24))
+
+    def generate():
+        # Re-tune Q-factor if changed
+        if q_factor != matrix_multiplier.q_factor:
+            matrix_multiplier.q_factor = q_factor
+            for r in matrix_multiplier.resonators:
+                r.quality_factor = q_factor
+            matrix_multiplier._update_resonator_weights()
+
+        baseline_tops = matrix_multiplier.compute_throughput()
+        dim = matrix_multiplier.size
+        vecs    = [np.random.randn(dim) + 1j * np.random.randn(dim) for _ in range(n_train)]
+        targets = [np.random.randn(dim) + 1j * np.random.randn(dim) for _ in range(n_train)]
+        idx_arr = np.arange(n_train)
+
+        # Send initial metadata
+        meta = json.dumps({
+            'type': 'init',
+            'epochs': epochs,
+            'lr': lr,
+            'baseline_tops': baseline_tops,
+            'num_mzi': matrix_multiplier.num_mzi,
+            'scl_bins': matrix_multiplier._scl_bins,
+        })
+        yield f"data: {meta}\n\n"
+
+        t_start = time.time()
+        for epoch in range(epochs):
+            np.random.shuffle(idx_arr)
+            epoch_rms = 0.0
+            for idx in idx_arr:
+                pred = matrix_multiplier.multiply_resonator_weighted(vecs[idx])
+                rms  = matrix_multiplier.scl_update(targets[idx], pred, lr=lr)
+                epoch_rms += rms
+            mean_loss  = epoch_rms / n_train
+            cur_tops   = matrix_multiplier.compute_throughput()
+            improvement = (cur_tops - baseline_tops) / baseline_tops * 100
+
+            payload = json.dumps({
+                'type': 'epoch',
+                'epoch': epoch + 1,
+                'loss': round(mean_loss, 6),
+                'tops': round(cur_tops, 3),
+                'improvement_pct': round(improvement, 3),
+                'elapsed_s': round(time.time() - t_start, 2),
+                'done': False,
+            })
+            yield f"data: {payload}\n\n"
+
+        # Final summary event
+        final = json.dumps({
+            'type': 'done',
+            'epoch': epochs,
+            'baseline_tops': baseline_tops,
+            'final_tops': matrix_multiplier.compute_throughput(),
+            'improvement_pct': round((matrix_multiplier.compute_throughput() - baseline_tops) / baseline_tops * 100, 2),
+            'total_time_s': round(time.time() - t_start, 2),
+            'resonator_stats': matrix_multiplier.resonator_stats(),
+            'done': True,
+        })
+        yield f"data: {final}\n\n"
+
+    return Response(
+        stream_with_context(generate()),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'X-Accel-Buffering': 'no',
+        }
+    )
+
+
+@app.route('/api/matrix_multiplier/scl_reset', methods=['POST'])
+def scl_reset():
+    """Reinitialise the matrix multiplier with fresh random phases."""
+    data = request.json or {}
+    q_factor = float(data.get('q_factor', matrix_multiplier.q_factor))
+    matrix_multiplier.theta = np.random.uniform(0, 2 * np.pi, matrix_multiplier.num_mzi)
+    matrix_multiplier.phi   = np.random.uniform(0, 2 * np.pi, matrix_multiplier.num_mzi)
+    matrix_multiplier.q_factor = q_factor
+    for r in matrix_multiplier.resonators:
+        r.quality_factor = q_factor
+    matrix_multiplier._update_resonator_weights()
+    return jsonify({'status': 'reset', 'throughput_tops': matrix_multiplier.compute_throughput()})
+
+
+@app.route('/api/matrix_multiplier/scl_train', methods=['POST'])
+def scl_train():
+    """Blocking SCL train (kept for compatibility). Prefer /scl_stream for real-time use."""
+    import time
+    data = request.json or {}
+    epochs   = int(data.get('epochs', 30))
+    lr       = float(data.get('lr', 0.01))
+    n_train  = int(data.get('size', 20))
+    q_factor = float(data.get('q_factor', matrix_multiplier.q_factor))
+
+    if q_factor != matrix_multiplier.q_factor:
+        matrix_multiplier.q_factor = q_factor
+        for r in matrix_multiplier.resonators:
+            r.quality_factor = q_factor
+        matrix_multiplier._update_resonator_weights()
+
+    baseline_tops = matrix_multiplier.compute_throughput()
+    dim = matrix_multiplier.size
+    vecs    = [np.random.randn(dim) + 1j * np.random.randn(dim) for _ in range(n_train)]
+    targets = [np.random.randn(dim) + 1j * np.random.randn(dim) for _ in range(n_train)]
+
+    t0 = time.time()
+    loss_history = matrix_multiplier.train_scl(vecs, targets, epochs=epochs, lr=lr)
+    elapsed = time.time() - t0
+
+    final_tops = matrix_multiplier.compute_throughput()
+    return jsonify({
+        'epochs': epochs, 'lr': lr,
+        'loss_history': loss_history,
+        'initial_loss': loss_history[0]  if loss_history else None,
+        'final_loss':   loss_history[-1] if loss_history else None,
+        'baseline_tops': baseline_tops,
+        'final_tops': final_tops,
+        'improvement_pct': round((final_tops - baseline_tops) / baseline_tops * 100, 2),
+        'train_time_s': round(elapsed, 3),
+        'resonator_stats': matrix_multiplier.resonator_stats(),
+    })
+
+
 @app.route('/api/matrix_multiply', methods=['POST'])
 def run_matrix_multiply():
     """Run matrix multiplication simulation"""
@@ -745,4 +900,4 @@ if __name__ == '__main__':
     print("=" * 70)
     print("Starting server on http://127.0.0.1:5001")
     print("=" * 70)
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    app.run(host='0.0.0.0', port=5001, debug=False, threaded=True)

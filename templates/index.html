@@ -12,6 +12,11 @@
             box-sizing: border-box;
         }
 
+        /* ── No autoscroll ─── */
+        html {
+            scroll-behavior: auto !important;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
@@ -88,12 +93,14 @@
             padding: 25px;
             border: 1px solid rgba(0, 212, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            will-change: transform;
+            contain: layout style;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 212, 255, 0.35);
             border-color: #00d4ff;
         }
 
@@ -114,8 +121,9 @@
         .metric {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(139, 157, 195, 0.2);
+            contain: layout style;
         }
 
         .metric:last-child {
@@ -256,12 +264,13 @@
             }
 
             50% {
-                opacity: 0.5;
+                opacity: 0.55;
             }
         }
 
         .pulse {
-            animation: pulse 2s ease-in-out infinite;
+            animation: pulse 2.5s ease-in-out infinite;
+            will-change: opacity;
         }
 
         .full-width {
@@ -285,6 +294,9 @@
             box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
     </style>
+    <!-- Performance: preconnect to CDN before script fetch -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
@@ -458,6 +470,139 @@
                 </div>
                 <button class="button" onclick="loadCluster()">Initialize Cluster</button>
                 <div class="cluster-grid" id="cluster-grid"></div>
+            </div>
+
+            <!-- ── Resonator-SCL Optimizer (Real-Time Streaming) ── -->
+            <div class="card full-width" id="scl-card"
+                style="background:linear-gradient(135deg,rgba(0,255,136,0.07),rgba(108,92,231,0.09));border-color:rgba(0,255,136,0.4);">
+
+                <div class="card-title" style="font-size:1.8em;justify-content:center;">
+                    🔁 Resonator-SCL Optimizer <span style="font-size:0.55em;color:#00ff88;margin-left:12px;">●
+                        LIVE</span>
+                </div>
+                <p style="text-align:center;color:#8b9dc3;margin-bottom:20px;font-size:0.95em;">
+                    Pigeonhole-binned Statistical Congruential Learning · Combinatorial MZI mesh ·
+                    Ring-Resonator amplitude weighting · Real-time loss streaming
+                </p>
+
+                <!-- Live hardware stats row -->
+                <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px;">
+                    <div class="metric"><span class="metric-label">MZI Pairs</span><span class="metric-value"
+                            id="res-mzi">--</span></div>
+                    <div class="metric"><span class="metric-label">SCL Bins (√N)</span><span class="metric-value"
+                            id="res-bins">--</span></div>
+                    <div class="metric"><span class="metric-label">Mean Weight</span><span class="metric-value"
+                            id="res-mean-w">--</span></div>
+                    <div class="metric"><span class="metric-label">Weight σ</span><span class="metric-value"
+                            id="res-std-w">--</span></div>
+                    <div class="metric"><span class="metric-label">Q-Factor</span><span class="metric-value"
+                            id="res-qfactor">--</span></div>
+                    <div class="metric"><span class="metric-label">TOPS (live)</span><span class="metric-value"
+                            id="scl-live-tops" style="color:#00ff88;">--</span></div>
+                </div>
+
+                <!-- Controls -->
+                <div
+                    style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto 20px;">
+                    <div>
+                        <label style="color:#8b9dc3;display:block;margin-bottom:6px;">
+                            Epochs &nbsp;<span id="scl-epochs-val" style="color:#00ff88;font-weight:bold;">60</span>
+                        </label>
+                        <input type="range" id="scl-epochs" min="10" max="300" value="60" step="10"
+                            style="width:100%;accent-color:#00ff88;"
+                            oninput="document.getElementById('scl-epochs-val').textContent=this.value">
+                    </div>
+                    <div>
+                        <label style="color:#8b9dc3;display:block;margin-bottom:6px;">
+                            Learning Rate &nbsp;<span id="scl-lr-val"
+                                style="color:#00d4ff;font-weight:bold;">0.025</span>
+                        </label>
+                        <input type="range" id="scl-lr" min="1" max="150" value="25" step="1"
+                            style="width:100%;accent-color:#00d4ff;"
+                            oninput="document.getElementById('scl-lr-val').textContent=(this.value/1000).toFixed(3)">
+                    </div>
+                    <div>
+                        <label style="color:#8b9dc3;display:block;margin-bottom:6px;">
+                            Q-Factor &nbsp;<span id="scl-q-val" style="color:#a29bfe;font-weight:bold;">15,000</span>
+                        </label>
+                        <input type="range" id="scl-q" min="1000" max="50000" value="15000" step="500"
+                            style="width:100%;accent-color:#a29bfe;"
+                            oninput="document.getElementById('scl-q-val').textContent=parseInt(this.value).toLocaleString()">
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div
+                    style="text-align:center;margin-bottom:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                    <button class="button" id="scl-train-btn" onclick="startSCLStream()"
+                        style="padding:14px 48px;font-size:1.1em;background:linear-gradient(135deg,#00ff88,#00d4ff);min-width:180px;">
+                        ▶ Train SCL Live
+                    </button>
+                    <button class="button" id="scl-stop-btn" onclick="stopSCLStream()" disabled
+                        style="background:linear-gradient(135deg,#e17055,#d63031);min-width:120px;opacity:0.4;">
+                        ■ Stop
+                    </button>
+                    <button class="button" onclick="resetSCL()"
+                        style="background:linear-gradient(135deg,#636e72,#2d3436);min-width:120px;">
+                        ↺ Reset
+                    </button>
+                    <button class="button" onclick="loadResonatorStats()"
+                        style="background:linear-gradient(135deg,#6c5ce7,#a29bfe);min-width:140px;">
+                        ⟳ Refresh Stats
+                    </button>
+                </div>
+
+                <!-- Progress bar -->
+                <div style="max-width:960px;margin:0 auto 16px;">
+                    <div
+                        style="display:flex;justify-content:space-between;color:#8b9dc3;font-size:0.8em;margin-bottom:4px;">
+                        <span id="scl-status-text">Ready</span>
+                        <span id="scl-progress-label">0 / 0 epochs</span>
+                    </div>
+                    <div style="width:100%;height:8px;background:rgba(0,0,0,0.3);border-radius:4px;overflow:hidden;">
+                        <div id="scl-progress-bar"
+                            style="height:100%;width:0%;background:linear-gradient(90deg,#00ff88,#00d4ff);transition:width 0.3s ease;border-radius:4px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live metrics badges -->
+                <div style="display:flex;gap:16px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;">
+                    <div
+                        style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);border-radius:10px;padding:10px 24px;text-align:center;">
+                        <div style="color:#8b9dc3;font-size:0.75em;">Improvement</div>
+                        <div id="scl-improvement" style="font-size:1.9em;font-weight:bold;color:#00ff88;">+0.00%</div>
+                    </div>
+                    <div
+                        style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);border-radius:10px;padding:10px 24px;text-align:center;">
+                        <div style="color:#8b9dc3;font-size:0.75em;">Loss (epoch)</div>
+                        <div id="scl-live-loss" style="font-size:1.9em;font-weight:bold;color:#00d4ff;">--</div>
+                    </div>
+                    <div
+                        style="background:rgba(162,155,254,0.1);border:1px solid rgba(162,155,254,0.3);border-radius:10px;padding:10px 24px;text-align:center;">
+                        <div style="color:#8b9dc3;font-size:0.75em;">Elapsed</div>
+                        <div id="scl-elapsed" style="font-size:1.9em;font-weight:bold;color:#a29bfe;">0s</div>
+                    </div>
+                    <div
+                        style="background:rgba(253,203,110,0.1);border:1px solid rgba(253,203,110,0.3);border-radius:10px;padding:10px 24px;text-align:center;">
+                        <div style="color:#8b9dc3;font-size:0.75em;">Baseline TOPS</div>
+                        <div id="scl-baseline" style="font-size:1.9em;font-weight:bold;color:#fdcb6e;">--</div>
+                    </div>
+                </div>
+
+                <!-- Live loss + TOPS dual chart -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;">
+                    <div class="card" style="padding:18px;">
+                        <h3 style="color:#00d4ff;margin-bottom:12px;font-size:1em;text-align:center;">RMS Loss per Epoch
+                        </h3>
+                        <canvas id="scl-loss-chart" height="180"></canvas>
+                    </div>
+                    <div class="card" style="padding:18px;">
+                        <h3 style="color:#00ff88;margin-bottom:12px;font-size:1em;text-align:center;">Throughput (TOPS)
+                            vs Epoch</h3>
+                        <canvas id="scl-tops-chart" height="180"></canvas>
+                    </div>
+                </div>
             </div>
 
             <!-- TFLN Interconnect Section -->
@@ -1936,12 +2081,174 @@
 
 
 
+        // ── Resonator-SCL real-time streaming ────────────────────────────
+        let sclLossChart = null, sclTopsChart = null, sclES = null;
+
+        function _makeChart(canvasId, label, color, yLabel) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label, data: [],
+                        borderColor: color,
+                        backgroundColor: color.replace(')', ',0.08)').replace('rgb', 'rgba'),
+                        borderWidth: 2, pointRadius: 0, tension: 0.4, fill: true
+                    }]
+                },
+                options: {
+                    responsive: true, animation: false,
+                    plugins: { legend: { labels: { color: '#e0e6ed', font: { size: 11 } } } },
+                    scales: {
+                        x: {
+                            ticks: { color: '#8b9dc3', maxTicksLimit: 10 }, grid: { color: 'rgba(139,157,195,0.12)' },
+                            title: { display: true, text: 'Epoch', color: '#8b9dc3' }
+                        },
+                        y: {
+                            ticks: { color: '#8b9dc3' }, grid: { color: 'rgba(139,157,195,0.12)' },
+                            title: { display: true, text: yLabel, color: '#8b9dc3' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function _sclSetRunning(running) {
+            document.getElementById('scl-train-btn').disabled = running;
+            document.getElementById('scl-train-btn').style.opacity = running ? '0.5' : '1';
+            document.getElementById('scl-stop-btn').disabled = !running;
+            document.getElementById('scl-stop-btn').style.opacity = running ? '1' : '0.4';
+        }
+
+        function stopSCLStream() {
+            if (sclES) { sclES.close(); sclES = null; }
+            document.getElementById('scl-status-text').textContent = 'Stopped';
+            _sclSetRunning(false);
+        }
+
+        async function resetSCL() {
+            stopSCLStream();
+            try {
+                const q = parseInt(document.getElementById('scl-q').value);
+                const r = await fetch('/api/matrix_multiplier/scl_reset', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ q_factor: q })
+                });
+                const d = await r.json();
+                document.getElementById('scl-live-tops').textContent = d.throughput_tops.toFixed(2);
+                document.getElementById('scl-improvement').textContent = '+0.00%';
+                document.getElementById('scl-status-text').textContent = 'Reset — ready';
+                document.getElementById('scl-progress-bar').style.width = '0%';
+                document.getElementById('scl-progress-label').textContent = '0 / 0 epochs';
+                if (sclLossChart) { sclLossChart.data.labels = []; sclLossChart.data.datasets[0].data = []; sclLossChart.update(); }
+                if (sclTopsChart) { sclTopsChart.data.labels = []; sclTopsChart.data.datasets[0].data = []; sclTopsChart.update(); }
+                await loadResonatorStats();
+            } catch (e) { console.error('Reset error', e); }
+        }
+
+        function startSCLStream() {
+            if (sclES) sclES.close();
+
+            const epochs = parseInt(document.getElementById('scl-epochs').value);
+            const lr = parseInt(document.getElementById('scl-lr').value);
+            const qFactor = parseInt(document.getElementById('scl-q').value);
+            const url = `/api/matrix_multiplier/scl_stream?epochs=${epochs}&lr=${lr}&q_factor=${qFactor}&n_train=24`;
+
+            // Init / reset charts
+            if (sclLossChart) sclLossChart.destroy();
+            if (sclTopsChart) sclTopsChart.destroy();
+            sclLossChart = _makeChart('scl-loss-chart', 'RMS Loss', '#00d4ff', 'RMS Residual');
+            sclTopsChart = _makeChart('scl-tops-chart', 'TOPS', '#00ff88', 'TOPS');
+
+            _sclSetRunning(true);
+            document.getElementById('scl-status-text').textContent = 'Connecting…';
+            document.getElementById('scl-progress-bar').style.width = '0%';
+            document.getElementById('scl-progress-label').textContent = `0 / ${epochs} epochs`;
+
+            sclES = new EventSource(url);
+
+            sclES.onmessage = function (ev) {
+                const d = JSON.parse(ev.data);
+
+                if (d.type === 'init') {
+                    document.getElementById('scl-status-text').textContent = `Training · ${d.num_mzi} MZI pairs · ${d.scl_bins} bins`;
+                    document.getElementById('scl-baseline').textContent = d.baseline_tops.toFixed(2);
+                    document.getElementById('res-mzi').textContent = d.num_mzi;
+                    document.getElementById('res-bins').textContent = d.scl_bins;
+                    return;
+                }
+
+                if (d.type === 'epoch') {
+                    const pct = (d.improvement_pct >= 0 ? '+' : '') + d.improvement_pct.toFixed(3) + '%';
+                    document.getElementById('scl-improvement').textContent = pct;
+                    document.getElementById('scl-live-loss').textContent = d.loss.toFixed(5);
+                    document.getElementById('scl-live-tops').textContent = d.tops.toFixed(2);
+                    document.getElementById('scl-elapsed').textContent = d.elapsed_s + 's';
+                    document.getElementById('scl-progress-label').textContent = `${d.epoch} / ${epochs} epochs`;
+                    const pctWidth = ((d.epoch / epochs) * 100).toFixed(1);
+                    document.getElementById('scl-progress-bar').style.width = pctWidth + '%';
+
+                    // Append chart data — repaint only on next animation frame
+                    requestAnimationFrame(() => {
+                        sclLossChart.data.labels.push(d.epoch);
+                        sclLossChart.data.datasets[0].data.push(d.loss);
+                        sclLossChart.update('none');
+
+                        sclTopsChart.data.labels.push(d.epoch);
+                        sclTopsChart.data.datasets[0].data.push(d.tops);
+                        sclTopsChart.update('none');
+                    });
+                    return;
+                }
+
+                if (d.type === 'done') {
+                    document.getElementById('scl-progress-bar').style.width = '100%';
+                    document.getElementById('scl-status-text').textContent = `✓ Done in ${d.total_time_s}s`;
+                    document.getElementById('scl-improvement').textContent =
+                        (d.improvement_pct >= 0 ? '+' : '') + d.improvement_pct.toFixed(2) + '%';
+                    if (d.resonator_stats) {
+                        document.getElementById('res-mean-w').textContent = d.resonator_stats.mean_weight.toFixed(4);
+                        document.getElementById('res-std-w').textContent = d.resonator_stats.std_weight.toFixed(4);
+                        document.getElementById('res-qfactor').textContent = d.resonator_stats.q_factor.toLocaleString();
+                    }
+                    sclES.close(); sclES = null;
+                    _sclSetRunning(false);
+                }
+            };
+
+            sclES.onerror = function () {
+                document.getElementById('scl-status-text').textContent = 'Stream error — check console';
+                _sclSetRunning(false);
+                if (sclES) { sclES.close(); sclES = null; }
+            };
+        }
+
+        async function loadResonatorStats() {
+            try {
+                const r = await fetch('/api/matrix_multiplier/resonator');
+                const d = await r.json();
+                document.getElementById('res-mean-w').textContent = d.mean_weight.toFixed(4);
+                document.getElementById('res-std-w').textContent = d.std_weight.toFixed(4);
+                document.getElementById('res-qfactor').textContent = d.q_factor.toLocaleString();
+                if (document.getElementById('res-bins'))
+                    document.getElementById('res-bins').textContent = Math.ceil(Math.sqrt(d.num_resonators));
+                if (document.getElementById('res-mzi'))
+                    document.getElementById('res-mzi').textContent = d.num_resonators;
+                if (document.getElementById('scl-live-tops'))
+                    document.getElementById('scl-live-tops').textContent = d.throughput_tops.toFixed(2);
+            } catch (e) { console.error('Resonator stats error:', e); }
+        }
+        // ─────────────────────────────────────────────────────────────────
+
         window.onload = () => {
             loadPerformance();
             loadPCIeInfo();
             loadWDMChannels();
             loadCNCFilesList();
             load3DModels();
+            loadResonatorStats();
         };
     </script>
 </body>
