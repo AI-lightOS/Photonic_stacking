@@ -1,0 +1,17 @@
+G04 Orchestrated Photonic Stack - Layer 6 (RF Ground Plane 1)*
+G04 Impedance control*
+G04 Date: 2026-02-23 16:36:03*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+G04 Layer 6 Elements*
+D10*
+X0Y0D02*
+X5000000Y0D01*
+X5000000Y5000000D01*
+X0Y5000000D01*
+X0Y0D01*
+G04 High Speed RF Transmission Lines*
+X500000Y500000D02*
+X4500000Y4500000D01*
+M02*

@@ -1,0 +1,19 @@
+G04 Orchestrated Photonic Stack - Layer 11 (Photonic Routing (Passive WG))*
+G04 Interconnects and splitters*
+G04 Date: 2026-02-23 16:36:03*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+G04 Layer 11 Elements*
+D10*
+X0Y0D02*
+X5000000Y0D01*
+X5000000Y5000000D01*
+X0Y5000000D01*
+X0Y0D01*
+G04 Waveguide / Resonator Structures*
+X1000000Y2000000D02*
+X4000000Y2000000D01*
+X4000000Y3000000D01*
+X1000000Y3000000D01*
+M02*

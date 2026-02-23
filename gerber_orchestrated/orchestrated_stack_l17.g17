@@ -1,0 +1,14 @@
+G04 Orchestrated Photonic Stack - Layer 17 (Thermal Interface Material (TIM))*
+G04 Thermal coupling*
+G04 Date: 2026-02-23 16:36:03*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+G04 Layer 17 Elements*
+D10*
+X0Y0D02*
+X5000000Y0D01*
+X5000000Y5000000D01*
+X0Y5000000D01*
+X0Y0D01*
+M02*
