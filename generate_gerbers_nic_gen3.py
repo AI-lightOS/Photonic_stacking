@@ -42,6 +42,6 @@ def generate_gerbers(pcb_file, output_dir):
     print(f"Successfully generated 22 fabrication files in: {output_dir}")
 
 if __name__ == "__main__":
-    pcb_path = r"C:\Users\bolao\Downloads\lightrail_nic_gen3.kicad_pcb"
+    pcb_path = "lightrail_nic_gen3.kicad_pcb"
     fab_dir = r"C:\Users\bolao\Downloads\LightRail_NIC_Gen3_Fabrication"
     generate_gerbers(pcb_path, fab_dir)

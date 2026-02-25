@@ -1,0 +1,151 @@
+`include "disciplines.vams"
+`include "constants.vams"
+
+/**
+ * LightRail AI: Generation 3 NIC - Verilog-A Characteristics
+ * Models the electro-optic and analog power behavior of the board.
+ */
+
+// 1. TFLN Mach-Zehnder Modulator (MZM) Model
+// Captures the Pockels effect and electro-optic modulation.
+module tfln_mzm(in_opt, out_opt, v_drive, v_bias);
+    input in_opt, v_drive, v_bias;
+    output out_opt;
+    electrical v_drive, v_bias;
+    wreal in_opt, out_opt; // Using wreal for optical power representation
+
+    parameter real Vpi = 1.85;       // Half-wave voltage (V)
+    parameter real alpha = 0.2;      // Insertion loss (dB)
+    parameter real er = 40.0;        // Extinction ratio (dB)
+    
+    real power_in, power_out;
+    real loss_factor;
+    real phase_shift;
+
+    analog begin
+        power_in = in_opt;
+        loss_factor = pow(10, -alpha/10);
+        
+        // Phase shift based on Pockels effect linear modulation
+        phase_shift = `M_PI * (V(v_drive) + V(v_bias)) / Vpi;
+        
+        // MZI Transfer Function: I_out = I_in * 0.5 * (1 + cos(phi))
+        power_out = power_in * loss_factor * 0.5 * (1 + cos(phase_shift));
+        
+        // Enforce extinction ratio limit
+        if (power_out < power_in * pow(10, -er/10)) begin
+            power_out = power_in * pow(10, -er/10);
+        end
+        
+        out_opt = power_out;
+    end
+endmodule
+
+// 2. Integrated Light Engine: DFB Laser Model
+// Models CW power supply with thermal slope efficiency.
+module dfb_laser(out_opt, enable, v_temp);
+    input enable, v_temp;
+    output out_opt;
+    electrical enable, v_temp;
+    wreal out_opt;
+
+    parameter real P_max = 50.0;     // Max CW power (mW)
+    parameter real Ith = 15.0;       // Threshold current (mA)
+    parameter real slope_eff = 0.4;  // Slope efficiency (mW/mA)
+    parameter real T_coeff = -0.02;  // Temperature coefficient (W/K)
+
+    real opt_power;
+    real current_drive;
+
+    analog begin
+        // Simple linear drive model
+        current_drive = (V(enable) > 1.2) ? 100.0 : 0.0; // 100mA when enabled
+        
+        if (current_drive > Ith) begin
+            opt_power = (current_drive - Ith) * slope_eff;
+            // Apply thermal derating
+            opt_power = opt_power * (1 + T_coeff * (V(v_temp) - 25.0));
+        end else begin
+            opt_power = 0.0;
+        end
+        
+        if (opt_power > P_max) opt_power = P_max;
+        
+        out_opt = opt_power;
+    end
+endmodule
+
+// 3. High-Speed Detector Bank: Photodetector Model
+// Models 광-전 Conversion (Optical to Electrical)
+module photodetector(in_opt, out_elec);
+    input in_opt;
+    output out_elec;
+    wreal in_opt;
+    electrical out_elec;
+
+    parameter real responsivity = 0.85; // A/W (or V/mW in simplified model)
+    parameter real bandwidth = 100e9;   // 100 GHz 3dB bandwidth
+    parameter real load_res = 50.0;     // Load resistance (Ohms)
+
+    real current_gen;
+    real tau;
+
+    analog begin
+        tau = 1.0 / (2 * `M_PI * bandwidth);
+        current_gen = in_opt * responsivity;
+        
+        // Low-pass filter behavior for high-speed response
+        V(out_elec) <+ Lidt(current_gen * load_res, tau); 
+        // Note: Lidt provides a simple first-order lag
+    end
+endmodule
+
+// 4. Analog Power Interposer: Voltage Regulator Model
+// Models 1.5kW+ Power Delivery Layer (L1)
+module analog_power_interposer(vin, vout_analog, vout_light, gnd);
+    input vin, gnd;
+    output vout_analog, vout_light;
+    electrical vin, vout_analog, vout_light, gnd;
+
+    parameter real target_ana = 1.0;  // 1.0V for the NCE Core
+    parameter real target_lgt = 3.3;  // 3.3V for the Light Engine
+    parameter real efficiency = 0.95; // 95% efficiency
+
+    analog begin
+        // Buck regulator behavior with efficiency losses
+        V(vout_analog, gnd) <+ target_ana + white_noise(1e-9, "thermal");
+        V(vout_light, gnd)  <+ target_lgt + white_noise(2e-9, "thermal");
+        
+        // Input current based on output load (simplified)
+        I(vin, gnd) <+ (I(vout_analog) * target_ana + I(vout_light) * target_lgt) / (V(vin) * efficiency);
+    end
+endmodule
+
+// 5. NIC Gen 3: Top-Level Characteristic Model
+// Integrates all characteristics for system simulation.
+module lightrail_nic_gen3_characteristics(v_pcie, v_gnd);
+    electrical v_pcie, v_gnd;
+
+    // Internal Nodes
+    electrical v_ana, v_lgt, v_mod_bias, v_mod_drive;
+    electrical v_det_out;
+    electrical v_temp_sense;
+    wreal opt_source, opt_modulated;
+
+    analog begin
+        // Instantiate Interposer
+        analog_power_interposer #(.target_ana(1.0)) pwr(v_pcie, v_ana, v_lgt, v_gnd);
+        
+        // Instantiate Light Engine
+        dfb_laser #(.P_max(40.0)) laser(opt_source, v_lgt, v_temp_sense);
+        
+        // Instantiate TFLN Modulator
+        tfln_mzm #(.Vpi(1.85)) mzm(opt_source, opt_modulated, v_mod_drive, v_mod_bias);
+        
+        // Instantiate Detector
+        photodetector #(.bandwidth(105e9)) det(opt_modulated, v_det_out);
+        
+        // Simplified thermal sensing
+        V(v_temp_sense) <+ 35.0 + 0.1 * I(v_ana); // Temp increases with core current
+    end
+endmodule
