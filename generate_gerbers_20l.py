@@ -29,8 +29,8 @@ def generate_gerbers(pcb_file, output_dir):
         filename = f"LightRail_20L_{ext}.gbr"
         path = os.path.join(output_dir, filename)
         with open(path, 'w') as f:
-            f.write(f"G04 High-Resolution Gerber for LightRail Phase 1-7: {k_layer}*\n")
-            f.write("G04 20-Layer Photonic Intelligence Stack Substrate*\n")
+            f.write(f"G04 High-Resolution Gerber for LightRail Phase 1-7 Roadmap: {k_layer}*\n")
+            f.write("G04 20-Layer Photonic Intelligence Stack (Exascale Workloads)*\n")
             f.write("M02*\n")
             
     # Drill file

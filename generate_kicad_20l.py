@@ -37,28 +37,28 @@ class LightRail20LGenerator:
         self.add('  )')
         self.add('  (layers')
         
-        # Mapping the 20 layers provided by the user
+        # Mapping the 20 layers based on the Phase 1-7 Roadmap
         layer_defs = [
-            (0, "F.Cu", "signal", "Analog Power Interposer (L1)"),
-            (1, "In1.Cu", "power", "Light Engine Plane (L2)"),
-            (2, "In2.Cu", "signal", "TFLN 3D Interposer (L3)"),
-            (3, "In3.Cu", "power", "Optical Circuit Switch (L4)"),
-            (4, "In4.Cu", "signal", "WDM Plane (L5)"),
-            (5, "In5.Cu", "signal", "Analog Wave Compute (L6)"),
-            (6, "In6.Cu", "power", "Memristive Synaptic Grid (L7)"),
-            (7, "In7.Cu", "signal", "Analog Signal Restoration (L8)"),
-            (8, "In8.Cu", "signal", "Ternary Logic Encoder (L9)"),
-            (9, "In9.Cu", "power", "Spiking Logic Dispatcher (L10)"),
-            (10, "In10.Cu", "signal", "ABFP Handler (L11)"),
-            (11, "In11.Cu", "signal", "Tensor Rearrangement (L12)"),
-            (12, "In12.Cu", "power", "Deterministic Kernel (L13)"),
-            (13, "In13.Cu", "signal", "Topology-Aware Routing (L14)"),
-            (14, "In14.Cu", "power", "Collective Optimization (L15)"),
-            (15, "In15.Cu", "signal", "Photonic Compiler Optimization (L16)"),
-            (16, "In16.Cu", "signal", "Fabric OS Scheduler (L17)"),
-            (17, "In17.Cu", "power", "Framework Adapters (L18)"),
-            (18, "In18.Cu", "signal", "Holographic Unified Memory (L19)"),
-            (31, "B.Cu", "signal", "Exascale Workload Plane (L20)")
+            (0, "F.Cu", "signal", "Analog Power Interposer (L1 - Phase 1)"),
+            (1, "In1.Cu", "power", "Integrated Light Engine (L2 - Phase 1)"),
+            (2, "In2.Cu", "signal", "TFLN 3D Interposer (L3 - Phase 2)"),
+            (3, "In3.Cu", "power", "Optical Circuit Switching (L4 - Phase 2)"),
+            (4, "In4.Cu", "signal", "Multi-Spectral WDM Plane (L5 - Phase 2)"),
+            (5, "In5.Cu", "signal", "Analog Wave Compute (L6 - Phase 3)"),
+            (6, "In6.Cu", "power", "Memristive Synaptic Grid (L7 - Phase 3)"),
+            (7, "In7.Cu", "signal", "Analog Signal Restoration (L8 - Phase 3)"),
+            (8, "In8.Cu", "signal", "Ternary Logic Encoder (L9 - Phase 4)"),
+            (9, "In9.Cu", "power", "Spiking Logic Dispatcher (L10 - Phase 4)"),
+            (10, "In10.Cu", "signal", "ABFP Handler (L11 - Phase 4)"),
+            (11, "In11.Cu", "signal", "Dynamic Tensor Rearrangement (L12 - Phase 4)"),
+            (12, "In12.Cu", "power", "Deterministic Kernel Integration (L13 - Phase 5)"),
+            (13, "In13.Cu", "signal", "Topology-Aware Routing (L14 - Phase 5)"),
+            (14, "In14.Cu", "power", "Collective Optimization Engine (L15 - Phase 5)"),
+            (15, "In15.Cu", "signal", "Photonic Compiler (L16 - Phase 6)"),
+            (16, "In16.Cu", "signal", "Fabric OS Global Scheduler (L17 - Phase 6)"),
+            (17, "In17.Cu", "power", "Framework Adapters / The Shim (L18 - Phase 6)"),
+            (18, "In18.Cu", "signal", "Holographic Unified Memory (L19 - Phase 7)"),
+            (31, "B.Cu", "signal", "Exascale AI Workload Plane (L20 - Phase 7)")
         ]
         
         for idx, name, ltype, desc in layer_defs:
