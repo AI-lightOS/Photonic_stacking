@@ -32,7 +32,7 @@ class LightCompilerV2:
         print(f"Target Distribution: {{k: len(v) for k, v in plan.items()}}")
         return binary
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Universal LightCompiler")
     parser.add_argument_group("Target Options")
     parser.add_argument("--target", choices=["photonic", "gpu", "tpu"], help="Override dispatcher")
@@ -44,3 +44,6 @@ if __name__ == "__main__":
     if "photonic" in binary_data:
         print("\nPhotonic Config Sample (Layer 5):")
         print(f"  Theta[:5]: {binary_data['photonic'][5]['theta'][:5]}")
+
+if __name__ == "__main__":
+    main()

@@ -1,5 +1,4 @@
-flask
-numpy
-matplotlib
-scipy
-numba==0.60.0
+numpy>=1.24.0
+numba>=0.57.0
+argparse
+typing-extensions
