@@ -12,6 +12,7 @@ This project implements a complete **photonic computing system** for large-scale
 - **FPGA Hybrid Architecture** - Electronic-photonic integration
 - **Exascale Clustering** - Massive parallel computing with Phase 1-7 Roadmap
 - **Generation 3 NIC** - 3.2 Tbps PCIe Gen5 Network Interface Card
+- **Universal LightCompiler** - Cross-architecture XPU compiler (Photonic, GPU, TPU)
 
 ### 🎯 Key Achievements
 
@@ -169,6 +170,24 @@ perf = cluster.aggregate_performance()
 - Photonic coprocessors (2048x2048 matrices)
 - Intelligent workload partitioning
 - 64-node exascale clusters
+
+### 4. **Universal LightCompiler** (`lightcompiler/`)
+
+Generic compiler foundation for 20-layer Photonic Stack and classical silicon (XPU):
+
+```python
+# Compile for 20-layer Photonic hardware
+lightcompiler --target photonic
+
+# Compile for Generic GPU (Triton/CUDA)
+lightcompiler --target gpu
+```
+
+**Features:**
+- **Unified Compute Graph (UCG)** - Hardware-agnostic IR
+- **Photonic 20L Backend** - Mapping to MZI phases and WDM
+- **XPU Backends** - Lowering to GPU (CUDA) and TPU (Systolic) stubs
+- **Docker Ready** - Containerized compilation environment
 
 ---
 
@@ -397,6 +416,12 @@ photonic_computing/
 ├── photonic_core.py                          # Silicon photonics components
 ├── pcie_interface.py                         # PCIe Gen5 interface
 ├── fpga_integration.py                       # FPGA-photonic hybrid
+├── lightcompiler/                            # Universal XPU Compiler
+│   ├── unified_ir.py                         # Hardware-agnostic IR
+│   ├── backends/                             # Photonic, GPU, TPU targets
+│   └── compiler_v2.py                         # CLI Driver
+├── Dockerfile                                # Containerized environment
+├── setup.py                                  # Universal installer
 ├── generate_report.py                        # Technical report generator
 ├── Photonic_Computing_Technical_Report.pdf   # Complete technical report (202 KB)
 ├── Photonic_Computing_Technical_Report.tex   # LaTeX source
