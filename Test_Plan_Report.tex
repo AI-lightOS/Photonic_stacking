@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\geometry{a4paper, margin=1in}
+
+\pagestyle{fancy}
+\fancyhead[L]{TFLN Project Test Plan}
+\fancyhead[R]{\today}
+
+\title{Test Plan \& Report: Bill of Materials and Source Code}
+\author{Automated Test Agent}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document presents the test plan and execution results for the Bill of Materials (BOM) and core source code of the TFLN Photonic Stacking project.
+
+\section{Test Results}
+
+\begin{longtable}{|p{4cm}|p{2cm}|p{8cm}|}
+\hline
+\textbf{Test Case} & \textbf{Status} & \textbf{Notes} \\
+\hline
+\endhead
+BOM File Existence & \textcolor{green}{\textbf{PASS}} & TFLN\_BOM.csv found \\
+\hline
+BOM Content & \textcolor{green}{\textbf{PASS}} & BOM contains 25 items \\
+\hline
+Component Check: TFLN & \textcolor{green}{\textbf{PASS}} & Found occurrence of TFLN \\
+\hline
+Component Check: Laser & \textcolor{green}{\textbf{PASS}} & Found occurrence of Laser \\
+\hline
+Component Check: Photodetector & \textcolor{green}{\textbf{PASS}} & Found occurrence of Photodetector \\
+\hline
+Cost Calculation Consistency & \textcolor{green}{\textbf{PASS}} & All row totals match quantity * unit cost \\
+\hline
+File Existence: app.py & \textcolor{green}{\textbf{PASS}} & File exists \\
+\hline
+Syntax Check: app.py & \textcolor{green}{\textbf{PASS}} & Valid Python syntax \\
+\hline
+File Existence: photonic\_core.py & \textcolor{green}{\textbf{PASS}} & File exists \\
+\hline
+Syntax Check: photonic\_core.py & \textcolor{green}{\textbf{PASS}} & Valid Python syntax \\
+\hline
+File Existence: tfln\_components.py & \textcolor{green}{\textbf{PASS}} & File exists \\
+\hline
+Syntax Check: tfln\_components.py & \textcolor{green}{\textbf{PASS}} & Valid Python syntax \\
+\hline
+File Existence: generate\_bom.py & \textcolor{green}{\textbf{PASS}} & File exists \\
+\hline
+Syntax Check: generate\_bom.py & \textcolor{green}{\textbf{PASS}} & Valid Python syntax \\
+\hline
+\end{longtable}
+
+\section{Conclusion}
+The automated tests have been executed. Please review any FAIL statuses above.
+
+\end{document}

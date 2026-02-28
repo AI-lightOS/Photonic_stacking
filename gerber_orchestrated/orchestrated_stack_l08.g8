@@ -1,0 +1,14 @@
+G04 Orchestrated Photonic Stack - Layer 8 (Silicon Interposer Base Metal)*
+G04 RDL spreading for base substrate*
+G04 Date: 2026-02-23 16:36:03*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+G04 Layer 8 Elements*
+D10*
+X0Y0D02*
+X5000000Y0D01*
+X5000000Y5000000D01*
+X0Y5000000D01*
+X0Y0D01*
+M02*

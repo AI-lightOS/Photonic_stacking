@@ -1,0 +1,3476 @@
+{
+  "head": {
+    "docType": "5",
+    "editorVersion": "6.5.0",
+    "title": "tfln_modulator",
+    "description": "TFLN Photonic Modulator PCB"
+  },
+  "canvas": "CA~1000~1000~#000000~yes~#FFFFFF~10~1000~1000~line~0.5~pixel~5~0~0",
+  "shape": [
+    {
+      "gId": "gge1001",
+      "layerid": "1",
+      "pathStr": "M 0 0 L 3936.9999999999995 0 L 3936.9999999999995 3149.6 L 0 3149.6 Z",
+      "strokeWidth": 10
+    },
+    {
+      "gId": "gge1003",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1004",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1005",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1006",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1007",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1008",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1009",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1010",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1011",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1012",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1013",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1014",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1015",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1016",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1017",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1018",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1279.5249999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1019",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1020",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1021",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1022",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1023",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1024",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1025",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1026",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1027",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1028",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1029",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1030",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1031",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1032",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1033",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1034",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1318.895,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1035",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1036",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1037",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1038",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1039",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1040",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1041",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1042",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1043",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1044",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1045",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1046",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1047",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1048",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1049",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1050",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1358.2649999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1051",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1052",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1053",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1054",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1055",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1056",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1057",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1058",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1059",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1060",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1061",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1062",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1063",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1064",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1065",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1066",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1397.635,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1067",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1068",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1069",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1070",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1071",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1072",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1073",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1074",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1075",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1076",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1077",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1078",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1079",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1080",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1081",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1082",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1437.0049999999999,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1083",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1084",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1085",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1086",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1087",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1088",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1089",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1090",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1091",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1092",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1093",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1094",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1095",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1096",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1097",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1098",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1476.375,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1099",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1100",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1101",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1102",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1103",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1104",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1105",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1106",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1107",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1108",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1109",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1110",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1111",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1112",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1113",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1114",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1515.745,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1115",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1116",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1117",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1118",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1119",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1120",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1121",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1122",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1123",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1124",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1125",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1126",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1127",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1128",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1129",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1130",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1555.115,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1131",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1132",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1133",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1134",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1135",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1136",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1137",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1138",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1139",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1140",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1141",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1142",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1143",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1144",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1145",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1146",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1594.485,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1147",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1148",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1149",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1150",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1151",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1152",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1153",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1154",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1155",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1156",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1157",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1158",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1159",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1160",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1161",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1162",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1633.8549999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1163",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1164",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1165",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1166",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1167",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1168",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1169",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1170",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1171",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1172",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1173",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1174",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1175",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1176",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1177",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1178",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1673.225,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1179",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1180",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1181",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1182",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1183",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1184",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1185",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1186",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1187",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1188",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1189",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1190",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1191",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1192",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1193",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1194",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1712.5949999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1195",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1196",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1197",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1198",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1199",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1200",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1201",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1202",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1203",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1204",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1205",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1206",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1207",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1208",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1209",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1210",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1751.965,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1211",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1212",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1213",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1214",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1215",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1216",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1217",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1218",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1219",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1220",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1221",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1222",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1223",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1224",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1225",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1226",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1791.3349999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1227",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1228",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1229",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1230",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1231",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1232",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1233",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1234",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1235",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1236",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1237",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1238",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1239",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1240",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1241",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1242",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1830.705,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1243",
+      "layerid": "1",
+      "x": 1673.225,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1244",
+      "layerid": "1",
+      "x": 1712.5949999999998,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1245",
+      "layerid": "1",
+      "x": 1751.965,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1246",
+      "layerid": "1",
+      "x": 1791.3349999999998,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1247",
+      "layerid": "1",
+      "x": 1830.705,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1248",
+      "layerid": "1",
+      "x": 1870.0749999999998,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1249",
+      "layerid": "1",
+      "x": 1909.445,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1250",
+      "layerid": "1",
+      "x": 1948.8149999999998,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1251",
+      "layerid": "1",
+      "x": 1988.185,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1252",
+      "layerid": "1",
+      "x": 2027.5549999999998,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1253",
+      "layerid": "1",
+      "x": 2066.9249999999997,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1254",
+      "layerid": "1",
+      "x": 2106.295,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1255",
+      "layerid": "1",
+      "x": 2145.665,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1256",
+      "layerid": "1",
+      "x": 2185.035,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": "GND"
+    },
+    {
+      "gId": "gge1257",
+      "layerid": "1",
+      "x": 2224.4049999999997,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1258",
+      "layerid": "1",
+      "x": 2263.7749999999996,
+      "y": 1870.0749999999998,
+      "width": 15.748,
+      "height": 15.748,
+      "type": "PAD",
+      "shape": "RECT",
+      "net": ""
+    },
+    {
+      "gId": "gge1266",
+      "type": "VIA",
+      "x": 590.55,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1267",
+      "type": "VIA",
+      "x": 984.2499999999999,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1268",
+      "type": "VIA",
+      "x": 1377.9499999999998,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1269",
+      "type": "VIA",
+      "x": 1771.6499999999999,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1270",
+      "type": "VIA",
+      "x": 2165.35,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1271",
+      "type": "VIA",
+      "x": 2559.0499999999997,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1272",
+      "type": "VIA",
+      "x": 2952.75,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1273",
+      "type": "VIA",
+      "x": 3346.45,
+      "y": 2755.8999999999996,
+      "diameter": 23.621999999999996,
+      "drill": 11.810999999999998,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1296",
+      "type": "VIA",
+      "x": 1771.6499999999999,
+      "y": 1456.6899999999998,
+      "diameter": 15.748,
+      "drill": 7.874,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1299",
+      "type": "VIA",
+      "x": 2165.35,
+      "y": 1456.6899999999998,
+      "diameter": 15.748,
+      "drill": 7.874,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1302",
+      "type": "VIA",
+      "x": 1771.6499999999999,
+      "y": 1850.3899999999999,
+      "diameter": 15.748,
+      "drill": 7.874,
+      "net": "GND"
+    },
+    {
+      "gId": "gge1305",
+      "type": "VIA",
+      "x": 2165.35,
+      "y": 1850.3899999999999,
+      "diameter": 15.748,
+      "drill": 7.874,
+      "net": "GND"
+    }
+  ],
+  "TRACK": [
+    {
+      "gId": "gge1265",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 393.7,
+          "y": 2559.0499999999997
+        },
+        {
+          "x": 3543.2999999999997,
+          "y": 2559.0499999999997
+        }
+      ],
+      "strokeWidth": 39.37
+    },
+    {
+      "gId": "gge1274",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 590.55,
+          "y": 2559.0499999999997
+        },
+        {
+          "x": 590.55,
+          "y": 1574.8
+        }
+      ],
+      "strokeWidth": 19.685
+    },
+    {
+      "gId": "gge1275",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 590.55,
+          "y": 1574.8
+        },
+        {
+          "x": 1653.54,
+          "y": 1574.8
+        }
+      ],
+      "strokeWidth": 19.685
+    },
+    {
+      "gId": "gge1276",
+      "layerid": "1",
+      "net": "LASER_EN",
+      "pointArr": [
+        {
+          "x": 1141.73,
+          "y": 1181.1
+        },
+        {
+          "x": 1653.54,
+          "y": 1377.9499999999998
+        }
+      ],
+      "strokeWidth": 9.8425
+    },
+    {
+      "gId": "gge1277",
+      "layerid": "1",
+      "net": "PD_OUT",
+      "pointArr": [
+        {
+          "x": 2283.46,
+          "y": 1377.9499999999998
+        },
+        {
+          "x": 2795.27,
+          "y": 1181.1
+        }
+      ],
+      "strokeWidth": 9.8425
+    },
+    {
+      "gId": "gge1278",
+      "layerid": "1",
+      "net": "PCIE_TX0_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2165.35
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1279",
+      "layerid": "1",
+      "net": "PCIE_TX0_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2165.35
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1280",
+      "layerid": "1",
+      "net": "PCIE_TX1_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2244.0899999999997
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1281",
+      "layerid": "1",
+      "net": "PCIE_TX1_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2244.0899999999997
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1282",
+      "layerid": "1",
+      "net": "PCIE_TX2_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2322.83
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1283",
+      "layerid": "1",
+      "net": "PCIE_TX2_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2322.83
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1284",
+      "layerid": "1",
+      "net": "PCIE_TX3_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2401.5699999999997
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1285",
+      "layerid": "1",
+      "net": "PCIE_TX3_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2401.5699999999997
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1286",
+      "layerid": "1",
+      "net": "PCIE_TX4_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2480.31
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1287",
+      "layerid": "1",
+      "net": "PCIE_TX4_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2480.31
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1288",
+      "layerid": "1",
+      "net": "PCIE_TX5_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2559.0499999999997
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1289",
+      "layerid": "1",
+      "net": "PCIE_TX5_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2559.0499999999997
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1290",
+      "layerid": "1",
+      "net": "PCIE_TX6_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2637.79
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1291",
+      "layerid": "1",
+      "net": "PCIE_TX6_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2637.79
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1292",
+      "layerid": "1",
+      "net": "PCIE_TX7_P",
+      "pointArr": [
+        {
+          "x": 1968.4999999999998,
+          "y": 2716.5299999999997
+        },
+        {
+          "x": 1968.4999999999998,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1293",
+      "layerid": "1",
+      "net": "PCIE_TX7_N",
+      "pointArr": [
+        {
+          "x": 2007.87,
+          "y": 2716.5299999999997
+        },
+        {
+          "x": 2007.87,
+          "y": 2952.75
+        }
+      ],
+      "strokeWidth": 5.905499999999999
+    },
+    {
+      "gId": "gge1295",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 1771.6499999999999,
+          "y": 1377.9499999999998
+        },
+        {
+          "x": 1771.6499999999999,
+          "y": 1456.6899999999998
+        }
+      ],
+      "strokeWidth": 11.810999999999998
+    },
+    {
+      "gId": "gge1298",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 2165.35,
+          "y": 1377.9499999999998
+        },
+        {
+          "x": 2165.35,
+          "y": 1456.6899999999998
+        }
+      ],
+      "strokeWidth": 11.810999999999998
+    },
+    {
+      "gId": "gge1301",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 1771.6499999999999,
+          "y": 1771.6499999999999
+        },
+        {
+          "x": 1771.6499999999999,
+          "y": 1850.3899999999999
+        }
+      ],
+      "strokeWidth": 11.810999999999998
+    },
+    {
+      "gId": "gge1304",
+      "layerid": "1",
+      "net": "+3V3",
+      "pointArr": [
+        {
+          "x": 2165.35,
+          "y": 1771.6499999999999
+        },
+        {
+          "x": 2165.35,
+          "y": 1850.3899999999999
+        }
+      ],
+      "strokeWidth": 11.810999999999998
+    }
+  ],
+  "LIB": [
+    {
+      "gId": "gge1002",
+      "head": {
+        "x": 1968.4999999999998,
+        "y": 1574.8,
+        "rotation": 0
+      },
+      "ref": "U1",
+      "package": "BGA-256",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1259",
+      "head": {
+        "x": 590.55,
+        "y": 2362.2,
+        "rotation": 0
+      },
+      "ref": "U5",
+      "package": "SOIC-8",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1260",
+      "head": {
+        "x": 984.2499999999999,
+        "y": 2362.2,
+        "rotation": 0
+      },
+      "ref": "U6",
+      "package": "SOIC-8",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1261",
+      "head": {
+        "x": 1377.9499999999998,
+        "y": 2362.2,
+        "rotation": 0
+      },
+      "ref": "U7",
+      "package": "SOIC-8",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1262",
+      "head": {
+        "x": 984.2499999999999,
+        "y": 1181.1,
+        "rotation": 0
+      },
+      "ref": "U2",
+      "package": "SOIC-8",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1263",
+      "head": {
+        "x": 2952.75,
+        "y": 1181.1,
+        "rotation": 0
+      },
+      "ref": "U3",
+      "package": "SOIC-8",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1264",
+      "head": {
+        "x": 1968.4999999999998,
+        "y": 787.4,
+        "rotation": 0
+      },
+      "ref": "U4",
+      "package": "QFN-16",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1294",
+      "head": {
+        "x": 1771.6499999999999,
+        "y": 1377.9499999999998,
+        "rotation": 0
+      },
+      "ref": "C1",
+      "package": "0603",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1297",
+      "head": {
+        "x": 2165.35,
+        "y": 1377.9499999999998,
+        "rotation": 0
+      },
+      "ref": "C2",
+      "package": "0603",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1300",
+      "head": {
+        "x": 1771.6499999999999,
+        "y": 1771.6499999999999,
+        "rotation": 0
+      },
+      "ref": "C3",
+      "package": "0603",
+      "layer": "1"
+    },
+    {
+      "gId": "gge1303",
+      "head": {
+        "x": 2165.35,
+        "y": 1771.6499999999999,
+        "rotation": 0
+      },
+      "ref": "C4",
+      "package": "0603",
+      "layer": "1"
+    }
+  ],
+  "netlist": [
+    "GND",
+    "+3V3",
+    "+1V8",
+    "+5V",
+    "PCIE_TX",
+    "PCIE_RX",
+    "LASER_EN",
+    "PD_OUT"
+  ]
+}

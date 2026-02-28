@@ -1,0 +1,10 @@
+G04 TFLN Photonic Modulator - Top Copper Layer (Signal)*
+G04 TFLN RF Electrodes and High-Priority Signals*
+G04 Date: 2026-02-07 14:51:10*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+D10*
+X1000000Y1000000D02*
+X2000000Y1000000D01*
+M02*

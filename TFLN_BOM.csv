@@ -1,0 +1,26 @@
+Designator,Quantity,Description,Manufacturer,Part Number,Specifications,Unit Cost ($),Total Cost ($)
+U1,1,TFLN Mach-Zehnder Modulator,NTT Electronics / iXblue,TFLN-MZM-400G-C,"X-cut, 15mm length, Vπ<2V, 100GHz BW, C-band",12500.0,12500.0
+U2,1,DFB Laser Diode,NeoPhotonics,TLN-1550-100,"1550nm, 100mW, <100kHz linewidth, C-band tunable",850.0,850.0
+U3,1,High-Speed Photodetector,Finisar / II-VI,XPDV4120R,"100GHz, -15dBm sensitivity, InGaAs PIN",1200.0,1200.0
+U4,1,RF Driver IC,Analog Devices,HMC8410,"100GHz, differential, 50Ω, 3.3V",450.0,450.0
+OPT1,2,Fiber-to-Chip Coupler,Corning / PLC Connections,FC-TFLN-SMF28,"Single-mode, <0.5dB loss, polarization maintaining",180.0,360.0
+OPT2,1,Optical Isolator,Thorlabs,IO-H-1550,">30dB isolation, <0.8dB insertion loss, C-band",320.0,320.0
+OPT3,1,VOA (Variable Optical Attenuator),General Photonics,VOA-100-C,"0-30dB range, <0.3dB PDL, motorized",280.0,280.0
+U5,1,Laser Driver IC,Maxim Integrated,MAX3669,"2.5Gbps, auto power control, <100mA",35.0,35.0
+U6,1,Low-Noise LDO,Texas Instruments,TPS7A4700,"1.8V, 1A, 4.17μVrms noise, PSRR 72dB",8.5,8.5
+U7,1,Buck Converter,Analog Devices,LT8614,"3.3V, 4A, 2MHz switching, 95% efficiency",12.0,12.0
+U8,1,TEC Controller,Wavelength Electronics,MPT5000,"Thermoelectric cooler, ±5A, 0.001°C stability",420.0,420.0
+U9,1,SerDes IC,Broadcom,BCM84881,"400G PAM4, 100Gbaud, retimer, FEC",850.0,850.0
+U10,1,Clock Generator,Silicon Labs,Si5395A,"100GHz, <50fs jitter, 12 outputs, programmable",95.0,95.0
+C1-C20,20,MLCC Capacitor,Murata,GRM32ER71H106KA12,"10μF, 50V, X7R, 1210",0.45,9.0
+C21-C40,20,MLCC Capacitor,Murata,GRM188R71E104KA01,"0.1μF, 25V, X7R, 0603",0.08,1.6
+R1-R10,10,Thin Film Resistor,Vishay,TNPW060350R0BEEN,"50Ω, 0.1%, 0.1W, 0603",0.25,2.5
+L1-L4,4,RF Inductor,Coilcraft,0603CS-10NXJLW,"10nH, Q>40 @ 2GHz, 0603",0.85,3.4
+J1,1,PCIe x16 Edge Connector,TE Connectivity,2-2013289-6,"Gen5, 32GT/s, gold plated",25.0,25.0
+J2-J3,2,LC/APC Fiber Connector,Senko,SN-LC-APC-SM,"Single-mode, APC polish, <0.3dB loss",12.0,24.0
+J4-J7,4,SMA RF Connector,Amphenol,132289,"50GHz, 50Ω, edge launch",8.5,34.0
+PCB1,1,PCB Assembly,Advanced Circuits,CUSTOM-8L-RF,"8-layer, Rogers RO4350B, impedance control",450.0,450.0
+TEC1,1,Thermoelectric Cooler,Laird Thermal,CP1.4-127-06L,"15W cooling, 40x40mm, ΔT=70°C",85.0,85.0
+HS1,1,Heat Sink,Aavid Thermalloy,577102B00000G,"Aluminum, 0.5°C/W, forced air",18.0,18.0
+FAN1,1,Cooling Fan,Sunon,MF40101V1-1000U-A99,"40mm, 12V, 10,000 RPM, 18 CFM",8.0,8.0
+SW1,1,FPGA Firmware,LightRail AI,TFLN-FW-v1.0,"Control logic, calibration, monitoring",0.0,0.0

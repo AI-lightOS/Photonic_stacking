@@ -1,0 +1,14 @@
+G04 Orchestrated Photonic Stack - Layer 14 (Hybrid Bonding Interface)*
+G04 Logic to Photonic face-to-face*
+G04 Date: 2026-02-23 16:36:03*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+G04 Layer 14 Elements*
+D10*
+X0Y0D02*
+X5000000Y0D01*
+X5000000Y5000000D01*
+X0Y5000000D01*
+X0Y0D01*
+M02*
