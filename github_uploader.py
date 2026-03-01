@@ -54,9 +54,11 @@ def get_file_content(file_path):
         return f.read()
 
 import ssl
+import urllib.parse
 
 def upload_file(token, repo, file_path, remote_path):
-    url = f"{GITHUB_API_URL}/repos/{repo}/contents/{remote_path}"
+    quoted_remote_path = urllib.parse.quote(remote_path)
+    url = f"{GITHUB_API_URL}/repos/{repo}/contents/{quoted_remote_path}"
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github.v3+json",

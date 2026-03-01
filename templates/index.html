@@ -1227,6 +1227,46 @@
                 </div>
             </div>
 
+            <!-- GitHub Upload Section -->
+            <div class="card full-width"
+                style="background: linear-gradient(135deg, rgba(30,30,30, 0.5), rgba(0, 0, 0, 0.8));">
+                <div class="card-title" style="font-size: 2em; text-align: center; margin-bottom: 20px;">
+                    <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32"
+                        data-view-component="true" style="fill: white; margin-right: 15px;">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                        </path>
+                    </svg>
+                    GitHub Project Upload
+                </div>
+                <p style="text-align: center; color: #8b9dc3; margin-bottom: 30px; font-size: 1.1em;">
+                    Upload Photonic Computing documentation and design files directly to a GitHub Repository
+                </p>
+
+                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                    <div style="margin-bottom: 15px; text-align: left;">
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Repository Context</label>
+                        <input type="text" id="github-repo" value="AI-lightOS/Photonic_stacking"
+                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid #00d4ff; border-radius: 5px;"
+                            disabled>
+                    </div>
+                    <div style="margin-bottom: 20px; text-align: left;">
+                        <label style="color: #8b9dc3; display: block; margin-bottom: 5px;">Personal Access Token (Leave
+                            empty for simulated upload)</label>
+                        <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid #00d4ff; border-radius: 5px;">
+                    </div>
+
+                    <button class="button" onclick="uploadToGithub()"
+                        style="padding: 15px 40px; font-size: 1.1em; background: linear-gradient(135deg, #eee, #aaa); color: #000; font-weight: bold; min-width: 250px;">
+                        <span id="github-btn-text">Upload to GitHub</span>
+                    </button>
+
+                    <div id="github-upload-status"
+                        style="margin-top: 20px; color: #00ff88; font-size: 1.1em; display: none;"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -2080,6 +2120,44 @@
         }
 
 
+
+        async function uploadToGithub() {
+            const token = document.getElementById('github-token').value;
+            const repo = document.getElementById('github-repo').value;
+            const statusDiv = document.getElementById('github-upload-status');
+            const btnText = document.getElementById('github-btn-text');
+
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = '#00d4ff';
+            statusDiv.innerHTML = '<span class="loading"></span> Uploading...';
+            btnText.textContent = 'Uploading...';
+
+            try {
+                const response = await fetch('/api/github/upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        token: token,
+                        repo: repo,
+                        simulation: !token // Use simulation if no token provided
+                    })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    statusDiv.style.color = '#00ff88';
+                    statusDiv.innerHTML = `✅ Successfully uploaded ${data.uploaded} files in ${data.total} total files discovered!`;
+                } else {
+                    statusDiv.style.color = '#ff5722';
+                    statusDiv.innerHTML = `❌ Upload failed: ${data.message || 'Unknown error'}`;
+                }
+            } catch (e) {
+                statusDiv.style.color = '#ff5722';
+                statusDiv.innerHTML = `❌ Error: ${e.message}`;
+            } finally {
+                btnText.textContent = 'Upload to GitHub';
+            }
+        }
 
         // ── Resonator-SCL real-time streaming ────────────────────────────
         let sclLossChart = null, sclTopsChart = null, sclES = null;

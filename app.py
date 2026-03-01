@@ -885,6 +885,22 @@ def run_gerber_fea_endpoint():
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/github/upload', methods=['POST'])
+def run_github_upload():
+    import github_uploader
+    data = request.json or {}
+    token = data.get('token', '')
+    repo = data.get('repo', 'AI-lightOS/Photonic_stacking')
+    simulation = data.get('simulation', True)
+    
+    result = github_uploader.upload_project(
+        token=token if token else "dummy_token",
+        repo=repo,
+        root_dir=os.path.dirname(os.path.abspath(__file__)),
+        progress_callback=None,
+        simulation=simulation
+    )
+    return jsonify(result)
 
 if __name__ == '__main__':
     print("=" * 70)
