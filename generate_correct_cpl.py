@@ -32,7 +32,8 @@ def generate_correct_cpl(bom_file="TFLN_BOM.csv", output_file="CPL.csv"):
                 designators.extend(expanded)
                 
     # Now generate grid coordinates
-    headers = ['Designator', 'Mid X', 'Mid Y', 'Layer', 'Rotation']
+    # FIX: JLCPCB and Seeed Fusion require " (mm)" suffix for Mid X and Mid Y.
+    headers = ['Designator', 'Mid X (mm)', 'Mid Y (mm)', 'Layer', 'Rotation']
     
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=headers)
@@ -43,8 +44,8 @@ def generate_correct_cpl(bom_file="TFLN_BOM.csv", output_file="CPL.csv"):
             y = 10.0 + (i // 50) * 2.0
             writer.writerow({
                 'Designator': des,
-                'Mid X': round(x, 2),
-                'Mid Y': round(y, 2),
+                'Mid X (mm)': round(x, 2),
+                'Mid Y (mm)': round(y, 2),
                 'Layer': 'Top',
                 'Rotation': 0
             })
