@@ -5,7 +5,20 @@ import glob
 def create_manufacturer_package():
     output_zip = "manufacturer_package.zip"
     gerber_dir = "gerber_files"
-    bom_files = ["TFLN_BOM.csv", "TFLN_BOM_Summary.txt", "tfln_modulator.kicad_pcb"]
+    bom_files = [
+        "tfln_modulator.kicad_pcb",
+        "tfln_modulator.kicad_pro",
+        "tfln_modulator.dsn",
+        "tfln_modulator.net",
+        "BOM.csv",
+        "CPL.csv",
+        "TFLN_BOM.csv",
+        "TFLN_BOM_Summary.txt",
+        "TFLN_Technical_Report.docx",
+        "TFLN_System_Diagram.png",
+        "DESIGN_PACKAGE_SUMMARY.md",
+        "DeepPCB_Project.zip"
+    ]
     
     print(f"Creating {output_zip}...")
     

@@ -11,6 +11,8 @@ def create_final_fabrication_package():
         "tfln_modulator.kicad_pro",
         "tfln_modulator.dsn",
         "tfln_modulator.net",
+        "BOM.csv",
+        "CPL.csv",
         "TFLN_BOM.csv",
         "TFLN_BOM_Summary.txt",
         "TFLN_Technical_Report.docx",
