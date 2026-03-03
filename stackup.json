@@ -1,0 +1,86 @@
+{
+    "layers": [
+        {
+            "name": "Top Signal",
+            "type": "signal",
+            "material": "Rogers RO4350B"
+        },
+        {
+            "name": "GND1",
+            "type": "plane"
+        },
+        {
+            "name": "High-Speed RF",
+            "type": "signal"
+        },
+        {
+            "name": "GND2",
+            "type": "plane"
+        },
+        {
+            "name": "Analog Power 1",
+            "type": "plane"
+        },
+        {
+            "name": "Analog Power 2",
+            "type": "plane"
+        },
+        {
+            "name": "Analog Power 3",
+            "type": "plane"
+        },
+        {
+            "name": "Analog Power 4",
+            "type": "plane"
+        },
+        {
+            "name": "Digital Routing 1",
+            "type": "signal"
+        },
+        {
+            "name": "Digital Routing 2",
+            "type": "signal"
+        },
+        {
+            "name": "Digital Routing 3",
+            "type": "signal"
+        },
+        {
+            "name": "Digital Routing 4",
+            "type": "signal"
+        },
+        {
+            "name": "Digital Power 1",
+            "type": "plane"
+        },
+        {
+            "name": "Digital Power 2",
+            "type": "plane"
+        },
+        {
+            "name": "Digital Power 3",
+            "type": "plane"
+        },
+        {
+            "name": "Digital Power 4",
+            "type": "plane"
+        },
+        {
+            "name": "Secondary High-Speed 1",
+            "type": "signal"
+        },
+        {
+            "name": "Secondary High-Speed 2",
+            "type": "signal"
+        },
+        {
+            "name": "GND3",
+            "type": "plane"
+        },
+        {
+            "name": "Bottom Signal",
+            "type": "signal",
+            "material": "FR4"
+        }
+    ]
+}
