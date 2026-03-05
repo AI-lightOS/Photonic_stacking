@@ -902,6 +902,51 @@ def run_github_upload():
     )
     return jsonify(result)
 
+@app.route('/api/mri_reconstruction', methods=['POST'])
+def run_mri_reconstruction():
+    """Run the MRI Photonic Reconstruction simulation and return the generated chart path"""
+    import subprocess
+    import os
+    
+    try:
+        # Run the script we created with --json flag
+        script_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mri_photonic_reconstruction.py')
+        result = subprocess.run(['python3', script_path, '--json'], check=True, capture_output=True, text=True)
+        
+        # Parse output for JSON metrics
+        metrics = None
+        output = result.stdout
+        if "___JSON_START___" in output and "___JSON_END___" in output:
+            try:
+                json_str = output.split("___JSON_START___")[1].split("___JSON_END___")[0].strip()
+                import json
+                metrics = json.loads(json_str)
+            except Exception as e:
+                print(f"Failed to parse JSON metrics: {e}")
+                
+        # Output image is saved to mri_photonic_characteristics.png
+        return jsonify({
+            'status': 'success',
+            'image_url': '/api/mri_image?' + str(os.path.getmtime('mri_photonic_characteristics.png')), # Cache busting
+            'metrics': metrics
+        })
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@app.route('/api/mri_image')
+def get_mri_image():
+    """Serve the generated MRI characteristics image"""
+    import os
+    from flask import send_file
+    image_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mri_photonic_characteristics.png')
+    if os.path.exists(image_path):
+        return send_file(image_path, mimetype='image/png')
+    else:
+        return jsonify({'error': 'Image not found. Run simulation first.'}), 404
+        
+
 if __name__ == '__main__':
     print("=" * 70)
     print("PHOTONIC COMPUTING WEB APPLICATION")
