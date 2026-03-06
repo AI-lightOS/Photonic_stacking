@@ -19,3 +19,40 @@ Starting server on http://127.0.0.1:5001
  * Running on http://127.0.0.1:5001
  * Running on http://192.168.2.14:5001
 [33mPress CTRL+C to quit[0m
+127.0.0.1 - - [05/Mar/2026 19:07:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/advanced_21_layer_architecture.jpg HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/microfiber_tfln.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/pcb_populated_green.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/pcb_populated_green_dense.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/osfp_housing.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/high_density_fiber_shuffle.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/detachable_chip_connector.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/fea_results/mode_0.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:16] "[36mGET /static/fea_results/mode_1.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/performance HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/pcie_board HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/wdm_channels HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/cnc/files HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/3d_models HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:17] "GET /api/matrix_multiplier/resonator HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:20] "POST /api/matrix_multiply HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:21] "GET /api/wdm_channels HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:24] "POST /api/fft HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:28] "GET /api/pcie_board HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:30] "POST /api/pcie_transfer HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:32] "GET /api/hybrid_system HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:35] "POST /api/execute_workload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:39] "GET /api/cluster HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:07:45] "GET /api/matrix_multiplier/scl_stream?epochs=60&lr=25&q_factor=15000&n_train=24 HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:09:16] "GET /api/tfln/link_400g HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:09:16] "GET /api/tfln/link_800g HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:09:16] "GET /api/tfln/comparison HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:09:20] "GET /api/tfln/plots HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:09:42] "GET /api/gerber/layers HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:12:30] "POST /api/mri_reconstruction HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:12:30] "GET /api/mri_image?1772755949.9714255 HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:13:22] "POST /api/mri_reconstruction HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:13:22] "GET /api/mri_image?1772756002.2920904 HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:13:22] "POST /api/mri_reconstruction HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:13:24] "POST /api/mri_reconstruction HTTP/1.1" 200 -
+127.0.0.1 - - [05/Mar/2026 19:13:24] "GET /api/mri_image?1772756004.0864434 HTTP/1.1" 200 -
