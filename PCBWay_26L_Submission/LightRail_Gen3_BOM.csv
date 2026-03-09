@@ -1,0 +1,4 @@
+Designator,Comment,Footprint,LCSC Part #,Quantity
+U1,TFLN Photonic Modulator,BGA-324,CUSTOM,1
+C1-C100,100nF 25V X7R,0603,C14663,100
+J1,PCIe x16 Edge,Connector_PCBEdge:PCIe_x16,N/A,1

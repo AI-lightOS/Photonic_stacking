@@ -1,6 +1,6 @@
 LIGHTRAILAI CPO INTERCONNECT - 15-LAYER HYBRID STACK PCB
 ====================================================
-Generated: 2026-02-15 00:46:44
+Generated: 2026-03-06 06:17:46
 Stackup Configuration:
   L1: Top Signal (Rogers 4350B, 50 ohm SE)
   L2: Ground (Copper)

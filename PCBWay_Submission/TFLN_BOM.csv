@@ -1,0 +1,23 @@
+Designator,Description,Manufacturer,Manufacturer Part Number,Quantity
+U1,"TFLN Mach-Zehnder Modulator (400G) - Thin-Film Lithium Niobate, 100 GHz BW, Vπ≈1.8V",NTT Electronics,TFLN-MZM-400G-C,1
+U2,"DFB Laser Diode - 1550nm, 100mW, <100kHz linewidth, C-band tunable",NeoPhotonics,TLN-1550-100,1
+U3,"High-Speed Photodetector - 100GHz, -15dBm sensitivity, InGaAs PIN",Finisar / II-VI,XPDV4120R,1
+U4,"RF Driver IC - 100GHz, differential, 50Ω, 3.3V",Analog Devices,HMC8410,1
+OPT1,"Fiber-to-Chip Coupler - Single-mode, <0.5dB loss, polarization maintaining",Corning / PLC Connections,FC-TFLN-SMF28,2
+OPT2,"Optical Isolator - >30dB isolation, <0.8dB insertion loss, C-band",Thorlabs,IO-H-1550,1
+OPT3,"VOA (Variable Optical Attenuator) - 0-30dB range, <0.3dB PDL, motorized",General Photonics,VOA-100-C,1
+U5,"Laser Driver IC - 2.5Gbps, auto power control, <100mA",Maxim Integrated,MAX3669,1
+U6,"Low-Noise LDO - 1.8V, 1A, 4.17μVrms noise, PSRR 72dB",Texas Instruments,TPS7A4700,1
+U7,"Buck Converter - 3.3V, 4A, 2MHz switching, 95% efficiency",Analog Devices,LT8614,1
+U8,"TEC Controller - Thermoelectric cooler, ±5A, 0.001°C stability",Wavelength Electronics,MPT5000,1
+U9,"SerDes IC - 400G PAM4, 100Gbaud, retimer, FEC",Broadcom,BCM84881,1
+U10,"Clock Generator - 100GHz, <50fs jitter, 12 outputs, programmable",Silicon Labs,Si5395A,1
+C1-C20,"MLCC Capacitor - 10μF, 50V, X7R, 1210",Murata,GRM32ER71H106KA12,20
+C21-C40,"MLCC Capacitor - 0.1μF, 25V, X7R, 0603",Murata,GRM188R71E104KA01,20
+R1-R10,"Thin Film Resistor - 50Ω, 0.1%, 0.1W, 0603",Vishay,TNPW060350R0BEEN,10
+L1-L4,"RF Inductor - 10nH, Q>40 @ 2GHz, 0603",Coilcraft,0603CS-10NXJLW,4
+J1,"PCIe x16 Edge Connector - Gen5, 32GT/s, gold plated",TE Connectivity,2-2013289-6,1
+J2-J3,"LC/APC Fiber Connector - Single-mode, APC polish, <0.3dB loss",Senko,SN-LC-APC-SM,2
+J4-J7,"SMA RF Connector - 50GHz, 50Ω, edge launch",Amphenol,132289,4
+PCB1,"PCB Assembly - 15-layer Intelligence Stack, Rogers RO4350B, high-density IPC Class 3",Advanced Circuits,CUSTOM-15L-RF,1
+C41-C2095,"MLCC Capacitor - 0.1μF, 25V, X7R, 0603",Murata,GRM188R71E104KA01,2055

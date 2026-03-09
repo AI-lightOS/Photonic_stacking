@@ -9,6 +9,11 @@ from datetime import datetime
 class GerberGenerator:
     """Generate Gerber files for TFLN photonic PCB with 12-layer stackup"""
     
+    def to_gerber_units(self, val_mm):
+        # Standard format for metric is 3.6 (3 integer, 6 decimal digits)
+        # This means multiply by 1,000,000
+        return int(val_mm * 1000000)
+
     def __init__(self, output_dir="gerber_files"):
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
@@ -86,10 +91,10 @@ class GerberGenerator:
                 f.write("G01*\n")
                 f.write("D10*\n")
                 # Draw a simple cross for visualization
-                f.write(f"X0Y0D02*\n")
-                f.write(f"X{int(self.board_width*1000000)}Y{int(self.board_height*1000000)}D01*\n")
-                f.write(f"X0Y{int(self.board_height*1000000)}D02*\n")
-                f.write(f"X{int(self.board_width*1000000)}Y0D01*\n")
+                f.write(f"X{self.to_gerber_units(0)}Y{self.to_gerber_units(0)}D02*\n")
+                f.write(f"X{self.to_gerber_units(self.board_width)}Y{self.to_gerber_units(self.board_height)}D01*\n")
+                f.write(f"X{self.to_gerber_units(0)}Y{self.to_gerber_units(self.board_height)}D02*\n")
+                f.write(f"X{self.to_gerber_units(self.board_width)}Y{self.to_gerber_units(0)}D01*\n")
                 f.write("M02*\n")
             files.append(filename)
             

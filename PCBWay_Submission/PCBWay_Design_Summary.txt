@@ -1,0 +1,7 @@
+Project: LightRail AI TFLN Photonic Modulator
+Manufacturer: PCBWay Submission
+Stackup: 15-Layer Hybrid (Copper/FR4/Rogers)
+Units: Metric (mm)
+Gerber Type: RS-274X
+
+Alignment Note: VLSI Photonics and FPGA logic layers are aligned to the PCB center.

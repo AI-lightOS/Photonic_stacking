@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "version": 1,
+    "filename": "LightRail_Gen3.kicad_pro"
+  },
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "track_width": 0.15,
+        "via_size": 0.3,
+        "via_drill": 0.2
+      },
+      "rules": {
+        "min_track_width": 0.075,
+        "min_via_drill": 0.15
+      }
+    },
+    "stackup": {
+      "layers": [
+        {
+          "ordinal": 0,
+          "name": "F.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 1,
+          "name": "In1.Cu",
+          "type": "power"
+        },
+        {
+          "ordinal": 2,
+          "name": "In2.Cu",
+          "type": "power"
+        },
+        {
+          "ordinal": 3,
+          "name": "In3.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 4,
+          "name": "In4.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 5,
+          "name": "In5.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 6,
+          "name": "In6.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 7,
+          "name": "In7.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 8,
+          "name": "In8.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 9,
+          "name": "In9.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 10,
+          "name": "In10.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 11,
+          "name": "In11.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 12,
+          "name": "In12.Cu",
+          "type": "signal"
+        },
+        {
+          "ordinal": 13,
+          "name": "In13.Cu",
+          "type": "power"
+        },
+        {
+          "ordinal": 14,
+          "name": "B.Cu",
+          "type": "signal"
+        }
+      ],
+      "thickness": 2.0,
+      "material": "ISOLA 370HR"
+    }
+  },
+  "schematic": {
+    "annotate_start_num": 1
+  },
+  "libraries": {
+    "pinned_symbol_libs": [],
+    "pinned_footprint_libs": []
+  }
+}

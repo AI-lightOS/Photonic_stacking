@@ -15,12 +15,14 @@ class VLSILayoutGenerator:
         # Chip Dimensions (20mm x 20mm die)
         self.die_width = 20.0
         self.die_height = 20.0
-        self.scale_factor = 1000000 # 6 digit precision
+        self.scale_factor = 1000000 # 3.6 format in mm
+ # 6 digit precision
         
     def _header(self, f, name):
         f.write(f"G04 {name}*\n")
         f.write("%FSLAX36Y36*%\n")
-        f.write("%MOIN*%\n") # Using Inches for Gerber standard usually, but I'll treat units carefully.
+        f.write("%MOMM*%\n")
+ # Using Inches for Gerber standard usually, but I'll treat units carefully.
         # Actually my generate_gerber uses MOIN but writes coordinates like 1000000.
         # 20mm is approx 0.8 inches.
         f.write("G75*\n") # Multi-quadrant

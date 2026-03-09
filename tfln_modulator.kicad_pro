@@ -7,70 +7,9 @@
     "design_settings": {
       "defaults": {
         "track_width": 0.15,
-        "via_size": 0.3
+        "via_size": 0.3,
+        "via_drill": 0.2
       }
-    },
-    "layer_stack": [
-      {
-        "name": "F.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In1.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In2.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In3.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In4.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In5.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In6.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In7.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In8.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In9.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In10.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In11.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In12.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "In13.Cu",
-        "type": "copper"
-      },
-      {
-        "name": "B.Cu",
-        "type": "copper"
-      }
-    ]
+    }
   }
 }

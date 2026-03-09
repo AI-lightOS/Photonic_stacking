@@ -1,0 +1,67 @@
+========================================================================
+LIGHTRAIL AI - GEN 3 TFLN NIC - SCHEMATIC NETLIST & ROUTING MAP
+========================================================================
+Design: 15-Layer Hybrid RF/Optical Stackup | Rev 1.0 | 2026-03-08
+Main Core: U_CORE (LightRail AI Compute Engine)
+========================================================================
+
+[NET: +12V_INPUT]
+J1 (PCIe Gen5 Edge)      Pin: +12V_PWR  ------>  U7 (LT8614 Buck)  Pin: VIN
+
+[NET: +3V3_MAIN]
+U7 (LT8614 Buck)         Pin: VOUT  ------>  U4 (HMC8410 RF Drv)   Pin: VCC
+                                        ------>  U8 (MPT5000 TEC Drv) Pin: VDD
+                                        ------>  U9 (BCM84881 SerDes) Pin: VDDIO
+                                        ------>  U10 (Si5395A Clock)  Pin: VDDA
+                                        ------>  TP_3V3 (Test Point)
+
+[NET: +1V8_CLEAN_ANALOG]
+U6 (TPS7A4700 LDO)       Pin: VOUT  ------>  U_CORE (AI Engine)    Pin: VDD_1V8
+                                        ------>  TP_1V8 (Test Point)
+
+[NET: GND_REFERENCE]
+ALL COMPONENTS  ------>  Pin: GND / Exposed Thermal Pad (stitching vias)
+
+------------------------------------------------------------------------
+OPTICAL GENERATION & MODULATION (THE "LIGHT" PATH)
+------------------------------------------------------------------------
+[NET: LASER_DRIVE_CW]
+U5 (MAX3669 Laser Drv)   Pin: OUT+/OUT-  ------>  U2 (TLN-1550 DFB)  Pin: MOD_IN
+
+[NET: TEC_COOLING_LOOP]
+U8 (MPT5000 TEC)         Pin: TEC_OUT+/TEC_OUT-  ------>  U2 (TLN-1550 DFB)  Pin: TEC_IN+/TEC_IN-
+
+[NET: RF_TX_PAM4_CH0_7]   Impedance: 50-Ohm Single-Ended  Layer: In3.Cu / In4.Cu
+U_CORE (AI Engine)       Pin: TX_OUT_CH[0:7]
+  ---->  U4 (HMC8410 RF Drv)  Pin: RFIN_CH[0:7]  ----  Pin: RFOUT_CH[0:7]
+  ---->  U1 (TFLN-MZM-400G-C) Pin: RF_MOD_IN[0:7]
+
+------------------------------------------------------------------------
+DATA RECEPTION & DETECTION
+------------------------------------------------------------------------
+[NET: RX_PHOTONIC_TO_ELEC]   Impedance: 85-Ohm Differential  Layer: In5.Cu
+U3 (XPDV4120R Detector)  Pin: RF_OUT_P/RF_OUT_N  ------>  U_CORE  Pin: RX_IN_P/RX_IN_N
+
+------------------------------------------------------------------------
+HOST PCIE INTERFACE & SERDES
+------------------------------------------------------------------------
+[NET: PCIE_GEN5_TX_RX]
+J1 (PCIe Gen5 Edge)      Pin: PERp[0:15]/PERn[0:15]
+  ------>  U9 (BCM84881 SerDes)  Pin: HOST_RX_P[0:15]/HOST_RX_N[0:15]
+
+[NET: SERDES_TO_CORE]
+U9 (BCM84881 SerDes)     Pin: LINE_TX_P[0:15]/LINE_TX_N[0:15]
+  ------>  U_CORE  Pin: SERDES_RX_P[0:15]/SERDES_RX_N[0:15]
+
+------------------------------------------------------------------------
+CONTROL & DIAGNOSTICS
+------------------------------------------------------------------------
+[NET: I2C_MGMT_BUS]  (Pull-up 4.7k to 3V3)
+J1 (PCIe Gen5 Edge)      Pin: SMBCLK/SMBDAT
+  ------>  U8 (MPT5000 TEC)    Pin: SCL/SDA  (I2C Addr: 0x2A)
+  ------>  U10 (Si5395A Clock) Pin: SCL/SDA  (I2C Addr: 0x6B)
+
+[NET: SPI_DAC_INIT]
+U_CORE (AI Engine)       Pin: SPI_MOSI/SPI_CLK/SPI_CS
+  ------>  U1 (TFLN Bias Ctrl) Pin: SPI_MISO/SPI_CLK/SPI_CS
+========================================================================

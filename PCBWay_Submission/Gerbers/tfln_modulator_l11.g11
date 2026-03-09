@@ -1,0 +1,12 @@
+G04 TFLN Modulator - Layer 11 (Spiking Logic Dispatcher)*
+G04 Layer 7: Temporal Spike Mesh*
+G04 Date: 2026-02-10 00:15:50*
+%FSLAX36Y36*%
+%MOIN*%
+G01*
+D10*
+X0Y0D02*
+X106680000Y111150000D01*
+X0Y111150000D02*
+X106680000Y0D01*
+M02*

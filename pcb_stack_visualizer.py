@@ -25,9 +25,14 @@ class SimpleGerberParser:
                 line = line.strip()
                 match = re.search(r'X(\d+)Y(\d+)D(\d+)', line)
                 if match:
-                    # simplistic parse: assuming format FSLAX36Y36
-                    x = float(match.group(1)) / 1000000.0 * scale
-                    y = float(match.group(2)) / 1000000.0 * scale
+                    # simplistic parse: assuming format FSLAX36Y36 for mm or FSLAX25Y25 for inch
+                    # We divide by 1e6 for mm (3.6) and usually 1e5 for inch (2.5)
+                    divisor = 1000000.0
+                    if '%MOIN*%' in content:
+                        divisor = 100000.0
+                    
+                    x = float(match.group(1)) / divisor * scale
+                    y = float(match.group(2)) / divisor * scale
                     d = match.group(3)
                     
                     if d == '01': # Draw
@@ -62,9 +67,11 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
         ('LightRailAI_L13_Power.g13', 3, 'L13 (Bias, FR4)'),
         ('LightRailAI_L14_Ground.g14', 2, 'L14 (GND)'),
         ('LightRailAI_L15_Bottom_Cu.gbl', 1, 'L15 (Bot, FR4)'),
+        ('vlsi_photonics.gbr', 15.5, 'VLSI Photonics (Top Layer)'),
+        ('vlsi_fpga_logic.gbr', 15.6, 'VLSI FPGA Logic'),
     ]
     
-    colors = ['red', 'green', 'blue', 'green', 'purple', 'green', 'orange', 'green', 'gray', 'orange', 'cyan', 'green', 'yellow', 'green', 'blue']
+    colors = ['red', 'green', 'blue', 'green', 'purple', 'green', 'orange', 'green', 'gray', 'orange', 'cyan', 'green', 'yellow', 'green', 'blue', 'pink', 'magenta']
     
     for i, (filename, z_height, label) in enumerate(layers):
         filepath = os.path.join(gerber_dir, filename)
@@ -79,7 +86,7 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
                 
             for start, end in lines:
                 ax.plot([start[0], end[0]], [start[1], end[1]], [z_height, z_height], 
-                        color=colors[i], alpha=0.6, linewidth=1)
+                        color=colors[i % len(colors)], alpha=0.6, linewidth=1)
                         
             # Add label at a corner
             ax.text(0, 0, z_height, label, fontsize=8)
@@ -87,7 +94,7 @@ def visualize_stack(gerber_dir="gerber_files", output_file="pcb_stack_3d.png"):
     ax.set_xlabel('X (mm)')
     ax.set_ylabel('Y (mm)')
     ax.set_zlabel('Layer Stack')
-    ax.set_title('15-Layer TFLN PCB Stack Visualization')
+    ax.set_title('Aligned 15-Layer TFLN PCB Stack Visualization')
     
     # Set reasonable bounds
     ax.set_xlim(0, 80) # Approx based on generate_gerber coords
