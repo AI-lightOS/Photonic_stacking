@@ -1,0 +1,86 @@
+C  TFLN_AI_NODE_X2 IPC-D-356 Netlist
+C  Generated: 2026-04-12
+C  Board: 305mm x 280mm, 22 layers
+C  Format: IPC-D-356A (Bare Board Test)
+C
+C  Record Types:
+C  317 = Test point access from top
+C  327 = Test point access from bottom
+C  367 = Mid-board test point
+C
+C  ==============================================
+C  POWER NETS
+C  ==============================================
+317GND                         U1  -A1       A    X+10750Y+14250X0200Y0200R000 S3
+317GND                         U1  -A2       A    X+10830Y+14250X0200Y0200R000 S3
+317GND                         U1  -B1       A    X+10750Y+14330X0200Y0200R000 S3
+317GND                         U1  -B2       A    X+10830Y+14330X0200Y0200R000 S3
+317V_CORE                      U5  -VIN1     A    X+06500Y+09000X0200Y0200R000 S3
+317V_CORE                      U5  -VIN2     A    X+06500Y+09200X0200Y0200R000 S3
+317V_CORE                      U5  -VOUT1    A    X+06500Y+11000X0200Y0200R000 S3
+317V_IO                        U6  -VOUT1    A    X+22000Y+09000X0200Y0200R000 S3
+317V_DDQ                       U7  -VOUT1    A    X+06500Y+23000X0200Y0200R000 S3
+317V_3V3                       U8  -VOUT1    A    X+22000Y+23000X0200Y0200R000 S3
+317VIN_12V                     J17 -1        A    X+11500Y+26500X0300Y0300R000 S3
+317VIN_12V                     J18 -1        A    X+17000Y+26500X0300Y0300R000 S3
+C
+C  ==============================================
+C  PCIe Gen6 NETS (Slots J1-J8)
+C  ==============================================
+317PCIe_TX_J1_0_P              J1  -A1       A    X+06000Y+04500X0100Y0100R000 S3
+317PCIe_TX_J1_0_N              J1  -A2       A    X+06000Y+04600X0100Y0100R000 S3
+317PCIe_TX_J1_1_P              J1  -A3       A    X+06000Y+04800X0100Y0100R000 S3
+317PCIe_TX_J1_1_N              J1  -A4       A    X+06000Y+04900X0100Y0100R000 S3
+317PCIe_RX_J1_0_P              J1  -B1       A    X+06000Y+05300X0100Y0100R000 S3
+317PCIe_RX_J1_0_N              J1  -B2       A    X+06000Y+05400X0100Y0100R000 S3
+317PCIE_REFCLK_J1_P            J1  -CLK_P    A    X+06000Y+06000X0100Y0100R000 S3
+317PCIE_REFCLK_J1_N            J1  -CLK_N    A    X+06000Y+06100X0100Y0100R000 S3
+C
+C  ==============================================
+C  DDR5 NETS (DIMMs J9-J12)
+C  ==============================================
+317DDR5_DQ_J9_0                J9  -DQ0      A    X+03500Y+10000X0085Y0085R000 S3
+317DDR5_DQ_J9_1                J9  -DQ1      A    X+03500Y+10085X0085Y0085R000 S3
+317DDR5_DQ_J9_2                J9  -DQ2      A    X+03500Y+10170X0085Y0085R000 S3
+317DDR5_DQ_J9_3                J9  -DQ3      A    X+03500Y+10255X0085Y0085R000 S3
+317DDR5_DQS_J9_0_P             J9  -DQS0_P   A    X+03500Y+10500X0085Y0085R000 S3
+317DDR5_DQS_J9_0_N             J9  -DQS0_N   A    X+03500Y+10585X0085Y0085R000 S3
+317DDR5_CK_J9_P                J9  -CK_P     A    X+03500Y+11000X0085Y0085R000 S3
+317DDR5_CK_J9_N                J9  -CK_N     A    X+03500Y+11085X0085Y0085R000 S3
+317DDR5_CA_J9_0                J9  -CA0      A    X+03500Y+11500X0085Y0085R000 S3
+C
+C  ==============================================
+C  TFLN RF NETS
+C  ==============================================
+317TFLN_RF_U3_CH0_P            U3  -RF0_P    A    X+10750Y+17000X0150Y0150R000 S3
+317TFLN_RF_U3_CH0_N            U3  -RF0_N    A    X+10750Y+17150X0150Y0150R000 S3
+317TFLN_RF_U3_CH1_P            U3  -RF1_P    A    X+10750Y+17500X0150Y0150R000 S3
+317TFLN_RF_U3_CH1_N            U3  -RF1_N    A    X+10750Y+17650X0150Y0150R000 S3
+317TFLN_BIAS_U3_0              U3  -BIAS0    A    X+10750Y+18000X0150Y0150R000 S3
+317TFLN_MON_U3_0               U3  -MON0     A    X+10750Y+18500X0150Y0150R000 S3
+C
+C  ==============================================
+C  SerDes INTER-DIE LINKS
+C  ==============================================
+317SERDES_U1_U2_0_P            U1  -SD0_P    A    X+11500Y+14000X0150Y0150R000 S3
+317SERDES_U1_U2_0_N            U1  -SD0_N    A    X+11500Y+14150X0150Y0150R000 S3
+317SERDES_U1_U2_1_P            U1  -SD1_P    A    X+11500Y+14500X0150Y0150R000 S3
+317SERDES_U1_U2_1_N            U1  -SD1_N    A    X+11500Y+14650X0150Y0150R000 S3
+C
+C  ==============================================
+C  NVMe M.2 NETS
+C  ==============================================
+317NVME_TX_J13_0_P             J13 -TX0_P    A    X+04000Y+22000X0100Y0100R000 S3
+317NVME_TX_J13_0_N             J13 -TX0_N    A    X+04000Y+22100X0100Y0100R000 S3
+317NVME_RX_J13_0_P             J13 -RX0_P    A    X+04000Y+22400X0100Y0100R000 S3
+317NVME_RX_J13_0_N             J13 -RX0_N    A    X+04000Y+22500X0100Y0100R000 S3
+C
+C  ==============================================
+C  BYPASS CAPACITORS
+C  ==============================================
+317V_CORE                      C1  -1        A    X+09500Y+13000X0100Y0100R000 S3
+317GND                         C1  -2        A    X+09500Y+13100X0100Y0100R000 S3
+317V_CORE                      C2  -1        A    X+09800Y+13000X0100Y0100R000 S3
+317GND                         C2  -2        A    X+09800Y+13100X0100Y0100R000 S3
+C
+999

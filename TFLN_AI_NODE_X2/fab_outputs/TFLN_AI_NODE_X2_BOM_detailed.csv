@@ -1,0 +1,43 @@
+Item,Reference,Quantity,Value,Description,Package/Footprint,Manufacturer,MPN,DNP,Placement,Notes
+1,U1,1,AI_Compute_Unit,Custom AI SoC - BGA256 0.8mm pitch,BGA256_0.8mm,Custom,TFLN-SOC-256,No,Top,Central GND pins; outer V_core/SerDes
+2,U2,1,AI_Compute_Unit,Custom AI SoC - BGA256 0.8mm pitch,BGA256_0.8mm,Custom,TFLN-SOC-256,No,Top,Central GND pins; outer V_core/SerDes
+3,U3,1,TFLN_Photonic_Engine,Thin-Film LiNbO3 electro-optic modulator array,TFLN_Photonic_Hybrid,Custom,TFLN-PHO-8CH,No,Top,Optical FAU keep-out zone required
+4,U4,1,TFLN_Photonic_Engine,Thin-Film LiNbO3 electro-optic modulator array,TFLN_Photonic_Hybrid,Custom,TFLN-PHO-8CH,No,Top,Optical FAU keep-out zone required
+5,U5,1,VRM_DrMOS_24Phase,24-phase multi-phase VRM array for V_CORE,VRM_DrMOS_Array,Infineon/Renesas,ISL99390,No,Top,Solid thermal relief - no spokes
+6,U6,1,VRM_DrMOS_24Phase,24-phase multi-phase VRM array for V_IO,VRM_DrMOS_Array,Infineon/Renesas,ISL99390,No,Top,Solid thermal relief - no spokes
+7,U7,1,VRM_DrMOS_24Phase,24-phase multi-phase VRM array for V_DDQ,VRM_DrMOS_Array,Infineon/Renesas,ISL99390,No,Top,Solid thermal relief - no spokes
+8,U8,1,VRM_DrMOS_24Phase,24-phase multi-phase VRM array for V_3V3,VRM_DrMOS_Array,Infineon/Renesas,ISL99390,No,Top,Solid thermal relief - no spokes
+9,J1,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Top,164 pins (82 per side)
+10,J2,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Top,164 pins (82 per side)
+11,J3,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Top,164 pins (82 per side)
+12,J4,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Top,164 pins (82 per side)
+13,J5,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Bottom,164 pins (82 per side)
+14,J6,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Bottom,164 pins (82 per side)
+15,J7,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Bottom,164 pins (82 per side)
+16,J8,1,PCIe_x16_Gen6,PCIe Gen6 x16 card-edge connector,PCIe_x16_Slot,TE Connectivity,2199230-4,No,Bottom,164 pins (82 per side)
+17,J9,1,DDR5_DIMM_288,DDR5 288-pin vertical DIMM socket,DDR5_DIMM_288pin,TE Connectivity,2309413-1,No,Top,0.85mm pitch
+18,J10,1,DDR5_DIMM_288,DDR5 288-pin vertical DIMM socket,DDR5_DIMM_288pin,TE Connectivity,2309413-1,No,Top,0.85mm pitch
+19,J11,1,DDR5_DIMM_288,DDR5 288-pin vertical DIMM socket,DDR5_DIMM_288pin,TE Connectivity,2309413-1,No,Top,0.85mm pitch
+20,J12,1,DDR5_DIMM_288,DDR5 288-pin vertical DIMM socket,DDR5_DIMM_288pin,TE Connectivity,2309413-1,No,Top,0.85mm pitch
+21,J13,1,NVMe_M2_Connector,M.2 Key-M 2280 socket,NVMe_M2_Socket,Amphenol,MDT420E01001,No,Top,67-pin edge connector
+22,J14,1,NVMe_M2_Connector,M.2 Key-M 2280 socket,NVMe_M2_Socket,Amphenol,MDT420E01001,No,Top,67-pin edge connector
+23,J15,1,NVMe_M2_Connector,M.2 Key-M 2280 socket,NVMe_M2_Socket,Amphenol,MDT420E01001,No,Top,67-pin edge connector
+24,J16,1,NVMe_M2_Connector,M.2 Key-M 2280 socket,NVMe_M2_Socket,Amphenol,MDT420E01001,No,Top,67-pin edge connector
+25,J17,1,Power_Input_12V,High-current 12V input connector (8+8 pins),Power_Input_Connector,Molex,0462000001,No,Top,8 VIN + 8 GND pins
+26,J18,1,Power_Input_12V,High-current 12V input connector (8+8 pins),Power_Input_Connector,Molex,0462000001,No,Top,8 VIN + 8 GND pins
+27,C1,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U1 BGA
+28,C2,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U1 BGA
+29,C3,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U1 BGA
+30,C4,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U1 BGA
+31,C5,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U2 BGA
+32,C6,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U2 BGA
+33,C7,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U2 BGA
+34,C8,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U2 BGA
+35,C9,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U5 VRM
+36,C10,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U6 VRM
+37,C11,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U7 VRM
+38,C12,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U8 VRM
+39,C13,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U3 TFLN
+40,C14,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near U4 TFLN
+41,C15,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near DDR5
+42,C16,1,Bypass_Cap_Array,Decoupling capacitor array (10x 100nF + 2x 10uF),0402_Array,TDK,C1005X5R0J104K050BC,No,Top,Near DDR5

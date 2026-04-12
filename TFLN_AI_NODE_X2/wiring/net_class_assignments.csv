@@ -1,0 +1,29 @@
+Net Name Pattern,Net Class,Clearance (mm),Trace Width (mm),Diff Pair Width (mm),Diff Pair Gap (mm),Target Z0 (ohm),Routing Layer
+GND,Default,0.15,0.20,N/A,N/A,0,Plane (L2/L5/L9/L13/L17/L20)
+V_CORE,Default,0.15,0.20,N/A,N/A,0,Plane (L3)
+V_IO,Default,0.15,0.20,N/A,N/A,0,Plane (L7)
+V_DDQ,Default,0.15,0.20,N/A,N/A,0,Plane (L15)
+V_3V3,Default,0.15,0.20,N/A,N/A,0,Plane (L19)
+VIN_12V*,Default,0.15,0.50,N/A,N/A,0,F.Cu (heavy copper)
+PCIe_TX_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+PCIe_RX_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+PCIE_REFCLK_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+SERDES_U1_U2_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+NVME_TX_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+NVME_RX_*,PCIe_Gen6,0.12,0.12,0.12,0.18,85,In3.Cu (L4)
+DDR5_DQ_*,DDR5_DQ,0.12,0.10,0.10,0.15,40,In5.Cu/In15.Cu (L6/L16)
+DDR5_DQS_*,DDR5_DQ,0.12,0.10,0.10,0.15,80,In5.Cu/In15.Cu (L6/L16)
+DDR5_CK_*,DDR5_DQ,0.12,0.10,0.10,0.15,80,In5.Cu/In15.Cu (L6/L16)
+DDR5_CA_*,DDR5_DQ,0.12,0.10,N/A,N/A,40,In5.Cu/In15.Cu (L6/L16)
+DDR5_CS_*,DDR5_DQ,0.12,0.10,N/A,N/A,40,In5.Cu/In15.Cu (L6/L16)
+DDR5_RESET_*,DDR5_DQ,0.12,0.10,N/A,N/A,40,In5.Cu/In15.Cu (L6/L16)
+TFLN_RF_*_P,TFLN_RF,0.20,0.15,0.15,0.25,100,F.Cu (L1) ONLY
+TFLN_RF_*_N,TFLN_RF,0.20,0.15,0.15,0.25,100,F.Cu (L1) ONLY
+TFLN_BIAS_*,Default,0.15,0.20,N/A,N/A,50,F.Cu (L1)
+TFLN_MON_*,Default,0.15,0.20,N/A,N/A,50,F.Cu (L1)
+VRM_*_PHASE*,Default,0.15,0.20,N/A,N/A,50,F.Cu (L1)
+VRM_*_PWM*,Default,0.15,0.20,N/A,N/A,50,F.Cu (L1)
+SYS_CLK*,Default,0.15,0.20,N/A,N/A,50,Any signal layer
+SYS_RESET*,Default,0.15,0.20,N/A,N/A,50,Any signal layer
+STATUS_LED*,Default,0.15,0.20,N/A,N/A,50,Any signal layer
+PGOOD,Default,0.15,0.20,N/A,N/A,50,Any signal layer
