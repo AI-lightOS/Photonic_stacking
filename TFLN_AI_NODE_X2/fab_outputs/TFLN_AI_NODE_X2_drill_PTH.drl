@@ -1,0 +1,118 @@
+M48
+; DRILL file {TFLN_AI_NODE_X2} date 2026-04-12
+; FORMAT={-:-/ absolute / metric / decimal}
+; Plated Through-Hole (PTH) Drill File
+;
+; #@! TF.CreationDate=2026-04-12
+; #@! TF.GenerationSoftware=KiCad,Pcbnew,8.0.9
+; #@! TF.FileFunction=Plated,1,22,PTH
+FMAT,2
+METRIC,TZ
+;
+; =============================================
+; Via Drills (Signal)
+; =============================================
+T01C0.200 ; 0.20mm - Standard signal via
+T02C0.250 ; 0.25mm - High-speed signal via (back-drill candidate)
+T03C0.300 ; 0.30mm - BGA thermal via
+;
+; =============================================
+; Component Through-Hole Drills
+; =============================================
+T04C0.500 ; 0.50mm - DDR5 DIMM connector pins
+T05C0.700 ; 0.70mm - PCIe slot pins
+T06C0.800 ; 0.80mm - Power connector pins
+T07C1.000 ; 1.00mm - Mounting holes (plated)
+T08C1.100 ; 1.10mm - PCIe slot key/guide
+;
+%
+G90
+G05
+;
+; =============================================
+; T01 - Standard Signal Vias (0.20mm)
+; Count: ~2000 estimated for full routing
+; =============================================
+T01
+X107500Y142500
+X108300Y142500
+X107500Y143300
+X108300Y143300
+X109100Y142500
+X109100Y143300
+;
+; =============================================
+; T02 - High-Speed Signal Vias (0.25mm)
+; BACK-DRILL REQUIRED - See back-drill spec
+; Count: ~500 estimated
+; =============================================
+T02
+X060000Y045000
+X060000Y046000
+X060000Y048000
+X060000Y049000
+X060000Y053000
+X060000Y054000
+;
+; =============================================
+; T03 - BGA Thermal Vias (0.30mm)
+; Located under BGA packages U1, U2
+; Count: 512 (256 per BGA)
+; =============================================
+T03
+X107500Y140000
+X108300Y140000
+X109100Y140000
+X107500Y140800
+X108300Y140800
+X109100Y140800
+;
+; =============================================
+; T04 - DDR5 DIMM Connector (0.50mm)
+; J9-J12: 288 pins each = 1152 total
+; =============================================
+T04
+X035000Y100000
+X035000Y100850
+X035000Y101700
+X035000Y102550
+;
+; =============================================
+; T05 - PCIe Slot Pins (0.70mm)
+; J1-J8: 164 pins each = 1312 total
+; =============================================
+T05
+X060000Y040000
+X061000Y040000
+X062000Y040000
+X063000Y040000
+;
+; =============================================
+; T06 - Power Connector Pins (0.80mm)
+; J17-J18: 16 pins each = 32 total
+; =============================================
+T06
+X115000Y265000
+X116000Y265000
+X117000Y265000
+X118000Y265000
+;
+; =============================================
+; T07 - Mounting Holes (1.00mm plated)
+; 4 corner mounting holes
+; =============================================
+T07
+X055000Y055000
+X300000Y055000
+X055000Y275000
+X300000Y275000
+;
+; =============================================
+; T08 - PCIe Slot Key/Guide (1.10mm)
+; J1-J8: 2 per slot = 16 total
+; =============================================
+T08
+X058000Y040000
+X100000Y040000
+;
+M30

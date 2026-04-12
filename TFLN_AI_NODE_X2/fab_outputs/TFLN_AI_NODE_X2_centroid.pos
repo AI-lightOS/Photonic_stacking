@@ -1,0 +1,32 @@
+### Component Placement / Centroid File ###
+### Project: TFLN_AI_NODE_X2
+### Date: 2026-04-12
+### Units: mm
+### Format: Ref, Val, Package, PosX, PosY, Rot, Side
+## Ref,Val,Package,PosX,PosY,Rot,Side
+U1,AI_Compute_Unit_1,BGA256_0.8mm,157.500,175.000,0,top
+U2,AI_Compute_Unit_2,BGA256_0.8mm,247.500,175.000,0,top
+U3,TFLN_Photonic_Engine_1,TFLN_Photonic_Hybrid,157.500,205.000,0,top
+U4,TFLN_Photonic_Engine_2,TFLN_Photonic_Hybrid,247.500,205.000,0,top
+U5,VRM_Array_Top_Left,VRM_DrMOS_Array,132.500,135.000,0,top
+U6,VRM_Array_Top_Right,VRM_DrMOS_Array,272.500,135.000,0,top
+U7,VRM_Array_Bot_Left,VRM_DrMOS_Array,132.500,245.000,0,top
+U8,VRM_Array_Bot_Right,VRM_DrMOS_Array,272.500,245.000,0,top
+J1,PCIe_Slot_Top_1,PCIe_x16_Slot,90.000,75.000,0,top
+J2,PCIe_Slot_Top_2,PCIe_x16_Slot,160.000,75.000,0,top
+J3,PCIe_Slot_Top_3,PCIe_x16_Slot,230.000,75.000,0,top
+J4,PCIe_Slot_Top_4,PCIe_x16_Slot,300.000,75.000,0,top
+J5,PCIe_Slot_Bot_1,PCIe_x16_Slot,90.000,305.000,180,top
+J6,PCIe_Slot_Bot_2,PCIe_x16_Slot,160.000,305.000,180,top
+J7,PCIe_Slot_Bot_3,PCIe_x16_Slot,230.000,305.000,180,top
+J8,PCIe_Slot_Bot_4,PCIe_x16_Slot,300.000,305.000,180,top
+J9,DDR5_DIMM_1,DDR5_DIMM_288pin,112.500,180.000,90,top
+J10,DDR5_DIMM_2,DDR5_DIMM_288pin,112.500,200.000,90,top
+J11,DDR5_DIMM_3,DDR5_DIMM_288pin,292.500,180.000,90,top
+J12,DDR5_DIMM_4,DDR5_DIMM_288pin,292.500,200.000,90,top
+J13,NVMe_Left_1,NVMe_M2_Socket,70.000,160.000,0,top
+J14,NVMe_Left_2,NVMe_M2_Socket,70.000,220.000,0,top
+J15,NVMe_Right_1,NVMe_M2_Socket,335.000,160.000,0,top
+J16,NVMe_Right_2,NVMe_M2_Socket,335.000,220.000,0,top
+J17,Power_Input_1,Power_Input_Connector,152.500,315.000,0,top
+J18,Power_Input_2,Power_Input_Connector,252.500,315.000,0,top

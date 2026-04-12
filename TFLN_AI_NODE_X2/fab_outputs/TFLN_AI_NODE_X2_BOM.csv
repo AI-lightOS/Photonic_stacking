@@ -1,0 +1,43 @@
+Reference,Value,Footprint,Quantity,Description,Manufacturer,MPN
+U1,AI_Compute_Unit_1,BGA256_0.8mm,1,AI Compute Unit with TFLN Photonic-Enabled BGA256,Custom,TFLN-ACU-256
+U2,AI_Compute_Unit_2,BGA256_0.8mm,1,AI Compute Unit with TFLN Photonic-Enabled BGA256,Custom,TFLN-ACU-256
+U3,TFLN_Photonic_Engine_1,TFLN_Photonic_Hybrid,1,TFLN Photonic Engine with Integrated Optical Engine and Modulators,Custom,TFLN-PE-001
+U4,TFLN_Photonic_Engine_2,TFLN_Photonic_Hybrid,1,TFLN Photonic Engine with Integrated Optical Engine and Modulators,Custom,TFLN-PE-001
+U5,VRM_Array_Top_Left,VRM_DrMOS_Array,1,24-Phase VRM DrMOS Array for V_core 0.8V / 1000A+,Custom,VRM-24PH-DRM
+U6,VRM_Array_Top_Right,VRM_DrMOS_Array,1,24-Phase VRM DrMOS Array for V_core 0.8V / 1000A+,Custom,VRM-24PH-DRM
+U7,VRM_Array_Bot_Left,VRM_DrMOS_Array,1,24-Phase VRM DrMOS Array for V_core 0.8V / 1000A+,Custom,VRM-24PH-DRM
+U8,VRM_Array_Bot_Right,VRM_DrMOS_Array,1,24-Phase VRM DrMOS Array for V_core 0.8V / 1000A+,Custom,VRM-24PH-DRM
+J1,PCIe_Slot_Top_1,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J2,PCIe_Slot_Top_2,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J3,PCIe_Slot_Top_3,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J4,PCIe_Slot_Top_4,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J5,PCIe_Slot_Bot_1,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J6,PCIe_Slot_Bot_2,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J7,PCIe_Slot_Bot_3,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J8,PCIe_Slot_Bot_4,PCIe_x16_Slot,1,PCIe Gen6 x16 Card Edge Expansion Slot,TE Connectivity,2199230-4
+J9,DDR5_DIMM_1,DDR5_DIMM_288pin,1,DDR5 288-pin Vertical DIMM Socket,TE Connectivity,2309413-1
+J10,DDR5_DIMM_2,DDR5_DIMM_288pin,1,DDR5 288-pin Vertical DIMM Socket,TE Connectivity,2309413-1
+J11,DDR5_DIMM_3,DDR5_DIMM_288pin,1,DDR5 288-pin Vertical DIMM Socket,TE Connectivity,2309413-1
+J12,DDR5_DIMM_4,DDR5_DIMM_288pin,1,DDR5 288-pin Vertical DIMM Socket,TE Connectivity,2309413-1
+J13,NVMe_Storage_Left_1,NVMe_M2_Socket,1,NVMe M.2 2280 Key-M Socket,Amphenol,MDT420E01001
+J14,NVMe_Storage_Left_2,NVMe_M2_Socket,1,NVMe M.2 2280 Key-M Socket,Amphenol,MDT420E01001
+J15,NVMe_Storage_Right_1,NVMe_M2_Socket,1,NVMe M.2 2280 Key-M Socket,Amphenol,MDT420E01001
+J16,NVMe_Storage_Right_2,NVMe_M2_Socket,1,NVMe M.2 2280 Key-M Socket,Amphenol,MDT420E01001
+J17,Power_Input_1,Power_Input_Connector,1,12V High-Current Power Input (1000A+ capable),Molex,1720640016
+J18,Power_Input_2,Power_Input_Connector,1,12V High-Current Power Input (1000A+ capable),Molex,1720640016
+C1,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C2,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C3,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C4,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C5,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C6,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C7,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C8,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C9,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C10,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C11,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C12,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C13,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C14,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C15,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88
+C16,100nF/10uF,C_0402_1005Metric,1,Bypass/Decoupling Capacitor,Murata,GRM155R71C104KA88

@@ -1,0 +1,62 @@
+Net Name,From Component,From Pin,To Component,To Pin,Net Class,Layer,Length (mm),Impedance (ohm),Notes
+GND,U1,A1,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+GND,U1,A2,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+GND,U1,A3,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+GND,U1,A4,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+GND,U2,A1,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+GND,U2,A2,PLANE,L2,Default,In1.Cu,-,0,Solid ground plane
+V_CORE,U5,VOUT1,U1,VCC1,Default,In2.Cu,-,0,Power plane pour
+V_CORE,U5,VOUT2,U1,VCC2,Default,In2.Cu,-,0,Power plane pour
+V_CORE,U5,VOUT3,U2,VCC1,Default,In2.Cu,-,0,Power plane pour
+V_IO,U6,VOUT1,U1,VIO1,Default,In6.Cu,-,0,Power plane pour
+V_IO,U6,VOUT2,U2,VIO1,Default,In6.Cu,-,0,Power plane pour
+V_DDQ,U7,VOUT1,J9,VDD1,Default,In14.Cu,-,0,Power plane pour
+V_DDQ,U7,VOUT2,J10,VDD1,Default,In14.Cu,-,0,Power plane pour
+V_DDQ,U7,VOUT3,J11,VDD1,Default,In14.Cu,-,0,Power plane pour
+V_DDQ,U7,VOUT4,J12,VDD1,Default,In14.Cu,-,0,Power plane pour
+V_3V3,U8,VOUT1,MISC,3V3,Default,In18.Cu,-,0,Power plane pour
+VIN_12V,J17,VIN1,U5,VIN1,Default,F.Cu,25,0,Heavy copper trace
+VIN_12V,J17,VIN2,U5,VIN2,Default,F.Cu,25,0,Heavy copper trace
+VIN_12V,J18,VIN1,U6,VIN1,Default,F.Cu,25,0,Heavy copper trace
+VIN_12V,J18,VIN2,U7,VIN1,Default,F.Cu,25,0,Heavy copper trace
+SERDES_U1_U2_0_P,U1,SD0_P,U2,SD0_P,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_0_N,U1,SD0_N,U2,SD0_N,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_1_P,U1,SD1_P,U2,SD1_P,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_1_N,U1,SD1_N,U2,SD1_N,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_2_P,U1,SD2_P,U2,SD2_P,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_2_N,U1,SD2_N,U2,SD2_N,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_3_P,U1,SD3_P,U2,SD3_P,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+SERDES_U1_U2_3_N,U1,SD3_N,U2,SD3_N,PCIe_Gen6,In3.Cu,45,85,Diff pair - length matched
+PCIe_TX_J1_0_P,U1,PCIE0_TX_P,J1,TX0_P,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+PCIe_TX_J1_0_N,U1,PCIE0_TX_N,J1,TX0_N,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+PCIe_TX_J1_1_P,U1,PCIE1_TX_P,J1,TX1_P,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+PCIe_TX_J1_1_N,U1,PCIE1_TX_N,J1,TX1_N,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+PCIe_RX_J1_0_P,J1,RX0_P,U1,PCIE0_RX_P,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+PCIe_RX_J1_0_N,J1,RX0_N,U1,PCIE0_RX_N,PCIe_Gen6,In3.Cu,80,85,Back-drill required
+DDR5_DQ_J9_0,U1,DQ0,J9,DQ0,DDR5_DQ,In5.Cu,60,40,Byte lane 0
+DDR5_DQ_J9_1,U1,DQ1,J9,DQ1,DDR5_DQ,In5.Cu,60,40,Byte lane 0
+DDR5_DQ_J9_2,U1,DQ2,J9,DQ2,DDR5_DQ,In5.Cu,60,40,Byte lane 0
+DDR5_DQ_J9_3,U1,DQ3,J9,DQ3,DDR5_DQ,In5.Cu,60,40,Byte lane 0
+DDR5_DQS_J9_0_P,U1,DQS0_P,J9,DQS0_P,DDR5_DQ,In5.Cu,60,80,Diff strobe
+DDR5_DQS_J9_0_N,U1,DQS0_N,J9,DQS0_N,DDR5_DQ,In5.Cu,60,80,Diff strobe
+DDR5_CK_J9_P,U1,CK0_P,J9,CK_P,DDR5_DQ,In5.Cu,65,80,Clock pair
+DDR5_CK_J9_N,U1,CK0_N,J9,CK_N,DDR5_DQ,In5.Cu,65,80,Clock pair
+DDR5_CA_J9_0,U1,CA0,J9,CA0,DDR5_DQ,In5.Cu,70,40,Command/Address
+TFLN_RF_U3_CH0_P,U1,RF0_P,U3,RF0_P,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH0_N,U1,RF0_N,U3,RF0_N,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH1_P,U1,RF1_P,U3,RF1_P,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH1_N,U1,RF1_N,U3,RF1_N,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH2_P,U1,RF2_P,U3,RF2_P,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH2_N,U1,RF2_N,U3,RF2_N,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH3_P,U1,RF3_P,U3,RF3_P,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_RF_U3_CH3_N,U1,RF3_N,U3,RF3_N,TFLN_RF,F.Cu,35,100,Top layer only - no vias
+TFLN_BIAS_U3_0,U1,BIAS0,U3,BIAS0,Default,F.Cu,30,50,DC bias
+TFLN_BIAS_U3_1,U1,BIAS1,U3,BIAS1,Default,F.Cu,30,50,DC bias
+NVME_TX_J13_0_P,U1,NVME0_TX_P,J13,TX0_P,PCIe_Gen6,In3.Cu,50,85,NVMe lane 0
+NVME_TX_J13_0_N,U1,NVME0_TX_N,J13,TX0_N,PCIe_Gen6,In3.Cu,50,85,NVMe lane 0
+NVME_RX_J13_0_P,J13,RX0_P,U1,NVME0_RX_P,PCIe_Gen6,In3.Cu,50,85,NVMe lane 0
+NVME_RX_J13_0_N,J13,RX0_N,U1,NVME0_RX_N,PCIe_Gen6,In3.Cu,50,85,NVMe lane 0
+VRM_U5_PHASE1,U5,PWM1,U5,DRV1,Default,F.Cu,5,50,VRM phase 1 drive
+VRM_U5_PHASE2,U5,PWM2,U5,DRV2,Default,F.Cu,5,50,VRM phase 2 drive
+BYPASS_C1,C1,1,U1,VCC_LOCAL1,Default,F.Cu,3,0,Decoupling cap
+BYPASS_C1_GND,C1,2,PLANE,L2,Default,In1.Cu,-,0,Via to GND plane
